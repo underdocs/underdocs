@@ -1,8 +1,8 @@
 package underdocs.parser.comment.block
 
 import org.eclipse.cdt.core.dom.ast.IASTComment
+import underdocs.configuration.domain.CommentStyle
 import underdocs.parser.comment.CommentGroupProcessor
-import underdocs.parser.comment.CommentStyle
 import java.lang.StringBuilder
 
 class SlashStarCommentGroupProcessor: CommentGroupProcessor {
