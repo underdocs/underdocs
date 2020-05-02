@@ -32,6 +32,6 @@ class NioFileCollector: FileCollector {
                 .map { FileSystems.getDefault().getPathMatcher("glob:" + it) }
                 .toList()
 
-    private fun matchesExpressions(path: Path, inclusions: List<PathMatcher>, exclusions: List<PathMatcher>): Boolean =
-        inclusions.any { it.matches(path) } && exclusions.all { !it.matches(path) }
+    private fun matchesExpressions(path: Path, inclusions: List<PathMatcher>, exclusions: List<PathMatcher>) =
+            inclusions.any { it.matches(path) } && exclusions.all { !it.matches(path) }
 }

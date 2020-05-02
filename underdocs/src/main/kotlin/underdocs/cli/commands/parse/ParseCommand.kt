@@ -33,7 +33,7 @@ class ParseCommand: CliktCommand(
             .required()
 
     val includePatterns by option("--includePattern")
-            .multiple(listOf("*.h"))
+            .multiple(listOf("**/*.h"))
 
     val excludePatterns by option("--excludePatterns")
             .multiple(emptyList())
