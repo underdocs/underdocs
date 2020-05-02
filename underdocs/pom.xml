@@ -37,6 +37,12 @@
 
 		<dependency>
 			<groupId>underdocs</groupId>
+			<artifactId>underdocs-collector</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>underdocs</groupId>
 			<artifactId>underdocs-configuration</artifactId>
 			<version>1.0.0</version>
 		</dependency>

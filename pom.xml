@@ -54,6 +54,7 @@
 
 	<modules>
 		<module>underdocs</module>
+		<module>underdocs-collector</module>
         <module>underdocs-configuration</module>
 		<module>underdocs-parser</module>
 		<module>underdocs-renderer</module>

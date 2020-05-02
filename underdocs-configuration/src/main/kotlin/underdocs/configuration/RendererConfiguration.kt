@@ -1,6 +1,6 @@
-package underdocs.configuration.domain
+package underdocs.configuration
 
 data class RendererConfiguration(
-        val path: String,
+        val outputDirectory: String,
         val parsedCodebaseFile: String
 )

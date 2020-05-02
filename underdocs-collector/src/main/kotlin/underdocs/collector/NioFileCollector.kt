@@ -1,5 +1,6 @@
-package underdocs.cli.filecollector
+package underdocs.collector
 
+import underdocs.configuration.CollectorConfiguration
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.util.function.BiPredicate
@@ -7,11 +8,11 @@ import java.util.stream.Stream
 import kotlin.streams.toList
 
 class NioFileCollector: FileCollector {
-    override fun collectFilesFromDirectory(directory: String, inclusions: List<String>, exclusions: List<String>): Stream<String> {
-        val inclusionExpressions = compileExpressionStrings(inclusions)
-        val exclusionExpressions = compileExpressionStrings(exclusions)
+    override fun collectFilesFromDirectory(configuration: CollectorConfiguration): Stream<String> {
+        val inclusionExpressions = compileExpressionStrings(configuration.includingPatterns)
+        val exclusionExpressions = compileExpressionStrings(configuration.excludingPatterns)
 
-       return filesInDirectory(directory)
+       return filesInDirectory(configuration.includePath)
                 .filter { matchesExpressions(it, inclusionExpressions, exclusionExpressions) }
     }
 
