@@ -14,8 +14,8 @@ class CppReferenceHtmlRenderer private constructor(val topLevelModule: Module) {
     }
 
     private val pageRenderer = underdocs.renderer.output.html.render.page.PageRenderer()
-    private val outputWriter = underdocs.renderer.output.html.writer.DirectoryCreatingOutputWriter()
-    private val linker = underdocs.renderer.output.html.link.HtmlLinker()
+    private val outputWriter = underdocs.renderer.writer.DirectoryCreatingOutputWriter()
+    private val linker = underdocs.renderer.output.html.link.DefaultLinker()
 
     fun render() {
         emit(topLevelModule)
