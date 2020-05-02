@@ -1,14 +1,17 @@
 package underdocs.renderer
 
+import underdocs.configuration.RendererConfiguration
+import underdocs.renderer.output.html.CppReferenceHtmlRenderer
+import underdocs.renderer.parser.CodebaseParser
 import underdocs.representation.Codebase
 
-class CppReferenceRenderer(private val configuration: _root_ide_package_.underdocs.renderer.CppReferenceRendererConfiguration): _root_ide_package_.underdocs.renderer.CodebaseRenderer {
+class CppReferenceRenderer(private val configuration: RendererConfiguration): CodebaseRenderer {
     override fun render(codebase: Codebase) {
-        val codebaseParser = _root_ide_package_.underdocs.renderer.parser.CodebaseParser.create()
+        val codebaseParser = CodebaseParser.create()
 
         val topLevelModule = codebaseParser.parseHeaders(codebase.headers)
 
-        val htmlRenderer = _root_ide_package_.underdocs.renderer.output.html.CppReferenceHtmlRenderer.getInstance(topLevelModule)
+        val htmlRenderer = CppReferenceHtmlRenderer.getInstance(topLevelModule)
 
         println(topLevelModule)
     }

@@ -1,46 +1,43 @@
 package underdocs.cli.commands.render
 
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.module.kotlin.KotlinModule
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.required
 import com.github.ajalt.clikt.parameters.types.path
-import underdocs.cli.commands.render.loader.DefaultRendererLoader
-import underdocs.cli.common.configurationParserFromPath
-import underdocs.representation.Codebase
-import java.io.File
+import underdocs.configuration.RendererConfiguration
+import underdocs.renderer.CodebaseRenderer
+import underdocs.representation.serialization.RepresentationSerializer
 
 class RenderCommand: CliktCommand(
         name = "render",
         help = "Render"
 ) {
-    val configurationPath by option("-c", "--configurationPath").path(
-            exists = true,
-            fileOkay = true,
-            folderOkay = false,
-            readable = true
-    ).required()
+    val inputCodebase by option("-i", "--inputCodebase")
+            .path(
+                    exists = true,
+                    fileOkay = true,
+                    folderOkay = false,
+                    readable = true
+            )
+            .required()
+
+    val outputDirectory by option("-o", "--outputDirectory")
+            .path(
+                    exists = false
+            )
+            .required()
 
     override fun run() {
-        val parser = configurationParserFromPath(configurationPath)
+        val rendererConfiguration = RendererConfiguration(
+                outputDirectory = outputDirectory.toString()
+        )
 
-        val configuration = parser.getConfiguration()
+        val codebaseSerializer = RepresentationSerializer.create()
 
-        val rendererLoader = DefaultRendererLoader()
+        val codebase = codebaseSerializer.readFrom(inputCodebase)
 
-        val rendererFactory = rendererLoader.loadFromJar(configuration.renderer.path)
+        val renderer = CodebaseRenderer.create(rendererConfiguration)
 
-        val rendererConfigurationClazz = rendererFactory.getConfigurationClass()
-
-        val rendererConfiguration = parser.getRendererOptionsAs(rendererConfigurationClazz)
-
-        val renderer = rendererFactory.createInstance(rendererConfiguration)
-
-        val mapper = ObjectMapper().registerModule(KotlinModule())
-
-        val codebase = mapper.readValue(File(configuration.renderer.parsedCodebaseFile), Codebase::class.java)
-
-        renderer.renderCodebase(codebase)
+        renderer.render(codebase)
     }
 }
