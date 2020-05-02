@@ -7,7 +7,7 @@ import j2html.TagCreator.main
 import j2html.tags.Tag
 import underdocs.renderer.representation.Module
 
-class ModuleRenderer(private val sectionRenderer: _root_ide_package_.underdocs.renderer.output.html.render.section.SectionRenderer) {
+class ModuleRenderer(private val sectionRenderer: underdocs.renderer.output.html.render.section.SectionRenderer) {
     fun render(module: Module) = html(
             head(
 

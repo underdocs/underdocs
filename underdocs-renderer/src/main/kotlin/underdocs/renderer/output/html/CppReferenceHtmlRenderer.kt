@@ -8,14 +8,14 @@ import underdocs.renderer.representation.Visitable
 
 class CppReferenceHtmlRenderer private constructor(val topLevelModule: Module) {
     companion object {
-        fun getInstance(topLevelModule: Module): _root_ide_package_.underdocs.renderer.output.html.CppReferenceHtmlRenderer {
-            return _root_ide_package_.underdocs.renderer.output.html.CppReferenceHtmlRenderer(topLevelModule)
+        fun getInstance(topLevelModule: Module): underdocs.renderer.output.html.CppReferenceHtmlRenderer {
+            return underdocs.renderer.output.html.CppReferenceHtmlRenderer(topLevelModule)
         }
     }
 
-    private val pageRenderer = _root_ide_package_.underdocs.renderer.output.html.render.page.PageRenderer()
-    private val outputWriter = _root_ide_package_.underdocs.renderer.output.html.writer.DirectoryCreatingOutputWriter()
-    private val linker = _root_ide_package_.underdocs.renderer.output.html.link.HtmlLinker()
+    private val pageRenderer = underdocs.renderer.output.html.render.page.PageRenderer()
+    private val outputWriter = underdocs.renderer.output.html.writer.DirectoryCreatingOutputWriter()
+    private val linker = underdocs.renderer.output.html.link.HtmlLinker()
 
     fun render() {
         emit(topLevelModule)

@@ -5,7 +5,7 @@ import underdocs.renderer.representation.TopLevelElement
 import underdocs.renderer.representation.documentation.Example
 
 class SectionRenderer {
-    private val titleRenderer = _root_ide_package_.underdocs.renderer.output.html.render.section.TitleRenderer()
+    private val titleRenderer = underdocs.renderer.output.html.render.section.TitleRenderer()
 
     fun renderTitle(name: String, attributes: Map<String, String>) =
             titleRenderer.render(name, attributes)

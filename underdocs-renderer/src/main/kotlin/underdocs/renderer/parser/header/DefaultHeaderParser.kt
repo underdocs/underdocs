@@ -1,6 +1,12 @@
 package underdocs.renderer.parser.header
 
 import com.vladsch.flexmark.parser.Parser
+import underdocs.renderer.representation.FunctionParameter
+import underdocs.renderer.representation.Header
+import underdocs.renderer.representation.ReferredType
+import underdocs.renderer.representation.StructType
+import underdocs.renderer.representation.TopLevelElement
+import underdocs.renderer.representation.documentation.Documentation
 import underdocs.representation.EnumElement
 import underdocs.representation.EnumMember
 import underdocs.representation.EnumType
@@ -18,20 +24,13 @@ import underdocs.representation.UnionType
 import underdocs.representation.Variable
 import underdocs.representation.VariableMember
 import underdocs.representation.visitor.BaseElementVisitor
-import underdocs.renderer.representation.Element
-import underdocs.renderer.representation.FunctionParameter
-import underdocs.renderer.representation.Header
-import underdocs.renderer.representation.ReferredType
-import underdocs.renderer.representation.StructType
-import underdocs.renderer.representation.TopLevelElement
-import underdocs.renderer.representation.documentation.Documentation
 import underdocs.representation.Header as CommonHeader
 
-class HeaderParserImpl(private val mdParser: Parser): _root_ide_package_.underdocs.renderer.parser.header.HeaderParser {
-    private val headerDocumentationParser = _root_ide_package_.underdocs.renderer.parser.documentation.HeaderDocumentationParser()
+class DefaultHeaderParser(private val mdParser: Parser): underdocs.renderer.parser.header.HeaderParser {
+    private val headerDocumentationParser = underdocs.renderer.parser.documentation.HeaderDocumentationParser()
 
     override fun parse(header: CommonHeader): Header {
-        val visitor = _root_ide_package_.underdocs.renderer.parser.header.HeaderParserImpl.ElementVisitor(header, mdParser)
+        val visitor = underdocs.renderer.parser.header.DefaultHeaderParser.ElementVisitor(header, mdParser)
 
         val elements = visitor.transformElements()
 
@@ -56,15 +55,15 @@ class HeaderParserImpl(private val mdParser: Parser): _root_ide_package_.underdo
             private const val UNKNOWN_GROUP = "UNKNOWN";
         }
 
-        private val enumElementDocumentationParser = _root_ide_package_.underdocs.renderer.parser.documentation.EnumElementDocumentationParser()
-        private val functionDocumentationParser = _root_ide_package_.underdocs.renderer.parser.documentation.FunctionDocumentationParser()
-        private val macroConstantDocumentationParser = _root_ide_package_.underdocs.renderer.parser.documentation.MacroConstantDocumentationParser()
-        private val macroFunctionDocumentationParser = _root_ide_package_.underdocs.renderer.parser.documentation.MacroFunctionDocumentationParser()
-        private val memberDocumentationParser = _root_ide_package_.underdocs.renderer.parser.documentation.MemberDocumentationParser()
-        private val structDocumentationParser = _root_ide_package_.underdocs.renderer.parser.documentation.StructDocumentationParser()
-        private val typeSynonymDocumentationParser = _root_ide_package_.underdocs.renderer.parser.documentation.TypeSynonymDocumentationParser()
-        private val unionDocumentationParser = _root_ide_package_.underdocs.renderer.parser.documentation.UnionDocumentationParser()
-        private val variableDocumentationParser = _root_ide_package_.underdocs.renderer.parser.documentation.VariableDocumentationParser()
+        private val enumElementDocumentationParser = underdocs.renderer.parser.documentation.EnumElementDocumentationParser()
+        private val functionDocumentationParser = underdocs.renderer.parser.documentation.FunctionDocumentationParser()
+        private val macroConstantDocumentationParser = underdocs.renderer.parser.documentation.MacroConstantDocumentationParser()
+        private val macroFunctionDocumentationParser = underdocs.renderer.parser.documentation.MacroFunctionDocumentationParser()
+        private val memberDocumentationParser = underdocs.renderer.parser.documentation.MemberDocumentationParser()
+        private val structDocumentationParser = underdocs.renderer.parser.documentation.StructDocumentationParser()
+        private val typeSynonymDocumentationParser = underdocs.renderer.parser.documentation.TypeSynonymDocumentationParser()
+        private val unionDocumentationParser = underdocs.renderer.parser.documentation.UnionDocumentationParser()
+        private val variableDocumentationParser = underdocs.renderer.parser.documentation.VariableDocumentationParser()
 
         private val elements = mutableMapOf<String, MutableList<TopLevelElement>>()
 
@@ -77,7 +76,7 @@ class HeaderParserImpl(private val mdParser: Parser): _root_ide_package_.underdo
         }
 
         private fun recordElement(group: String?, element: TopLevelElement) {
-            val actualGroup = group ?: _root_ide_package_.underdocs.renderer.parser.header.HeaderParserImpl.ElementVisitor.Companion.UNKNOWN_GROUP
+            val actualGroup = group ?: underdocs.renderer.parser.header.DefaultHeaderParser.ElementVisitor.Companion.UNKNOWN_GROUP
 
             if (actualGroup !in elements) {
                 elements[actualGroup] = mutableListOf()
@@ -86,7 +85,7 @@ class HeaderParserImpl(private val mdParser: Parser): _root_ide_package_.underdo
             elements[actualGroup]?.add(element)
         }
 
-        private fun <T: Documentation> parseGroupedDocumentation(comment: String?, parser: _root_ide_package_.underdocs.renderer.parser.documentation.DocumentationParser<T>): Pair<String?, T?> {
+        private fun <T: Documentation> parseGroupedDocumentation(comment: String?, parser: underdocs.renderer.parser.documentation.DocumentationParser<T>): Pair<String?, T?> {
             val documentation = comment
                     ?.let { mdParser.parse(it) }
                     ?.let { parser.parse(it) }
@@ -96,7 +95,7 @@ class HeaderParserImpl(private val mdParser: Parser): _root_ide_package_.underdo
             return Pair(group, documentation)
         }
 
-        private fun <T: Documentation> parseDocumentation(comment: String?, parser: _root_ide_package_.underdocs.renderer.parser.documentation.DocumentationParser<T>) =
+        private fun <T: Documentation> parseDocumentation(comment: String?, parser: underdocs.renderer.parser.documentation.DocumentationParser<T>) =
                 comment
                     ?.let { mdParser.parse(it) }
                     ?.let { parser.parse(it) }

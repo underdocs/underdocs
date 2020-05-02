@@ -5,7 +5,7 @@ import underdocs.renderer.representation.Module
 
 interface CodebaseParser {
     companion object {
-        fun create(): _root_ide_package_.underdocs.renderer.parser.CodebaseParser = _root_ide_package_.underdocs.renderer.parser.CodebaseParserImpl()
+        fun create(): underdocs.renderer.parser.CodebaseParser = underdocs.renderer.parser.DefaultCodebaseParser()
     }
 
     fun parseHeaders(headers: List<Header>): Module

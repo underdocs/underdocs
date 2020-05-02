@@ -8,21 +8,21 @@ import com.vladsch.flexmark.util.ast.Document
 import com.vladsch.flexmark.util.ast.Node
 import underdocs.renderer.representation.documentation.Example
 
-class ExamplesParser: _root_ide_package_.underdocs.renderer.parser.section.AttemptingSectionParser<List<Example>>() {
+class ExamplesParser: underdocs.renderer.parser.section.AttemptingSectionParser<List<Example>>() {
     override fun canParse(document: Document) =
-            document.children.any{ _root_ide_package_.underdocs.renderer.parser.section.isSectionHeadingWithTitle(it, "Examples") }
+            document.children.any{ underdocs.renderer.parser.section.isSectionHeadingWithTitle(it, "Examples") }
 
     override fun parse(document: Document): List<Example> {
         val result = mutableListOf<Example>()
 
-        val startNode = document.children.first { _root_ide_package_.underdocs.renderer.parser.section.isSectionHeadingWithTitle(it, "Examples") }
+        val startNode = document.children.first { underdocs.renderer.parser.section.isSectionHeadingWithTitle(it, "Examples") }
 
-        var currentExampleHeading = _root_ide_package_.underdocs.renderer.parser.section.nextNodeInSectionWhere(startNode) { isExampleHeading(it) } as Heading?
+        var currentExampleHeading = underdocs.renderer.parser.section.nextNodeInSectionWhere(startNode) { isExampleHeading(it) } as Heading?
 
-        val sectionEndNode = _root_ide_package_.underdocs.renderer.parser.section.sectionEndNodeFrom(startNode)
+        val sectionEndNode = underdocs.renderer.parser.section.sectionEndNodeFrom(startNode)
 
         while (currentExampleHeading != null) {
-            val nextExampleHeading = _root_ide_package_.underdocs.renderer.parser.section.nextNodeInSectionWhere(currentExampleHeading) {
+            val nextExampleHeading = underdocs.renderer.parser.section.nextNodeInSectionWhere(currentExampleHeading) {
                 isExampleHeading(it)
             } as Heading?
 
@@ -50,7 +50,7 @@ class ExamplesParser: _root_ide_package_.underdocs.renderer.parser.section.Attem
             node !is CodeBlock && node !is FencedCodeBlock && node !is IndentedCodeBlock
 
     private fun parseWithExampleOnly(heading: Heading, exampleBlock: Node): Example {
-        val explanation = _root_ide_package_.underdocs.renderer.parser.section.extractTextBetweenNodes(heading.next, exampleBlock)
+        val explanation = underdocs.renderer.parser.section.extractTextBetweenNodes(heading.next, exampleBlock)
 
         val code = exampleBlock.firstChild.chars.toString()
         val language = if (exampleBlock is FencedCodeBlock) {
@@ -69,7 +69,7 @@ class ExamplesParser: _root_ide_package_.underdocs.renderer.parser.section.Attem
     }
 
     private fun parseWithExampleAndOutput(heading: Heading, exampleBlock: Node, outputBlock: Node): Example {
-        val explanation = _root_ide_package_.underdocs.renderer.parser.section.extractTextBetweenNodes(heading.next, exampleBlock)
+        val explanation = underdocs.renderer.parser.section.extractTextBetweenNodes(heading.next, exampleBlock)
 
         val code = exampleBlock.firstChild.chars.toString()
         val language = if (exampleBlock is FencedCodeBlock) {

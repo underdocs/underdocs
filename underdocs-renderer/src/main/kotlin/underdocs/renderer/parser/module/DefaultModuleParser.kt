@@ -4,16 +4,17 @@ import com.vladsch.flexmark.parser.Parser
 import underdocs.representation.Header
 import underdocs.renderer.parser.tree.ModuleNode
 import underdocs.renderer.representation.Module
+import kotlin.streams.toList
 
-class ModuleParserImpl(private val mdParser: Parser): _root_ide_package_.underdocs.renderer.parser.module.ModuleParser {
+class DefaultModuleParser(private val mdParser: Parser): underdocs.renderer.parser.module.ModuleParser {
     private val moduleInfoPrefixes = setOf(
             "module-info.",
             "module_info"
     )
 
-    private val headerParser = _root_ide_package_.underdocs.renderer.parser.header.HeaderParser.create()
+    private val headerParser = underdocs.renderer.parser.header.HeaderParser.create()
 
-    private val moduleDocumentationParser = _root_ide_package_.underdocs.renderer.parser.documentation.ModuleDocumentationParser()
+    private val moduleDocumentationParser = underdocs.renderer.parser.documentation.ModuleDocumentationParser()
 
     override fun parse(moduleNode: ModuleNode): Module {
         val moduleDocumentation = moduleNode.headers.firstOrNull {

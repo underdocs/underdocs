@@ -5,8 +5,8 @@ import underdocs.renderer.parser.tree.ModuleNode
 import underdocs.renderer.representation.Module
 import java.nio.file.Paths
 
-class CodebaseParserImpl: _root_ide_package_.underdocs.renderer.parser.CodebaseParser {
-    private val moduleParser = _root_ide_package_.underdocs.renderer.parser.module.ModuleParser.create()
+class DefaultCodebaseParser: underdocs.renderer.parser.CodebaseParser {
+    private val moduleParser = underdocs.renderer.parser.module.ModuleParser.create()
 
     override fun parseHeaders(headers: List<Header>): Module {
         val minimumSegmentCount = headers.stream()

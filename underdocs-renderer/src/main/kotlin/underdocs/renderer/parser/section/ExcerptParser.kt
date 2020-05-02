@@ -2,7 +2,7 @@ package underdocs.renderer.parser.section
 
 import com.vladsch.flexmark.util.ast.Document
 
-class ExcerptParser: _root_ide_package_.underdocs.renderer.parser.section.AttemptingSectionParser<String>() {
+class ExcerptParser: underdocs.renderer.parser.section.AttemptingSectionParser<String>() {
     override fun canParse(document: Document) =
             hasExcerptSection(document) || hasDescriptionSection(document)
 
@@ -14,10 +14,10 @@ class ExcerptParser: _root_ide_package_.underdocs.renderer.parser.section.Attemp
             }
 
     private fun hasExcerptSection(document: Document) =
-            document.children.any { _root_ide_package_.underdocs.renderer.parser.section.isSectionHeadingWithTitle(it, "Excerpt") }
+            document.children.any { underdocs.renderer.parser.section.isSectionHeadingWithTitle(it, "Excerpt") }
 
     private fun hasDescriptionSection(document: Document) =
-            document.children.any { _root_ide_package_.underdocs.renderer.parser.section.isSectionHeadingWithTitle(it, "Description") }
+            document.children.any { underdocs.renderer.parser.section.isSectionHeadingWithTitle(it, "Description") }
 
     private fun parseExcerpt(document: Document) =
             textInSection(document, "Excerpt")
@@ -32,13 +32,13 @@ class ExcerptParser: _root_ide_package_.underdocs.renderer.parser.section.Attemp
 
     private fun textInSection(document: Document, sectionTitle: String): String {
         val startNode = document.children.first {
-            _root_ide_package_.underdocs.renderer.parser.section.isSectionHeadingWithTitle(it, sectionTitle)
+            underdocs.renderer.parser.section.isSectionHeadingWithTitle(it, sectionTitle)
         }
 
-        val endNode = _root_ide_package_.underdocs.renderer.parser.section.lastNodeBeforeOrLast(startNode) {
-            _root_ide_package_.underdocs.renderer.parser.section.isSectionHeading(it)
+        val endNode = underdocs.renderer.parser.section.lastNodeBeforeOrLast(startNode) {
+            underdocs.renderer.parser.section.isSectionHeading(it)
         }
 
-        return _root_ide_package_.underdocs.renderer.parser.section.extractTextBetweenNodes(startNode.next, endNode)
+        return underdocs.renderer.parser.section.extractTextBetweenNodes(startNode.next, endNode)
     }
 }

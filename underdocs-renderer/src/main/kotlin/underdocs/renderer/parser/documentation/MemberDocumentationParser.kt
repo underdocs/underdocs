@@ -5,8 +5,8 @@ import com.vladsch.flexmark.util.ast.Document
 import underdocs.renderer.parser.section.extractTextBetweenNodes
 import underdocs.renderer.representation.documentation.MemberDocumentation
 
-class MemberDocumentationParser: _root_ide_package_.underdocs.renderer.parser.documentation.DocumentationParser<MemberDocumentation> {
-    private val attributesParser = _root_ide_package_.underdocs.renderer.parser.section.AttributesParser()
+class MemberDocumentationParser: underdocs.renderer.parser.documentation.DocumentationParser<MemberDocumentation> {
+    private val attributesParser = underdocs.renderer.parser.section.AttributesParser()
 
     override fun parse(document: Document): MemberDocumentation {
         return MemberDocumentation(

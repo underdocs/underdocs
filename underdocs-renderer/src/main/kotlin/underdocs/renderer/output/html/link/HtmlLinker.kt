@@ -2,7 +2,7 @@ package underdocs.renderer.output.html.link
 
 import underdocs.renderer.representation.Visitable
 
-class HtmlLinker: _root_ide_package_.underdocs.renderer.output.html.link.Linker {
+class HtmlLinker: underdocs.renderer.output.html.link.Linker {
     override fun outputPathFor(obj: Visitable): String {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
