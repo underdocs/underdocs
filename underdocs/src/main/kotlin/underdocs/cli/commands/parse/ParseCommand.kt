@@ -23,8 +23,7 @@ class ParseCommand: CliktCommand(
     val includePath by option("-I", "--includePath")
             .path(
                 exists = true,
-                fileOkay = true,
-                folderOkay = false,
+                folderOkay = true,
                 readable = true
             )
             .required()
