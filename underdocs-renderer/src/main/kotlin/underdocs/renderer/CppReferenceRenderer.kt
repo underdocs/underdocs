@@ -11,8 +11,8 @@ class CppReferenceRenderer(private val configuration: RendererConfiguration): Co
 
         val topLevelModule = codebaseParser.parseHeaders(codebase.headers)
 
-        val htmlRenderer = CppReferenceHtmlRenderer.getInstance(topLevelModule)
+        val htmlRenderer = CppReferenceHtmlRenderer(configuration, topLevelModule)
 
-        println(topLevelModule)
+        htmlRenderer.render()
     }
 }

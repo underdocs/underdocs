@@ -36,14 +36,30 @@ class DefaultLinker(codebaseBaseDirectory: String, outputDirectory: String): Lin
         return "/" + relativeFileSystemPathString.replace('\\', '/')
     }
 
+    override fun linkBetween(from: Visitable, to: Visitable): String {
+        val fromLink = Paths.get(linkTo(from))
+        val toLink = Paths.get(linkTo(to))
+
+        return fromLink.relativize(toLink).toString()
+    }
+
+    override fun linkBetween(from: Visitable, to: String): String {
+        val fromLink = Paths.get(linkTo(from))
+        val toLink = Paths.get(to)
+
+        return fromLink.relativize(toLink).toString()
+    }
+
     private fun removeCodebaseBasePath(path: String) =
-            Paths.get(path).relativize(codebaseBasePath)
+            codebaseBasePath.relativize(Paths.get(path))
 
     private inner class OutputPathVisitor : BaseVisitor() {
         private var path: Path? = null
 
         fun getPath(): String {
-            return outputPath.resolve(path!!).toString() + ".html"
+            val resolvedPath = outputPath.resolve(path!!)
+
+            return "$resolvedPath.html"
         }
 
         override fun accept(enumElement: EnumElement) {
@@ -83,7 +99,9 @@ class DefaultLinker(codebaseBaseDirectory: String, outputDirectory: String): Lin
         }
 
         override fun accept(module: Module) {
-            path = removeCodebaseBasePath(module.path)
+            val codebaseRelativePath = removeCodebaseBasePath(module.path)
+
+            path = codebaseRelativePath.resolve("index")
         }
 
         override fun accept(struct: Struct) {

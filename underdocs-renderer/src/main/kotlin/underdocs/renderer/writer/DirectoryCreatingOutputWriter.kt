@@ -11,9 +11,7 @@ class DirectoryCreatingOutputWriter: OutputWriter {
 
         val directoryPath = actualPath.parent.toString()
 
-        if (!File(directoryPath).mkdirs()) {
-            throw IllegalStateException("Could not create directories to path: ${path}")
-        }
+        File(directoryPath).mkdirs()
 
         Files.writeString(actualPath, contents)
     }

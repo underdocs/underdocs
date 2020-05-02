@@ -1,21 +1,25 @@
 package underdocs.renderer.output.html
 
 import j2html.tags.Tag
+import underdocs.configuration.RendererConfiguration
+import underdocs.renderer.output.html.render.section.SectionRenderer
 import underdocs.renderer.representation.Header
 import underdocs.renderer.representation.Module
 import underdocs.renderer.representation.TopLevelElement
 import underdocs.renderer.representation.Visitable
+import java.nio.file.Paths
 
-class CppReferenceHtmlRenderer private constructor(val topLevelModule: Module) {
-    companion object {
-        fun getInstance(topLevelModule: Module): underdocs.renderer.output.html.CppReferenceHtmlRenderer {
-            return underdocs.renderer.output.html.CppReferenceHtmlRenderer(topLevelModule)
-        }
-    }
-
-    private val pageRenderer = underdocs.renderer.output.html.render.page.PageRenderer()
+class CppReferenceHtmlRenderer(
+        private val configuration: RendererConfiguration,
+        private val topLevelModule: Module
+) {
+    private val sectionRenderer = SectionRenderer()
+    private val pageRenderer = underdocs.renderer.output.html.render.page.PageRenderer(sectionRenderer)
     private val outputWriter = underdocs.renderer.writer.DirectoryCreatingOutputWriter()
-    private val linker = underdocs.renderer.output.html.link.DefaultLinker()
+    private val linker = underdocs.renderer.output.html.link.DefaultLinker(
+            Paths.get(topLevelModule.path).toString(),
+            configuration.outputDirectory
+    )
 
     fun render() {
         emit(topLevelModule)
@@ -26,9 +30,9 @@ class CppReferenceHtmlRenderer private constructor(val topLevelModule: Module) {
 
         output(module, document)
 
-        module.headers.forEach {
+        /*module.headers.forEach {
             emit(it)
-        }
+        }*/
 
         module.children.values.forEach {
             emit(it)
@@ -40,13 +44,13 @@ class CppReferenceHtmlRenderer private constructor(val topLevelModule: Module) {
 
         output(header, document)
 
-        header.elements
+        /*header.elements
                 .values
                 .stream()
                 .flatMap { it.stream() }
                 .forEach {
                     emit(it)
-                }
+                }*/
     }
 
     private fun emit(element: TopLevelElement) {
