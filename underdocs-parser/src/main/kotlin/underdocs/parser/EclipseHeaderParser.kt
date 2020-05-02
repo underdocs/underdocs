@@ -28,6 +28,7 @@ import org.eclipse.cdt.core.parser.IncludeFileContentProvider
 import org.eclipse.cdt.core.parser.ScannerInfo
 import org.eclipse.cdt.internal.core.dom.rewrite.commenthandler.ASTCommenter.getCommentedNodeMap
 import org.eclipse.cdt.internal.core.dom.rewrite.commenthandler.NodeCommentMap
+import underdocs.configuration.ParserConfiguration
 import underdocs.parser.comment.EclipseCommentProcessor
 import underdocs.representation.Element
 import underdocs.representation.EnumConstant
@@ -51,10 +52,9 @@ import underdocs.representation.UnionMember
 import underdocs.representation.UnionType
 import underdocs.representation.Variable
 import underdocs.representation.VariableMember
-import underdocs.parser.configuration.EclipseParserConfiguration
 import java.nio.file.Paths
 
-class EclipseHeaderParser(private val configuration: EclipseParserConfiguration) : HeaderParser {
+class EclipseHeaderParser(private val configuration: ParserConfiguration) : HeaderParser {
     private val logService: IParserLogService = DefaultLogService()
 
     override fun parse(path: String): Header {

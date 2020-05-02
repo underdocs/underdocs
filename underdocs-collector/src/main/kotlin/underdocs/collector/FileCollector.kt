@@ -9,4 +9,4 @@ interface FileCollector {
     }
 
     fun collectFilesFromDirectory(configuration: CollectorConfiguration): Stream<String>
-}   
+}

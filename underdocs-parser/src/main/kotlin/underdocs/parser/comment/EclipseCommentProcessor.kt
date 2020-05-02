@@ -1,6 +1,7 @@
 package underdocs.parser.comment
 
 import org.eclipse.cdt.core.dom.ast.IASTComment
+import underdocs.configuration.domain.CommentStyle
 import underdocs.parser.comment.block.SlashDoubleStarCommentGroupProcessor
 import underdocs.parser.comment.block.SlashStarCommentGroupProcessor
 import underdocs.parser.comment.singleline.DoubleSlashCommentGroupProcessor
