@@ -1,0 +1,17 @@
+{
+  "parser": {
+    "includePath": "C:\\Users\\Attila\\projects\\egyi\\cryptid\\cryptid-native\\include",
+    "includingPatterns": [
+      "^.*\\.h$"
+    ],
+    "excludingPatterns": [],
+    "outputFile": "./output.json",
+    "options": {
+
+    }
+  },
+  "renderer": {
+    "path": "",
+    "parsedCodebaseFile": ""
+  }
+}

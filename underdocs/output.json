@@ -1,0 +1,4309 @@
+{
+  "basePath" : "./include",
+  "headers" : [ {
+    "path" : "C:\\Users\\Attila\\projects\\egyi\\cryptid\\cryptid-native\\.\\include\\complex\\Complex.h",
+    "filename" : "Complex.h",
+    "elements" : [ {
+      "@class" : "underdocs.common.representation.Struct",
+      "startingLine" : 14,
+      "raw" : "typedef struct Complex\r\n{\r\n    /**\r\n     * The real part of the complex number.\r\n     */\r\n    mpz_t real;\r\n\r\n    /**\r\n     * The imaginary part of the complex number\r\n     */\r\n    mpz_t imaginary;\r\n}",
+      "name" : "Complex",
+      "typedef" : true,
+      "specifiers" : [ ],
+      "members" : [ {
+        "@class" : "underdocs.common.representation.VariableMember",
+        "startingLine" : 19,
+        "raw" : "mpz_t real;",
+        "name" : "real",
+        "specifiers" : [ ],
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 19,
+          "raw" : "mpz_t",
+          "name" : "mpz_t",
+          "specifiers" : [ ]
+        },
+        "comment" : "The real part of the complex number."
+      }, {
+        "@class" : "underdocs.common.representation.VariableMember",
+        "startingLine" : 24,
+        "raw" : "mpz_t imaginary;",
+        "name" : "imaginary",
+        "specifiers" : [ ],
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 24,
+          "raw" : "mpz_t",
+          "name" : "mpz_t",
+          "specifiers" : [ ]
+        },
+        "comment" : "The imaginary part of the complex number"
+      } ],
+      "comment" : null
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 31,
+      "raw" : "Complex complex_init(void);",
+      "name" : "complex_init",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 31,
+        "raw" : "Complex",
+        "name" : "Complex",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 31,
+        "raw" : "void",
+        "name" : "",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 31,
+          "raw" : "void",
+          "name" : "void",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Returns a new Complex number initialized to (0, 0).\r@return (0,0)"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 39,
+      "raw" : "Complex complex_initMpz(const mpz_t real, const mpz_t imaginary);",
+      "name" : "complex_initMpz",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 39,
+        "raw" : "Complex",
+        "name" : "Complex",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 39,
+        "raw" : "const mpz_t real",
+        "name" : "real",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 39,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 39,
+        "raw" : "const mpz_t imaginary",
+        "name" : "imaginary",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 39,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Returns a new Complex initialized with the specified arbitrary precision values.\r@param real the real part\r\n@param imaginary the imaginary part\r\n@return a new complex"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 47,
+      "raw" : "Complex complex_initLong(const long real, const long imaginary);",
+      "name" : "complex_initLong",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 47,
+        "raw" : "Complex",
+        "name" : "Complex",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 47,
+        "raw" : "const long real",
+        "name" : "real",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 47,
+          "raw" : "const long",
+          "name" : "const long",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 47,
+        "raw" : "const long imaginary",
+        "name" : "imaginary",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 47,
+          "raw" : "const long",
+          "name" : "const long",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Returns a new Complex initialized with the specified long values.\r@param real the real part\r\n@param imaginary the imaginary part\r\n@return a new complex"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 55,
+      "raw" : "Complex complex_initMpzLong(const mpz_t real, const long imaginary);",
+      "name" : "complex_initMpzLong",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 55,
+        "raw" : "Complex",
+        "name" : "Complex",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 55,
+        "raw" : "const mpz_t real",
+        "name" : "real",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 55,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 55,
+        "raw" : "const long imaginary",
+        "name" : "imaginary",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 55,
+          "raw" : "const long",
+          "name" : "const long",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Returns a new Complex initialized with an arbitrary precision real part and a long imaginary part.\r@param real the real part\r\n@param imaginary the imaginary part\r\n@return a new complex."
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 63,
+      "raw" : "Complex complex_initLongMpz(const long real, const mpz_t imaginary);",
+      "name" : "complex_initLongMpz",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 63,
+        "raw" : "Complex",
+        "name" : "Complex",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 63,
+        "raw" : "const long real",
+        "name" : "real",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 63,
+          "raw" : "const long",
+          "name" : "const long",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 63,
+        "raw" : "const mpz_t imaginary",
+        "name" : "imaginary",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 63,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Returns a new Complex initialized with a long real part and ann arbitrary precision imaginary part.\r@param real the real part\r\n@param imaginary the imaginary part\r\n@return a new complex."
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 71,
+      "raw" : "int complex_isEquals(const Complex complex1, const Complex complex2);",
+      "name" : "complex_isEquals",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 71,
+        "raw" : "int",
+        "name" : "int",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 71,
+        "raw" : "const Complex complex1",
+        "name" : "complex1",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 71,
+          "raw" : "const Complex",
+          "name" : "const Complex",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 71,
+        "raw" : "const Complex complex2",
+        "name" : "complex2",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 71,
+          "raw" : "const Complex",
+          "name" : "const Complex",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Checks if two Complex instances hold the same values.\r@param complex1 a Complex to check\r\n@param complex2 a Complex to check\r\n@return 1 if the two Complex instances are equal, 0 otherwise"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 78,
+      "raw" : "void complex_destroy(const Complex complex);",
+      "name" : "complex_destroy",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 78,
+        "raw" : "void",
+        "name" : "void",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 78,
+        "raw" : "const Complex complex",
+        "name" : "complex",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 78,
+          "raw" : "const Complex",
+          "name" : "const Complex",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Frees a Complex instance. After calling this function on a Complex instance, that instance \rshould not be used anymore.\r\n@param complex the Complex to be destroyed"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 85,
+      "raw" : "void complex_destroyMany(const size_t argumentCount, ...);",
+      "name" : "complex_destroyMany",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 85,
+        "raw" : "void",
+        "name" : "void",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 85,
+        "raw" : "const size_t argumentCount",
+        "name" : "argumentCount",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 85,
+          "raw" : "const size_t",
+          "name" : "const size_t",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Frees multiple Complex instances. After calling this function on a Complex instance, that instance\rshould not be used anymore.\r\n@param argumentCount the count of instances to be destroyed"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 94,
+      "raw" : "Complex complex_modAdd(const Complex complex1, const Complex complex2, const mpz_t p);",
+      "name" : "complex_modAdd",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 94,
+        "raw" : "Complex",
+        "name" : "Complex",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 94,
+        "raw" : "const Complex complex1",
+        "name" : "complex1",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 94,
+          "raw" : "const Complex",
+          "name" : "const Complex",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 94,
+        "raw" : "const Complex complex2",
+        "name" : "complex2",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 94,
+          "raw" : "const Complex",
+          "name" : "const Complex",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 94,
+        "raw" : "const mpz_t p",
+        "name" : "p",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 94,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Adds two Complex valus with respect to the specified modulus.\r@param complex1 a value to add\r\n@param complex2 a value to add\r\n@param p the modulus\r\n@return the result of the addition"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 102,
+      "raw" : "Complex complex_additiveInverse(const Complex complex, const mpz_t p);",
+      "name" : "complex_additiveInverse",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 102,
+        "raw" : "Complex",
+        "name" : "Complex",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 102,
+        "raw" : "const Complex complex",
+        "name" : "complex",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 102,
+          "raw" : "const Complex",
+          "name" : "const Complex",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 102,
+        "raw" : "const mpz_t p",
+        "name" : "p",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 102,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Calculates the additive inverse of the specified Complex with respect to the specified modulus.\r@param complex the Complex to invert\r\n@param p the modulus\r\n@return the additive inverse"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 111,
+      "raw" : "Complex complex_modAddScalar(const Complex complex, const  mpz_t s, const mpz_t p);",
+      "name" : "complex_modAddScalar",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 111,
+        "raw" : "Complex",
+        "name" : "Complex",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 111,
+        "raw" : "const Complex complex",
+        "name" : "complex",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 111,
+          "raw" : "const Complex",
+          "name" : "const Complex",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 111,
+        "raw" : "const  mpz_t s",
+        "name" : "s",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 111,
+          "raw" : "const  mpz_t",
+          "name" : "const  mpz_t",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 111,
+        "raw" : "const mpz_t p",
+        "name" : "p",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 111,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Adds a Complex and an integer with respect to the specified modulus.\r@param complex a Complex\r\n@param s a scalar\r\n@param p the modulus\r\n@return the result of the addition"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 120,
+      "raw" : "Complex complex_modMul(const Complex complex1, const Complex complex2, const mpz_t p);",
+      "name" : "complex_modMul",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 120,
+        "raw" : "Complex",
+        "name" : "Complex",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 120,
+        "raw" : "const Complex complex1",
+        "name" : "complex1",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 120,
+          "raw" : "const Complex",
+          "name" : "const Complex",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 120,
+        "raw" : "const Complex complex2",
+        "name" : "complex2",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 120,
+          "raw" : "const Complex",
+          "name" : "const Complex",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 120,
+        "raw" : "const mpz_t p",
+        "name" : "p",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 120,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Multiplies two Complex values with respect to the specified modulus.\r@param complex1 a Complex to multiply\r\n@param complex2 a Complex to multiply\r\n@param p the modulus.\r\n@return the result of the multiplication."
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 129,
+      "raw" : "Complex complex_modPow(const Complex complex, const mpz_t exp, const mpz_t p);",
+      "name" : "complex_modPow",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 129,
+        "raw" : "Complex",
+        "name" : "Complex",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 129,
+        "raw" : "const Complex complex",
+        "name" : "complex",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 129,
+          "raw" : "const Complex",
+          "name" : "const Complex",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 129,
+        "raw" : "const mpz_t exp",
+        "name" : "exp",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 129,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 129,
+        "raw" : "const mpz_t p",
+        "name" : "p",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 129,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Raised a Complex value to the specified exponent modulo p.\r@param complex the base\r\n@param exp the exponent\r\n@param p the modulus\r\n@return the result of the exponentiation"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 138,
+      "raw" : "Complex complex_modMulScalar(const Complex complex, const mpz_t s, const mpz_t p);",
+      "name" : "complex_modMulScalar",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 138,
+        "raw" : "Complex",
+        "name" : "Complex",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 138,
+        "raw" : "const Complex complex",
+        "name" : "complex",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 138,
+          "raw" : "const Complex",
+          "name" : "const Complex",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 138,
+        "raw" : "const mpz_t s",
+        "name" : "s",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 138,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 138,
+        "raw" : "const mpz_t p",
+        "name" : "p",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 138,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Multiplies a Complex value with an integer.\r@param complex a Complex\r\n@param s the scalar.\r\n@param p the modulus.\r\n@return the result of the multiplication."
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 147,
+      "raw" : "CryptidStatus complex_multiplicativeInverse(Complex *result, const Complex complex, const mpz_t p);",
+      "name" : "complex_multiplicativeInverse",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 147,
+        "raw" : "CryptidStatus",
+        "name" : "CryptidStatus",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 147,
+        "raw" : "Complex *result",
+        "name" : "*result",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 147,
+          "raw" : "Complex",
+          "name" : "Complex",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 147,
+        "raw" : "const Complex complex",
+        "name" : "complex",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 147,
+          "raw" : "const Complex",
+          "name" : "const Complex",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 147,
+        "raw" : "const mpz_t p",
+        "name" : "p",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 147,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Calculates the multiplicate inverse of a Complex with respect to p.\r@param result Out parameter to the multiplicative inverse. On CRYPTID_SUCCESS, this should be destroyed by the caller.\r\n@param complex a Complex.\r\n@param p the modulus.\r\n@return 0 if complex has a multiplicative inverse, HAS_NO_MUL_INV error otherwise"
+    } ],
+    "comment" : null
+  }, {
+    "path" : "C:\\Users\\Attila\\projects\\egyi\\cryptid\\cryptid-native\\.\\include\\CryptID.h",
+    "filename" : "CryptID.h",
+    "elements" : [ {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 50,
+      "raw" : "CryptidStatus cryptid_setup(const SecurityLevel securityLevel, PublicParameters* publicParameters, mpz_t masterSecret);",
+      "name" : "cryptid_setup",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 50,
+        "raw" : "CryptidStatus",
+        "name" : "CryptidStatus",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 50,
+        "raw" : "const SecurityLevel securityLevel",
+        "name" : "securityLevel",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 50,
+          "raw" : "const SecurityLevel",
+          "name" : "const SecurityLevel",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 50,
+        "raw" : "PublicParameters* publicParameters",
+        "name" : "* publicParameters",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 50,
+          "raw" : "PublicParameters",
+          "name" : "PublicParameters",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 50,
+        "raw" : "mpz_t masterSecret",
+        "name" : "masterSecret",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 50,
+          "raw" : "mpz_t",
+          "name" : "mpz_t",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "---\rgroup: asd\r\nsince: 1.0.0\r\n---\r\n\n## Excerpt\r\n\nEstablishes a master secret and public parameters for a given security level.\r\n\n## Description\r\n\nEstablishes a master secret and public parameters for a given security level. The master secret (as its name suggests)\r\nshould be kept secret, while the public parameters can be distributed among the clients.\r\n\n## Parameters\r\n\n  * securityLevel\r\n    * The desired security level.\r\n  * publicParameters\r\n    * Pointer in which the public parameters will be stored. If the return value is CRYPTID_SUCCESS\r\n      then it will point to correctly filled PublicParameters instance. Note, that the\r\n      q field must be mpz_init'd and thus mpz_clear'd be the caller.\r\n  * masterSecret\r\n    * Out parameter which will hold the master secret. Must be mpz_init'd and mpz_clear'd by the caller.\r\n\n## Return Value\r\n\r\nCRYPTID_SUCCESS if everything went right."
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 79,
+      "raw" : "CryptidStatus cryptid_extract(AffinePoint* result, const char *const identity, const size_t identityLength, \r\n                       const PublicParameters publicParameters, const mpz_t masterSecret);",
+      "name" : "cryptid_extract",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 79,
+        "raw" : "CryptidStatus",
+        "name" : "CryptidStatus",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 79,
+        "raw" : "AffinePoint* result",
+        "name" : "* result",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 79,
+          "raw" : "AffinePoint",
+          "name" : "AffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 79,
+        "raw" : "const char *const identity",
+        "name" : "*const identity",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 79,
+          "raw" : "const char",
+          "name" : "const char",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 79,
+        "raw" : "const size_t identityLength",
+        "name" : "identityLength",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 79,
+          "raw" : "const size_t",
+          "name" : "const size_t",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 80,
+        "raw" : "const PublicParameters publicParameters",
+        "name" : "publicParameters",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 80,
+          "raw" : "const PublicParameters",
+          "name" : "const PublicParameters",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 80,
+        "raw" : "const mpz_t masterSecret",
+        "name" : "masterSecret",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 80,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "## Excerpt\r\nExtracts the private key corresponding to a given identity string.\r\n\n## Description\r\n\nExtracts the private key corresponding to a given identity string.\r\n\n## Parameters\r\n\r\n  * result\r\n    * Out parameter holding the private key (which is an AffinePoint). On CRYPTID_SUCCESS, it must be destroyed by \r\n      the caller. Initialization is done by this function.\r\n  * identity\r\n    * The identity string we're extracting the private key for.\r\n  * identityLength\r\n    * The length of the identity string.\r\n  * publicParameters\r\n    * The IBE public parameters.\r\n  * masterSecret\r\n    * the master secret corresponding to the public parameters.\r\n\n## Return Value\r\n\nCRYPTID_SUCCESS if everything went right."
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 112,
+      "raw" : "CryptidStatus cryptid_encrypt(CipherTextTuple *result, const char *const message, const size_t messageLength,\r\n                       const char *const identity, const size_t identityLength, const PublicParameters publicParameters);",
+      "name" : "cryptid_encrypt",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 112,
+        "raw" : "CryptidStatus",
+        "name" : "CryptidStatus",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 112,
+        "raw" : "CipherTextTuple *result",
+        "name" : "*result",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 112,
+          "raw" : "CipherTextTuple",
+          "name" : "CipherTextTuple",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 112,
+        "raw" : "const char *const message",
+        "name" : "*const message",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 112,
+          "raw" : "const char",
+          "name" : "const char",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 112,
+        "raw" : "const size_t messageLength",
+        "name" : "messageLength",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 112,
+          "raw" : "const size_t",
+          "name" : "const size_t",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 113,
+        "raw" : "const char *const identity",
+        "name" : "*const identity",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 113,
+          "raw" : "const char",
+          "name" : "const char",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 113,
+        "raw" : "const size_t identityLength",
+        "name" : "identityLength",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 113,
+          "raw" : "const size_t",
+          "name" : "const size_t",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 113,
+        "raw" : "const PublicParameters publicParameters",
+        "name" : "publicParameters",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 113,
+          "raw" : "const PublicParameters",
+          "name" : "const PublicParameters",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "## Excerpt\r\nEncrypts a message with the given identity string.\r\n\n## Description\r\n\nEncrypts a message with the given identity string.\r\n\n## Parameters\r\n\n  * result \r\n    * Out parameter storing the ciphertext. If the return value is CRYPTID_SUCCESS\r\n      then it will point to an CipherTextTuple instance, that must be destroyed by the caller.\r\n      Initialization is done by this function.\r\n  * message\r\n    * The string to encrypt.\r\n  * messageLength\r\n    * The length of the message.\r\n  * identity\r\n    * The identity string to encrypt with.\r\n  * identityLength\r\n    * The length of the identity.\r\n  * publicParameters\r\n    * The IBE public parameters.\r\n\n## Return Value\r\n\r\nCRYPTID_SUCCESS if everything went right."
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 140,
+      "raw" : "CryptidStatus cryptid_decrypt(char **result, const AffinePoint privateKey, const CipherTextTuple ciphertext, \r\n                       const PublicParameters publicParameters);",
+      "name" : "cryptid_decrypt",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 140,
+        "raw" : "CryptidStatus",
+        "name" : "CryptidStatus",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 140,
+        "raw" : "char **result",
+        "name" : "**result",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 140,
+          "raw" : "char",
+          "name" : "char",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 140,
+        "raw" : "const AffinePoint privateKey",
+        "name" : "privateKey",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 140,
+          "raw" : "const AffinePoint",
+          "name" : "const AffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 140,
+        "raw" : "const CipherTextTuple ciphertext",
+        "name" : "ciphertext",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 140,
+          "raw" : "const CipherTextTuple",
+          "name" : "const CipherTextTuple",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 141,
+        "raw" : "const PublicParameters publicParameters",
+        "name" : "publicParameters",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 141,
+          "raw" : "const PublicParameters",
+          "name" : "const PublicParameters",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "## Excerpt\r\nDecrypts a previously encrypted message using the specified private key.\r\n\n## Description\r\n\nDecrypts a previously encrypted message using the specified private key.\r\n\n## Parameters\r\n\n  * result\r\n    * Out parameter holding the message in plaintext. If the return value is CRYPTID_SUCCESS\r\n      then it will point to a zero-terminated string, that must be destroyed by the caller.\r\n  * privateKey\r\n    * The private key to decrypt with.\r\n  * ciphertext\r\n    * The ciphertext to decrypt.\r\n  * publicParameters\r\n    * The IBE public parameters.\r\n\n## Return Value\r\n\nCRYPTID_SUCCESS if everything went right."
+    } ],
+    "comment" : "# CryptID Identity-based Encryption\r\n## Excerpt\r\n\nRoutines implementing the Boneh-Franklin Identity-based Encryption scheme."
+  }, {
+    "path" : "C:\\Users\\Attila\\projects\\egyi\\cryptid\\cryptid-native\\.\\include\\elliptic\\AffinePoint.h",
+    "filename" : "AffinePoint.h",
+    "elements" : [ {
+      "@class" : "underdocs.common.representation.MacroConstant",
+      "startingLine" : 13,
+      "raw" : "#define AFFINE_MULTIPLY_IMPL affine_wNAFMultiply",
+      "name" : "AFFINE_MULTIPLY_IMPL",
+      "expansion" : "affine_wNAFMultiply",
+      "comment" : "We have multiple implemetations of the affine-scalar multiplication. This macro\rdefines which one to use."
+    }, {
+      "@class" : "underdocs.common.representation.Struct",
+      "startingLine" : 19,
+      "raw" : "typedef struct AffinePoint\r\n{\r\n    /**\r\n     * The \\f$x\\f$ coordinate.\r\n     */\r\n    mpz_t x;\r\n\r\n    /**\r\n     * The \\f$y\\f$ coordinate.\r\n     */\r\n    mpz_t y;\r\n}",
+      "name" : "AffinePoint",
+      "typedef" : true,
+      "specifiers" : [ ],
+      "members" : [ {
+        "@class" : "underdocs.common.representation.VariableMember",
+        "startingLine" : 24,
+        "raw" : "mpz_t x;",
+        "name" : "x",
+        "specifiers" : [ ],
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 24,
+          "raw" : "mpz_t",
+          "name" : "mpz_t",
+          "specifiers" : [ ]
+        },
+        "comment" : "The \\f$x\\f$ coordinate."
+      }, {
+        "@class" : "underdocs.common.representation.VariableMember",
+        "startingLine" : 29,
+        "raw" : "mpz_t y;",
+        "name" : "y",
+        "specifiers" : [ ],
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 29,
+          "raw" : "mpz_t",
+          "name" : "mpz_t",
+          "specifiers" : [ ]
+        },
+        "comment" : "The \\f$y\\f$ coordinate."
+      } ],
+      "comment" : null
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 38,
+      "raw" : "AffinePoint affine_init(const mpz_t x, const mpz_t y);",
+      "name" : "affine_init",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 38,
+        "raw" : "AffinePoint",
+        "name" : "AffinePoint",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 38,
+        "raw" : "const mpz_t x",
+        "name" : "x",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 38,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 38,
+        "raw" : "const mpz_t y",
+        "name" : "y",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 38,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Returns a new AffinePoint initialized with the specified arbitrary precision coordinates.\r@param x the \\f$x\\f$ coordinate\r\n@param y the \\f$y\\f$ coordinate\r\n@return a new AffinePoint"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 46,
+      "raw" : "AffinePoint affine_initLong(const long x, const long y);",
+      "name" : "affine_initLong",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 46,
+        "raw" : "AffinePoint",
+        "name" : "AffinePoint",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 46,
+        "raw" : "const long x",
+        "name" : "x",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 46,
+          "raw" : "const long",
+          "name" : "const long",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 46,
+        "raw" : "const long y",
+        "name" : "y",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 46,
+          "raw" : "const long",
+          "name" : "const long",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Returns a new AffinePoint initialized with the specified long values.\r@param x the \\f$x\\f$ coordinate\r\n@param y the \\f$y\\f$ coordinate\r\n@return a new AffinePoint"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 53,
+      "raw" : "void affine_destroy(AffinePoint affinePoint);",
+      "name" : "affine_destroy",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 53,
+        "raw" : "void",
+        "name" : "void",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 53,
+        "raw" : "AffinePoint affinePoint",
+        "name" : "affinePoint",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 53,
+          "raw" : "AffinePoint",
+          "name" : "AffinePoint",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Frees an AffinePoint. After calling this function on an AffinePoint instance,\rthat instance should not be used anymore.\r\n@param affinePoint the AffinePoint to be destroyed"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 59,
+      "raw" : "AffinePoint affine_infinity(void);",
+      "name" : "affine_infinity",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 59,
+        "raw" : "AffinePoint",
+        "name" : "AffinePoint",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 59,
+        "raw" : "void",
+        "name" : "",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 59,
+          "raw" : "void",
+          "name" : "void",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Returns the infinity point.\r@return the infinity point"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 67,
+      "raw" : "int affine_isEquals(const AffinePoint affinePoint1, const AffinePoint affinePoint2);",
+      "name" : "affine_isEquals",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 67,
+        "raw" : "int",
+        "name" : "int",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 67,
+        "raw" : "const AffinePoint affinePoint1",
+        "name" : "affinePoint1",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 67,
+          "raw" : "const AffinePoint",
+          "name" : "const AffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 67,
+        "raw" : "const AffinePoint affinePoint2",
+        "name" : "affinePoint2",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 67,
+          "raw" : "const AffinePoint",
+          "name" : "const AffinePoint",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Checks two AffinePoint instances for equality.\r@param affinePoint1 an AffinePoint\r\n@param affinePoint2 an AffinePoint\r\n@return 1 if the two instances hold equal values, 0 otherwise"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 74,
+      "raw" : "int affine_isInfinity(const AffinePoint affinePoint);",
+      "name" : "affine_isInfinity",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 74,
+        "raw" : "int",
+        "name" : "int",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 74,
+        "raw" : "const AffinePoint affinePoint",
+        "name" : "affinePoint",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 74,
+          "raw" : "const AffinePoint",
+          "name" : "const AffinePoint",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Checks if the specified AffinePoint is the infinity point.\r@param affinePoint the point to check\r\n@return 1 if the specified point is the infinity point, 0 otherwise"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 83,
+      "raw" : "CryptidStatus affine_double(AffinePoint *result, const AffinePoint affinePoint, const EllipticCurve ellipticCurve);",
+      "name" : "affine_double",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 83,
+        "raw" : "CryptidStatus",
+        "name" : "CryptidStatus",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 83,
+        "raw" : "AffinePoint *result",
+        "name" : "*result",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 83,
+          "raw" : "AffinePoint",
+          "name" : "AffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 83,
+        "raw" : "const AffinePoint affinePoint",
+        "name" : "affinePoint",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 83,
+          "raw" : "const AffinePoint",
+          "name" : "const AffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 83,
+        "raw" : "const EllipticCurve ellipticCurve",
+        "name" : "ellipticCurve",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 83,
+          "raw" : "const EllipticCurve",
+          "name" : "const EllipticCurve",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Doubles (adds to itself) the specified AffinePoint.\r@param result The result of the operation. On CRYPTID_SUCCESS, this should be destroyed by the caller.\r\n@param affinePoint the point to double\r\n@param ellipticCurve the elliptic curve to operate over\r\n@result CRYPTID_SUCCESS if everything went right, error otherwise"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 95,
+      "raw" : "CryptidStatus affine_add(AffinePoint *result, const AffinePoint affinePoint1, const AffinePoint affinePoint2, const EllipticCurve ellipticCurve);",
+      "name" : "affine_add",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 95,
+        "raw" : "CryptidStatus",
+        "name" : "CryptidStatus",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 95,
+        "raw" : "AffinePoint *result",
+        "name" : "*result",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 95,
+          "raw" : "AffinePoint",
+          "name" : "AffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 95,
+        "raw" : "const AffinePoint affinePoint1",
+        "name" : "affinePoint1",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 95,
+          "raw" : "const AffinePoint",
+          "name" : "const AffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 95,
+        "raw" : "const AffinePoint affinePoint2",
+        "name" : "affinePoint2",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 95,
+          "raw" : "const AffinePoint",
+          "name" : "const AffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 95,
+        "raw" : "const EllipticCurve ellipticCurve",
+        "name" : "ellipticCurve",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 95,
+          "raw" : "const EllipticCurve",
+          "name" : "const EllipticCurve",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Adds two AffinePoints.\r\nImplementation of Algorithm 3.1 in [Intro-to-IBE].\r\n@param result The result of the addition. On CRYPTID_SUCCESS, this should be destroyed by the caller.\r\n@param affinePoint1 an AffinePoint\r\n@param affinePoint2 an AffinePoint\r\n@param ellipticCurve the curve to operate over\r\n@return CRYPTID_SUCCESS if everything went right, error otherwise"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 107,
+      "raw" : "CryptidStatus affine_multiply(AffinePoint *result, const mpz_t s, const AffinePoint affinePoint, const EllipticCurve ellipticCurve);",
+      "name" : "affine_multiply",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 107,
+        "raw" : "CryptidStatus",
+        "name" : "CryptidStatus",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 107,
+        "raw" : "AffinePoint *result",
+        "name" : "*result",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 107,
+          "raw" : "AffinePoint",
+          "name" : "AffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 107,
+        "raw" : "const mpz_t s",
+        "name" : "s",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 107,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 107,
+        "raw" : "const AffinePoint affinePoint",
+        "name" : "affinePoint",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 107,
+          "raw" : "const AffinePoint",
+          "name" : "const AffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 107,
+        "raw" : "const EllipticCurve ellipticCurve",
+        "name" : "ellipticCurve",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 107,
+          "raw" : "const EllipticCurve",
+          "name" : "const EllipticCurve",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Multiplies an AffinePoint with a scalar.\r\r\nImplementation note: Uses the double-and-add algorithm.\r\n@param result The result of the multiplication. On CRYPTID_SUCCESS, this should be destroyed by the caller.\r\n@param s the scalar to multiply with\r\n@param affinePoint the point to multiply\r\n@param ellipticCurve the elliptic curve to operate over\r\n@return CRYPTID_SUCCESS if everything went right, error otherwise"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 119,
+      "raw" : "CryptidStatus affine_wNAFMultiply(AffinePoint *result, const mpz_t s, const AffinePoint affinePoint, const EllipticCurve ellipticCurve);",
+      "name" : "affine_wNAFMultiply",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 119,
+        "raw" : "CryptidStatus",
+        "name" : "CryptidStatus",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 119,
+        "raw" : "AffinePoint *result",
+        "name" : "*result",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 119,
+          "raw" : "AffinePoint",
+          "name" : "AffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 119,
+        "raw" : "const mpz_t s",
+        "name" : "s",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 119,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 119,
+        "raw" : "const AffinePoint affinePoint",
+        "name" : "affinePoint",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 119,
+          "raw" : "const AffinePoint",
+          "name" : "const AffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 119,
+        "raw" : "const EllipticCurve ellipticCurve",
+        "name" : "ellipticCurve",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 119,
+          "raw" : "const EllipticCurve",
+          "name" : "const EllipticCurve",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Multiplies an AffinePoint with a scalar.\r\r\nImplementation note: Uses the windowed-NAF algorithm.\r\n@param result The result of the multiplication. On CRYPTID_SUCCESS, this should be destroyed by the caller.\r\n@param s the scalar to multiply with\r\n@param affinePoint the point to multiply\r\n@param ellipticCurve the elliptic curve to operate over\r\n@return CRYPTID_SUCCESS if everything went right, error otherwise"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 127,
+      "raw" : "int affine_isOnCurve(const AffinePoint point, const EllipticCurve ellipticCurve);",
+      "name" : "affine_isOnCurve",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 127,
+        "raw" : "int",
+        "name" : "int",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 127,
+        "raw" : "const AffinePoint point",
+        "name" : "point",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 127,
+          "raw" : "const AffinePoint",
+          "name" : "const AffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 127,
+        "raw" : "const EllipticCurve ellipticCurve",
+        "name" : "ellipticCurve",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 127,
+          "raw" : "const EllipticCurve",
+          "name" : "const EllipticCurve",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Checks if the specified point is on the passed curve (satisfies the curve equation).\r@param point the point to check\r\n@param ellipticCurve the elliptic curve\r\n@return 1 if the point satisfies the curve equation, 0 otherwise"
+    } ],
+    "comment" : null
+  }, {
+    "path" : "C:\\Users\\Attila\\projects\\egyi\\cryptid\\cryptid-native\\.\\include\\elliptic\\ComplexAffinePoint.h",
+    "filename" : "ComplexAffinePoint.h",
+    "elements" : [ {
+      "@class" : "underdocs.common.representation.Struct",
+      "startingLine" : 14,
+      "raw" : "typedef struct ComplexAffinePoint\r\n{\r\n    /**\r\n     * The x coordinate.\r\n     */\r\n    Complex x;\r\n\r\n    /**\r\n     * The y coordinate.\r\n     */\r\n    Complex y;\r\n}",
+      "name" : "ComplexAffinePoint",
+      "typedef" : true,
+      "specifiers" : [ ],
+      "members" : [ {
+        "@class" : "underdocs.common.representation.VariableMember",
+        "startingLine" : 19,
+        "raw" : "Complex x;",
+        "name" : "x",
+        "specifiers" : [ ],
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 19,
+          "raw" : "Complex",
+          "name" : "Complex",
+          "specifiers" : [ ]
+        },
+        "comment" : "The x coordinate."
+      }, {
+        "@class" : "underdocs.common.representation.VariableMember",
+        "startingLine" : 24,
+        "raw" : "Complex y;",
+        "name" : "y",
+        "specifiers" : [ ],
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 24,
+          "raw" : "Complex",
+          "name" : "Complex",
+          "specifiers" : [ ]
+        },
+        "comment" : "The y coordinate."
+      } ],
+      "comment" : null
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 33,
+      "raw" : "ComplexAffinePoint complexAffine_init(const Complex x, const Complex y);",
+      "name" : "complexAffine_init",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 33,
+        "raw" : "ComplexAffinePoint",
+        "name" : "ComplexAffinePoint",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 33,
+        "raw" : "const Complex x",
+        "name" : "x",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 33,
+          "raw" : "const Complex",
+          "name" : "const Complex",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 33,
+        "raw" : "const Complex y",
+        "name" : "y",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 33,
+          "raw" : "const Complex",
+          "name" : "const Complex",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Returns a new ComplexAffinePoint initialized with the specified coordinates.\r@param x the \\f$x\\f$ coordinate\r\n@param y the \\f$y\\f$ coordinate\r\n@return a new ComplexAffinePoint"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 43,
+      "raw" : "ComplexAffinePoint complexAffine_initLong(const long xr, const long xi, const long yr, const long yi);",
+      "name" : "complexAffine_initLong",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 43,
+        "raw" : "ComplexAffinePoint",
+        "name" : "ComplexAffinePoint",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 43,
+        "raw" : "const long xr",
+        "name" : "xr",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 43,
+          "raw" : "const long",
+          "name" : "const long",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 43,
+        "raw" : "const long xi",
+        "name" : "xi",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 43,
+          "raw" : "const long",
+          "name" : "const long",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 43,
+        "raw" : "const long yr",
+        "name" : "yr",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 43,
+          "raw" : "const long",
+          "name" : "const long",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 43,
+        "raw" : "const long yi",
+        "name" : "yi",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 43,
+          "raw" : "const long",
+          "name" : "const long",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Returns a new ComplexAffinePoint initialized with the specified long values.\r@param xr the real part of the \\f$x\\f$ coordinate\r\n@param xi the imaginary part of the \\f$x\\f$ coordinate\r\n@param yr the real part of the \\f$y\\f$ coordinate\r\n@param yi the imaginary part of the \\f$y\\f$ coordinate\r\n@return a new ComplexAffinePoint"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 50,
+      "raw" : "void complexAffine_destroy(ComplexAffinePoint complexAffinePoint);",
+      "name" : "complexAffine_destroy",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 50,
+        "raw" : "void",
+        "name" : "void",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 50,
+        "raw" : "ComplexAffinePoint complexAffinePoint",
+        "name" : "complexAffinePoint",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 50,
+          "raw" : "ComplexAffinePoint",
+          "name" : "ComplexAffinePoint",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Frees a ComplexAffinePoint. After calling this function on a ComplexAffinePoint instance, \rthat instance should not be used anymore.\r\n@param complexAffinePoint the ComplexAffinePoint to be destroyed"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 56,
+      "raw" : "ComplexAffinePoint complexAffine_infinity(void);",
+      "name" : "complexAffine_infinity",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 56,
+        "raw" : "ComplexAffinePoint",
+        "name" : "ComplexAffinePoint",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 56,
+        "raw" : "void",
+        "name" : "",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 56,
+          "raw" : "void",
+          "name" : "void",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Returns the infinity point.\r@return the infinity point"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 64,
+      "raw" : "int complexAffine_isEquals(const ComplexAffinePoint complexAffinePoint1, const ComplexAffinePoint complexAffinePoint2);",
+      "name" : "complexAffine_isEquals",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 64,
+        "raw" : "int",
+        "name" : "int",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 64,
+        "raw" : "const ComplexAffinePoint complexAffinePoint1",
+        "name" : "complexAffinePoint1",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 64,
+          "raw" : "const ComplexAffinePoint",
+          "name" : "const ComplexAffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 64,
+        "raw" : "const ComplexAffinePoint complexAffinePoint2",
+        "name" : "complexAffinePoint2",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 64,
+          "raw" : "const ComplexAffinePoint",
+          "name" : "const ComplexAffinePoint",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Checks two ComplexAffinePoint instances for equality.\r@param complexAffinePoint1 an ComplexAffinePoint\r\n@param complexAffinePoint2 an ComplexAffinePoint\r\n@return 1 if the two instances hold equal values, 0 otherwise"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 71,
+      "raw" : "int complexAffine_isInfinity(const ComplexAffinePoint complexAffinePoint);",
+      "name" : "complexAffine_isInfinity",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 71,
+        "raw" : "int",
+        "name" : "int",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 71,
+        "raw" : "const ComplexAffinePoint complexAffinePoint",
+        "name" : "complexAffinePoint",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 71,
+          "raw" : "const ComplexAffinePoint",
+          "name" : "const ComplexAffinePoint",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Checks if the specified complexAffinePoint is the infinity point.\r@param complexAffinePoint the point to check\r\n@return 1 if the specified point is the infinity point, 0 otherwise"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 80,
+      "raw" : "CryptidStatus complexAffine_double(ComplexAffinePoint *result, const ComplexAffinePoint complexAffinePoint,\r\n                            const EllipticCurve ellipticCurve);",
+      "name" : "complexAffine_double",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 80,
+        "raw" : "CryptidStatus",
+        "name" : "CryptidStatus",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 80,
+        "raw" : "ComplexAffinePoint *result",
+        "name" : "*result",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 80,
+          "raw" : "ComplexAffinePoint",
+          "name" : "ComplexAffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 80,
+        "raw" : "const ComplexAffinePoint complexAffinePoint",
+        "name" : "complexAffinePoint",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 80,
+          "raw" : "const ComplexAffinePoint",
+          "name" : "const ComplexAffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 81,
+        "raw" : "const EllipticCurve ellipticCurve",
+        "name" : "ellipticCurve",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 81,
+          "raw" : "const EllipticCurve",
+          "name" : "const EllipticCurve",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : null
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 91,
+      "raw" : "CryptidStatus complexAffine_add(ComplexAffinePoint *result, const ComplexAffinePoint complexAffinePoint1, \r\n                         const ComplexAffinePoint complexAffinePoint2, const EllipticCurve ellipticCurve);",
+      "name" : "complexAffine_add",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 91,
+        "raw" : "CryptidStatus",
+        "name" : "CryptidStatus",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 91,
+        "raw" : "ComplexAffinePoint *result",
+        "name" : "*result",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 91,
+          "raw" : "ComplexAffinePoint",
+          "name" : "ComplexAffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 91,
+        "raw" : "const ComplexAffinePoint complexAffinePoint1",
+        "name" : "complexAffinePoint1",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 91,
+          "raw" : "const ComplexAffinePoint",
+          "name" : "const ComplexAffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 92,
+        "raw" : "const ComplexAffinePoint complexAffinePoint2",
+        "name" : "complexAffinePoint2",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 92,
+          "raw" : "const ComplexAffinePoint",
+          "name" : "const ComplexAffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 92,
+        "raw" : "const EllipticCurve ellipticCurve",
+        "name" : "ellipticCurve",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 92,
+          "raw" : "const EllipticCurve",
+          "name" : "const EllipticCurve",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Adds two ComplexAffinePoints.\r@param result The result of the addition. On CRYPTID_SUCCESS, this should be destroyed by the caller.\r\n@param complexAffinePoint1 a ComplexAffinePoint\r\n@param complexAffinePoint2 a ComplexAffinePoint\r\n@param ec the curve to operate over\r\n@return CRYPTID_SUCCESS if everything went right, error otherwise"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 102,
+      "raw" : "CryptidStatus complexAffine_multiply(ComplexAffinePoint *result, const mpz_t s, const ComplexAffinePoint complexAffinePoint,\r\n                              const EllipticCurve ellipticCurve);",
+      "name" : "complexAffine_multiply",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 102,
+        "raw" : "CryptidStatus",
+        "name" : "CryptidStatus",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 102,
+        "raw" : "ComplexAffinePoint *result",
+        "name" : "*result",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 102,
+          "raw" : "ComplexAffinePoint",
+          "name" : "ComplexAffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 102,
+        "raw" : "const mpz_t s",
+        "name" : "s",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 102,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 102,
+        "raw" : "const ComplexAffinePoint complexAffinePoint",
+        "name" : "complexAffinePoint",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 102,
+          "raw" : "const ComplexAffinePoint",
+          "name" : "const ComplexAffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 103,
+        "raw" : "const EllipticCurve ellipticCurve",
+        "name" : "ellipticCurve",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 103,
+          "raw" : "const EllipticCurve",
+          "name" : "const EllipticCurve",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Multiplies a ComplexAffinePoint with a scalar.\r@param result The result of the multiplication. On CRYPTID_SUCCESS, this should be destroyed by the caller.\r\n@param s the scalar to multiply with\r\n@param complexAffinePoint the point to multiply\r\n@param ec the elliptic curve to operate over\r\n@return CRYPTID_SUCCESS if everything went right, error otherwise"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 111,
+      "raw" : "int complexAffine_isOnCurve(const ComplexAffinePoint point, const EllipticCurve ellipticCurve);",
+      "name" : "complexAffine_isOnCurve",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 111,
+        "raw" : "int",
+        "name" : "int",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 111,
+        "raw" : "const ComplexAffinePoint point",
+        "name" : "point",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 111,
+          "raw" : "const ComplexAffinePoint",
+          "name" : "const ComplexAffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 111,
+        "raw" : "const EllipticCurve ellipticCurve",
+        "name" : "ellipticCurve",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 111,
+          "raw" : "const EllipticCurve",
+          "name" : "const EllipticCurve",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Checks if the specified point is on the passed curve (satisfies the curve equation).\r@param point the point to check\r\n@param ellipticCurve the elliptic curve\r\n@return 1 if the point satisfies the curve equation, 0 otherwise"
+    } ],
+    "comment" : null
+  }, {
+    "path" : "C:\\Users\\Attila\\projects\\egyi\\cryptid\\cryptid-native\\.\\include\\elliptic\\Divisor.h",
+    "filename" : "Divisor.h",
+    "elements" : [ {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 18,
+      "raw" : "Complex divisor_evaluateVertical(const EllipticCurve ec, const AffinePoint a, const ComplexAffinePoint b);",
+      "name" : "divisor_evaluateVertical",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 18,
+        "raw" : "Complex",
+        "name" : "Complex",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 18,
+        "raw" : "const EllipticCurve ec",
+        "name" : "ec",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 18,
+          "raw" : "const EllipticCurve",
+          "name" : "const EllipticCurve",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 18,
+        "raw" : "const AffinePoint a",
+        "name" : "a",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 18,
+          "raw" : "const AffinePoint",
+          "name" : "const AffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 18,
+        "raw" : "const ComplexAffinePoint b",
+        "name" : "b",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 18,
+          "raw" : "const ComplexAffinePoint",
+          "name" : "const ComplexAffinePoint",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Evaluates the divisor of a vertical line on a Type-1 elliptic curve.\r@param ec the elliptic curve to operate on\r\n@param a a point in \\f$E(F_p)\\f$\r\n@param b a point \\f$E(F_p^2)\\f$\r\n@return an element of \\f$F_p^2\\f$ that is the divisor of the vertical line going through \\f$A\\f$ evaluated at \\f$B\\f$"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 29,
+      "raw" : "CryptidStatus divisor_evaluateTangent(Complex* result, const EllipticCurve ec, const AffinePoint a, const ComplexAffinePoint b);",
+      "name" : "divisor_evaluateTangent",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 29,
+        "raw" : "CryptidStatus",
+        "name" : "CryptidStatus",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 29,
+        "raw" : "Complex* result",
+        "name" : "* result",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 29,
+          "raw" : "Complex",
+          "name" : "Complex",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 29,
+        "raw" : "const EllipticCurve ec",
+        "name" : "ec",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 29,
+          "raw" : "const EllipticCurve",
+          "name" : "const EllipticCurve",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 29,
+        "raw" : "const AffinePoint a",
+        "name" : "a",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 29,
+          "raw" : "const AffinePoint",
+          "name" : "const AffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 29,
+        "raw" : "const ComplexAffinePoint b",
+        "name" : "b",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 29,
+          "raw" : "const ComplexAffinePoint",
+          "name" : "const ComplexAffinePoint",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Evaluates the divisor of a tangent on a Type-1 elliptic curve.\r@param result Out parameter: an element of \\f$F_p^2\\f$ that is the divisor of the line tangent to \\f$A\\f$ \r\n              evaluated at \\f$B\\f$. On CRYPTID_SUCCESS, this should be destroyed by the caller.\r\n@param ec the elliptic curve to operate on\r\n@param a a point in \\f$E(F_p)\\f$\r\n@param b a point \\f$E(F_p^2)\\f$\r\n@result CRYPTID_SUCCESS if everything went right"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 41,
+      "raw" : "CryptidStatus divisor_evaluateLine(Complex* result, const EllipticCurve ec, const AffinePoint a, const AffinePoint aprime,\r\n                            const ComplexAffinePoint b);",
+      "name" : "divisor_evaluateLine",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 41,
+        "raw" : "CryptidStatus",
+        "name" : "CryptidStatus",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 41,
+        "raw" : "Complex* result",
+        "name" : "* result",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 41,
+          "raw" : "Complex",
+          "name" : "Complex",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 41,
+        "raw" : "const EllipticCurve ec",
+        "name" : "ec",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 41,
+          "raw" : "const EllipticCurve",
+          "name" : "const EllipticCurve",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 41,
+        "raw" : "const AffinePoint a",
+        "name" : "a",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 41,
+          "raw" : "const AffinePoint",
+          "name" : "const AffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 41,
+        "raw" : "const AffinePoint aprime",
+        "name" : "aprime",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 41,
+          "raw" : "const AffinePoint",
+          "name" : "const AffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 42,
+        "raw" : "const ComplexAffinePoint b",
+        "name" : "b",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 42,
+          "raw" : "const ComplexAffinePoint",
+          "name" : "const ComplexAffinePoint",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Evaluates the divisor of a line on a Type-1 elliptic curve.\r@param result Out parameter: an element of \\f$F_p^2\\f$ that is the divisor of the line going through \\f$A^{\\prime}\\f$ and \r\n              \\f$A^{\\prime\\prime}\\f$ evaluated at \\f$B\\f$. On CRYPTID_SUCCESS, this should be destroyed by the caller.\r\n@param ec the elliptic curve to operate on\r\n@param a a point in \\f$E(F_p)\\f$\r\n@param aprime a point in \\f$E(F_o)\\f$\r\n@param b a point in \\f$E(F_p^2)\\f$\r\n@return CRYPTID_SUCCESS if everything went right"
+    } ],
+    "comment" : null
+  }, {
+    "path" : "C:\\Users\\Attila\\projects\\egyi\\cryptid\\cryptid-native\\.\\include\\elliptic\\EllipticCurve.h",
+    "filename" : "EllipticCurve.h",
+    "elements" : [ {
+      "@class" : "underdocs.common.representation.Struct",
+      "startingLine" : 10,
+      "raw" : "typedef struct EllipticCurve\r\n{\r\n    mpz_t a;\r\n    mpz_t b;\r\n    mpz_t fieldOrder;\r\n}",
+      "name" : "EllipticCurve",
+      "typedef" : true,
+      "specifiers" : [ ],
+      "members" : [ {
+        "@class" : "underdocs.common.representation.VariableMember",
+        "startingLine" : 12,
+        "raw" : "mpz_t a;",
+        "name" : "a",
+        "specifiers" : [ ],
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 12,
+          "raw" : "mpz_t",
+          "name" : "mpz_t",
+          "specifiers" : [ ]
+        },
+        "comment" : null
+      }, {
+        "@class" : "underdocs.common.representation.VariableMember",
+        "startingLine" : 13,
+        "raw" : "mpz_t b;",
+        "name" : "b",
+        "specifiers" : [ ],
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 13,
+          "raw" : "mpz_t",
+          "name" : "mpz_t",
+          "specifiers" : [ ]
+        },
+        "comment" : null
+      }, {
+        "@class" : "underdocs.common.representation.VariableMember",
+        "startingLine" : 14,
+        "raw" : "mpz_t fieldOrder;",
+        "name" : "fieldOrder",
+        "specifiers" : [ ],
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 14,
+          "raw" : "mpz_t",
+          "name" : "mpz_t",
+          "specifiers" : [ ]
+        },
+        "comment" : null
+      } ],
+      "comment" : null
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 24,
+      "raw" : "EllipticCurve ellipticCurve_init(const mpz_t a, const mpz_t b, const mpz_t fieldOrder);",
+      "name" : "ellipticCurve_init",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 24,
+        "raw" : "EllipticCurve",
+        "name" : "EllipticCurve",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 24,
+        "raw" : "const mpz_t a",
+        "name" : "a",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 24,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 24,
+        "raw" : "const mpz_t b",
+        "name" : "b",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 24,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 24,
+        "raw" : "const mpz_t fieldOrder",
+        "name" : "fieldOrder",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 24,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Returns a new EllipticCurve instance initialized with arbitrary precision integers.\r@param a coefficient \\f$a\\f$\r\n@param b coefficient \\f$b\\f$\r\n@param fieldOrder the order of the finite field\r\n@return a new EllipticCurve"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 33,
+      "raw" : "EllipticCurve ellipticCurve_initLong(const long a, const long b, const long fieldOrder);",
+      "name" : "ellipticCurve_initLong",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 33,
+        "raw" : "EllipticCurve",
+        "name" : "EllipticCurve",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 33,
+        "raw" : "const long a",
+        "name" : "a",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 33,
+          "raw" : "const long",
+          "name" : "const long",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 33,
+        "raw" : "const long b",
+        "name" : "b",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 33,
+          "raw" : "const long",
+          "name" : "const long",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 33,
+        "raw" : "const long fieldOrder",
+        "name" : "fieldOrder",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 33,
+          "raw" : "const long",
+          "name" : "const long",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Returns a new EllipticCurve instance initialized longs.\r@param a coefficient \\f$a\\f$\r\n@param b coefficient \\f$b\\f$\r\n@param fieldOrder the order of the finite field\r\n@return a new EllipticCurve"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 39,
+      "raw" : "void ellipticCurve_destroy(EllipticCurve ellipticCurve);",
+      "name" : "ellipticCurve_destroy",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 39,
+        "raw" : "void",
+        "name" : "void",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 39,
+        "raw" : "EllipticCurve ellipticCurve",
+        "name" : "ellipticCurve",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 39,
+          "raw" : "EllipticCurve",
+          "name" : "EllipticCurve",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Frees an EllipticCurve.\r@param ellipticCurve the EllipticCurve to be destroyed"
+    } ],
+    "comment" : null
+  }, {
+    "path" : "C:\\Users\\Attila\\projects\\egyi\\cryptid\\cryptid-native\\.\\include\\elliptic\\TatePairing.h",
+    "filename" : "TatePairing.h",
+    "elements" : [ {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 22,
+      "raw" : "CryptidStatus tate_performPairing(Complex *result, const int embeddingDegree, const EllipticCurve ellipticCurve,\r\n                           const mpz_t subgroupOrder, const AffinePoint p, const AffinePoint b);",
+      "name" : "tate_performPairing",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 22,
+        "raw" : "CryptidStatus",
+        "name" : "CryptidStatus",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 22,
+        "raw" : "Complex *result",
+        "name" : "*result",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 22,
+          "raw" : "Complex",
+          "name" : "Complex",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 22,
+        "raw" : "const int embeddingDegree",
+        "name" : "embeddingDegree",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 22,
+          "raw" : "const int",
+          "name" : "const int",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 22,
+        "raw" : "const EllipticCurve ellipticCurve",
+        "name" : "ellipticCurve",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 22,
+          "raw" : "const EllipticCurve",
+          "name" : "const EllipticCurve",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 23,
+        "raw" : "const mpz_t subgroupOrder",
+        "name" : "subgroupOrder",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 23,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 23,
+        "raw" : "const AffinePoint p",
+        "name" : "p",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 23,
+          "raw" : "const AffinePoint",
+          "name" : "const AffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 23,
+        "raw" : "const AffinePoint b",
+        "name" : "b",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 23,
+          "raw" : "const AffinePoint",
+          "name" : "const AffinePoint",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Computes the Tate pairing over Type-1 elliptic curves.\r@param result Out parameter to the resulting Complex value. On CRYPTID_SUCCESS, this should be destroyed by the caller.\r\n@param embeddingDegree the embedding degree of the curve\r\n@param ellipticCurve the elliptic curve to operate on\r\n@param subgroupOrder the order of the subgroup\r\n@param p a point of \\f$E[r]\\f$\r\n@param b\r\n@return CRYPTID_SUCCESS if everything went right"
+    } ],
+    "comment" : null
+  }, {
+    "path" : "C:\\Users\\Attila\\projects\\egyi\\cryptid\\cryptid-native\\.\\include\\identity-based\\CipherTextTuple.h",
+    "filename" : "CipherTextTuple.h",
+    "elements" : [ {
+      "@class" : "underdocs.common.representation.Struct",
+      "startingLine" : 16,
+      "raw" : "typedef struct CipherTextTuple\r\n{\r\n    /**\r\n     * A point in \\f$E(F_p)\\f$.\r\n     */\r\n    AffinePoint cipherU;\r\n\r\n    /**\r\n     * A binary string.\r\n     */\r\n    unsigned char* cipherV;\r\n    size_t cipherVLength;\r\n\r\n    /**\r\n     * A binary string.\r\n     */\r\n    unsigned char* cipherW;\r\n    size_t cipherWLength;\r\n}",
+      "name" : "CipherTextTuple",
+      "typedef" : true,
+      "specifiers" : [ ],
+      "members" : [ {
+        "@class" : "underdocs.common.representation.VariableMember",
+        "startingLine" : 21,
+        "raw" : "AffinePoint cipherU;",
+        "name" : "cipherU",
+        "specifiers" : [ ],
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 21,
+          "raw" : "AffinePoint",
+          "name" : "AffinePoint",
+          "specifiers" : [ ]
+        },
+        "comment" : "A point in \\f$E(F_p)\\f$."
+      }, {
+        "@class" : "underdocs.common.representation.VariableMember",
+        "startingLine" : 26,
+        "raw" : "unsigned char* cipherV;",
+        "name" : "cipherV",
+        "specifiers" : [ ],
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 26,
+          "raw" : "unsigned char",
+          "name" : "unsigned char",
+          "specifiers" : [ ]
+        },
+        "comment" : "A binary string."
+      }, {
+        "@class" : "underdocs.common.representation.VariableMember",
+        "startingLine" : 27,
+        "raw" : "size_t cipherVLength;",
+        "name" : "cipherVLength",
+        "specifiers" : [ ],
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 27,
+          "raw" : "size_t",
+          "name" : "size_t",
+          "specifiers" : [ ]
+        },
+        "comment" : null
+      }, {
+        "@class" : "underdocs.common.representation.VariableMember",
+        "startingLine" : 32,
+        "raw" : "unsigned char* cipherW;",
+        "name" : "cipherW",
+        "specifiers" : [ ],
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 32,
+          "raw" : "unsigned char",
+          "name" : "unsigned char",
+          "specifiers" : [ ]
+        },
+        "comment" : "A binary string."
+      }, {
+        "@class" : "underdocs.common.representation.VariableMember",
+        "startingLine" : 33,
+        "raw" : "size_t cipherWLength;",
+        "name" : "cipherWLength",
+        "specifiers" : [ ],
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 33,
+          "raw" : "size_t",
+          "name" : "size_t",
+          "specifiers" : [ ]
+        },
+        "comment" : null
+      } ],
+      "comment" : null
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 47,
+      "raw" : "CipherTextTuple cipherTextTuple_init(const AffinePoint cipherU, const unsigned char *const cipherV, const int cipherVLength,\r\n                                     const unsigned char *const cipherW, const int cipherWLength);",
+      "name" : "cipherTextTuple_init",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 47,
+        "raw" : "CipherTextTuple",
+        "name" : "CipherTextTuple",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 47,
+        "raw" : "const AffinePoint cipherU",
+        "name" : "cipherU",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 47,
+          "raw" : "const AffinePoint",
+          "name" : "const AffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 47,
+        "raw" : "const unsigned char *const cipherV",
+        "name" : "*const cipherV",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 47,
+          "raw" : "const unsigned char",
+          "name" : "const unsigned char",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 47,
+        "raw" : "const int cipherVLength",
+        "name" : "cipherVLength",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 47,
+          "raw" : "const int",
+          "name" : "const int",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 48,
+        "raw" : "const unsigned char *const cipherW",
+        "name" : "*const cipherW",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 48,
+          "raw" : "const unsigned char",
+          "name" : "const unsigned char",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 48,
+        "raw" : "const int cipherWLength",
+        "name" : "cipherWLength",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 48,
+          "raw" : "const int",
+          "name" : "const int",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Returns a new CipherTextTuple initialized with the specified values. Note, that {@code cipherV} and {@code cipherw}\rwill be copied.\r\n@param cipherU an AffinePointer\r\n@param cipherV binary string\r\n@param cipherVLength the size of {@code cipherV}\r\n@param cipherW binary string\r\n@param cipherWLength the size of {@code cipherW}\r\n@return a new CipherTextTuple instance"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 54,
+      "raw" : "void cipherTextTuple_destroy(CipherTextTuple cipherTextTuple);",
+      "name" : "cipherTextTuple_destroy",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 54,
+        "raw" : "void",
+        "name" : "void",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 54,
+        "raw" : "CipherTextTuple cipherTextTuple",
+        "name" : "cipherTextTuple",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 54,
+          "raw" : "CipherTextTuple",
+          "name" : "CipherTextTuple",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Frees a CipherTextTuple.\r@param cipherTextTuple the CipherTextTuple to be destroyed"
+    } ],
+    "comment" : null
+  }, {
+    "path" : "C:\\Users\\Attila\\projects\\egyi\\cryptid\\cryptid-native\\.\\include\\identity-based\\HashFunction.h",
+    "filename" : "HashFunction.h",
+    "elements" : [ {
+      "@class" : "underdocs.common.representation.Struct",
+      "startingLine" : 16,
+      "raw" : "typedef struct HashFunction\r\n{\r\n    /**\r\n     * Pointer to the actual hash function. The function should take three parameters:\r\n     *   * pointer to the message,\r\n     *   * the length of the message,\r\n     *   * pointer to the result buffer.\r\n     * The return value should be the pointer to the result buffer.\r\n     */\r\n    unsigned char* (*sha_hash)(const unsigned char*, size_t, unsigned char*);\r\n\r\n    /**\r\n     * Size of the hash function's output.\r\n     */\r\n    size_t hashLength;\r\n}",
+      "name" : "HashFunction",
+      "typedef" : true,
+      "specifiers" : [ ],
+      "members" : [ {
+        "@class" : "underdocs.common.representation.VariableMember",
+        "startingLine" : 30,
+        "raw" : "size_t hashLength;",
+        "name" : "hashLength",
+        "specifiers" : [ ],
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 30,
+          "raw" : "size_t",
+          "name" : "size_t",
+          "specifiers" : [ ]
+        },
+        "comment" : "Size of the hash function's output."
+      } ],
+      "comment" : null
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 39,
+      "raw" : "HashFunction hashFunction_initForSecurityLevel(const SecurityLevel securityLevel);",
+      "name" : "hashFunction_initForSecurityLevel",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 39,
+        "raw" : "HashFunction",
+        "name" : "HashFunction",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 39,
+        "raw" : "const SecurityLevel securityLevel",
+        "name" : "securityLevel",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 39,
+          "raw" : "const SecurityLevel",
+          "name" : "const SecurityLevel",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Returns the HashFunction struct corresponding to the specified security level.\rPlease refer to Section 5.1.2. in [RFC-5091] for hash function and security level pairs.\r\n@param securityLevel the used security level\r\n@return the corresponding HashFunction struct"
+    } ],
+    "comment" : null
+  }, {
+    "path" : "C:\\Users\\Attila\\projects\\egyi\\cryptid\\cryptid-native\\.\\include\\identity-based\\PublicParameters.h",
+    "filename" : "PublicParameters.h",
+    "elements" : [ {
+      "@class" : "underdocs.common.representation.Struct",
+      "startingLine" : 18,
+      "raw" : "typedef struct PublicParameters\r\n{\r\n    /**\r\n     * The Type-1 elliptic curve we're operating over. Note, that the {@code p} field of {@code BFPublicParameters}\r\n     * corresponds to {@code ellipticCurve.fieldOrder}.\r\n     */\r\n    EllipticCurve ellipticCurve;\r\n\r\n    /**\r\n     * Subgroup order.\r\n     */\r\n    mpz_t q;\r\n\r\n    /**\r\n     * A point in \\f$E(F_p)\\f$.\r\n     */\r\n    AffinePoint pointP;\r\n\r\n    /**\r\n     * A point in \\f$E(F_p)\\f$.\r\n     */\r\n    AffinePoint pointPpublic;\r\n\r\n    /**\r\n     * The used hash function.\r\n     */\r\n    HashFunction hashFunction;\r\n}",
+      "name" : "PublicParameters",
+      "typedef" : true,
+      "specifiers" : [ ],
+      "members" : [ {
+        "@class" : "underdocs.common.representation.VariableMember",
+        "startingLine" : 24,
+        "raw" : "EllipticCurve ellipticCurve;",
+        "name" : "ellipticCurve",
+        "specifiers" : [ ],
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 24,
+          "raw" : "EllipticCurve",
+          "name" : "EllipticCurve",
+          "specifiers" : [ ]
+        },
+        "comment" : "The Type-1 elliptic curve we're operating over. Note, that the {@code p} field of {@code BFPublicParameters}\rcorresponds to {@code ellipticCurve.fieldOrder}."
+      }, {
+        "@class" : "underdocs.common.representation.VariableMember",
+        "startingLine" : 29,
+        "raw" : "mpz_t q;",
+        "name" : "q",
+        "specifiers" : [ ],
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 29,
+          "raw" : "mpz_t",
+          "name" : "mpz_t",
+          "specifiers" : [ ]
+        },
+        "comment" : "Subgroup order."
+      }, {
+        "@class" : "underdocs.common.representation.VariableMember",
+        "startingLine" : 34,
+        "raw" : "AffinePoint pointP;",
+        "name" : "pointP",
+        "specifiers" : [ ],
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 34,
+          "raw" : "AffinePoint",
+          "name" : "AffinePoint",
+          "specifiers" : [ ]
+        },
+        "comment" : "A point in \\f$E(F_p)\\f$."
+      }, {
+        "@class" : "underdocs.common.representation.VariableMember",
+        "startingLine" : 39,
+        "raw" : "AffinePoint pointPpublic;",
+        "name" : "pointPpublic",
+        "specifiers" : [ ],
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 39,
+          "raw" : "AffinePoint",
+          "name" : "AffinePoint",
+          "specifiers" : [ ]
+        },
+        "comment" : "A point in \\f$E(F_p)\\f$."
+      }, {
+        "@class" : "underdocs.common.representation.VariableMember",
+        "startingLine" : 44,
+        "raw" : "HashFunction hashFunction;",
+        "name" : "hashFunction",
+        "specifiers" : [ ],
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 44,
+          "raw" : "HashFunction",
+          "name" : "HashFunction",
+          "specifiers" : [ ]
+        },
+        "comment" : "The used hash function."
+      } ],
+      "comment" : null
+    } ],
+    "comment" : null
+  }, {
+    "path" : "C:\\Users\\Attila\\projects\\egyi\\cryptid\\cryptid-native\\.\\include\\identity-based\\SecurityLevel.h",
+    "filename" : "SecurityLevel.h",
+    "elements" : [ {
+      "@class" : "underdocs.common.representation.EnumElement",
+      "startingLine" : 13,
+      "raw" : "typedef enum\r\n{\r\n    LOWEST,\r\n    LOW,\r\n    MEDIUM,\r\n    HIGH,\r\n    HIGHEST\r\n}",
+      "name" : "SecurityLevel",
+      "typedef" : true,
+      "specifiers" : [ ],
+      "members" : [ {
+        "@class" : "underdocs.common.representation.EnumConstant",
+        "startingLine" : 15,
+        "raw" : "LOWEST",
+        "name" : "LOWEST",
+        "value" : null,
+        "comment" : null
+      }, {
+        "@class" : "underdocs.common.representation.EnumConstant",
+        "startingLine" : 16,
+        "raw" : "LOW",
+        "name" : "LOW",
+        "value" : null,
+        "comment" : null
+      }, {
+        "@class" : "underdocs.common.representation.EnumConstant",
+        "startingLine" : 17,
+        "raw" : "MEDIUM",
+        "name" : "MEDIUM",
+        "value" : null,
+        "comment" : null
+      }, {
+        "@class" : "underdocs.common.representation.EnumConstant",
+        "startingLine" : 18,
+        "raw" : "HIGH",
+        "name" : "HIGH",
+        "value" : null,
+        "comment" : null
+      }, {
+        "@class" : "underdocs.common.representation.EnumConstant",
+        "startingLine" : 19,
+        "raw" : "HIGHEST",
+        "name" : "HIGHEST",
+        "value" : null,
+        "comment" : null
+      } ],
+      "comment" : "The security level of the encryption. Please refer to Section 9. in [RFC-5091] regarding the meaning\rof the security levels."
+    } ],
+    "comment" : null
+  }, {
+    "path" : "C:\\Users\\Attila\\projects\\egyi\\cryptid\\cryptid-native\\.\\include\\identity-based\\Signature.h",
+    "filename" : "Signature.h",
+    "elements" : [ {
+      "@class" : "underdocs.common.representation.Struct",
+      "startingLine" : 9,
+      "raw" : "typedef struct Signature\r\n{\r\n    AffinePoint u;\r\n    mpz_t v;\r\n}",
+      "name" : "Signature",
+      "typedef" : true,
+      "specifiers" : [ ],
+      "members" : [ {
+        "@class" : "underdocs.common.representation.VariableMember",
+        "startingLine" : 11,
+        "raw" : "AffinePoint u;",
+        "name" : "u",
+        "specifiers" : [ ],
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 11,
+          "raw" : "AffinePoint",
+          "name" : "AffinePoint",
+          "specifiers" : [ ]
+        },
+        "comment" : null
+      }, {
+        "@class" : "underdocs.common.representation.VariableMember",
+        "startingLine" : 12,
+        "raw" : "mpz_t v;",
+        "name" : "v",
+        "specifiers" : [ ],
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 12,
+          "raw" : "mpz_t",
+          "name" : "mpz_t",
+          "specifiers" : [ ]
+        },
+        "comment" : null
+      } ],
+      "comment" : null
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 15,
+      "raw" : "Signature signature_init(AffinePoint u, mpz_t v);",
+      "name" : "signature_init",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 15,
+        "raw" : "Signature",
+        "name" : "Signature",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 15,
+        "raw" : "AffinePoint u",
+        "name" : "u",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 15,
+          "raw" : "AffinePoint",
+          "name" : "AffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 15,
+        "raw" : "mpz_t v",
+        "name" : "v",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 15,
+          "raw" : "mpz_t",
+          "name" : "mpz_t",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : null
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 17,
+      "raw" : "void signature_destroy(Signature signature);",
+      "name" : "signature_destroy",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 17,
+        "raw" : "void",
+        "name" : "void",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 17,
+        "raw" : "Signature signature",
+        "name" : "signature",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 17,
+          "raw" : "Signature",
+          "name" : "Signature",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : null
+    } ],
+    "comment" : null
+  }, {
+    "path" : "C:\\Users\\Attila\\projects\\egyi\\cryptid\\cryptid-native\\.\\include\\SignID.h",
+    "filename" : "SignID.h",
+    "elements" : [ {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 22,
+      "raw" : "CryptidStatus signid_setup(const SecurityLevel securityLevel, PublicParameters* publicParameters, mpz_t masterSecret);",
+      "name" : "signid_setup",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 22,
+        "raw" : "CryptidStatus",
+        "name" : "CryptidStatus",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 22,
+        "raw" : "const SecurityLevel securityLevel",
+        "name" : "securityLevel",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 22,
+          "raw" : "const SecurityLevel",
+          "name" : "const SecurityLevel",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 22,
+        "raw" : "PublicParameters* publicParameters",
+        "name" : "* publicParameters",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 22,
+          "raw" : "PublicParameters",
+          "name" : "PublicParameters",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 22,
+        "raw" : "mpz_t masterSecret",
+        "name" : "masterSecret",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 22,
+          "raw" : "mpz_t",
+          "name" : "mpz_t",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Establishes a master secret and public parameters for a given security level. The master secret (as its name suggests)\rshould be kept secret, while the public parameters can be distributed among the clients.\r\n@param securityLevel the desired security level\r\n@param publicParameters Pointer in which the public parameters will be stored. If the return value is CRYPTID_SUCCESS\r\n                        then it will point to correctly filled PublicParameters instance. Note, that the\r\n                        q field must be mpz_init'd and thus mpz_clear'd be the caller.\r\n@param masterSecret Out parameter which will hold the master secret. Must be mpz_init'd and mpz_clear'd by the caller.\r\n@return CRYPTID_SUCCESS if everything went right"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 34,
+      "raw" : "CryptidStatus signid_extract(AffinePoint* result, const char *const identity, const size_t identityLength,\r\n                    const PublicParameters publicParameters, const mpz_t masterSecret);",
+      "name" : "signid_extract",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 34,
+        "raw" : "CryptidStatus",
+        "name" : "CryptidStatus",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 34,
+        "raw" : "AffinePoint* result",
+        "name" : "* result",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 34,
+          "raw" : "AffinePoint",
+          "name" : "AffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 34,
+        "raw" : "const char *const identity",
+        "name" : "*const identity",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 34,
+          "raw" : "const char",
+          "name" : "const char",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 34,
+        "raw" : "const size_t identityLength",
+        "name" : "identityLength",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 34,
+          "raw" : "const size_t",
+          "name" : "const size_t",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 35,
+        "raw" : "const PublicParameters publicParameters",
+        "name" : "publicParameters",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 35,
+          "raw" : "const PublicParameters",
+          "name" : "const PublicParameters",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 35,
+        "raw" : "const mpz_t masterSecret",
+        "name" : "masterSecret",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 35,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Extracts the private key corresponding to a given identity string.\r@param result Out parameter holding the private key (which is an AffinePoint). On CRYPTID_SUCCESS, it must be destroyed by \r\n              the caller. Initialization is done by this function.\r\n@param identity the identity string we're extracting the private key for\r\n@param identityLength the length of the identity string\r\n@param publicParameters the IBS public parameters\r\n@param masterSecret the master secret corresponding to the public parameters\r\n@return CRYPTID_SUCCESS if everything went right"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 50,
+      "raw" : "CryptidStatus signid_sign(Signature *result, const AffinePoint privateKey, const char *const message, const size_t messageLength,\r\n                    const char *const identity, const size_t identityLength, const PublicParameters publicParameters);",
+      "name" : "signid_sign",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 50,
+        "raw" : "CryptidStatus",
+        "name" : "CryptidStatus",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 50,
+        "raw" : "Signature *result",
+        "name" : "*result",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 50,
+          "raw" : "Signature",
+          "name" : "Signature",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 50,
+        "raw" : "const AffinePoint privateKey",
+        "name" : "privateKey",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 50,
+          "raw" : "const AffinePoint",
+          "name" : "const AffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 50,
+        "raw" : "const char *const message",
+        "name" : "*const message",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 50,
+          "raw" : "const char",
+          "name" : "const char",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 50,
+        "raw" : "const size_t messageLength",
+        "name" : "messageLength",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 50,
+          "raw" : "const size_t",
+          "name" : "const size_t",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 51,
+        "raw" : "const char *const identity",
+        "name" : "*const identity",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 51,
+          "raw" : "const char",
+          "name" : "const char",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 51,
+        "raw" : "const size_t identityLength",
+        "name" : "identityLength",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 51,
+          "raw" : "const size_t",
+          "name" : "const size_t",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 51,
+        "raw" : "const PublicParameters publicParameters",
+        "name" : "publicParameters",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 51,
+          "raw" : "const PublicParameters",
+          "name" : "const PublicParameters",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Signs a message with the given identity string.\r@param result Out parameter storing the signature. If the return value is CRYPTID_SUCCESS\r\n              then it will point to a Signature instance, that must be destroyed by the caller.\r\n              Initialization is done by this function.\r\n@param privateKey the private key to sign with\r\n@param message the string to sign\r\n@param messageLength the length of the message\r\n@param identity the identity string to sign with\r\n@param identityLength the length of the identity\r\n@param publicParameters the IBS public parameters\r\n@return CRYPTID_SUCCESS if everything went right"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 63,
+      "raw" : "CryptidStatus signid_verify(const char *const message, const size_t messageLength, const Signature signature,\r\n                    const char *const identity, const size_t identityLength, const PublicParameters publicParameters);",
+      "name" : "signid_verify",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 63,
+        "raw" : "CryptidStatus",
+        "name" : "CryptidStatus",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 63,
+        "raw" : "const char *const message",
+        "name" : "*const message",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 63,
+          "raw" : "const char",
+          "name" : "const char",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 63,
+        "raw" : "const size_t messageLength",
+        "name" : "messageLength",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 63,
+          "raw" : "const size_t",
+          "name" : "const size_t",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 63,
+        "raw" : "const Signature signature",
+        "name" : "signature",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 63,
+          "raw" : "const Signature",
+          "name" : "const Signature",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 64,
+        "raw" : "const char *const identity",
+        "name" : "*const identity",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 64,
+          "raw" : "const char",
+          "name" : "const char",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 64,
+        "raw" : "const size_t identityLength",
+        "name" : "identityLength",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 64,
+          "raw" : "const size_t",
+          "name" : "const size_t",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 64,
+        "raw" : "const PublicParameters publicParameters",
+        "name" : "publicParameters",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 64,
+          "raw" : "const PublicParameters",
+          "name" : "const PublicParameters",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Verifies the signature to a previously signed message.\r@param message the string which was signed\r\n@param messageLength the length of the message\r\n@param signature the digital signature of the message, which needs to be verified\r\n@param identity the identity string the message was signed with\r\n@param identityLength the length of the identity\r\n@param publicParameters the IBS public parameters\r\n@return CRYPTID_SUCCESS if the signature was valid"
+    } ],
+    "comment" : null
+  }, {
+    "path" : "C:\\Users\\Attila\\projects\\egyi\\cryptid\\cryptid-native\\.\\include\\util\\PrimalityTest.h",
+    "filename" : "PrimalityTest.h",
+    "elements" : [ {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 3,
+      "raw" : "int millerrabin_mpz(mpz_srcptr n, int reps);",
+      "name" : "millerrabin_mpz",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 3,
+        "raw" : "int",
+        "name" : "int",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 3,
+        "raw" : "mpz_srcptr n",
+        "name" : "n",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 3,
+          "raw" : "mpz_srcptr",
+          "name" : "mpz_srcptr",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 3,
+        "raw" : "int reps",
+        "name" : "reps",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 3,
+          "raw" : "int",
+          "name" : "int",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : null
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 5,
+      "raw" : "int millerrabin(mpz_srcptr n, mpz_srcptr nm1, mpz_ptr x, mpz_ptr y, mpz_srcptr q, unsigned long int k);",
+      "name" : "millerrabin",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 5,
+        "raw" : "int",
+        "name" : "int",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 5,
+        "raw" : "mpz_srcptr n",
+        "name" : "n",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 5,
+          "raw" : "mpz_srcptr",
+          "name" : "mpz_srcptr",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 5,
+        "raw" : "mpz_srcptr nm1",
+        "name" : "nm1",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 5,
+          "raw" : "mpz_srcptr",
+          "name" : "mpz_srcptr",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 5,
+        "raw" : "mpz_ptr x",
+        "name" : "x",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 5,
+          "raw" : "mpz_ptr",
+          "name" : "mpz_ptr",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 5,
+        "raw" : "mpz_ptr y",
+        "name" : "y",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 5,
+          "raw" : "mpz_ptr",
+          "name" : "mpz_ptr",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 5,
+        "raw" : "mpz_srcptr q",
+        "name" : "q",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 5,
+          "raw" : "mpz_srcptr",
+          "name" : "mpz_srcptr",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 5,
+        "raw" : "unsigned long int k",
+        "name" : "k",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 5,
+          "raw" : "unsigned long int",
+          "name" : "unsigned long int",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : null
+    } ],
+    "comment" : null
+  }, {
+    "path" : "C:\\Users\\Attila\\projects\\egyi\\cryptid\\cryptid-native\\.\\include\\util\\RandBytes.h",
+    "filename" : "RandBytes.h",
+    "elements" : [ {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 17,
+      "raw" : "CryptidStatus cryptid_randomBytes(unsigned char *buf, const int num);",
+      "name" : "cryptid_randomBytes",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 17,
+        "raw" : "CryptidStatus",
+        "name" : "CryptidStatus",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 17,
+        "raw" : "unsigned char *buf",
+        "name" : "*buf",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 17,
+          "raw" : "unsigned char",
+          "name" : "unsigned char",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 17,
+        "raw" : "const int num",
+        "name" : "num",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 17,
+          "raw" : "const int",
+          "name" : "const int",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Fills the passed buffer from a cryptographically secure source.\r\r\nIf {@code (__CRYPTID_EXTERN_RANDOM} is defined, then this function will\r\ncall the {@code int __cryptid_cryptoRandom(void *buf, const int num)} function\r\ninternally.\r\n@param buf the buffer to fill\r\n@param num the size of the buffer\r\n@return CRYPTID_SUCCESS if everything went right"
+    } ],
+    "comment" : null
+  }, {
+    "path" : "C:\\Users\\Attila\\projects\\egyi\\cryptid\\cryptid-native\\.\\include\\util\\Random.h",
+    "filename" : "Random.h",
+    "elements" : [ {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 16,
+      "raw" : "unsigned int random_unsignedIntInRange(const unsigned int range);",
+      "name" : "random_unsignedIntInRange",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 16,
+        "raw" : "unsigned int",
+        "name" : "unsigned int",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 16,
+        "raw" : "const unsigned int range",
+        "name" : "range",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 16,
+          "raw" : "const unsigned int",
+          "name" : "const unsigned int",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Generates a cryptographically secure random unsigned integer between zero and {@code range}.\r@param range the upper limit of the generation\r\n@return a random unsigned integer"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 23,
+      "raw" : "void random_mpzOfLength(mpz_t result, const unsigned int numberOfBits);",
+      "name" : "random_mpzOfLength",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 23,
+        "raw" : "void",
+        "name" : "void",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 23,
+        "raw" : "mpz_t result",
+        "name" : "result",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 23,
+          "raw" : "mpz_t",
+          "name" : "mpz_t",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 23,
+        "raw" : "const unsigned int numberOfBits",
+        "name" : "numberOfBits",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 23,
+          "raw" : "const unsigned int",
+          "name" : "const unsigned int",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Generates a cryptographically secure arbitrary precision integer of the specified bitlength.\r@param result out parameter for the generated value\r\n@param numberOfBits the bitlength of the result"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 30,
+      "raw" : "void random_mpzInRange(mpz_t result, const mpz_t range);",
+      "name" : "random_mpzInRange",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 30,
+        "raw" : "void",
+        "name" : "void",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 30,
+        "raw" : "mpz_t result",
+        "name" : "result",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 30,
+          "raw" : "mpz_t",
+          "name" : "mpz_t",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 30,
+        "raw" : "const mpz_t range",
+        "name" : "range",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 30,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Generates a cryptographically secure random arbitrary precision integer between zero and {@code range}.\r@param result out parameter for the generated value\r\n@param range the upper limit of the generation"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 41,
+      "raw" : "CryptidStatus random_solinasPrime(mpz_t result, const unsigned int numberOfBits, const unsigned int attemptLimit);",
+      "name" : "random_solinasPrime",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 41,
+        "raw" : "CryptidStatus",
+        "name" : "CryptidStatus",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 41,
+        "raw" : "mpz_t result",
+        "name" : "result",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 41,
+          "raw" : "mpz_t",
+          "name" : "mpz_t",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 41,
+        "raw" : "const unsigned int numberOfBits",
+        "name" : "numberOfBits",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 41,
+          "raw" : "const unsigned int",
+          "name" : "const unsigned int",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 41,
+        "raw" : "const unsigned int attemptLimit",
+        "name" : "attemptLimit",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 41,
+          "raw" : "const unsigned int",
+          "name" : "const unsigned int",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Generates a cryptographically secure random Solinas prime having the specified bitlength.\r\r\nA Solinas prime is a prime of the form \\f$2^a \\pm 2^b \\pm 1\\f$.\r\n@param result out parameter for the generated value\r\n@param numberOfBits the bitlength of the result\r\n@param attemptLimit the maximum number of attempts before giving up the generation\r\n@return CRYPTID_SUCCESS if everything went right"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 50,
+      "raw" : "CryptidStatus random_affinePoint(AffinePoint* result, const EllipticCurve ellipticCurve, const unsigned int attemptLimit);",
+      "name" : "random_affinePoint",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 50,
+        "raw" : "CryptidStatus",
+        "name" : "CryptidStatus",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 50,
+        "raw" : "AffinePoint* result",
+        "name" : "* result",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 50,
+          "raw" : "AffinePoint",
+          "name" : "AffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 50,
+        "raw" : "const EllipticCurve ellipticCurve",
+        "name" : "ellipticCurve",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 50,
+          "raw" : "const EllipticCurve",
+          "name" : "const EllipticCurve",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 50,
+        "raw" : "const unsigned int attemptLimit",
+        "name" : "attemptLimit",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 50,
+          "raw" : "const unsigned int",
+          "name" : "const unsigned int",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Generates a cryptographically secure random AffinePoint on the specified EllipticCurve.\r@param result out parameter for the generated value\r\n@param ellipticCurve the elliptic curve to operate on\r\n@param attemptLimit the maximum number of attempts before giving up the generation\r\n@return CRYPTID_SUCCESS if everything went right"
+    } ],
+    "comment" : null
+  }, {
+    "path" : "C:\\Users\\Attila\\projects\\egyi\\cryptid\\cryptid-native\\.\\include\\util\\Status.h",
+    "filename" : "Status.h",
+    "elements" : [ {
+      "@class" : "underdocs.common.representation.EnumElement",
+      "startingLine" : 4,
+      "raw" : "typedef enum\r\n{\r\n    CRYPTID_SUCCESS,\r\n\r\n    /*\r\n     * Could not calculate the multiplicative inverse.\r\n     */\r\n    CRYPTID_HAS_NO_MUL_INV_ERROR,\r\n\r\n    /*\r\n     * Can not calculate the divisor of a line if a given point is infinity.\r\n     */\r\n    CRYPTID_DIVISOR_OF_LINE_INFINITY_ERROR,\r\n\r\n    /*\r\n     * Can not calculate the divisor of a tangent if a given point is infinity.\r\n     */\r\n    CRYPTID_DIVISOR_OF_TANGENT_INFINITY_ERROR,\r\n\r\n    /*\r\n     * The message must not be null.\r\n     */\r\n    CRYPTID_MESSAGE_NULL_ERROR,\r\n\r\n    /*\r\n     * The message's length must not be 0.\r\n     */\r\n    CRYPTID_MESSAGE_LENGTH_ERROR,\r\n\r\n    /*\r\n     * The identity must not be null.\r\n     */\r\n    CRYPTID_IDENTITY_NULL_ERROR,\r\n\r\n    /*\r\n     * The identity's length must not be 0.\r\n     */\r\n    CRYPTID_IDENTITY_LENGTH_ERROR,\r\n\r\n    /*\r\n     * The given public parameters are incorrect.\r\n     */\r\n    CRYPTID_ILLEGAL_PUBLIC_PARAMETERS_ERROR,\r\n\r\n    /*\r\n     * The given private key is incorrect.\r\n     */\r\n    CRYPTID_ILLEGAL_PRIVATE_KEY_ERROR,\r\n\r\n    /*\r\n     * The given ciphertext tuple is incorrect.\r\n     */\r\n    CRYPTID_ILLEGAL_CIPHERTEXT_TUPLE_ERROR,\r\n    \r\n    /*\r\n     * Failed to decrypt the ciphertext, the input arguments might be incorrect.\r\n     */\r\n    CRYPTID_DECRYPTION_FAILED_ERROR,\r\n\r\n    /*\r\n     * An algorithm has reached the maximum number of attempts while performing some calculation.\r\n     */\r\n    CRYPTID_ATTEMPT_LIMIT_REACHED_ERROR,\r\n\r\n    /*\r\n     * The pointer to the public parameters was null.\r\n     */\r\n    CRYPTID_PUBLIC_PARAMETERS_NULL_ERROR,\r\n\r\n    /*\r\n     * The pointer to the result was null.\r\n     */\r\n    CRYPTID_RESULT_POINTER_NULL_ERROR,\r\n\r\n    /*\r\n     * Could not generate random stuff.\r\n     */\r\n    CRYPTID_RANDOM_GENERATION_ERROR,\r\n\r\n    /*\r\n     * The digital signature might be incorrect.\r\n     */ \r\n    CRYPTID_VERIFICATION_FAILED_ERROR,\r\n\r\n    /*\r\n     * The given signature is incorrect.\r\n     */\r\n    CRYPTID_ILLEGAL_SIGNATURE_ERROR\r\n}",
+      "name" : "CryptidStatus",
+      "typedef" : true,
+      "specifiers" : [ ],
+      "members" : [ {
+        "@class" : "underdocs.common.representation.EnumConstant",
+        "startingLine" : 6,
+        "raw" : "CRYPTID_SUCCESS",
+        "name" : "CRYPTID_SUCCESS",
+        "value" : null,
+        "comment" : null
+      }, {
+        "@class" : "underdocs.common.representation.EnumConstant",
+        "startingLine" : 11,
+        "raw" : "CRYPTID_HAS_NO_MUL_INV_ERROR",
+        "name" : "CRYPTID_HAS_NO_MUL_INV_ERROR",
+        "value" : null,
+        "comment" : null
+      }, {
+        "@class" : "underdocs.common.representation.EnumConstant",
+        "startingLine" : 16,
+        "raw" : "CRYPTID_DIVISOR_OF_LINE_INFINITY_ERROR",
+        "name" : "CRYPTID_DIVISOR_OF_LINE_INFINITY_ERROR",
+        "value" : null,
+        "comment" : null
+      }, {
+        "@class" : "underdocs.common.representation.EnumConstant",
+        "startingLine" : 21,
+        "raw" : "CRYPTID_DIVISOR_OF_TANGENT_INFINITY_ERROR",
+        "name" : "CRYPTID_DIVISOR_OF_TANGENT_INFINITY_ERROR",
+        "value" : null,
+        "comment" : null
+      }, {
+        "@class" : "underdocs.common.representation.EnumConstant",
+        "startingLine" : 26,
+        "raw" : "CRYPTID_MESSAGE_NULL_ERROR",
+        "name" : "CRYPTID_MESSAGE_NULL_ERROR",
+        "value" : null,
+        "comment" : null
+      }, {
+        "@class" : "underdocs.common.representation.EnumConstant",
+        "startingLine" : 31,
+        "raw" : "CRYPTID_MESSAGE_LENGTH_ERROR",
+        "name" : "CRYPTID_MESSAGE_LENGTH_ERROR",
+        "value" : null,
+        "comment" : null
+      }, {
+        "@class" : "underdocs.common.representation.EnumConstant",
+        "startingLine" : 36,
+        "raw" : "CRYPTID_IDENTITY_NULL_ERROR",
+        "name" : "CRYPTID_IDENTITY_NULL_ERROR",
+        "value" : null,
+        "comment" : null
+      }, {
+        "@class" : "underdocs.common.representation.EnumConstant",
+        "startingLine" : 41,
+        "raw" : "CRYPTID_IDENTITY_LENGTH_ERROR",
+        "name" : "CRYPTID_IDENTITY_LENGTH_ERROR",
+        "value" : null,
+        "comment" : null
+      }, {
+        "@class" : "underdocs.common.representation.EnumConstant",
+        "startingLine" : 46,
+        "raw" : "CRYPTID_ILLEGAL_PUBLIC_PARAMETERS_ERROR",
+        "name" : "CRYPTID_ILLEGAL_PUBLIC_PARAMETERS_ERROR",
+        "value" : null,
+        "comment" : null
+      }, {
+        "@class" : "underdocs.common.representation.EnumConstant",
+        "startingLine" : 51,
+        "raw" : "CRYPTID_ILLEGAL_PRIVATE_KEY_ERROR",
+        "name" : "CRYPTID_ILLEGAL_PRIVATE_KEY_ERROR",
+        "value" : null,
+        "comment" : null
+      }, {
+        "@class" : "underdocs.common.representation.EnumConstant",
+        "startingLine" : 56,
+        "raw" : "CRYPTID_ILLEGAL_CIPHERTEXT_TUPLE_ERROR",
+        "name" : "CRYPTID_ILLEGAL_CIPHERTEXT_TUPLE_ERROR",
+        "value" : null,
+        "comment" : null
+      }, {
+        "@class" : "underdocs.common.representation.EnumConstant",
+        "startingLine" : 61,
+        "raw" : "CRYPTID_DECRYPTION_FAILED_ERROR",
+        "name" : "CRYPTID_DECRYPTION_FAILED_ERROR",
+        "value" : null,
+        "comment" : null
+      }, {
+        "@class" : "underdocs.common.representation.EnumConstant",
+        "startingLine" : 66,
+        "raw" : "CRYPTID_ATTEMPT_LIMIT_REACHED_ERROR",
+        "name" : "CRYPTID_ATTEMPT_LIMIT_REACHED_ERROR",
+        "value" : null,
+        "comment" : null
+      }, {
+        "@class" : "underdocs.common.representation.EnumConstant",
+        "startingLine" : 71,
+        "raw" : "CRYPTID_PUBLIC_PARAMETERS_NULL_ERROR",
+        "name" : "CRYPTID_PUBLIC_PARAMETERS_NULL_ERROR",
+        "value" : null,
+        "comment" : null
+      }, {
+        "@class" : "underdocs.common.representation.EnumConstant",
+        "startingLine" : 76,
+        "raw" : "CRYPTID_RESULT_POINTER_NULL_ERROR",
+        "name" : "CRYPTID_RESULT_POINTER_NULL_ERROR",
+        "value" : null,
+        "comment" : null
+      }, {
+        "@class" : "underdocs.common.representation.EnumConstant",
+        "startingLine" : 81,
+        "raw" : "CRYPTID_RANDOM_GENERATION_ERROR",
+        "name" : "CRYPTID_RANDOM_GENERATION_ERROR",
+        "value" : null,
+        "comment" : null
+      }, {
+        "@class" : "underdocs.common.representation.EnumConstant",
+        "startingLine" : 86,
+        "raw" : "CRYPTID_VERIFICATION_FAILED_ERROR",
+        "name" : "CRYPTID_VERIFICATION_FAILED_ERROR",
+        "value" : null,
+        "comment" : null
+      }, {
+        "@class" : "underdocs.common.representation.EnumConstant",
+        "startingLine" : 91,
+        "raw" : "CRYPTID_ILLEGAL_SIGNATURE_ERROR",
+        "name" : "CRYPTID_ILLEGAL_SIGNATURE_ERROR",
+        "value" : null,
+        "comment" : null
+      } ],
+      "comment" : null
+    } ],
+    "comment" : null
+  }, {
+    "path" : "C:\\Users\\Attila\\projects\\egyi\\cryptid\\cryptid-native\\.\\include\\util\\Utils.h",
+    "filename" : "Utils.h",
+    "elements" : [ {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 22,
+      "raw" : "void hashToRange(mpz_t result, const unsigned char *const s, const int sLength, const mpz_t p, const HashFunction hashFunction);",
+      "name" : "hashToRange",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 22,
+        "raw" : "void",
+        "name" : "void",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 22,
+        "raw" : "mpz_t result",
+        "name" : "result",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 22,
+          "raw" : "mpz_t",
+          "name" : "mpz_t",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 22,
+        "raw" : "const unsigned char *const s",
+        "name" : "*const s",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 22,
+          "raw" : "const unsigned char",
+          "name" : "const unsigned char",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 22,
+        "raw" : "const int sLength",
+        "name" : "sLength",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 22,
+          "raw" : "const int",
+          "name" : "const int",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 22,
+        "raw" : "const mpz_t p",
+        "name" : "p",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 22,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 22,
+        "raw" : "const HashFunction hashFunction",
+        "name" : "hashFunction",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 22,
+          "raw" : "const HashFunction",
+          "name" : "const HashFunction",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Cryptographically hashes a string to an integer in a range.\r@param result Out parameter storing an integer in the range \\f$0\\f$ to \\f$p - 1\\f$. Must be mpz_init'd and \r\n              mpz_clear'd by the caller.\r\n@param s the string to hash\r\n@param sLength the length of the string\r\n@param p the upper limit of the range\r\n@param hashFunction the hash function to use"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 36,
+      "raw" : "CryptidStatus hashToPoint(AffinePoint *result, const EllipticCurve ellipticCurve, const mpz_t p, const mpz_t q, \r\n                   const char *const id, const int idLength, const HashFunction hashFunction);",
+      "name" : "hashToPoint",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 36,
+        "raw" : "CryptidStatus",
+        "name" : "CryptidStatus",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 36,
+        "raw" : "AffinePoint *result",
+        "name" : "*result",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 36,
+          "raw" : "AffinePoint",
+          "name" : "AffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 36,
+        "raw" : "const EllipticCurve ellipticCurve",
+        "name" : "ellipticCurve",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 36,
+          "raw" : "const EllipticCurve",
+          "name" : "const EllipticCurve",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 36,
+        "raw" : "const mpz_t p",
+        "name" : "p",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 36,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 36,
+        "raw" : "const mpz_t q",
+        "name" : "q",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 36,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 37,
+        "raw" : "const char *const id",
+        "name" : "*const id",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 37,
+          "raw" : "const char",
+          "name" : "const char",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 37,
+        "raw" : "const int idLength",
+        "name" : "idLength",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 37,
+          "raw" : "const int",
+          "name" : "const int",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 37,
+        "raw" : "const HashFunction hashFunction",
+        "name" : "hashFunction",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 37,
+          "raw" : "const HashFunction",
+          "name" : "const HashFunction",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Cryptographically hashes a string to a point on the specified elliptic curve.\r@param result Out parameter storing a point of order \\f$q\\f$ in \\f$E(F_p)\\f$. On CRYPTID_SUCCESS, it must be\r\n              destroyed by the caller.\r\n@param ellipticCurve the curve to operate on\r\n@param p a prime\r\n@param q a prime\r\n@param id a string\r\n@param idLength the length of the id string\r\n@param hashFunction the hash function to use\r\n@return CRYPTID_SUCCESS if everything went right"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 47,
+      "raw" : "unsigned char* canonical(int *const resultLength, const mpz_t p, const Complex v, const int order);",
+      "name" : "canonical",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 47,
+        "raw" : "unsigned char",
+        "name" : "unsigned char",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 47,
+        "raw" : "int *const resultLength",
+        "name" : "*const resultLength",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 47,
+          "raw" : "int",
+          "name" : "int",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 47,
+        "raw" : "const mpz_t p",
+        "name" : "p",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 47,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 47,
+        "raw" : "const Complex v",
+        "name" : "v",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 47,
+          "raw" : "const Complex",
+          "name" : "const Complex",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 47,
+        "raw" : "const int order",
+        "name" : "order",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 47,
+          "raw" : "const int",
+          "name" : "const int",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Canonically represents elements of an extension field \\f$F_p^2.\\f$\r@param resultLength out parameter storing the length of the resulting string\r\n@param p an integer congruent to \\f$3\\f$ modulo \\f$4\\f$\r\n@param v an element of \\f$F_p^2\\f$\r\n@param order an ordering parameter that can be {@code 0} or {@code 1}\r\n@return a string of size \\f$2 \\cdot \\mathrm{Ceiling}(\\frac{\\log(p)}{8})\\f$ octets"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 57,
+      "raw" : "unsigned char* hashBytes(const int b, const unsigned char *const p, const int pLength, const HashFunction hashFunction);",
+      "name" : "hashBytes",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 57,
+        "raw" : "unsigned char",
+        "name" : "unsigned char",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 57,
+        "raw" : "const int b",
+        "name" : "b",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 57,
+          "raw" : "const int",
+          "name" : "const int",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 57,
+        "raw" : "const unsigned char *const p",
+        "name" : "*const p",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 57,
+          "raw" : "const unsigned char",
+          "name" : "const unsigned char",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 57,
+        "raw" : "const int pLength",
+        "name" : "pLength",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 57,
+          "raw" : "const int",
+          "name" : "const int",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 57,
+        "raw" : "const HashFunction hashFunction",
+        "name" : "hashFunction",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 57,
+          "raw" : "const HashFunction",
+          "name" : "const HashFunction",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Keyed cryptographic pseudo-random bytes generator.\r@param b The length of the result. Must be less than or equal to the number of bytes in the output of the hash function.\r\n@param p a string that will key the generator\r\n@param pLength the length of the string\r\n@param hashFunction the hashFunction to be used\r\n@return a {@code b}-octet pseudo-random string"
+    } ],
+    "comment" : null
+  }, {
+    "path" : "C:\\Users\\Attila\\projects\\egyi\\cryptid\\cryptid-native\\.\\include\\util\\Validation.h",
+    "filename" : "Validation.h",
+    "elements" : [ {
+      "@class" : "underdocs.common.representation.EnumElement",
+      "startingLine" : 17,
+      "raw" : "typedef enum\r\n{\r\n    /*\r\n     * Flipped values match boolean semantics better.\r\n     */ \r\n    CRYPTID_VALIDATION_SUCCESS = 1,\r\n    CRYPTID_VALIDATION_FAILURE = 0\r\n}",
+      "name" : "CryptidValidationResult",
+      "typedef" : true,
+      "specifiers" : [ ],
+      "members" : [ {
+        "@class" : "underdocs.common.representation.EnumConstant",
+        "startingLine" : 22,
+        "raw" : "CRYPTID_VALIDATION_SUCCESS = 1",
+        "name" : "CRYPTID_VALIDATION_SUCCESS",
+        "value" : "1",
+        "comment" : null
+      }, {
+        "@class" : "underdocs.common.representation.EnumConstant",
+        "startingLine" : 23,
+        "raw" : "CRYPTID_VALIDATION_FAILURE = 0",
+        "name" : "CRYPTID_VALIDATION_FAILURE",
+        "value" : "0",
+        "comment" : null
+      } ],
+      "comment" : "Enumeration of the possible results of a validation process."
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 32,
+      "raw" : "CryptidValidationResult validation_isProbablePrime(const mpz_t p);",
+      "name" : "validation_isProbablePrime",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 32,
+        "raw" : "CryptidValidationResult",
+        "name" : "CryptidValidationResult",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 32,
+        "raw" : "const mpz_t p",
+        "name" : "p",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 32,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Check whether \\f$p\\f$ is a probable prime.\r@param p the number to check\r\n@result CRYPTID_VALIDATION_SUCCESS if \\f$p\\f$ is a probable prime"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 39,
+      "raw" : "CryptidValidationResult validation_isHashFunctionValid(const HashFunction hashFunction);",
+      "name" : "validation_isHashFunctionValid",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 39,
+        "raw" : "CryptidValidationResult",
+        "name" : "CryptidValidationResult",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 39,
+        "raw" : "const HashFunction hashFunction",
+        "name" : "hashFunction",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 39,
+          "raw" : "const HashFunction",
+          "name" : "const HashFunction",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Validates that the passed HashFunction struct is correct.\r@param hashFunction the struct to check\r\n@result CRYPTID_VALIDATION_SUCCESS if the struct is valid"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 47,
+      "raw" : "CryptidValidationResult validation_isAffinePointValid(const AffinePoint affinePoint, const mpz_t order);",
+      "name" : "validation_isAffinePointValid",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 47,
+        "raw" : "CryptidValidationResult",
+        "name" : "CryptidValidationResult",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 47,
+        "raw" : "const AffinePoint affinePoint",
+        "name" : "affinePoint",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 47,
+          "raw" : "const AffinePoint",
+          "name" : "const AffinePoint",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 47,
+        "raw" : "const mpz_t order",
+        "name" : "order",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 47,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Validates that the affine point is between 0 and order-1\r@param affinePoint an AffinePoint\r\n@param order the field order of the elliptic curve field, we are operating over\r\n@return CRYPTID_VALIDATION_SUCCESS if the point is valid, CRYPTID_VALIDATION_FAILURE otherwise"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 54,
+      "raw" : "CryptidValidationResult validation_isTypeOneEllipticCurve(const EllipticCurve ellipticCurve);",
+      "name" : "validation_isTypeOneEllipticCurve",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 54,
+        "raw" : "CryptidValidationResult",
+        "name" : "CryptidValidationResult",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 54,
+        "raw" : "const EllipticCurve ellipticCurve",
+        "name" : "ellipticCurve",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 54,
+          "raw" : "const EllipticCurve",
+          "name" : "const EllipticCurve",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Validates that the specified EllipticCurve instance is a Type-1 elliptic curve.\r@param ellipticCurve the struct to check\r\n@return CRYPTID_VALIDATION_SUCCESS if the struct is valid"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 61,
+      "raw" : "CryptidValidationResult validation_isPublicParametersValid(const PublicParameters publicParameters);",
+      "name" : "validation_isPublicParametersValid",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 61,
+        "raw" : "CryptidValidationResult",
+        "name" : "CryptidValidationResult",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 61,
+        "raw" : "const PublicParameters publicParameters",
+        "name" : "publicParameters",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 61,
+          "raw" : "const PublicParameters",
+          "name" : "const PublicParameters",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Validates that the specified public parameters are correct.\r@param publicParameters the parameters to check\r\n@return CRYPTID_VALIDATION_SUCCESS if the parameters are valid"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 69,
+      "raw" : "CryptidValidationResult validation_isCipherTextTupleValid(const CipherTextTuple cipherTextTuple, const mpz_t order);",
+      "name" : "validation_isCipherTextTupleValid",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 69,
+        "raw" : "CryptidValidationResult",
+        "name" : "CryptidValidationResult",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 69,
+        "raw" : "const CipherTextTuple cipherTextTuple",
+        "name" : "cipherTextTuple",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 69,
+          "raw" : "const CipherTextTuple",
+          "name" : "const CipherTextTuple",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 69,
+        "raw" : "const mpz_t order",
+        "name" : "order",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 69,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Validates that the specified ciphertext is correct.\r@param cipherTextTuple the ciphertext to check\r\n@param order the field order of the elliptic curve field, we operating over\r\n@return CRYPTID_VALIDATION_SUCCESS if the ciphertext is valid"
+    }, {
+      "@class" : "underdocs.common.representation.Function",
+      "startingLine" : 77,
+      "raw" : "CryptidValidationResult validation_isSignatureValid(const Signature signature, const mpz_t order);",
+      "name" : "validation_isSignatureValid",
+      "specifiers" : [ ],
+      "returnType" : {
+        "@class" : "underdocs.common.representation.ReferredType",
+        "startingLine" : 77,
+        "raw" : "CryptidValidationResult",
+        "name" : "CryptidValidationResult",
+        "specifiers" : [ ]
+      },
+      "parameters" : [ {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 77,
+        "raw" : "const Signature signature",
+        "name" : "signature",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 77,
+          "raw" : "const Signature",
+          "name" : "const Signature",
+          "specifiers" : [ ]
+        }
+      }, {
+        "@class" : "underdocs.common.representation.FunctionParameter",
+        "startingLine" : 77,
+        "raw" : "const mpz_t order",
+        "name" : "order",
+        "type" : {
+          "@class" : "underdocs.common.representation.ReferredType",
+          "startingLine" : 77,
+          "raw" : "const mpz_t",
+          "name" : "const mpz_t",
+          "specifiers" : [ ]
+        }
+      } ],
+      "comment" : "Validates that the specified signature is correct.\r@param signature the signature to check\r\n@param order the field order of the elliptic curve field, we operating over\r\n@return CRYPTID_VALIDATION_SUCCESS if the signature is valid"
+    } ],
+    "comment" : null
+  } ]
+}
