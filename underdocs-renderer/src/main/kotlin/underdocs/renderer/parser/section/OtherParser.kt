@@ -4,7 +4,7 @@ import com.vladsch.flexmark.ast.Heading
 import com.vladsch.flexmark.util.ast.Document
 import com.vladsch.flexmark.util.ast.Node
 
-class OtherParser(private val knownSectionNames: Set<String>): underdocs.renderer.parser.section.SectionParser<Map<String, String>> {
+class OtherParser(private val knownSectionNames: Set<String>) : underdocs.renderer.parser.section.SectionParser<Map<String, String>> {
     override fun tryParse(document: Document): Map<String, String>? {
         val result = mutableMapOf<String, String>()
 

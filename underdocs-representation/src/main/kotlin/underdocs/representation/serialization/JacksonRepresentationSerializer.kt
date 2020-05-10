@@ -10,7 +10,7 @@ import underdocs.representation.Member
 import underdocs.representation.Type
 import java.nio.file.Path
 
-class JacksonRepresentationSerializer: RepresentationSerializer {
+class JacksonRepresentationSerializer : RepresentationSerializer {
     private val mapper: ObjectMapper
 
     init {

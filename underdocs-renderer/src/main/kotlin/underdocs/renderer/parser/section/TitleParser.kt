@@ -4,7 +4,7 @@ import com.vladsch.flexmark.ast.Heading
 import com.vladsch.flexmark.util.ast.Document
 import com.vladsch.flexmark.util.ast.Node
 
-class TitleParser: underdocs.renderer.parser.section.AttemptingSectionParser<String>() {
+class TitleParser : underdocs.renderer.parser.section.AttemptingSectionParser<String>() {
     override fun canParse(document: Document) =
             isTitleHeading(document.firstChild) || isTitleHeading(document.firstChild?.next)
 

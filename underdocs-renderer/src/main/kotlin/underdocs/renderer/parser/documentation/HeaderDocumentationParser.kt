@@ -5,13 +5,13 @@ import underdocs.renderer.parser.section.SeeAlsoParser
 import underdocs.renderer.parser.section.TextSectionParser
 import underdocs.renderer.representation.documentation.HeaderDocumentation
 
-class HeaderDocumentationParser: underdocs.renderer.parser.documentation.DocumentationParser<HeaderDocumentation> {
+class HeaderDocumentationParser : underdocs.renderer.parser.documentation.DocumentationParser<HeaderDocumentation> {
     private val excerptParser = underdocs.renderer.parser.section.ExcerptParser()
     private val descriptionParser = TextSectionParser("Description")
     private val attributesParser = underdocs.renderer.parser.section.AttributesParser()
     private val examplesParser = underdocs.renderer.parser.section.ExamplesParser()
     private val seeAlsoParser = SeeAlsoParser()
-    private val otherParser = underdocs.renderer.parser.section.OtherParser(setOf("Excerpt", "Description", "Attributes", "Examples", "See Also", "Parameters"))
+    private val otherParser = underdocs.renderer.parser.section.OtherParser(setOf("Excerpt", "Description", "Attributes", "Examples", "See Also", "Parameters", "Groups"))
     private val groupsParser = underdocs.renderer.parser.section.GroupsParser()
 
     override fun parse(document: Document) =

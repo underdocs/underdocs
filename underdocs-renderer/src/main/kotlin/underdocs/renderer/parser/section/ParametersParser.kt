@@ -4,7 +4,7 @@ import com.vladsch.flexmark.ast.BulletList
 import com.vladsch.flexmark.ast.BulletListItem
 import com.vladsch.flexmark.util.ast.Document
 
-class ParametersParser: underdocs.renderer.parser.section.AttemptingSectionParser<Map<String, String>>() {
+class ParametersParser : underdocs.renderer.parser.section.AttemptingSectionParser<Map<String, String>>() {
     override fun canParse(document: Document) =
             document.children.any { underdocs.renderer.parser.section.isSectionHeadingWithTitle(it, "Parameters") }
 

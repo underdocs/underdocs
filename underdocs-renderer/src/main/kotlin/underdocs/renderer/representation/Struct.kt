@@ -14,7 +14,7 @@ data class Struct(
         val specifiers: List<String>,
         val members: List<Member>,
         val documentation: StructDocumentation?
-): TopLevelElement {
+) : TopLevelElement {
     override fun getStartingLine() = startingLine
 
     override fun getRawRepresentation() = raw
@@ -22,4 +22,8 @@ data class Struct(
     override fun getParent() = parent
 
     override fun accept(visitor: Visitor) = visitor.accept(this)
+
+    override fun setParent(header: Header) {
+        this.parent = header
+    }
 }

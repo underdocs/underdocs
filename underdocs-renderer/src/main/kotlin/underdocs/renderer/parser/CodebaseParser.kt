@@ -1,7 +1,7 @@
 package underdocs.renderer.parser
 
-import underdocs.representation.Header
 import underdocs.renderer.representation.Module
+import underdocs.representation.Header
 
 interface CodebaseParser {
     companion object {

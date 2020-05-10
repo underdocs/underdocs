@@ -20,7 +20,7 @@ import underdocs.representation.UnionType
 import underdocs.representation.Variable
 import underdocs.representation.VariableMember
 
-open class BaseElementVisitor: ElementVisitor {
+open class BaseElementVisitor : ElementVisitor {
     override fun visit(element: EnumConstant) = Unit
 
     override fun visit(element: EnumElement) = Unit

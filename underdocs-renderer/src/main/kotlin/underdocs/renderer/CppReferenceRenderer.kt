@@ -5,7 +5,7 @@ import underdocs.renderer.output.html.CppReferenceHtmlRenderer
 import underdocs.renderer.parser.CodebaseParser
 import underdocs.representation.Codebase
 
-class CppReferenceRenderer(private val configuration: RendererConfiguration): CodebaseRenderer {
+class CppReferenceRenderer(private val configuration: RendererConfiguration) : CodebaseRenderer {
     override fun render(codebase: Codebase) {
         val codebaseParser = CodebaseParser.create()
 

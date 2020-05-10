@@ -6,7 +6,7 @@ import underdocs.parser.comment.block.SlashDoubleStarCommentGroupProcessor
 import underdocs.parser.comment.block.SlashStarCommentGroupProcessor
 import underdocs.parser.comment.singleline.DoubleSlashCommentGroupProcessor
 import underdocs.parser.comment.singleline.TripleSlashCommentGroupProcessor
-import java.util.LinkedList
+import java.util.*
 
 class EclipseCommentProcessor(private val documentationCommentStyles: Set<CommentStyle>,
                               private val mergeTrailingComments: Boolean) {

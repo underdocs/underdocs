@@ -8,6 +8,6 @@ data class HeaderDocumentation(
         val seeAlso: List<String>,
         private val attributes: Map<String, String>,
         val groups: Map<String, String>
-): Documentation {
+) : Documentation {
     override fun getAttributes() = attributes
 }

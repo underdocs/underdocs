@@ -3,9 +3,8 @@ package underdocs.parser.comment.singleline
 import org.eclipse.cdt.core.dom.ast.IASTComment
 import underdocs.configuration.domain.CommentStyle
 import underdocs.parser.comment.CommentGroupProcessor
-import java.lang.StringBuilder
 
-class DoubleSlashCommentGroupProcessor: CommentGroupProcessor {
+class DoubleSlashCommentGroupProcessor : CommentGroupProcessor {
     private val PREFIX_REGEX = Regex("^\\s*//[^/]")
 
     override fun processedCommentStyle() = CommentStyle.SINGLE_LINE_DOUBLE_SLASH

@@ -5,7 +5,7 @@ import com.vladsch.flexmark.ext.yaml.front.matter.YamlFrontMatterNode
 import com.vladsch.flexmark.ext.yaml.front.matter.YamlFrontMatterValue
 import com.vladsch.flexmark.util.ast.Document
 
-class AttributesParser: underdocs.renderer.parser.section.AttemptingSectionParser<Map<String, String>>() {
+class AttributesParser : underdocs.renderer.parser.section.AttemptingSectionParser<Map<String, String>>() {
     override fun canParse(document: Document) =
             document.firstChild is YamlFrontMatterBlock
 

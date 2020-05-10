@@ -5,7 +5,7 @@ import underdocs.renderer.parser.section.SeeAlsoParser
 import underdocs.renderer.parser.section.TextSectionParser
 import underdocs.renderer.representation.documentation.FunctionDocumentation
 
-class FunctionDocumentationParser: underdocs.renderer.parser.documentation.DocumentationParser<FunctionDocumentation> {
+class FunctionDocumentationParser : underdocs.renderer.parser.documentation.DocumentationParser<FunctionDocumentation> {
     private val excerptParser = underdocs.renderer.parser.section.ExcerptParser()
     private val descriptionParser = TextSectionParser("Description")
     private val attributesParser = underdocs.renderer.parser.section.AttributesParser()

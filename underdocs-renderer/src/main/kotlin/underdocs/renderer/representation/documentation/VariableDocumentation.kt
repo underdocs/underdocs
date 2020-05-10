@@ -7,6 +7,6 @@ data class VariableDocumentation(
         val examples: List<Example>,
         val seeAlso: List<String>,
         private val attributes: Map<String, String>
-): Documentation {
+) : Documentation {
     override fun getAttributes() = attributes
 }

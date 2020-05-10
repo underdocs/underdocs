@@ -5,8 +5,8 @@ import com.github.ajalt.clikt.core.subcommands
 import underdocs.cli.commands.parse.ParseCommand
 import underdocs.cli.commands.render.RenderCommand
 
-class Underdocs: CliktCommand(
-    help = "Underdocs"
+class Underdocs : CliktCommand(
+        help = "Underdocs"
 ) {
     override fun run() = Unit
 }

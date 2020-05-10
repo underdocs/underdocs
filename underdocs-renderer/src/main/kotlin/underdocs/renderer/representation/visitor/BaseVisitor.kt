@@ -22,7 +22,7 @@ import underdocs.renderer.representation.UnionType
 import underdocs.renderer.representation.Variable
 import underdocs.renderer.representation.VariableMember
 
-open class BaseVisitor: Visitor {
+open class BaseVisitor : Visitor {
     override fun accept(enumConstant: EnumConstant) = Unit
 
     override fun accept(enumElement: EnumElement) = Unit

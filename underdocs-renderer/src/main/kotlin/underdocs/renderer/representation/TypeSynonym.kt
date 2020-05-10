@@ -20,4 +20,8 @@ data class TypeSynonym(
     override fun getParent() = parent
 
     override fun accept(visitor: Visitor) = visitor.accept(this)
+
+    override fun setParent(header: Header) {
+        this.parent = header
+    }
 }

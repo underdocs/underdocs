@@ -2,7 +2,7 @@ package underdocs.renderer.parser.section
 
 import com.vladsch.flexmark.util.ast.Document
 
-class ExcerptParser: underdocs.renderer.parser.section.AttemptingSectionParser<String>() {
+class ExcerptParser : underdocs.renderer.parser.section.AttemptingSectionParser<String>() {
     override fun canParse(document: Document) =
             hasExcerptSection(document) || hasDescriptionSection(document)
 
@@ -27,7 +27,7 @@ class ExcerptParser: underdocs.renderer.parser.section.AttemptingSectionParser<S
 
         val firstSentence = text.substringBefore(". ");
 
-        return "$firstSentence."
+        return "$firstSentence"
     }
 
     private fun textInSection(document: Document, sectionTitle: String): String {

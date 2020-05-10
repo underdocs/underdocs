@@ -26,7 +26,7 @@ import underdocs.representation.VariableMember
 import underdocs.representation.visitor.BaseElementVisitor
 import underdocs.representation.Header as CommonHeader
 
-class DefaultHeaderParser(private val mdParser: Parser): underdocs.renderer.parser.header.HeaderParser {
+class DefaultHeaderParser(private val mdParser: Parser) : underdocs.renderer.parser.header.HeaderParser {
     private val headerDocumentationParser = underdocs.renderer.parser.documentation.HeaderDocumentationParser()
 
     override fun parse(header: CommonHeader): Header {
@@ -36,7 +36,7 @@ class DefaultHeaderParser(private val mdParser: Parser): underdocs.renderer.pars
 
         val documentation = header.comment
                 ?.let { mdParser.parse(it) }
-                ?.let { headerDocumentationParser.parse(it )}
+                ?.let { headerDocumentationParser.parse(it) }
 
         val parsedHeader = Header(
                 header.path,
@@ -46,10 +46,14 @@ class DefaultHeaderParser(private val mdParser: Parser): underdocs.renderer.pars
                 documentation
         )
 
+        elements.forEach { (_, elementList) ->
+            elementList.forEach { it.setParent(parsedHeader) }
+        }
+
         return parsedHeader
     }
 
-    private class ElementVisitor(private val header: CommonHeader, private val mdParser: Parser): BaseElementVisitor() {
+    private class ElementVisitor(private val header: CommonHeader, private val mdParser: Parser) : BaseElementVisitor() {
         companion object {
             // TODO: Move this to somewhere else
             private const val UNKNOWN_GROUP = "UNKNOWN";
@@ -76,7 +80,8 @@ class DefaultHeaderParser(private val mdParser: Parser): underdocs.renderer.pars
         }
 
         private fun recordElement(group: String?, element: TopLevelElement) {
-            val actualGroup = group ?: underdocs.renderer.parser.header.DefaultHeaderParser.ElementVisitor.Companion.UNKNOWN_GROUP
+            val actualGroup = group
+                    ?: underdocs.renderer.parser.header.DefaultHeaderParser.ElementVisitor.Companion.UNKNOWN_GROUP
 
             if (actualGroup !in elements) {
                 elements[actualGroup] = mutableListOf()
@@ -85,7 +90,7 @@ class DefaultHeaderParser(private val mdParser: Parser): underdocs.renderer.pars
             elements[actualGroup]?.add(element)
         }
 
-        private fun <T: Documentation> parseGroupedDocumentation(comment: String?, parser: underdocs.renderer.parser.documentation.DocumentationParser<T>): Pair<String?, T?> {
+        private fun <T : Documentation> parseGroupedDocumentation(comment: String?, parser: underdocs.renderer.parser.documentation.DocumentationParser<T>): Pair<String?, T?> {
             val documentation = comment
                     ?.let { mdParser.parse(it) }
                     ?.let { parser.parse(it) }
@@ -95,10 +100,10 @@ class DefaultHeaderParser(private val mdParser: Parser): underdocs.renderer.pars
             return Pair(group, documentation)
         }
 
-        private fun <T: Documentation> parseDocumentation(comment: String?, parser: underdocs.renderer.parser.documentation.DocumentationParser<T>) =
+        private fun <T : Documentation> parseDocumentation(comment: String?, parser: underdocs.renderer.parser.documentation.DocumentationParser<T>) =
                 comment
-                    ?.let { mdParser.parse(it) }
-                    ?.let { parser.parse(it) }
+                        ?.let { mdParser.parse(it) }
+                        ?.let { parser.parse(it) }
 
         override fun visit(element: EnumElement) {
             val (group, documentation) = parseGroupedDocumentation(element.comment, enumElementDocumentationParser)

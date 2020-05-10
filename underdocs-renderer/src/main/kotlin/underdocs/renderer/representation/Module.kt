@@ -11,6 +11,6 @@ data class Module(
 
         val headers: List<Header>,
         val children: Map<String, Module>
-): Visitable {
+) : Visitable {
     override fun accept(visitor: Visitor) = visitor.accept(this)
 }

@@ -11,6 +11,6 @@ data class FunctionDocumentation(
         val parameters: Map<String, String>,
         val errorHandling: String?,
         val notes: String?
-): Documentation {
+) : Documentation {
     override fun getAttributes() = attributes
 }

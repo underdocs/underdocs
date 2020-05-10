@@ -15,7 +15,7 @@ data class EnumElement(
         val members: List<EnumConstant>,
 
         val documentation: EnumElementDocumentation?
-) : TopLevelElement{
+) : TopLevelElement {
     override fun getStartingLine() = startingLine
 
     override fun getRawRepresentation() = raw
@@ -23,4 +23,8 @@ data class EnumElement(
     override fun getParent() = parent
 
     override fun accept(visitor: Visitor) = visitor.accept(this)
+
+    override fun setParent(header: Header) {
+        this.parent = header
+    }
 }

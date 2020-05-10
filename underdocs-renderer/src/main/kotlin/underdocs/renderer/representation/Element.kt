@@ -1,6 +1,6 @@
 package underdocs.renderer.representation
 
-interface Element: Visitable {
+interface Element : Visitable {
     fun getStartingLine(): Int
 
     fun getRawRepresentation(): String

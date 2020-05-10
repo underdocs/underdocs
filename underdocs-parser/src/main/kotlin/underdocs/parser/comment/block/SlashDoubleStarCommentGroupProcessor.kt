@@ -3,9 +3,8 @@ package underdocs.parser.comment.block
 import org.eclipse.cdt.core.dom.ast.IASTComment
 import underdocs.configuration.domain.CommentStyle
 import underdocs.parser.comment.CommentGroupProcessor
-import java.lang.StringBuilder
 
-class SlashDoubleStarCommentGroupProcessor: CommentGroupProcessor {
+class SlashDoubleStarCommentGroupProcessor : CommentGroupProcessor {
     private val START_REGEX = Regex("^\\s*/\\*\\*\\s*$")
     private val END_REGEX = Regex("^\\s*\\*/\\s*$")
 

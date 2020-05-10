@@ -8,9 +8,9 @@ import com.vladsch.flexmark.util.ast.Document
 import com.vladsch.flexmark.util.ast.Node
 import underdocs.renderer.representation.documentation.Example
 
-class ExamplesParser: underdocs.renderer.parser.section.AttemptingSectionParser<List<Example>>() {
+class ExamplesParser : underdocs.renderer.parser.section.AttemptingSectionParser<List<Example>>() {
     override fun canParse(document: Document) =
-            document.children.any{ underdocs.renderer.parser.section.isSectionHeadingWithTitle(it, "Examples") }
+            document.children.any { underdocs.renderer.parser.section.isSectionHeadingWithTitle(it, "Examples") }
 
     override fun parse(document: Document): List<Example> {
         val result = mutableListOf<Example>()

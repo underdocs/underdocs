@@ -9,7 +9,7 @@ import underdocs.renderer.parser.section.SeeAlsoParser
 import underdocs.renderer.parser.section.TextSectionParser
 import underdocs.renderer.representation.documentation.EnumElementDocumentation
 
-class EnumElementDocumentationParser: DocumentationParser<EnumElementDocumentation> {
+class EnumElementDocumentationParser : DocumentationParser<EnumElementDocumentation> {
     private val excerptParser = ExcerptParser()
     private val descriptionParser = TextSectionParser("Description")
     private val attributesParser = AttributesParser()

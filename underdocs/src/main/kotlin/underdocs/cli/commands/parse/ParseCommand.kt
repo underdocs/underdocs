@@ -9,22 +9,25 @@ import com.github.ajalt.clikt.parameters.types.path
 import underdocs.collector.FileCollector
 import underdocs.configuration.CollectorConfiguration
 import underdocs.configuration.ParserConfiguration
-import underdocs.configuration.domain.CommentStyle.*
+import underdocs.configuration.domain.CommentStyle.BLOCK_SLASH_DOUBLE_STAR
+import underdocs.configuration.domain.CommentStyle.BLOCK_SLASH_STAR
+import underdocs.configuration.domain.CommentStyle.SINGLE_LINE_DOUBLE_SLASH
+import underdocs.configuration.domain.CommentStyle.SINGLE_LINE_TRIPLE_SLASH
 import underdocs.parser.HeaderParser
 import underdocs.representation.Codebase
 import underdocs.representation.serialization.RepresentationSerializer
 import java.nio.file.Paths
 import kotlin.streams.toList
 
-class ParseCommand: CliktCommand(
+class ParseCommand : CliktCommand(
         name = "parse",
         help = "Parse"
 ) {
     val includePath by option("-I", "--includePath")
             .path(
-                exists = true,
-                folderOkay = true,
-                readable = true
+                    exists = true,
+                    folderOkay = true,
+                    readable = true
             )
             .required()
 

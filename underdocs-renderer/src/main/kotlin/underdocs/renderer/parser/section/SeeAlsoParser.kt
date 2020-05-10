@@ -4,7 +4,7 @@ import com.vladsch.flexmark.ast.BulletList
 import com.vladsch.flexmark.ast.BulletListItem
 import com.vladsch.flexmark.util.ast.Document
 
-class SeeAlsoParser: underdocs.renderer.parser.section.AttemptingSectionParser<List<String>>() {
+class SeeAlsoParser : underdocs.renderer.parser.section.AttemptingSectionParser<List<String>>() {
     override fun canParse(document: Document) =
             document.children.any { isSectionHeadingWithTitle(it, "See Also") }
 

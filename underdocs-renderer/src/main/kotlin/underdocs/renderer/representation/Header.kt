@@ -12,6 +12,6 @@ data class Header(
         val elements: Map<String, List<TopLevelElement>>,
 
         val documentation: HeaderDocumentation?
-): Visitable {
+) : Visitable {
     override fun accept(visitor: Visitor) = visitor.accept(this)
 }

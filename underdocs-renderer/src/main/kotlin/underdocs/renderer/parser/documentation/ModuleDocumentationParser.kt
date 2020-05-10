@@ -6,7 +6,7 @@ import underdocs.renderer.parser.section.TextSectionParser
 import underdocs.renderer.parser.section.TitleParser
 import underdocs.renderer.representation.documentation.ModuleDocumentation
 
-class ModuleDocumentationParser: underdocs.renderer.parser.documentation.DocumentationParser<ModuleDocumentation> {
+class ModuleDocumentationParser : underdocs.renderer.parser.documentation.DocumentationParser<ModuleDocumentation> {
     private val titleParser = TitleParser()
     private val excerptParser = underdocs.renderer.parser.section.ExcerptParser()
     private val descriptionParser = TextSectionParser("Description")

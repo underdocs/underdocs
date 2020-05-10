@@ -8,7 +8,7 @@ import underdocs.configuration.RendererConfiguration
 import underdocs.renderer.CodebaseRenderer
 import underdocs.representation.serialization.RepresentationSerializer
 
-class RenderCommand: CliktCommand(
+class RenderCommand : CliktCommand(
         name = "render",
         help = "Render"
 ) {
@@ -29,7 +29,10 @@ class RenderCommand: CliktCommand(
 
     override fun run() {
         val rendererConfiguration = RendererConfiguration(
-                outputDirectory = outputDirectory.toString()
+                outputDirectory = outputDirectory.toString(),
+                remoteRepositoryLineLinkTemplate = "https://github.com/cryptid-org/cryptid-native/tree/master/include/\${path}#L\${line}",
+                remoteRepositoryTagLinkTemplate = "https://github.com/cryptid-org/cryptid-native/releases/tag/\${tag}",
+                staticResourceDirectory = null
         )
 
         val codebaseSerializer = RepresentationSerializer.create()

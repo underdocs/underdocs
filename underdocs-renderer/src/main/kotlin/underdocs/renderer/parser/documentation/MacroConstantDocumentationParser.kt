@@ -5,7 +5,7 @@ import underdocs.renderer.parser.section.SeeAlsoParser
 import underdocs.renderer.parser.section.TextSectionParser
 import underdocs.renderer.representation.documentation.MacroConstantDocumentation
 
-class MacroConstantDocumentationParser: underdocs.renderer.parser.documentation.DocumentationParser<MacroConstantDocumentation> {
+class MacroConstantDocumentationParser : underdocs.renderer.parser.documentation.DocumentationParser<MacroConstantDocumentation> {
     private val excerptParser = underdocs.renderer.parser.section.ExcerptParser()
     private val descriptionParser = TextSectionParser("Description")
     private val attributesParser = underdocs.renderer.parser.section.AttributesParser()

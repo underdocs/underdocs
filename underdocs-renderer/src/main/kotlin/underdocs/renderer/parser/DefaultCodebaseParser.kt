@@ -1,40 +1,37 @@
 package underdocs.renderer.parser
 
-import underdocs.representation.Header
 import underdocs.renderer.parser.tree.ModuleNode
 import underdocs.renderer.representation.Module
-import java.nio.file.Paths
+import underdocs.representation.Header
+import java.io.File
 
-class DefaultCodebaseParser: underdocs.renderer.parser.CodebaseParser {
+class DefaultCodebaseParser : underdocs.renderer.parser.CodebaseParser {
     private val moduleParser = underdocs.renderer.parser.module.ModuleParser.create()
 
     override fun parseHeaders(headers: List<Header>): Module {
         val minimumSegmentCount = headers.stream()
                 .map { it.path }
-                .map { Paths.get(it) }
-                .mapToInt { it.nameCount }
+                .mapToInt { it.count { it == File.separatorChar } }
                 .min()
                 .orElse(0)
 
-        val rootModuleNode = groupHeadersIntoModuleNodes(headers, minimumSegmentCount - 1)
+        val rootModuleNode = groupHeadersIntoModuleNodes(headers, minimumSegmentCount)
 
         return moduleParser.parse(rootModuleNode)
     }
 
-    private fun groupHeadersIntoModuleNodes(headers: List<Header>, segmentIndex: Int): ModuleNode  {
+    private fun groupHeadersIntoModuleNodes(headers: List<Header>, segmentIndex: Int): ModuleNode {
         val groups = HashMap<String, MutableList<Header>>()
         val moduleHeaders = mutableListOf<Header>()
         val modulePath = headers.firstOrNull()
-                ?.let { Paths.get(it.path).subpath(0, segmentIndex).toString() }
+                ?.let { prefixPath(it.path, segmentIndex) }
                 ?: ""
 
         for (header in headers) {
-            val path = Paths.get(header.path)
-
-            if (path.nameCount == segmentIndex + 1) {
+            if (header.path.count { it == File.separatorChar } == segmentIndex) {
                 moduleHeaders.add(header)
             } else {
-                val segment = path.getName(segmentIndex).toString()
+                val segment = segmentAt(header.path, segmentIndex)
 
                 if (segment !in groups) {
                     groups[segment] = mutableListOf();
@@ -50,4 +47,10 @@ class DefaultCodebaseParser: underdocs.renderer.parser.CodebaseParser {
                 moduleHeaders
         )
     }
+
+    private fun prefixPath(path: String, until: Int) = path.split(File.separator)
+            .take(until)
+            .joinToString(File.separator)
+
+    private fun segmentAt(path: String, index: Int): String = path.split(File.separator)[index]
 }

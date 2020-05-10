@@ -1,12 +1,12 @@
 package underdocs.renderer.parser.module
 
 import com.vladsch.flexmark.parser.Parser
-import underdocs.representation.Header
 import underdocs.renderer.parser.tree.ModuleNode
 import underdocs.renderer.representation.Module
+import underdocs.representation.Header
 import kotlin.streams.toList
 
-class DefaultModuleParser(private val mdParser: Parser): underdocs.renderer.parser.module.ModuleParser {
+class DefaultModuleParser(private val mdParser: Parser) : underdocs.renderer.parser.module.ModuleParser {
     private val moduleInfoPrefixes = setOf(
             "module-info.",
             "module_info"

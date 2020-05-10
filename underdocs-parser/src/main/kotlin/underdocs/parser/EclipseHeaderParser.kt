@@ -300,7 +300,7 @@ class EclipseHeaderParser(private val configuration: ParserConfiguration) : Head
                     declIsTypedef,
                     emptyList(),
                     members,
-                    commentFromNode(typeSpecifier)
+                    commentFromNode(decl)
             )
         }
 
@@ -359,7 +359,7 @@ class EclipseHeaderParser(private val configuration: ParserConfiguration) : Head
                     declIsTypedef,
                     emptyList(),
                     members,
-                    commentFromNode(typeSpecifier)
+                    commentFromNode(decl)
             )
         }
 

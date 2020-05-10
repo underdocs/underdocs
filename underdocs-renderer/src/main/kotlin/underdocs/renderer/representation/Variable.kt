@@ -14,7 +14,7 @@ data class Variable(
         val type: Type,
 
         val documentation: VariableDocumentation?
-): TopLevelElement, Visitable {
+) : TopLevelElement, Visitable {
     override fun getStartingLine() = startingLine
 
     override fun getRawRepresentation() = raw
@@ -22,4 +22,8 @@ data class Variable(
     override fun getParent() = parent
 
     override fun accept(visitor: Visitor) = visitor.accept(this)
+
+    override fun setParent(header: Header) {
+        this.parent = header
+    }
 }

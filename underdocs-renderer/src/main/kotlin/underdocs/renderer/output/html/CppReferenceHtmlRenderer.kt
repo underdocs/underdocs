@@ -1,28 +1,60 @@
 package underdocs.renderer.output.html
 
-import j2html.tags.Tag
 import underdocs.configuration.RendererConfiguration
+import underdocs.renderer.output.html.link.DefaultLinker
+import underdocs.renderer.output.html.render.page.PageRenderer
 import underdocs.renderer.output.html.render.section.SectionRenderer
 import underdocs.renderer.representation.Header
 import underdocs.renderer.representation.Module
 import underdocs.renderer.representation.TopLevelElement
 import underdocs.renderer.representation.Visitable
+import underdocs.renderer.writer.DefaultResourceWriter
+import underdocs.renderer.writer.DirectoryCreatingOutputWriter
+import java.io.File
 import java.nio.file.Paths
 
 class CppReferenceHtmlRenderer(
         private val configuration: RendererConfiguration,
         private val topLevelModule: Module
 ) {
-    private val sectionRenderer = SectionRenderer()
-    private val pageRenderer = underdocs.renderer.output.html.render.page.PageRenderer(sectionRenderer)
-    private val outputWriter = underdocs.renderer.writer.DirectoryCreatingOutputWriter()
-    private val linker = underdocs.renderer.output.html.link.DefaultLinker(
-            Paths.get(topLevelModule.path).toString(),
-            configuration.outputDirectory
+    private val INTERNAL_RESOURCES = listOf<String>(
+            "code.css",
+            "file-link-icon.svg",
+            "main.css"
     )
 
+    private val STATIC_RESOURCE_DIRECTORY_NAME = "_static"
+
+    private val linker = DefaultLinker(
+            configuration,
+            Paths.get(topLevelModule.path).toString()
+    )
+    private val sectionRenderer = SectionRenderer(linker)
+    private val pageRenderer = PageRenderer(linker, sectionRenderer)
+    private val outputWriter = DirectoryCreatingOutputWriter()
+    private val resourceWriter = DefaultResourceWriter()
+
     fun render() {
+        copyInternalResources()
+
+        copyExternalResources()
+
         emit(topLevelModule)
+    }
+
+    private fun copyInternalResources() {
+        INTERNAL_RESOURCES.forEach { resource ->
+            val systemDependentResource = resource.replace("/", File.separator)
+            val outputPath = Paths.get(configuration.outputDirectory, STATIC_RESOURCE_DIRECTORY_NAME, systemDependentResource).toString()
+
+            resourceWriter.writeInternalResource("/$resource", outputPath)
+        }
+    }
+
+    private fun copyExternalResources() {
+        configuration.staticResourceDirectory?.let {
+            resourceWriter.writeExternalResources(it, Paths.get(configuration.outputDirectory, STATIC_RESOURCE_DIRECTORY_NAME).toString())
+        }
     }
 
     private fun emit(module: Module) {
@@ -30,9 +62,9 @@ class CppReferenceHtmlRenderer(
 
         output(module, document)
 
-        /*module.headers.forEach {
+        module.headers.forEach {
             emit(it)
-        }*/
+        }
 
         module.children.values.forEach {
             emit(it)
@@ -56,12 +88,12 @@ class CppReferenceHtmlRenderer(
     private fun emit(element: TopLevelElement) {
         val document = pageRenderer.render(element)
 
-        output(element, document)
+        //output(element, document)
     }
 
-    private fun output(element: Visitable, document: Tag<*>) {
-        val outputPath = linker.outputPathFor(element);
+    private fun output(element: Visitable, document: String) {
+        val outputPath = linker.localFileOutputPathToVisitable(element)
 
-        outputWriter.write(document.render(), outputPath);
+        outputWriter.write(document, outputPath);
     }
 }
