@@ -5,11 +5,11 @@
 	<parent>
         <groupId>underdocs</groupId>
         <artifactId>underdocs-parent</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
     </parent>
 
 	<artifactId>underdocs</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 
 	<name>Underdocs</name>
 	<description>Modern documentation generator for C.</description>
@@ -53,31 +53,31 @@
 		<dependency>
 			<groupId>underdocs</groupId>
 			<artifactId>underdocs-collector</artifactId>
-			<version>1.0.0</version>
+			<version>1.0.1</version>
 		</dependency>
 
 		<dependency>
 			<groupId>underdocs</groupId>
 			<artifactId>underdocs-configuration</artifactId>
-			<version>1.0.0</version>
+			<version>1.0.1</version>
 		</dependency>
 
 		<dependency>
 			<groupId>underdocs</groupId>
 			<artifactId>underdocs-parser</artifactId>
-			<version>1.0.0</version>
+			<version>1.0.1</version>
 		</dependency>
 
 		<dependency>
 			<groupId>underdocs</groupId>
 			<artifactId>underdocs-renderer</artifactId>
-			<version>1.0.0</version>
+			<version>1.0.1</version>
 		</dependency>
 
 		<dependency>
 			<groupId>underdocs</groupId>
 			<artifactId>underdocs-representation</artifactId>
-			<version>1.0.0</version>
+			<version>1.0.1</version>
 		</dependency>
 	</dependencies>
 

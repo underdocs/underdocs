@@ -7,11 +7,11 @@
     <parent>
         <groupId>underdocs</groupId>
         <artifactId>underdocs-parent</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
     </parent>
 
     <artifactId>underdocs-configuration</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <name>Underdocs Configuration</name>
     <description>Configuration for the Underdocs documentation generator tool.</description>
