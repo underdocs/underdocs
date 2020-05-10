@@ -6,6 +6,7 @@ import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.required
 import com.github.ajalt.clikt.parameters.types.choice
 import com.github.ajalt.clikt.parameters.types.path
+import org.slf4j.LoggerFactory
 import underdocs.collector.FileCollector
 import underdocs.configuration.CollectorConfiguration
 import underdocs.configuration.ParserConfiguration
@@ -23,6 +24,8 @@ class ParseCommand : CliktCommand(
         name = "parse",
         help = "Parse"
 ) {
+    private val log = LoggerFactory.getLogger(ParseCommand::class.java)
+
     val includePath by option("-I", "--includePath")
             .path(
                     exists = true,
@@ -51,6 +54,9 @@ class ParseCommand : CliktCommand(
             .multiple(listOf(BLOCK_SLASH_DOUBLE_STAR, SINGLE_LINE_DOUBLE_SLASH))
 
     override fun run() {
+        log.info(includePath.toAbsolutePath().toString())
+        log.info(outputPath.toAbsolutePath().toString())
+
         val collectorConfiguration = CollectorConfiguration(
                 includePath = includePath.toAbsolutePath().toString(),
                 includingPatterns = includePatterns,
@@ -69,6 +75,8 @@ class ParseCommand : CliktCommand(
         val headers = headerStream
                 .map { headerParser.parse(it) }
                 .toList()
+
+        log.info("Headers: {}", headers.size)
 
         val codebase = Codebase(
                 collectorConfiguration.includePath,
