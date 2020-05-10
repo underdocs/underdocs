@@ -76,6 +76,13 @@
 		</repository>
     </repositories>
 
+	<distributionManagement>
+		<repository>
+			<id>github-underdocs-underdocs</id>
+			<url>https://maven.pkg.github.com/underdocs/underdocs</url>
+		</repository>
+	</distributionManagement>
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
