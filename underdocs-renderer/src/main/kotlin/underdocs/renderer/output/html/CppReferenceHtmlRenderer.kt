@@ -4,6 +4,7 @@ import underdocs.configuration.RendererConfiguration
 import underdocs.renderer.output.html.link.DefaultLinker
 import underdocs.renderer.output.html.render.page.PageRenderer
 import underdocs.renderer.output.html.render.section.SectionRenderer
+import underdocs.renderer.representation.EnumElement
 import underdocs.renderer.representation.Header
 import underdocs.renderer.representation.MacroConstant
 import underdocs.renderer.representation.Module
@@ -82,7 +83,7 @@ class CppReferenceHtmlRenderer(
                 .values
                 .stream()
                 .flatMap { it.stream() }
-                .filter { it::class.java in listOf(MacroConstant::class.java, TypeSynonym::class.java)}
+                .filter { it::class.java in listOf(MacroConstant::class.java, TypeSynonym::class.java, EnumElement::class.java)}
                 .forEach {
                     emit(it)
                 }

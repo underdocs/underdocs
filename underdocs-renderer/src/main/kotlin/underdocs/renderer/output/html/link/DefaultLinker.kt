@@ -115,6 +115,12 @@ class DefaultLinker(private val configuration: RendererConfiguration, codebaseBa
                     .replace("\${path}", localRepositoryRelativePathAsString(typeSynonym.getParent()!!.path))
                     .replace("\${line}", typeSynonym.getStartingLine().toString())
         }
+
+        override fun accept(enumElement: EnumElement) {
+            link = template
+                    .replace("\${path}", localRepositoryRelativePathAsString(enumElement.getParent()!!.path))
+                    .replace("\${line}", enumElement.getStartingLine().toString())
+        }
     }
 
     private inner class OutputPathVisitor : BaseVisitor() {
@@ -130,7 +136,7 @@ class DefaultLinker(private val configuration: RendererConfiguration, codebaseBa
             val parentPath = localRepositoryRelativePathAsPath(enumElement.getParent()?.path!!)
 
             path = parentPath
-                    .resolve(enumElement.name!!)
+                    .resolve(enumElement.name ?: "unnamed-enum")
         }
 
         override fun accept(function: Function) {

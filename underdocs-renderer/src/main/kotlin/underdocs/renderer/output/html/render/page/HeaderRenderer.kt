@@ -180,7 +180,7 @@ class HeaderRenderer(private val linker: Linker, private val sectionRenderer: Se
     }
 
     private fun nameForElement(element: TopLevelElement) = when (element) {
-        is EnumElement -> element.name
+        is EnumElement -> element.name ?: "unnamed enum"
         is Function -> element.name
         is MacroConstant -> element.name
         is MacroFunction -> element.name

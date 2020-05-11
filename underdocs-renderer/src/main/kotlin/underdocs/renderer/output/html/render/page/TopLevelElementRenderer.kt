@@ -4,6 +4,7 @@ import j2html.TagCreator.div
 import j2html.tags.Tag
 import underdocs.renderer.output.html.link.Linker
 import underdocs.renderer.output.html.render.section.SectionRenderer
+import underdocs.renderer.representation.EnumElement
 import underdocs.renderer.representation.MacroConstant
 import underdocs.renderer.representation.TopLevelElement
 import underdocs.renderer.representation.TypeSynonym
@@ -69,6 +70,34 @@ class TopLevelElementRenderer(private val linker: Linker, private val sectionRen
 
         if (typeSynonym.documentation?.seeAlso?.isNotEmpty() == true) {
             sections.add(sectionRenderer.renderSeeAlso(typeSynonym.documentation.seeAlso))
+        }
+
+        renderedTag = div().with(sections)
+    }
+
+    override fun accept(enumElement: EnumElement) {
+        val sections = ArrayList<Tag<*>>()
+
+        val title = enumElement.name ?: "unnamed enum"
+
+        sections.add(sectionRenderer.renderHeading(enumElement, title, enumElement.documentation?.getAttributes() ?: emptyMap()))
+
+        sections.add(sectionRenderer.renderRepresentation(enumElement))
+
+        enumElement.documentation?.description?.let {
+            sections.add(sectionRenderer.renderDescription(it))
+        }
+
+        if (enumElement.documentation?.examples?.isNotEmpty() == true) {
+            sections.add(sectionRenderer.renderExamples(enumElement.documentation.examples))
+        }
+
+        if (enumElement.documentation?.otherSections?.isNotEmpty() == true) {
+            sections.add(sectionRenderer.renderOtherSections(enumElement.documentation.otherSections))
+        }
+
+        if (enumElement.documentation?.seeAlso?.isNotEmpty() == true) {
+            sections.add(sectionRenderer.renderSeeAlso(enumElement.documentation.seeAlso))
         }
 
         renderedTag = div().with(sections)
