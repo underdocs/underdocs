@@ -12,6 +12,7 @@ import underdocs.renderer.representation.Struct
 import underdocs.renderer.representation.TopLevelElement
 import underdocs.renderer.representation.TypeSynonym
 import underdocs.renderer.representation.Union
+import underdocs.renderer.representation.Variable
 import underdocs.renderer.representation.visitor.BaseVisitor
 
 class TopLevelElementRenderer(private val linker: Linker, private val sectionRenderer: SectionRenderer): BaseVisitor() {
@@ -240,6 +241,34 @@ class TopLevelElementRenderer(private val linker: Linker, private val sectionRen
 
         if (function.documentation?.seeAlso?.isNotEmpty() == true) {
             sections.add(sectionRenderer.renderSeeAlso(function.documentation.seeAlso))
+        }
+
+        renderedTag = div().with(sections)
+    }
+
+    override fun accept(variable: Variable) {
+        val sections = ArrayList<Tag<*>>()
+
+        val title = variable.name
+
+        sections.add(sectionRenderer.renderHeading(variable, title, variable.documentation?.getAttributes() ?: emptyMap()))
+
+        sections.add(sectionRenderer.renderRepresentation(variable))
+
+        variable.documentation?.description?.let {
+            sections.add(sectionRenderer.renderDescription(it))
+        }
+
+        if (variable.documentation?.examples?.isNotEmpty() == true) {
+            sections.add(sectionRenderer.renderExamples(variable.documentation.examples))
+        }
+
+        if (variable.documentation?.otherSections?.isNotEmpty() == true) {
+            sections.add(sectionRenderer.renderOtherSections(variable.documentation.otherSections))
+        }
+
+        if (variable.documentation?.seeAlso?.isNotEmpty() == true) {
+            sections.add(sectionRenderer.renderSeeAlso(variable.documentation.seeAlso))
         }
 
         renderedTag = div().with(sections)

@@ -24,6 +24,14 @@ class ComplexMemberRenderer {
         return representationBuilder.toString()
     }
 
+    fun render(type: Type, initialDepth: Int): String {
+        representationBuilder.clear()
+
+        renderType(type, initialDepth)
+
+        return representationBuilder.toString()
+    }
+
     private fun renderMembers(members: List<Member>, depth: Int) {
         val indentation = indentationOfDepth(depth)
 

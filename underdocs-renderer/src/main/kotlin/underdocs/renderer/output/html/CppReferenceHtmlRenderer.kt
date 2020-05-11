@@ -30,16 +30,6 @@ class CppReferenceHtmlRenderer(
             "main.css"
     )
 
-    private val RENDERED_ELEMENTS = listOf(
-            MacroConstant::class.java,
-            TypeSynonym::class.java,
-            EnumElement::class.java,
-            MacroFunction::class.java,
-            Struct::class.java,
-            Union::class.java,
-            Function::class.java
-    )
-
     private val STATIC_RESOURCE_DIRECTORY_NAME = "_static"
 
     private val linker = DefaultLinker(
@@ -97,7 +87,6 @@ class CppReferenceHtmlRenderer(
                 .values
                 .stream()
                 .flatMap { it.stream() }
-                .filter { it::class.java in RENDERED_ELEMENTS }
                 .forEach {
                     emit(it)
                 }

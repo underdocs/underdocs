@@ -10,6 +10,7 @@ import underdocs.renderer.representation.MacroFunction
 import underdocs.renderer.representation.Struct
 import underdocs.renderer.representation.TypeSynonym
 import underdocs.renderer.representation.Union
+import underdocs.renderer.representation.Variable
 import underdocs.renderer.representation.Visitable
 import underdocs.renderer.representation.visitor.BaseVisitor
 
@@ -131,6 +132,18 @@ class RepresentationRenderer: BaseVisitor() {
                 .joinToString(",\n")
 
         source  = "$specifiers$returnType ${function.name}(\n$parameters\n)"
+    }
+
+    override fun accept(variable: Variable) {
+        var specifiers = variable.specifiers.joinToString(" ")
+
+        if (specifiers.isNotEmpty()) {
+            specifiers += " "
+        }
+
+        val type = memberRenderer.render(variable.type, 0)
+
+        source = "$specifiers$type ${variable.name}"
     }
 
     private fun wrapIntoPreAndCode(source: String) = pre(

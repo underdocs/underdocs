@@ -9,6 +9,7 @@ import underdocs.renderer.representation.Module
 import underdocs.renderer.representation.Struct
 import underdocs.renderer.representation.TypeSynonym
 import underdocs.renderer.representation.Union
+import underdocs.renderer.representation.Variable
 import underdocs.renderer.representation.visitor.BaseVisitor
 import java.io.File
 
@@ -59,5 +60,9 @@ class NameVisitor : BaseVisitor() {
 
     override fun accept(function: Function) {
         name = function.name
+    }
+
+    override fun accept(variable: Variable) {
+        name = variable.name
     }
 }
