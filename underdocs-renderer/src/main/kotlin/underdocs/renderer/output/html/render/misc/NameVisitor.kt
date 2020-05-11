@@ -7,6 +7,7 @@ import underdocs.renderer.representation.MacroFunction
 import underdocs.renderer.representation.Module
 import underdocs.renderer.representation.Struct
 import underdocs.renderer.representation.TypeSynonym
+import underdocs.renderer.representation.Union
 import underdocs.renderer.representation.visitor.BaseVisitor
 import java.io.File
 
@@ -32,7 +33,7 @@ class NameVisitor : BaseVisitor() {
     }
 
     override fun accept(enumElement: EnumElement) {
-        name = enumElement.name ?: "unnamed enum"
+        name = enumElement.name ?: "anonymous enum"
     }
 
     override fun accept(macroFunction: MacroFunction) {
@@ -40,6 +41,18 @@ class NameVisitor : BaseVisitor() {
     }
 
     override fun accept(struct: Struct) {
-        name = struct.name ?: "unnamed-struct"
+        name = if (struct.name != null && struct.name.isNotEmpty()) {
+            struct.name
+        } else {
+            "anonymous struct"
+        }
+    }
+
+    override fun accept(union: Union) {
+        name = if (union.name != null && union.name.isNotEmpty()) {
+            union.name
+        } else {
+            "anonymous union"
+        }
     }
 }

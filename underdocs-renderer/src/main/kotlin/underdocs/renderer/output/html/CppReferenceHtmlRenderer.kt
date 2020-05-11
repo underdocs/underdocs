@@ -12,6 +12,7 @@ import underdocs.renderer.representation.Module
 import underdocs.renderer.representation.Struct
 import underdocs.renderer.representation.TopLevelElement
 import underdocs.renderer.representation.TypeSynonym
+import underdocs.renderer.representation.Union
 import underdocs.renderer.representation.Visitable
 import underdocs.renderer.writer.DefaultResourceWriter
 import underdocs.renderer.writer.DirectoryCreatingOutputWriter
@@ -33,7 +34,8 @@ class CppReferenceHtmlRenderer(
             TypeSynonym::class.java,
             EnumElement::class.java,
             MacroFunction::class.java,
-            Struct::class.java
+            Struct::class.java,
+            Union::class.java
     )
 
     private val STATIC_RESOURCE_DIRECTORY_NAME = "_static"

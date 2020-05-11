@@ -133,6 +133,12 @@ class DefaultLinker(private val configuration: RendererConfiguration, codebaseBa
                     .replace("\${path}", localRepositoryRelativePathAsString(struct.getParent()!!.path))
                     .replace("\${line}", struct.getStartingLine().toString())
         }
+
+        override fun accept(union: Union) {
+            link = template
+                    .replace("\${path}", localRepositoryRelativePathAsString(union.getParent()!!.path))
+                    .replace("\${line}", union.getStartingLine().toString())
+        }
     }
 
     private inner class OutputPathVisitor : BaseVisitor() {
@@ -185,8 +191,14 @@ class DefaultLinker(private val configuration: RendererConfiguration, codebaseBa
         override fun accept(struct: Struct) {
             val parentPath = localRepositoryRelativePathAsPath(struct.getParent()?.path!!)
 
+            val name = if (struct.name != null && struct.name.isNotEmpty()) {
+                struct.name
+            } else {
+                "anonymous-struct"
+            }
+
             path = parentPath
-                    .resolve(struct.name ?: "unnamed-struct")
+                    .resolve(name)
         }
 
         override fun accept(typeSynonym: TypeSynonym) {
@@ -199,8 +211,14 @@ class DefaultLinker(private val configuration: RendererConfiguration, codebaseBa
         override fun accept(union: Union) {
             val parentPath = localRepositoryRelativePathAsPath(union.getParent()?.path!!)
 
+            val name = if (union.name != null && union.name.isNotEmpty()) {
+                union.name
+            } else {
+                "anonymous-union"
+            }
+
             path = parentPath
-                    .resolve(union.name)
+                    .resolve(name)
         }
 
         override fun accept(variable: Variable) {

@@ -29,6 +29,7 @@ import j2html.tags.Tag
 import j2html.tags.Text
 import j2html.tags.UnescapedText
 import underdocs.renderer.output.html.link.Linker
+import underdocs.renderer.representation.EnumConstant
 import underdocs.renderer.representation.EnumElement
 import underdocs.renderer.representation.EnumMember
 import underdocs.renderer.representation.EnumType

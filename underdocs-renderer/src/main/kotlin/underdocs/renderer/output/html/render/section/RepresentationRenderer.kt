@@ -8,6 +8,7 @@ import underdocs.renderer.representation.MacroConstant
 import underdocs.renderer.representation.MacroFunction
 import underdocs.renderer.representation.Struct
 import underdocs.renderer.representation.TypeSynonym
+import underdocs.renderer.representation.Union
 import underdocs.renderer.representation.Visitable
 import underdocs.renderer.representation.visitor.BaseVisitor
 
@@ -85,6 +86,28 @@ class RepresentationRenderer: BaseVisitor() {
             }
 
             "${specifiers}struct $name{\n${members}\n}"
+        }
+    }
+
+    override fun accept(union: Union) {
+        var specifiers = union.specifiers.joinToString(" ")
+
+        if (specifiers.isNotEmpty()) {
+            specifiers += " "
+        }
+
+        val members = memberRenderer.render(union.members, 2)
+
+        source  = if (union.typedef) {
+            "typedef union {\n${members}\n} ${union.name}"
+        } else {
+            var name = union.name ?: ""
+
+            if (name.isNotEmpty()) {
+                name += " "
+            }
+
+            "${specifiers}union $name{\n${members}\n}"
         }
     }
 

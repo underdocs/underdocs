@@ -10,6 +10,7 @@ import underdocs.renderer.representation.MacroFunction
 import underdocs.renderer.representation.Struct
 import underdocs.renderer.representation.TopLevelElement
 import underdocs.renderer.representation.TypeSynonym
+import underdocs.renderer.representation.Union
 import underdocs.renderer.representation.visitor.BaseVisitor
 
 class TopLevelElementRenderer(private val linker: Linker, private val sectionRenderer: SectionRenderer): BaseVisitor() {
@@ -90,6 +91,8 @@ class TopLevelElementRenderer(private val linker: Linker, private val sectionRen
             sections.add(sectionRenderer.renderDescription(it))
         }
 
+        sections.add(sectionRenderer.renderMembers(enumElement))
+
         if (enumElement.documentation?.examples?.isNotEmpty() == true) {
             sections.add(sectionRenderer.renderExamples(enumElement.documentation.examples))
         }
@@ -164,6 +167,36 @@ class TopLevelElementRenderer(private val linker: Linker, private val sectionRen
 
         if (struct.documentation?.seeAlso?.isNotEmpty() == true) {
             sections.add(sectionRenderer.renderSeeAlso(struct.documentation.seeAlso))
+        }
+
+        renderedTag = div().with(sections)
+    }
+
+    override fun accept(union: Union) {
+        val sections = ArrayList<Tag<*>>()
+
+        val title = union.name ?: "unnamed union"
+
+        sections.add(sectionRenderer.renderHeading(union, title, union.documentation?.getAttributes() ?: emptyMap()))
+
+        sections.add(sectionRenderer.renderRepresentation(union))
+
+        union.documentation?.description?.let {
+            sections.add(sectionRenderer.renderDescription(it))
+        }
+
+        sections.add(sectionRenderer.renderMembers(union))
+
+        if (union.documentation?.examples?.isNotEmpty() == true) {
+            sections.add(sectionRenderer.renderExamples(union.documentation.examples))
+        }
+
+        if (union.documentation?.otherSections?.isNotEmpty() == true) {
+            sections.add(sectionRenderer.renderOtherSections(union.documentation.otherSections))
+        }
+
+        if (union.documentation?.seeAlso?.isNotEmpty() == true) {
+            sections.add(sectionRenderer.renderSeeAlso(union.documentation.seeAlso))
         }
 
         renderedTag = div().with(sections)
