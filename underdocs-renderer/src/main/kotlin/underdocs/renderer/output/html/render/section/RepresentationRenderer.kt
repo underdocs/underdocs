@@ -4,6 +4,7 @@ import j2html.TagCreator.code
 import j2html.TagCreator.pre
 import j2html.tags.Tag
 import underdocs.renderer.representation.EnumElement
+import underdocs.renderer.representation.Function
 import underdocs.renderer.representation.MacroConstant
 import underdocs.renderer.representation.MacroFunction
 import underdocs.renderer.representation.Struct
@@ -14,6 +15,7 @@ import underdocs.renderer.representation.visitor.BaseVisitor
 
 class RepresentationRenderer: BaseVisitor() {
     private val memberRenderer = ComplexMemberRenderer()
+    private val singleLineTypeRenderer = SingleLineTypeRenderer()
 
     private var source: String? = null
 
@@ -109,6 +111,26 @@ class RepresentationRenderer: BaseVisitor() {
 
             "${specifiers}union $name{\n${members}\n}"
         }
+    }
+
+    override fun accept(function: Function) {
+        var specifiers = function.specifiers.joinToString(" ")
+
+        if (specifiers.isNotEmpty()) {
+            specifiers += " "
+        }
+
+        val returnType = singleLineTypeRenderer.render(function.returnType)
+
+        val parameters = function.parameters
+                .map { parameter ->
+                    val type = singleLineTypeRenderer.render(parameter.type)
+
+                    "  $type ${parameter.name}"
+                }
+                .joinToString(",\n")
+
+        source  = "$specifiers$returnType ${function.name}(\n$parameters\n)"
     }
 
     private fun wrapIntoPreAndCode(source: String) = pre(

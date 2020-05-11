@@ -5,6 +5,7 @@ import j2html.tags.Tag
 import underdocs.renderer.output.html.link.Linker
 import underdocs.renderer.output.html.render.section.SectionRenderer
 import underdocs.renderer.representation.EnumElement
+import underdocs.renderer.representation.Function
 import underdocs.renderer.representation.MacroConstant
 import underdocs.renderer.representation.MacroFunction
 import underdocs.renderer.representation.Struct
@@ -197,6 +198,48 @@ class TopLevelElementRenderer(private val linker: Linker, private val sectionRen
 
         if (union.documentation?.seeAlso?.isNotEmpty() == true) {
             sections.add(sectionRenderer.renderSeeAlso(union.documentation.seeAlso))
+        }
+
+        renderedTag = div().with(sections)
+    }
+
+    override fun accept(function: Function) {
+        val sections = ArrayList<Tag<*>>()
+
+        val title = function.name
+
+        sections.add(sectionRenderer.renderHeading(function, title, function.documentation?.getAttributes() ?: emptyMap()))
+
+        sections.add(sectionRenderer.renderRepresentation(function))
+
+        function.documentation?.description?.let {
+            sections.add(sectionRenderer.renderDescription(it))
+        }
+
+        sections.add(sectionRenderer.renderParameters(function))
+
+        if (function.documentation?.returnValue?.isNotEmpty() == true) {
+            sections.add(sectionRenderer.renderReturnValue(function, function.documentation.returnValue))
+        }
+
+        if (function.documentation?.errorHandling?.isNotEmpty() == true) {
+            sections.add(sectionRenderer.renderErrorHandling(function.documentation.errorHandling))
+        }
+
+        if (function.documentation?.notes?.isNotEmpty() == true) {
+            sections.add(sectionRenderer.renderNotes(function.documentation.notes))
+        }
+
+        if (function.documentation?.examples?.isNotEmpty() == true) {
+            sections.add(sectionRenderer.renderExamples(function.documentation.examples))
+        }
+
+        if (function.documentation?.otherSections?.isNotEmpty() == true) {
+            sections.add(sectionRenderer.renderOtherSections(function.documentation.otherSections))
+        }
+
+        if (function.documentation?.seeAlso?.isNotEmpty() == true) {
+            sections.add(sectionRenderer.renderSeeAlso(function.documentation.seeAlso))
         }
 
         renderedTag = div().with(sections)

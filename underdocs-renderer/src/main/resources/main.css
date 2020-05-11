@@ -24,6 +24,8 @@
     --attribute-value-color: #008000;
 
     --member-type-color: #008000;
+    
+    --parameter-type-color: #008000;
 
     --main-width: 80ch;
 }
@@ -184,11 +186,20 @@ h2 {
     color: var(--member-type-color)
 }
 
-.parameter > .parameter-name {
+.parameters > .parameter .parameter-title {
+    display: inline-block;
+
     margin-top: 0;
     padding-top: 0;
     margin-bottom: 0;
     padding-bottom: 0;
+}
+
+.parameters > .parameter .parameter-type {
+    padding-left: 0.5rem;
+
+    font-size: 0.85rem;
+    color: var(--parameter-type-color)
 }
 
 .parameters > .parameter:not(:last-of-type) {

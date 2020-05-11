@@ -139,6 +139,12 @@ class DefaultLinker(private val configuration: RendererConfiguration, codebaseBa
                     .replace("\${path}", localRepositoryRelativePathAsString(union.getParent()!!.path))
                     .replace("\${line}", union.getStartingLine().toString())
         }
+
+        override fun accept(function: Function) {
+            link = template
+                    .replace("\${path}", localRepositoryRelativePathAsString(function.getParent()!!.path))
+                    .replace("\${line}", function.getStartingLine().toString())
+        }
     }
 
     private inner class OutputPathVisitor : BaseVisitor() {

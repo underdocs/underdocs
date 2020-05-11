@@ -55,6 +55,7 @@ class SectionRenderer(private val linker: Linker) {
     private val KNOWN_ATTRIBUTE_LIST_ELEMENTS = listOf<String>("since", "stability")
 
     private val representationRenderer = RepresentationRenderer()
+    private val singleLineTypeRenderer = SingleLineTypeRenderer()
 
     fun renderHeading(visitable: Visitable, title: String, attributes: Map<String, String>): Tag<*> {
         val titleElements = ArrayList<DomContent>()
@@ -244,10 +245,28 @@ class SectionRenderer(private val linker: Linker) {
             h2("Parameters"),
             each(element.documentation!!.parameters) { (name, description) ->
                 div(
-                        h3(name).withClass("parameter-name"),
+                        div(
+                                h3(name).withClass("parameter-title")
+                        ).withClass("parameter-heading"),
                         div(renderMarkdown(description)).withClass("parameter-description")
                 ).withClass("parameter")
             }
+        ).withClass("parameters")
+        is Function -> section(
+                h2("Parameters"),
+                each(element.parameters) { parameter ->
+                    val description = element.documentation?.parameters?.get(parameter.name)
+
+                    div(
+                            div(
+                                    h3(parameter.name).withClass("parameter-title"),
+                                    span(singleLineTypeRenderer.render(parameter.type)).withClass("parameter-type")
+                            ).withClass("parameter-heading"),
+                            iff(Optional.ofNullable(description)) {
+                                div(renderMarkdown(it)).withClass("parameter-description")
+                            }
+                    ).withClass("parameter")
+                }
         ).withClass("parameters")
         else -> div()
     }

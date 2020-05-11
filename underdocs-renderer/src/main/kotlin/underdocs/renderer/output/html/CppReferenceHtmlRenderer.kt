@@ -5,6 +5,7 @@ import underdocs.renderer.output.html.link.DefaultLinker
 import underdocs.renderer.output.html.render.page.PageRenderer
 import underdocs.renderer.output.html.render.section.SectionRenderer
 import underdocs.renderer.representation.EnumElement
+import underdocs.renderer.representation.Function
 import underdocs.renderer.representation.Header
 import underdocs.renderer.representation.MacroConstant
 import underdocs.renderer.representation.MacroFunction
@@ -35,7 +36,8 @@ class CppReferenceHtmlRenderer(
             EnumElement::class.java,
             MacroFunction::class.java,
             Struct::class.java,
-            Union::class.java
+            Union::class.java,
+            Function::class.java
     )
 
     private val STATIC_RESOURCE_DIRECTORY_NAME = "_static"
