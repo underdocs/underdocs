@@ -121,6 +121,18 @@ class DefaultLinker(private val configuration: RendererConfiguration, codebaseBa
                     .replace("\${path}", localRepositoryRelativePathAsString(enumElement.getParent()!!.path))
                     .replace("\${line}", enumElement.getStartingLine().toString())
         }
+
+        override fun accept(macroFunction: MacroFunction) {
+            link = template
+                    .replace("\${path}", localRepositoryRelativePathAsString(macroFunction.getParent()!!.path))
+                    .replace("\${line}", macroFunction.getStartingLine().toString())
+        }
+
+        override fun accept(struct: Struct) {
+            link = template
+                    .replace("\${path}", localRepositoryRelativePathAsString(struct.getParent()!!.path))
+                    .replace("\${line}", struct.getStartingLine().toString())
+        }
     }
 
     private inner class OutputPathVisitor : BaseVisitor() {
@@ -174,7 +186,7 @@ class DefaultLinker(private val configuration: RendererConfiguration, codebaseBa
             val parentPath = localRepositoryRelativePathAsPath(struct.getParent()?.path!!)
 
             path = parentPath
-                    .resolve(struct.name)
+                    .resolve(struct.name ?: "unnamed-struct")
         }
 
         override fun accept(typeSynonym: TypeSynonym) {

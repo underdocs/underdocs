@@ -6,6 +6,8 @@ import underdocs.renderer.output.html.link.Linker
 import underdocs.renderer.output.html.render.section.SectionRenderer
 import underdocs.renderer.representation.EnumElement
 import underdocs.renderer.representation.MacroConstant
+import underdocs.renderer.representation.MacroFunction
+import underdocs.renderer.representation.Struct
 import underdocs.renderer.representation.TopLevelElement
 import underdocs.renderer.representation.TypeSynonym
 import underdocs.renderer.representation.visitor.BaseVisitor
@@ -98,6 +100,70 @@ class TopLevelElementRenderer(private val linker: Linker, private val sectionRen
 
         if (enumElement.documentation?.seeAlso?.isNotEmpty() == true) {
             sections.add(sectionRenderer.renderSeeAlso(enumElement.documentation.seeAlso))
+        }
+
+        renderedTag = div().with(sections)
+    }
+
+    override fun accept(macroFunction: MacroFunction) {
+        val sections = ArrayList<Tag<*>>()
+
+        val title = macroFunction.name
+
+        sections.add(sectionRenderer.renderHeading(macroFunction, title, macroFunction.documentation?.getAttributes() ?: emptyMap()))
+
+        sections.add(sectionRenderer.renderRepresentation(macroFunction))
+
+        macroFunction.documentation?.description?.let {
+            sections.add(sectionRenderer.renderDescription(it))
+        }
+
+        macroFunction.documentation?.parameters?.let { parameters ->
+            if (parameters.isNotEmpty()) {
+                sections.add(sectionRenderer.renderParameters(macroFunction))
+            }
+        }
+
+        if (macroFunction.documentation?.examples?.isNotEmpty() == true) {
+            sections.add(sectionRenderer.renderExamples(macroFunction.documentation.examples))
+        }
+
+        if (macroFunction.documentation?.otherSections?.isNotEmpty() == true) {
+            sections.add(sectionRenderer.renderOtherSections(macroFunction.documentation.otherSections))
+        }
+
+        if (macroFunction.documentation?.seeAlso?.isNotEmpty() == true) {
+            sections.add(sectionRenderer.renderSeeAlso(macroFunction.documentation.seeAlso))
+        }
+
+        renderedTag = div().with(sections)
+    }
+
+    override fun accept(struct: Struct) {
+        val sections = ArrayList<Tag<*>>()
+
+        val title = struct.name ?: "unnamed struct"
+
+        sections.add(sectionRenderer.renderHeading(struct, title, struct.documentation?.getAttributes() ?: emptyMap()))
+
+        sections.add(sectionRenderer.renderRepresentation(struct))
+
+        struct.documentation?.description?.let {
+            sections.add(sectionRenderer.renderDescription(it))
+        }
+
+        sections.add(sectionRenderer.renderMembers(struct))
+
+        if (struct.documentation?.examples?.isNotEmpty() == true) {
+            sections.add(sectionRenderer.renderExamples(struct.documentation.examples))
+        }
+
+        if (struct.documentation?.otherSections?.isNotEmpty() == true) {
+            sections.add(sectionRenderer.renderOtherSections(struct.documentation.otherSections))
+        }
+
+        if (struct.documentation?.seeAlso?.isNotEmpty() == true) {
+            sections.add(sectionRenderer.renderSeeAlso(struct.documentation.seeAlso))
         }
 
         renderedTag = div().with(sections)

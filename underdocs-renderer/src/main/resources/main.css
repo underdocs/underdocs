@@ -23,6 +23,8 @@
     --attribute-key-color: #005900;
     --attribute-value-color: #008000;
 
+    --member-type-color: #008000;
+
     --main-width: 80ch;
 }
 
@@ -164,6 +166,33 @@ h2 {
 
 .representation {
     border-bottom: var(--header-border);
+}
+
+.members > .member .member-title {
+    display: inline-block;
+
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.members > .member .member-type {
+    padding-left: 0.5rem;
+
+    font-size: 0.85rem;
+    color: var(--member-type-color)
+}
+
+.parameter > .parameter-name {
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.parameters > .parameter:not(:last-of-type) {
+    padding-bottom: 1rem;
 }
 
 .example > .example-title,

@@ -7,7 +7,9 @@ import underdocs.renderer.output.html.render.section.SectionRenderer
 import underdocs.renderer.representation.EnumElement
 import underdocs.renderer.representation.Header
 import underdocs.renderer.representation.MacroConstant
+import underdocs.renderer.representation.MacroFunction
 import underdocs.renderer.representation.Module
+import underdocs.renderer.representation.Struct
 import underdocs.renderer.representation.TopLevelElement
 import underdocs.renderer.representation.TypeSynonym
 import underdocs.renderer.representation.Visitable
@@ -24,6 +26,14 @@ class CppReferenceHtmlRenderer(
             "code.css",
             "file-link-icon.svg",
             "main.css"
+    )
+
+    private val RENDERED_ELEMENTS = listOf(
+            MacroConstant::class.java,
+            TypeSynonym::class.java,
+            EnumElement::class.java,
+            MacroFunction::class.java,
+            Struct::class.java
     )
 
     private val STATIC_RESOURCE_DIRECTORY_NAME = "_static"
@@ -83,7 +93,7 @@ class CppReferenceHtmlRenderer(
                 .values
                 .stream()
                 .flatMap { it.stream() }
-                .filter { it::class.java in listOf(MacroConstant::class.java, TypeSynonym::class.java, EnumElement::class.java)}
+                .filter { it::class.java in RENDERED_ELEMENTS }
                 .forEach {
                     emit(it)
                 }

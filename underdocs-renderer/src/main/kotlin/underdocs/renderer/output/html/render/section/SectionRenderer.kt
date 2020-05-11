@@ -14,6 +14,7 @@ import j2html.TagCreator.h1
 import j2html.TagCreator.h2
 import j2html.TagCreator.h3
 import j2html.TagCreator.h4
+import j2html.TagCreator.iff
 import j2html.TagCreator.img
 import j2html.TagCreator.p
 import j2html.TagCreator.pre
@@ -28,13 +29,26 @@ import j2html.tags.Tag
 import j2html.tags.Text
 import j2html.tags.UnescapedText
 import underdocs.renderer.output.html.link.Linker
+import underdocs.renderer.representation.EnumElement
+import underdocs.renderer.representation.EnumMember
+import underdocs.renderer.representation.EnumType
 import underdocs.renderer.representation.Function
+import underdocs.renderer.representation.MacroFunction
 import underdocs.renderer.representation.Module
 import underdocs.renderer.representation.ReferredType
+import underdocs.renderer.representation.Struct
+import underdocs.renderer.representation.StructMember
+import underdocs.renderer.representation.StructType
 import underdocs.renderer.representation.TopLevelElement
+import underdocs.renderer.representation.Union
+import underdocs.renderer.representation.UnionMember
+import underdocs.renderer.representation.UnionType
+import underdocs.renderer.representation.VariableMember
 import underdocs.renderer.representation.Visitable
 import underdocs.renderer.representation.documentation.Example
 import java.io.File
+import java.util.*
+import kotlin.collections.ArrayList
 
 class SectionRenderer(private val linker: Linker) {
     private val KNOWN_ATTRIBUTE_LIST_ELEMENTS = listOf<String>("since", "stability")
@@ -114,12 +128,127 @@ class SectionRenderer(private val linker: Linker) {
         TODO()
     }
 
+    fun renderMembers(element: TopLevelElement) = when (element) {
+        is EnumElement -> section(
+                h2("Members"),
+                each(element.members) { member ->
+                    div(
+                            div(
+                                    h3(member.name).withClass("member-title"),
+                                    iff(Optional.ofNullable(member.value)) { value ->
+                                        span("(value = $value)").withClass("member-type")
+                                    }
+                            ).withClass("member-heading"),
+                            div(
+                                    iff(Optional.ofNullable(member.documentation?.description)) {
+                                        renderMarkdown(it)
+                                    }
+                            ).withClass("member-description")
+                    ).withClass("member")
+                }
+        ).withClass("members")
+        is Struct -> section(
+                h2("Members"),
+                each(element.members) { renderMember(it) }
+        ).withClass("members")
+        is Union -> section(
+                h2("Members"),
+                each(element.members) { renderMember(it) }
+        ).withClass("members")
+        else -> div()
+    }
+
+    private fun renderMember(member: underdocs.renderer.representation.Member): Tag<*> {
+        val name = when (member) {
+            is EnumMember -> if (member.name != null && member.name.isNotEmpty()) {
+                member.name
+            } else {
+                "anonymous enum"
+            }
+            is StructMember -> if (member.name != null && member.name.isNotEmpty()) {
+                member.name
+            } else {
+                "anonymous struct"
+            }
+            is UnionMember -> if (member.name != null && member.name.isNotEmpty()) {
+                member.name
+            } else {
+                "anonymous union"
+            }
+            is VariableMember -> member.name
+            else -> "unknown"
+        }
+
+        val type = when (member) {
+            is EnumMember -> "enum declaration"
+            is StructMember -> "struct declaration"
+            is UnionMember -> "union declaration"
+            is VariableMember -> when (member.type) {
+                is EnumType -> if (member.type.name != null && member.type.name.isNotEmpty()) {
+                    member.type.name
+                } else {
+                    "inline enum"
+                }
+                is ReferredType -> {
+                    var specifiers = member.type.specifiers.joinToString(" ")
+
+                    if (specifiers.isNotEmpty()) {
+                        specifiers += ""
+                    }
+
+                    "$specifiers${member.type.name}"
+                }
+                is StructType -> if (member.type.name != null && member.type.name.isNotEmpty()) {
+                    member.type.name
+                } else {
+                    "inline struct"
+                }
+                is UnionType -> if (member.type.name != null && member.type.name.isNotEmpty()) {
+                    member.type.name
+                } else {
+                    "inline union"
+                }
+                else -> "unknown"
+            }
+            else -> "unknown"
+        }
+
+        val description = when (member) {
+            is EnumMember -> member.documentation?.description
+            is StructMember -> member.documentation?.description
+            is UnionMember -> member.documentation?.description
+            is VariableMember -> member.documentation?.description
+            else -> null
+        }
+
+        return div(
+                div(
+                        h3(name).withClass("member-title"),
+                        span(type).withClass("member-type")
+                ).withClass("member-heading"),
+                div(
+                        iff(Optional.ofNullable(description)) {
+                            renderMarkdown(it)
+                        }
+                ).withClass("member-description")
+        ).withClass("member")
+    }
+
     fun renderDescription(description: String) = div(
             renderMarkdown(description)
     ).withClass("description")
 
-    fun renderParameters(parameters: Map<String, String>): Tag<*> {
-        TODO()
+    fun renderParameters(element: TopLevelElement) = when (element) {
+        is MacroFunction -> section(
+            h2("Parameters"),
+            each(element.documentation!!.parameters) { (name, description) ->
+                div(
+                        h3(name).withClass("parameter-name"),
+                        div(renderMarkdown(description)).withClass("parameter-description")
+                ).withClass("parameter")
+            }
+        ).withClass("parameters")
+        else -> div()
     }
 
     fun renderExamples(examples: List<Example>) = section(

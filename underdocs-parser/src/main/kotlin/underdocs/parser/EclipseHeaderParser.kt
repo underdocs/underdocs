@@ -376,7 +376,7 @@ class EclipseHeaderParser(private val configuration: ParserConfiguration) : Head
                     rawFromNode(typeSpecifier),
                     rawFromNode(typeSpecifier.name),
                     members,
-                    commentFromNode(typeSpecifier)
+                    commentFromNode(decl)
             )
         }
 
