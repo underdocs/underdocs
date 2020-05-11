@@ -109,6 +109,12 @@ class DefaultLinker(private val configuration: RendererConfiguration, codebaseBa
                     .replace("\${path}", localRepositoryRelativePathAsString(macroConstant.getParent()!!.path))
                     .replace("\${line}", macroConstant.getStartingLine().toString())
         }
+
+        override fun accept(typeSynonym: TypeSynonym) {
+            link = template
+                    .replace("\${path}", localRepositoryRelativePathAsString(typeSynonym.getParent()!!.path))
+                    .replace("\${line}", typeSynonym.getStartingLine().toString())
+        }
     }
 
     private inner class OutputPathVisitor : BaseVisitor() {

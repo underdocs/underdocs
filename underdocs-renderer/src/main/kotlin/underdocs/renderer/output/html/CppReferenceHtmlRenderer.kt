@@ -8,6 +8,7 @@ import underdocs.renderer.representation.Header
 import underdocs.renderer.representation.MacroConstant
 import underdocs.renderer.representation.Module
 import underdocs.renderer.representation.TopLevelElement
+import underdocs.renderer.representation.TypeSynonym
 import underdocs.renderer.representation.Visitable
 import underdocs.renderer.writer.DefaultResourceWriter
 import underdocs.renderer.writer.DirectoryCreatingOutputWriter
@@ -81,7 +82,7 @@ class CppReferenceHtmlRenderer(
                 .values
                 .stream()
                 .flatMap { it.stream() }
-                .filter { it::class.java in listOf(MacroConstant::class.java)}
+                .filter { it::class.java in listOf(MacroConstant::class.java, TypeSynonym::class.java)}
                 .forEach {
                     emit(it)
                 }

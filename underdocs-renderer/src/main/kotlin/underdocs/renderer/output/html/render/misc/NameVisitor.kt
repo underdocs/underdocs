@@ -3,6 +3,7 @@ package underdocs.renderer.output.html.render.misc
 import underdocs.renderer.representation.Header
 import underdocs.renderer.representation.MacroConstant
 import underdocs.renderer.representation.Module
+import underdocs.renderer.representation.TypeSynonym
 import underdocs.renderer.representation.visitor.BaseVisitor
 import java.io.File
 
@@ -21,5 +22,9 @@ class NameVisitor : BaseVisitor() {
 
     override fun accept(macroConstant: MacroConstant) {
         name = macroConstant.name
+    }
+
+    override fun accept(typeSynonym: TypeSynonym) {
+        name = typeSynonym.newName
     }
 }

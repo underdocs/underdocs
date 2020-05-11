@@ -6,6 +6,7 @@ import underdocs.renderer.output.html.link.Linker
 import underdocs.renderer.output.html.render.section.SectionRenderer
 import underdocs.renderer.representation.MacroConstant
 import underdocs.renderer.representation.TopLevelElement
+import underdocs.renderer.representation.TypeSynonym
 import underdocs.renderer.representation.visitor.BaseVisitor
 
 class TopLevelElementRenderer(private val linker: Linker, private val sectionRenderer: SectionRenderer): BaseVisitor() {
@@ -40,6 +41,34 @@ class TopLevelElementRenderer(private val linker: Linker, private val sectionRen
 
         if (macroConstant.documentation?.seeAlso?.isNotEmpty() == true) {
             sections.add(sectionRenderer.renderSeeAlso(macroConstant.documentation.seeAlso))
+        }
+
+        renderedTag = div().with(sections)
+    }
+
+    override fun accept(typeSynonym: TypeSynonym) {
+        val sections = ArrayList<Tag<*>>()
+
+        val title = typeSynonym.newName
+
+        sections.add(sectionRenderer.renderHeading(typeSynonym, title, typeSynonym.documentation?.getAttributes() ?: emptyMap()))
+
+        sections.add(sectionRenderer.renderRepresentation(typeSynonym))
+
+        typeSynonym.documentation?.description?.let {
+            sections.add(sectionRenderer.renderDescription(it))
+        }
+
+        if (typeSynonym.documentation?.examples?.isNotEmpty() == true) {
+            sections.add(sectionRenderer.renderExamples(typeSynonym.documentation.examples))
+        }
+
+        if (typeSynonym.documentation?.otherSections?.isNotEmpty() == true) {
+            sections.add(sectionRenderer.renderOtherSections(typeSynonym.documentation.otherSections))
+        }
+
+        if (typeSynonym.documentation?.seeAlso?.isNotEmpty() == true) {
+            sections.add(sectionRenderer.renderSeeAlso(typeSynonym.documentation.seeAlso))
         }
 
         renderedTag = div().with(sections)
