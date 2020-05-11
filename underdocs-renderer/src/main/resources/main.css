@@ -162,6 +162,28 @@ h2 {
     padding-right: 0.5em;
 }
 
+.representation {
+    border-bottom: var(--header-border);
+}
+
+.example > .example-title,
+.example > .example-output > h4 {
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.examples > .example:not(:last-of-type) {
+    padding-bottom: 1rem;
+}
+
+.example-code,
+.example-output-code {
+    width: calc(100% + 2.5em);
+    margin-left: -2.5em;
+}
+
 .elements .element-group:not(:last-of-type) {
     padding-bottom: 1rem;
 }

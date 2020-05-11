@@ -16,6 +16,7 @@ import j2html.TagCreator.h3
 import j2html.TagCreator.h4
 import j2html.TagCreator.img
 import j2html.TagCreator.p
+import j2html.TagCreator.pre
 import j2html.TagCreator.section
 import j2html.TagCreator.span
 import j2html.TagCreator.table
@@ -38,7 +39,7 @@ import java.io.File
 class SectionRenderer(private val linker: Linker) {
     private val KNOWN_ATTRIBUTE_LIST_ELEMENTS = listOf<String>("since", "stability")
 
-    private val titleRenderer = TitleRenderer()
+    private val representationRenderer = RepresentationRenderer()
 
     fun renderHeading(visitable: Visitable, title: String, attributes: Map<String, String>): Tag<*> {
         val titleElements = ArrayList<DomContent>()
@@ -105,9 +106,9 @@ class SectionRenderer(private val linker: Linker) {
         return UnescapedText(htmlText)
     }
 
-    fun renderRepresentation(element: TopLevelElement): Tag<*> {
-        TODO()
-    }
+    fun renderRepresentation(element: TopLevelElement) = section(
+            representationRenderer.render(element)
+    ).withClass("representation")
 
     fun renderExcerpt(excerpt: String): Tag<*> {
         TODO()
@@ -132,18 +133,28 @@ class SectionRenderer(private val linker: Linker) {
                     elements.add(div(renderMarkdown(it)).withClass("example-description"))
                 }
 
-                elements.add(div(renderMarkdown(example.code)).withClass("example-code"))
+                elements.add(renderExampleCode(example.code))
 
                 example.output?.let {
                     elements.add(div(
                             h4("Possible Output"),
-                            renderMarkdown(it)
+                            div(
+                                    pre(
+                                        code(it).withClass("language-output")
+                                    ).withClass("line-numbers")
+                            ).withClass("example-output-code")
                     ).withClass("example-output"))
                 }
 
                 div().with(elements).withClass("example")
             }
     ).withClass("examples")
+
+    private fun renderExampleCode(source: String) = div(
+            pre(
+                code(source).withClass("language-c")
+            ).withClass("line-numbers")
+    ).withClass("example-code")
 
     fun renderSeeAlso(elements: List<String>) = section(
             h2("See Also")

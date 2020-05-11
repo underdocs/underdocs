@@ -5,6 +5,7 @@ import underdocs.renderer.output.html.link.DefaultLinker
 import underdocs.renderer.output.html.render.page.PageRenderer
 import underdocs.renderer.output.html.render.section.SectionRenderer
 import underdocs.renderer.representation.Header
+import underdocs.renderer.representation.MacroConstant
 import underdocs.renderer.representation.Module
 import underdocs.renderer.representation.TopLevelElement
 import underdocs.renderer.representation.Visitable
@@ -76,19 +77,20 @@ class CppReferenceHtmlRenderer(
 
         output(header, document)
 
-        /*header.elements
+        header.elements
                 .values
                 .stream()
                 .flatMap { it.stream() }
+                .filter { it::class.java in listOf(MacroConstant::class.java)}
                 .forEach {
                     emit(it)
-                }*/
+                }
     }
 
     private fun emit(element: TopLevelElement) {
         val document = pageRenderer.render(element)
 
-        //output(element, document)
+        output(element, document)
     }
 
     private fun output(element: Visitable, document: String) {

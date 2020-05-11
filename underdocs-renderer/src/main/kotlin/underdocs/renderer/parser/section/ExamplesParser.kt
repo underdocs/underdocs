@@ -19,14 +19,22 @@ class ExamplesParser : underdocs.renderer.parser.section.AttemptingSectionParser
 
         var currentExampleHeading = underdocs.renderer.parser.section.nextNodeInSectionWhere(startNode) { isExampleHeading(it) } as Heading?
 
-        val sectionEndNode = underdocs.renderer.parser.section.sectionEndNodeFrom(startNode)
+        val sectionEndNode = if (sectionEndNodeFrom(startNode) == document.lastChild) {
+            document.lastChild
+        } else {
+            sectionEndNodeFrom(startNode).previous
+        }
 
         while (currentExampleHeading != null) {
             val nextExampleHeading = underdocs.renderer.parser.section.nextNodeInSectionWhere(currentExampleHeading) {
                 isExampleHeading(it)
             } as Heading?
 
-            val lastCodeBlock = (nextExampleHeading ?: sectionEndNode).previous
+            var lastCodeBlock = sectionEndNode
+
+            while (isNotCode(lastCodeBlock) && lastCodeBlock != currentExampleHeading) {
+                lastCodeBlock = lastCodeBlock.previous
+            }
 
             if (isNotCode(lastCodeBlock)) {
                 continue
@@ -69,7 +77,7 @@ class ExamplesParser : underdocs.renderer.parser.section.AttemptingSectionParser
     }
 
     private fun parseWithExampleAndOutput(heading: Heading, exampleBlock: Node, outputBlock: Node): Example {
-        val explanation = underdocs.renderer.parser.section.extractTextBetweenNodes(heading.next, exampleBlock)
+        val explanation = underdocs.renderer.parser.section.extractTextBetweenNodes(heading.next, exampleBlock.previous)
 
         val code = exampleBlock.firstChild.chars.toString()
         val language = if (exampleBlock is FencedCodeBlock) {

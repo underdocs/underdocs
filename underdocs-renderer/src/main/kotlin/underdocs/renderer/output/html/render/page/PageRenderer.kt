@@ -65,6 +65,8 @@ class PageRenderer(private val linker: Linker,
                             script()
                                     .withSrc("https://cdnjs.cloudflare.com/ajax/libs/prism/$PRISM_VERSION/plugins/autoloader/prism-autoloader.min.js"),
                             script()
+                                    .withSrc("https://cdnjs.cloudflare.com/ajax/libs/prism/$PRISM_VERSION/plugins/line-numbers/prism-line-numbers.min.js"),
+                            script()
                                     .withSrc("https://cdn.jsdelivr.net/npm/katex@$KATEX_VERSION/dist/katex.min.js")
                                     .attr("crossorigin", "anonymous"),
                             script()
