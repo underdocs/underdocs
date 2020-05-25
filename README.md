@@ -1,15 +1,20 @@
 <div align="center">
   <a href="https://github.com/underdocs/underdocs">
-    <img alt="CryptID" src="docs/img/logo.png" width="400" style="padding-top:20px;padding-bottom:20px;">
+    <img alt="underdocs" src="docs/img/logo.png" width="400" style="padding-top:20px">
   </a>
 </div>
 
-<div align="center">
+<h3 align="center">
+  Modern documentation generator for C.
+</h3>
 
-</div>
-
 <div align="center">
-Modern documentation generator for C.
+  <a href="https://github.com/underdocs/underdocs/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/underdocs/underdocs" alt="underdocs uses the Apache License 2.0.">
+  </a>
+  <a href="https://github.com/underdocs/underdocs/actions?query=workflow%3A%22Build+Master%22">
+    <img src="https://github.com/underdocs/underdocs/workflows/Build%20Master/badge.svg" alt="Build Master status.">
+  </a>
 </div>
 
 ---
