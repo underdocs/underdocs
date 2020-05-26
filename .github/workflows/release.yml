@@ -19,6 +19,7 @@ jobs:
         java: graalvm@20.1.0
 
     - name: Get the Release Version
+      id: get_version
       uses: battila7/get-version-action@v2
 
     - name: Build with Maven
