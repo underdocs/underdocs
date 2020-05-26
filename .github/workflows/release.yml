@@ -47,4 +47,4 @@ jobs:
         ref: master
         message: Updated the downloadable JAR to version ${{ steps.get_version.outputs.version-without-v }}
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.PUSH_UNDERDOCS_GITHUB_IO_TOKEN }}
