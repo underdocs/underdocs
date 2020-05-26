@@ -22,6 +22,14 @@ jobs:
       id: get_version
       uses: battila7/get-version-action@v2
 
+    - name: Set up Maven Dependency Cache
+      uses: actions/cache@v1
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
