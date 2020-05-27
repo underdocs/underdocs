@@ -7,7 +7,13 @@
     "doc": "docs"
   },
   "scripts": {
+    "generate:branch": "node ./scripts/generate-branch-name.js",
     "preinstall": "npx only-allow pnpm"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "node ./scripts/check-branch-name.js"
+    }
   },
   "repository": {
     "type": "git",
@@ -18,5 +24,9 @@
   "bugs": {
     "url": "https://github.com/underdocs/underdocs/issues"
   },
-  "homepage": "https://github.com/underdocs/underdocs#readme"
+  "homepage": "https://github.com/underdocs/underdocs#readme",
+  "devDependencies": {
+    "got": "11.1.4",
+    "husky": "4.2.5"
+  }
 }
