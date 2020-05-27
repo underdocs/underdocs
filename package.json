@@ -12,6 +12,7 @@
   },
   "husky": {
     "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-push": "node ./scripts/check-branch-name.js"
     }
   },
@@ -26,6 +27,8 @@
   },
   "homepage": "https://github.com/underdocs/underdocs#readme",
   "devDependencies": {
+    "@commitlint/cli": "8.3.5",
+    "@commitlint/config-conventional": "8.3.4",
     "got": "11.1.4",
     "husky": "4.2.5"
   }
