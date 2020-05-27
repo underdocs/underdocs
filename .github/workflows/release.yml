@@ -32,16 +32,14 @@ jobs:
 
     - name: Build with Maven
       run: |
-        cd underdocs
         mvn -B package --file pom.xml
-        cd ..
 
     - name: Clone underdocs.github.io
       run: git clone https://github.com/underdocs/underdocs.github.io ./underdocs.github.io
 
     - name: Update the Output Artifact
       run: |
-        cp ./underdocs/underdocs/target/underdocs-${{ steps.get_version.outputs.version-without-v }}.jar ./underdocs.github.io/underdocs.jar
+        cp ./underdocs/target/underdocs-${{ steps.get_version.outputs.version-without-v }}.jar ./underdocs.github.io/underdocs.jar
 
     - name: Push underdocs.github.io
       uses: EndBug/add-and-commit@v4
