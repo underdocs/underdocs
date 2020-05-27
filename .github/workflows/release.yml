@@ -1,0 +1,50 @@
+name: Build and Deploy Release
+
+on:
+  push:
+    tags:
+    - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout the Repository
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: battila7/jdk-via-jabba@v1
+      with:
+        jdk: graalvm@20.1.0
+
+    - name: Get the Release Version
+      id: get_version
+      uses: battila7/get-version-action@v2
+
+    - name: Set up Maven Dependency Cache
+      uses: actions/cache@v1
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
+
+    - name: Clone underdocs.github.io
+      run: git clone https://github.com/underdocs/underdocs.github.io ./underdocs.github.io
+
+    - name: Update the Output Artifact
+      run: |
+        cp ./underdocs/target/underdocs-${{ steps.get_version.outputs.version-without-v }}.jar ./underdocs.github.io/underdocs.jar
+
+    - name: Push underdocs.github.io
+      uses: EndBug/add-and-commit@v4
+      with:
+        cwd: ./underdocs.github.io
+        ref: master
+        message: Updated the downloadable JAR to version ${{ steps.get_version.outputs.version-without-v }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.PUSH_UNDERDOCS_GITHUB_IO_TOKEN }}
