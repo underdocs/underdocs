@@ -1,7 +1,7 @@
 const issue = require('./issue')
 
 const PERSISTENT_BRANCHES = [
-  'master'
+  'master', 'release'
 ]
 
 /**
