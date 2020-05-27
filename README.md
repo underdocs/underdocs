@@ -17,6 +17,15 @@
   </a>
 </div>
 
+
+<h3 align="center">
+  <a href="">Quickstart</a>
+  <span> · </span>
+  <a href="">Example Projects</a>
+  <span> · </span>
+  <a href="">Documentation</a>
+</h3>
+
 ---
 
 > :construction: Work In Progress, please check back later!
