@@ -31,9 +31,9 @@
 underdocs is a modern, performant documentation generator for C. Notable features include the following:
 
   * **Only C, No C++.** Is this even a feature? In our opinion, absolutely. underdocs is not another C++ documentation generator with accidental support for C. We only support C18 and do not plan to ever add support for C++.
-  * **Inspired by CppRefernece.** If you know [CppReference](https://en.cppreference.com/w/c/string/byte/memcpy), then you'll feel right at home. The documentation format and the generated sites are heavily inspired by CppRefernece.
-  * **Modern, performant HTML output with support for custom styling.** With optional build-time pre-rendering (needs [GraalVM](https://www.graalvm.org/) to be enabled), underdocs generates fast and stylish HTML output with support for customization.
-  * **Markdown-based documentation format.** underdocs comes with its own doc comment format, based own Markdown. You are free to use arbitrary Markdown formatting into your docs, including support for images, code snippets with syntax highlighting (via [Prism](https://prismjs.com/)) and mathematical expressions (via [KaTeX](https://katex.org/)).
+  * **Inspired by CppRefernece.** If you know [CppReference](https://en.cppreference.com/w/c/string/byte/memcpy), then you'll feel right at home. The documentation format and the generated sites are heavily inspired by CppReference.
+  * **Modern, performant HTML output with support for custom styling.** With optional build-time pre-rendering (needs [GraalVM](https://www.graalvm.org/) to be enabled), underdocs generates fast and stylish HTML output with support for customization. Pre-rendering allows us to ship minimal client-side JavaScript to keep your site as fast as possible.
+  * **Markdown-based documentation format.** underdocs comes with its own doc comment format, based on Markdown. You are free to use arbitrary Markdown formatting in your docs, including support for images, code snippets with syntax highlighting (via [Prism](https://prismjs.com/)) and mathematical expressions (via [KaTeX](https://katex.org/)).
   * **On-Site Search.** A huge project may contain thousands of headers, structs, functions and such. underdocs makes it easy to navigate such projects by providing on-site search capabilities using a precomputed index.
   * **Multiversion Sites.** If you support multiple versions of your project simultaneously, then the need naturally arises to host the documentation of each supported version. underdocs makes this a breeze with out of the box support for such scenarios.
 
@@ -43,7 +43,7 @@ In no particular order, we also have:
   * Client-side preprocessor conditional evaluation.
   * Remote repository link integration (for code files and tags).
   * Mobile-ready output.
-  * Module and file level commitlogs between version.
+  * Module and file level commitlogs between versions.
   * Easy-to-extend architecture.
 
 Check out the [Documentation](a) for detailed information on these features.
@@ -96,7 +96,7 @@ For the impatient, we offer a "quicker than [Quickstart](q) guide" here.
 
      By default, underdocs renders the documentation into the `underdocs-site` directory. Fire up an HTTP-server (for example [http-party/http-server](https://github.com/http-party/http-server)) serving this directory and checkout your new documentation site!
 
-If you did not used the underdocs documentation style throughout your headers, then the generated site will look pretty boring. Make sure to check the next section, [Learning underdocs](#learning-underdocs) on how to get the most out of underdocs!
+If you did not use the underdocs documentation style throughout your headers, then the generated site will look pretty boring. Make sure to check the next section, [Learning underdocs](#learning-underdocs) on how to get the most out of underdocs!
 
 ## Learning underdocs
 
@@ -109,7 +109,7 @@ The full documentation for underdocs lives in the [docs](placeholder) folder. Th
 
 ## Contribution Guidelines
 
-Contributions are always welcome underdocs! Take a look at the [Contributing Guide](CONTRIBUTING.md) for more information (including setup and development related stuff).
+Contributions are always welcome in underdocs! Take a look at the [Contributing Guide](CONTRIBUTING.md) for more information (including setup and development related stuff).
 
 ## License
 
