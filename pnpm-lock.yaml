@@ -1,6 +1,7 @@
 devDependencies:
   '@commitlint/cli': registry.npmjs.org/@commitlint/cli/8.3.5
   '@commitlint/config-conventional': registry.npmjs.org/@commitlint/config-conventional/8.3.4
+  convict: registry.npmjs.org/convict/6.0.0
   got: registry.npmjs.org/got/11.1.4
   husky: registry.npmjs.org/husky/4.2.5
 lockfileVersion: 5.1
@@ -765,6 +766,19 @@ packages:
       registry: 'https://registry.npmjs.com/'
       tarball: 'https://registry.npmjs.org/conventional-commits-parser/-/conventional-commits-parser-3.1.0.tgz'
     version: 3.1.0
+  registry.npmjs.org/convict/6.0.0:
+    dependencies:
+      lodash.clonedeep: registry.npmjs.org/lodash.clonedeep/4.5.0
+      yargs-parser: registry.npmjs.org/yargs-parser/18.1.3
+    dev: true
+    engines:
+      node: '>=6'
+    name: convict
+    resolution:
+      integrity: sha512-osfPkv5yjVoZqrTWBXuh/ABGpFoaJplbt0WXr0CodR4CSWt8UnzY4PSUyRz/+5BX5YUtWcToG29Kr0B6xhdIMg==
+      registry: 'https://registry.npmjs.com/'
+      tarball: 'https://registry.npmjs.org/convict/-/convict-6.0.0.tgz'
+    version: 6.0.0
   registry.npmjs.org/core-js/2.6.11:
     deprecated: 'core-js@<3 is no longer maintained and not recommended for usage due to the number of issues. Please, upgrade your dependencies to the actual version of core-js@3.'
     dev: true
@@ -1411,6 +1425,14 @@ packages:
       registry: 'https://registry.npmjs.com/'
       tarball: 'https://registry.npmjs.org/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz'
     version: 3.0.0
+  registry.npmjs.org/lodash.clonedeep/4.5.0:
+    dev: true
+    name: lodash.clonedeep
+    resolution:
+      integrity: sha1-4j8/nE+Pvd6HJSnBBxhXoIblzO8=
+      registry: 'https://registry.npmjs.com/'
+      tarball: 'https://registry.npmjs.org/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz'
+    version: 4.5.0
   registry.npmjs.org/lodash.template/4.5.0:
     dependencies:
       lodash._reinterpolate: registry.npmjs.org/lodash._reinterpolate/3.0.0
@@ -2526,5 +2548,6 @@ packages:
 specifiers:
   '@commitlint/cli': 8.3.5
   '@commitlint/config-conventional': 8.3.4
+  convict: 6.0.0
   got: 11.1.4
   husky: 4.2.5
