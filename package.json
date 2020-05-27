@@ -1,0 +1,22 @@
+{
+  "name": "@underdocs/underdocs",
+  "version": "1.0.1",
+  "private": true,
+  "description": "Modern documentation generator for C.",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "preinstall": "npx only-allow pnpm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/underdocs/underdocs.git"
+  },
+  "author": "Underdocs Development Team",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/underdocs/underdocs/issues"
+  },
+  "homepage": "https://github.com/underdocs/underdocs#readme"
+}
