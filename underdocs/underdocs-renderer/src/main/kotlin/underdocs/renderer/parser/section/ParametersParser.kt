@@ -26,7 +26,7 @@ class ParametersParser : underdocs.renderer.parser.section.AttemptingSectionPars
                 continue
             }
 
-            val parameterName = parameter.firstChild.chars.toString()
+            val parameterName = parameter.firstChild.chars.toString().trim()
 
             val parameterDescriptionList = parameter.firstChild.next
 

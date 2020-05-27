@@ -49,6 +49,11 @@ html, body {
 main {
     display: grid;
     grid-template-columns: minmax(1.2rem, 1fr) minmax(0, var(--main-width)) minmax(1.2rem, 1fr);
+    padding-bottom: 1rem;
+}
+
+main > div > section:not(:last-of-type) {
+    padding-bottom: 0.5rem;
 }
 
 main > * {
