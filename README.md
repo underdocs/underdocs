@@ -104,7 +104,7 @@ The full documentation for underdocs lives in the [docs](docs) folder. The follo
 
   * **[Quickstart Guide.](placeholder)** A few-minute introduction to the underdocs flow.
   * **[The underdocs Format.](docs/format.md)** An in-depth description of the underdocs doc comment style and its capabilities.
-  * **[Configuration Options.](placeholder)** Detailed description of the available configuration options.
+  * **[Configuration Reference.](docs/configuration-reference.md)** Detailed description of the available configuration options.
   * **[Example Projects.](examples)** Multiple example projects showcasing different features of underdocs.
 
 ## Contribution Guidelines
