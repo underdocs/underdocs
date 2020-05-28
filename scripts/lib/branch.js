@@ -1,9 +1,5 @@
 const issue = require('./issue')
 
-const PERSISTENT_BRANCHES = [
-  'master', 'release'
-]
-
 /**
  * Matches branch names like this:
  *   * #1-some-branch
@@ -58,14 +54,14 @@ function splitBranchName (branchName) {
   }
 }
 
-function guardInvalidBranchName (currentBranch) {
+function guardInvalidBranchName (persistentBranches, currentBranch) {
   console.log(`
 The name of the current branch "${currentBranch}" does not match the branch naming policy.
 
 The branch name must
   * either match one of the persistent names: 
   
-      ${PERSISTENT_BRANCHES.join(', ')}
+      ${persistentBranches.join(', ')}
 
   * or match an ephemeral name enforced by the following regex: 
     
@@ -100,13 +96,13 @@ The title part of the current branch does not match the one generated using the 
   process.exit(1)
 }
 
-async function checkBranchName (owner, repository, actualBranchName) {
-  if (PERSISTENT_BRANCHES.includes(actualBranchName)) {
+async function checkBranchName (owner, repository, persistentBranches, actualBranchName) {
+  if (persistentBranches.includes(actualBranchName)) {
     return
   }
 
   if (!actualBranchName.match(EPHEMERAL_BRANCH_REGEX)) {
-    guardInvalidBranchName(actualBranchName)
+    guardInvalidBranchName(persistentBranches, actualBranchName)
   }
 
   if (!(await hasIssueForBranch(owner, repository, actualBranchName))) {
