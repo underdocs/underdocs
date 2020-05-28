@@ -19,11 +19,11 @@
 
 
 <h3 align="center">
-  <a href="">Quickstart</a>
+  <a href="https://github.com/underdocs/underdocs/tree/master/docs/quickstart.md">Quickstart</a>
   <span> · </span>
-  <a href="">Example Projects</a>
+  <a href="https://github.com/underdocs/underdocs/tree/master/examples">Example Projects</a>
   <span> · </span>
-  <a href="">Documentation</a>
+  <a href="https://github.com/underdocs/underdocs/tree/master/docs/README.md">Documentation</a>
 </h3>
 
 ---
@@ -100,12 +100,12 @@ If you did not use the underdocs documentation style throughout your headers, th
 
 ## Learning underdocs
 
-The full documentation for underdocs lives in the [docs](placeholder) folder. The following resources might be of most interest:
+The full documentation for underdocs lives in the [docs](https://github.com/underdocs/underdocs/tree/master/docs) folder. The following resources might be of most interest:
 
   * **[Quickstart Guide.](placeholder)** A few-minute introduction to the underdocs flow.
   * **[The underdocs Format.](placeholder)** An in-depth description of the underdocs doc comment style and its capabilities.
   * **[Configuration Options.](placeholder)** Detailed description of the available configuration options.
-  * **[Example Projects.](placeholder)** Multiple example projects showcasing different features of underdocs.
+  * **[Example Projects.](https://github.com/underdocs/underdocs/tree/master/examples)** Multiple example projects showcasing different features of underdocs.
 
 ## Contribution Guidelines
 
