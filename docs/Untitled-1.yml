@@ -1,0 +1,75 @@
+log:
+    level: QUIET
+
+parse:
+    input:
+        codebaseDirectory: ./include
+        includeGlobs:
+            - '*.h'
+        excludeGlobs:
+            - '**/asd.h'
+    outputFile: ./codebase.json
+
+render:
+    input:
+        codebaseFile: ./codebase.json
+        resourcesDirectory: ./resources
+        pagesDirectory: ./pages
+
+    outputDirectory: ./underdocs-site
+
+    
+    features:
+        nightMode: false
+
+    stabilityColors:
+        alpha: '#FF00AA'
+        beta: '#FF00AA'
+        stable: '#FF00AA'
+        deprecated: '#FF00AA'
+    
+    visibilityLevels:
+        - private
+        - protected
+        - public
+
+    visibility: public
+
+    otherSections: false
+
+    otherAttributes: false
+
+    linkTemplates:
+        remoteRepositoryLine: https://github.com/cryptid-org/cryptid-native/tree/master/include/\${path}#L\${line}
+        remoteRepositoryTag: https://github.com/cryptid-org/cryptid-native/releases/tag/\${tag}
+
+Kódbázis -> JSON
+parse 
+    --codebaseDirectory=/include/x -c./include/x
+    --logLevel=QUIET|NORMAL|VERBOSE
+    --outputFile=./codebase.json -o./codebase.json
+    --includeGlob=*.h
+    --includeGlob=*.hh
+    --excludeGlob=xy.h
+
+JSON -> HTML (vagy amit akarsz)
+render
+    --inputFile=./codebase.json -i./codebase.json
+    --outputDirectory=./output -o./output
+    --resourceDirectory=./resources
+    --pageDirectory=./pages
+    --logLevel=QUIET|NORMAL|VERBOSE
+    --remoteRepositoryLineLinkTemplate=
+      https://github.com/cryptid-org/cryptid-native/tree/master/include/\${path}#L\${line}
+    --remoteRepositoryTagLinkTemplate = 
+      https://github.com/cryptid-org/cryptid-native/releases/tag/\${tag}
+    --nightMode=false # Feature switchek legyenek
+    --search=false
+    --prerendering=false
+    --logoFile=./logo.png
+    --footerLink=lol
+
+commit-version
+
+pages/
+  module-info.md
