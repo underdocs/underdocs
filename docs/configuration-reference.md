@@ -10,6 +10,7 @@ This document describes the configuration options that can be used on the comman
     * [log](#log)
       * [level](#level)
     * [parse](#parse)
+      * [commentStyles](#commentstyles)
       * [input](#input)
         * [codebaseDirectory](#codebasedirectory)
         * [includeGlobs](#includeglobs)
@@ -93,6 +94,29 @@ Sets the verbosity of logging. Can be one of the following values:
     * Output detailed debug messages as well as progress messages, warnings and errors.
 
 ### parse
+
+#### commentStyles
+
+  * Default Value.
+    * Single-item list of `SLASH_DOUBLE_ASTERISK`.
+  * Accepted Values
+    * A non-empty list of the following values:
+      * `SLASH_ASTERISK `
+      * `SLASH_DOUBLE_ASTERISK`
+      * `DOULE_SLASH`
+      * `TRIPLE_SLASH`
+  * Setting
+    * CLI :x:
+    * File: :white_check_mark:
+      ~~~~yaml
+      parse:
+        commentStyles:
+          - SLASH_DOUBLE_ASTERISK
+      ~~~~
+
+Sets which comments are considered doc comments during the `parse` phase.
+
+Please refer to [The underdocs Format – Doc Comment Format: Style](#style) section for more information.
 
 #### input
 
