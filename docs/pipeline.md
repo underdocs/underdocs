@@ -2,7 +2,7 @@
 
 > From headers to HTML.
 
-This document details how the pipeline of transformations applied to the input header files.
+This document details how the pipeline of transformations are applied to the input header files.
 
 **Overview**
 
