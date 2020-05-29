@@ -31,7 +31,7 @@
 underdocs is a modern, performant documentation generator for C. Notable features include the following:
 
   * **Only C, No C++.** Is this even a feature? In our opinion, absolutely. underdocs is not another C++ documentation generator with accidental support for C. We only support C18 and do not plan to ever add support for C++.
-  * **Inspired by CppRefernece.** If you know [CppReference](https://en.cppreference.com/w/c/string/byte/memcpy), then you'll feel right at home. The documentation format and the generated sites are heavily inspired by CppReference.
+  * **Inspired by CppReference.** If you know [CppReference](https://en.cppreference.com/w/c/string/byte/memcpy), then you'll feel right at home. The documentation format and the generated sites are heavily inspired by CppReference.
   * **Modern, performant HTML output with support for custom styling.** With optional build-time pre-rendering (needs [GraalVM](https://www.graalvm.org/) to be enabled), underdocs generates fast and stylish HTML output with support for customization. Pre-rendering allows us to ship minimal client-side JavaScript to keep your site as fast as possible.
   * **Markdown-based documentation format.** underdocs comes with its own doc comment format, based on Markdown. You are free to use arbitrary Markdown formatting in your docs, including support for images, code snippets with syntax highlighting (via [Prism](https://prismjs.com/)) and mathematical expressions (via [KaTeX](https://katex.org/)).
   * **On-Site Search.** A huge project may contain thousands of headers, structs, functions and such. underdocs makes it easy to navigate such projects by providing on-site search capabilities using a precomputed index.
