@@ -24,7 +24,7 @@ This document serves as a reference on
     * [Attributes](#attributes)
     * [Sections](#sections)
     * [Links](#links)
-  * [Attributes](#attributes)
+  * [Attributes](#attributes-1)
     * [Recognized Attributes](#recognized-attributes)
     * [Alias](#alias)
     * [Group](#group)
@@ -32,7 +32,7 @@ This document serves as a reference on
     * [Stability](#stability)
     * [Visibility](#visibility)
     * [Other Attributes](#other-attributes)
-  * [Sections](#sections)
+  * [Sections](#sections-1)
     * [Recognized Sections](#recognized-sections)
     * [Title](#title)
     * [Description](#description)
@@ -44,11 +44,11 @@ This document serves as a reference on
     * [Examples](#examples)
     * [See Also](#see-also)
     * [Other Sections](#other-sections)
-  * [Links](#links)
+  * [Links](#links-1)
     * [Codebase](#codebase)
     * [Pages](#pages)
     * [Resources](#resources)
-    * [Versions](#versions)
+    * [Versions](#versions-1)
 
 ## High-Level Concepts
 
@@ -474,7 +474,7 @@ The following namespaces are recognized:
   * [`codebase://`](#codebase).
   * [`pages://`](#pages),
   * [`resources://`](#resources),
-  * [`versions://`](#versions).
+  * [`versions://`](#versions-1).
 
 ## Attributes
 
