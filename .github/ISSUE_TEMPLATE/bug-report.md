@@ -3,7 +3,7 @@ name: Bug Report
 about: underdocs works differently as expected or documented? Open a bug report and
   let us know!
 title: ''
-labels: bug
+labels: 'type: bug :beetle:'
 assignees: ''
 
 ---

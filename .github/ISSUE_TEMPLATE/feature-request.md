@@ -2,7 +2,7 @@
 name: Feature Request
 about: Suggest a new idea for the project.
 title: ''
-labels: ''
+labels: 'type: feature-enhancement :heavy_plus_sign:'
 assignees: ''
 
 ---
