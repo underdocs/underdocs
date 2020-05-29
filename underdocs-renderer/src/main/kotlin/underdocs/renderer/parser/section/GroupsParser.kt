@@ -23,7 +23,8 @@ class GroupsParser : underdocs.renderer.parser.section.AttemptingSectionParser<M
             }
 
             val groupTitle = (currentGroupHeading as Heading).text.toString()
-            val groupText = extractTextBetweenNodes(currentGroupHeading.next ?: currentGroupHeading.firstChild, nextGroupHeading
+            val groupText = extractTextBetweenNodes(currentGroupHeading.next
+                    ?: currentGroupHeading.firstChild, nextGroupHeading
                     ?: sectionEndNode)
 
             result[groupTitle] = groupText

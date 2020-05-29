@@ -25,8 +25,6 @@ import underdocs.renderer.representation.TopLevelElement
 import underdocs.renderer.representation.TypeSynonym
 import underdocs.renderer.representation.Union
 import underdocs.renderer.representation.Variable
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
 
 class HeaderRenderer(private val linker: Linker, private val sectionRenderer: SectionRenderer) {
     fun render(header: Header) = content(header)
@@ -72,9 +70,9 @@ class HeaderRenderer(private val linker: Linker, private val sectionRenderer: Se
 
         if (groupMap.size == 1 && groupMap.containsKey("UNKNOWN")) {
             return section(
-                div()
-                    .with(elementsInGroup(header.elements.get("UNKNOWN") ?: emptyList()))
-                    .withClass("element-group")
+                    div()
+                            .with(elementsInGroup(header.elements.get("UNKNOWN") ?: emptyList()))
+                            .withClass("element-group")
             ).withClass("elements")
         }
 
@@ -95,7 +93,7 @@ class HeaderRenderer(private val linker: Linker, private val sectionRenderer: Se
                     if (name != "UNKNOWN") {
                         contents.add(h2(name))
                     }
-                    
+
                     description?.let {
                         contents.add(sectionRenderer.renderDescription(it))
                     }
@@ -117,7 +115,7 @@ class HeaderRenderer(private val linker: Linker, private val sectionRenderer: Se
                 tryRenderElementsOfTypes("Variables", elements, listOf(Variable::class.java))
         ).filterNotNull()
 
-        if (typeGroups.isEmpty())  {
+        if (typeGroups.isEmpty()) {
             return null
         }
 

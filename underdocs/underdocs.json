@@ -7,7 +7,6 @@
     "excludingPatterns": [],
     "outputFile": "./output.json",
     "options": {
-
     }
   },
   "renderer": {

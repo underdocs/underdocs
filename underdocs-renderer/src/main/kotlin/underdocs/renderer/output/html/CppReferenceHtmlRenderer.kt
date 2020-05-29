@@ -4,16 +4,9 @@ import underdocs.configuration.RendererConfiguration
 import underdocs.renderer.output.html.link.DefaultLinker
 import underdocs.renderer.output.html.render.page.PageRenderer
 import underdocs.renderer.output.html.render.section.SectionRenderer
-import underdocs.renderer.representation.EnumElement
-import underdocs.renderer.representation.Function
 import underdocs.renderer.representation.Header
-import underdocs.renderer.representation.MacroConstant
-import underdocs.renderer.representation.MacroFunction
 import underdocs.renderer.representation.Module
-import underdocs.renderer.representation.Struct
 import underdocs.renderer.representation.TopLevelElement
-import underdocs.renderer.representation.TypeSynonym
-import underdocs.renderer.representation.Union
 import underdocs.renderer.representation.Visitable
 import underdocs.renderer.writer.DefaultResourceWriter
 import underdocs.renderer.writer.DirectoryCreatingOutputWriter

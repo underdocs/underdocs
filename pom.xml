@@ -1,25 +1,25 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>underdocs</groupId>
-	<artifactId>underdocs-parent</artifactId>
-	<version>1.0.1</version>
-	<packaging>pom</packaging>
-	
-	<name>Underdocs Parent</name>
-	<description>Modern documentation generator for C.</description>
+    <groupId>underdocs</groupId>
+    <artifactId>underdocs-parent</artifactId>
+    <version>1.0.1</version>
+    <packaging>pom</packaging>
 
-	<scm>
-		<developerConnection>scm:git:https://github.com/underdocs/underdocs.git</developerConnection>
-		<connection>scm:git:https://github.com/underdocs/underdocs.git</connection>
-		<tag>HEAD</tag>
-		<url>https://github.com/underdocs/underdocs</url>
-	</scm>
+    <name>Underdocs Parent</name>
+    <description>Modern documentation generator for C.</description>
 
-	<inceptionYear>2019</inceptionYear>
+    <scm>
+        <developerConnection>scm:git:https://github.com/underdocs/underdocs.git</developerConnection>
+        <connection>scm:git:https://github.com/underdocs/underdocs.git</connection>
+        <tag>HEAD</tag>
+        <url>https://github.com/underdocs/underdocs</url>
+    </scm>
 
-	<licenses>
+    <inceptionYear>2019</inceptionYear>
+
+    <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
@@ -27,182 +27,182 @@
         </license>
     </licenses>
 
-	<developers>
-		<developer>
-			<id>battila7</id>
-			<name>Attila Bagossy</name>
-			<email>bagossyattila@outlook.com</email>
-			<roles>
-				<role>Lead Developer</role>
-			</roles>
-		</developer>
-	</developers>
+    <developers>
+        <developer>
+            <id>battila7</id>
+            <name>Attila Bagossy</name>
+            <email>bagossyattila@outlook.com</email>
+            <roles>
+                <role>Lead Developer</role>
+            </roles>
+        </developer>
+    </developers>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
 
-		<clikt.version>2.6.0</clikt.version>
-		<cdt-core.version>5.6.0.201402142303</cdt-core.version>
-		<equinox-common.version>3.6.200.v20130402-1505</equinox-common.version>
-		<jackson.version>2.10.2</jackson.version>
+        <clikt.version>2.6.0</clikt.version>
+        <cdt-core.version>5.6.0.201402142303</cdt-core.version>
+        <equinox-common.version>3.6.200.v20130402-1505</equinox-common.version>
+        <jackson.version>2.10.2</jackson.version>
         <kotlin.version>1.3.60</kotlin.version>
-		<flexmark.version>0.50.48</flexmark.version>
-		<j2html.version>1.4.0</j2html.version>
-		<slf4j.version>1.7.30</slf4j.version>
-		<logback.version>1.2.3</logback.version>
-		<maven-source-plugin.version>3.2.1</maven-source-plugin.version>
-		<maven-assembly-plugin.version>3.1.1</maven-assembly-plugin.version>
-		<maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
-	</properties>
+        <flexmark.version>0.50.48</flexmark.version>
+        <j2html.version>1.4.0</j2html.version>
+        <slf4j.version>1.7.30</slf4j.version>
+        <logback.version>1.2.3</logback.version>
+        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
+        <maven-assembly-plugin.version>3.1.1</maven-assembly-plugin.version>
+        <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
+    </properties>
 
-	<modules>
-		<module>underdocs</module>
-		<module>underdocs-collector</module>
+    <modules>
+        <module>underdocs</module>
+        <module>underdocs-collector</module>
         <module>underdocs-configuration</module>
-		<module>underdocs-parser</module>
-		<module>underdocs-renderer</module>
-		<module>underdocs-representation</module>
+        <module>underdocs-parser</module>
+        <module>underdocs-renderer</module>
+        <module>underdocs-representation</module>
     </modules>
 
-	<repositories>
+    <repositories>
         <repository>
             <id>local-dependencies</id>
             <name>Local Dependencies Repository</name>
             <url>file://${project.basedir}/dependencies</url>
         </repository>
 
-		<repository>
-			<id>jcenter</id>
-			<name>jcenter</name>
-			<url>https://jcenter.bintray.com</url>
-		</repository>
+        <repository>
+            <id>jcenter</id>
+            <name>jcenter</name>
+            <url>https://jcenter.bintray.com</url>
+        </repository>
     </repositories>
 
-	<distributionManagement>
-		<repository>
-			<id>github-underdocs-underdocs</id>
-			<url>https://maven.pkg.github.com/underdocs/underdocs</url>
-		</repository>
-	</distributionManagement>
+    <distributionManagement>
+        <repository>
+            <id>github-underdocs-underdocs</id>
+            <url>https://maven.pkg.github.com/underdocs/underdocs</url>
+        </repository>
+    </distributionManagement>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-api</artifactId>
-				<version>${slf4j.version}</version>
-			</dependency>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
 
-			<dependency>
-				<groupId>ch.qos.logback</groupId>
-				<artifactId>logback-classic</artifactId>
-				<version>${logback.version}</version>
-			</dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
 
-			<dependency>
-				<groupId>ch.qos.logback</groupId>
-				<artifactId>logback-core</artifactId>
-				<version>${logback.version}</version>
-			</dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
 
-			<dependency>
-				<groupId>com.vladsch.flexmark</groupId>
-				<artifactId>flexmark-all</artifactId>
-				<version>${flexmark.version}</version>
-			</dependency>
+            <dependency>
+                <groupId>com.vladsch.flexmark</groupId>
+                <artifactId>flexmark-all</artifactId>
+                <version>${flexmark.version}</version>
+            </dependency>
 
-			<dependency>
-				<groupId>com.vladsch.flexmark</groupId>
-				<artifactId>flexmark-ext-tables</artifactId>
-				<version>${flexmark.version}</version>
-			</dependency>
+            <dependency>
+                <groupId>com.vladsch.flexmark</groupId>
+                <artifactId>flexmark-ext-tables</artifactId>
+                <version>${flexmark.version}</version>
+            </dependency>
 
-			<dependency>
-				<groupId>com.vladsch.flexmark</groupId>
-				<artifactId>flexmark-ext-yaml-front-matter</artifactId>
-				<version>${flexmark.version}</version>
-			</dependency>
+            <dependency>
+                <groupId>com.vladsch.flexmark</groupId>
+                <artifactId>flexmark-ext-yaml-front-matter</artifactId>
+                <version>${flexmark.version}</version>
+            </dependency>
 
-			<dependency>
-				<groupId>com.j2html</groupId>
-				<artifactId>j2html</artifactId>
-				<version>${j2html.version}</version>
-			</dependency>
+            <dependency>
+                <groupId>com.j2html</groupId>
+                <artifactId>j2html</artifactId>
+                <version>${j2html.version}</version>
+            </dependency>
 
-			<dependency>
-				<groupId>com.github.ajalt</groupId>
-				<artifactId>clikt</artifactId>
-				<version>${clikt.version}</version>
-			</dependency>
+            <dependency>
+                <groupId>com.github.ajalt</groupId>
+                <artifactId>clikt</artifactId>
+                <version>${clikt.version}</version>
+            </dependency>
 
-			<dependency>
-				<groupId>org.eclipse</groupId>
-				<artifactId>cdt.core</artifactId>
-				<version>${cdt-core.version}</version>
-			</dependency>
+            <dependency>
+                <groupId>org.eclipse</groupId>
+                <artifactId>cdt.core</artifactId>
+                <version>${cdt-core.version}</version>
+            </dependency>
 
-			<dependency>
-				<groupId>org.eclipse</groupId>
-				<artifactId>equinox.common</artifactId>
-				<version>${equinox-common.version}</version>
-			</dependency>
+            <dependency>
+                <groupId>org.eclipse</groupId>
+                <artifactId>equinox.common</artifactId>
+                <version>${equinox-common.version}</version>
+            </dependency>
 
-			<dependency>
-				<groupId>com.fasterxml.jackson.core</groupId>
-				<artifactId>jackson-databind</artifactId>
-				<version>${jackson.version}</version>
-			</dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
 
-			<dependency>
-				<groupId>com.fasterxml.jackson.module</groupId>
-				<artifactId>jackson-module-kotlin</artifactId>
-				<version>${jackson.version}</version>
-			</dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.module</groupId>
+                <artifactId>jackson-module-kotlin</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
 
-			<dependency>
+            <dependency>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-stdlib-jdk8</artifactId>
                 <version>${kotlin.version}</version>
             </dependency>
-		</dependencies>
-	</dependencyManagement>
+        </dependencies>
+    </dependencyManagement>
 
-	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.jetbrains.kotlin</groupId>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.jetbrains.kotlin</groupId>
                     <artifactId>kotlin-maven-plugin</artifactId>
                     <version>${kotlin.version}</version>
-				</plugin>
+                </plugin>
 
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-source-plugin</artifactId>
-					<version>${maven-source-plugin.version}</version>
-					<executions>
-						<execution>
-							<id>attach-sources</id>
-							<goals>
-								<goal>jar</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven-source-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
 
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-assembly-plugin</artifactId>
-					<version>${maven-assembly-plugin.version}</version>
-				</plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>${maven-assembly-plugin.version}</version>
+                </plugin>
 
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-jar-plugin</artifactId>
-					<version>${maven-jar-plugin.version}</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${maven-jar-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>

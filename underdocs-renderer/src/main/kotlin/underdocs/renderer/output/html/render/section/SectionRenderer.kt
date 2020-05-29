@@ -29,7 +29,6 @@ import j2html.tags.Tag
 import j2html.tags.Text
 import j2html.tags.UnescapedText
 import underdocs.renderer.output.html.link.Linker
-import underdocs.renderer.representation.EnumConstant
 import underdocs.renderer.representation.EnumElement
 import underdocs.renderer.representation.EnumMember
 import underdocs.renderer.representation.EnumType
@@ -86,25 +85,27 @@ class SectionRenderer(private val linker: Linker) {
             return null
         }
 
-        val attributeElements = attributes.map { (key, value)  ->  when (key) {
-            "since" -> linker.remoteLinkToTag(value)?.let { tagLink ->
-                span(
-                        span(key).withClass("attribute-key"),
-                        span(":").withClass("attribute-separator"),
-                        span(a(value).withHref(tagLink).withClass("since-attribute-link")).withClass("attribute-value")
-                )
-            }  ?: renderSimpleAttribute(key, value)
-            else -> renderSimpleAttribute(key, value)
-        } }
+        val attributeElements = attributes.map { (key, value) ->
+            when (key) {
+                "since" -> linker.remoteLinkToTag(value)?.let { tagLink ->
+                    span(
+                            span(key).withClass("attribute-key"),
+                            span(":").withClass("attribute-separator"),
+                            span(a(value).withHref(tagLink).withClass("since-attribute-link")).withClass("attribute-value")
+                    )
+                } ?: renderSimpleAttribute(key, value)
+                else -> renderSimpleAttribute(key, value)
+            }
+        }
 
         return div().with(attributeElements).withClass("attribute-list")
     }
 
     private fun renderSimpleAttribute(key: String, value: String) = span(
-                    span(key).withClass("attribute-key"),
-                    span(":").withClass("attribute-separator"),
-                    span(value).withClass("attribute-value")
-            )
+            span(key).withClass("attribute-key"),
+            span(":").withClass("attribute-separator"),
+            span(value).withClass("attribute-value")
+    )
 
     fun renderMarkdown(mdText: String): UnescapedText {
         val options = MutableDataSet()
@@ -242,15 +243,15 @@ class SectionRenderer(private val linker: Linker) {
 
     fun renderParameters(element: TopLevelElement) = when (element) {
         is MacroFunction -> section(
-            h2("Parameters"),
-            each(element.documentation!!.parameters) { (name, description) ->
-                div(
-                        div(
-                                h3(name).withClass("parameter-title")
-                        ).withClass("parameter-heading"),
-                        div(renderMarkdown(description)).withClass("parameter-description")
-                ).withClass("parameter")
-            }
+                h2("Parameters"),
+                each(element.documentation!!.parameters) { (name, description) ->
+                    div(
+                            div(
+                                    h3(name).withClass("parameter-title")
+                            ).withClass("parameter-heading"),
+                            div(renderMarkdown(description)).withClass("parameter-description")
+                    ).withClass("parameter")
+                }
         ).withClass("parameters")
         is Function -> section(
                 h2("Parameters"),
@@ -289,7 +290,7 @@ class SectionRenderer(private val linker: Linker) {
                             h4("Possible Output"),
                             div(
                                     pre(
-                                        code(it).withClass("language-output")
+                                            code(it).withClass("language-output")
                                     ).withClass("line-numbers")
                             ).withClass("example-output-code")
                     ).withClass("example-output"))
@@ -301,7 +302,7 @@ class SectionRenderer(private val linker: Linker) {
 
     private fun renderExampleCode(source: String) = div(
             pre(
-                code(source).withClass("language-c")
+                    code(source).withClass("language-c")
             ).withClass("line-numbers")
     ).withClass("example-code")
 
@@ -381,7 +382,7 @@ class SectionRenderer(private val linker: Linker) {
     }
 
     private fun titleForModule(module: Module) = module.documentation?.title
-        ?: module.path.split(File.separator).last()
+            ?: module.path.split(File.separator).last()
 
     fun renderSubheaders(module: Module): Tag<*> {
         return section(

@@ -14,7 +14,7 @@ import underdocs.renderer.representation.Variable
 import underdocs.renderer.representation.Visitable
 import underdocs.renderer.representation.visitor.BaseVisitor
 
-class RepresentationRenderer: BaseVisitor() {
+class RepresentationRenderer : BaseVisitor() {
     private val memberRenderer = ComplexMemberRenderer()
     private val singleLineTypeRenderer = SingleLineTypeRenderer()
 
@@ -51,7 +51,7 @@ class RepresentationRenderer: BaseVisitor() {
                 }
                 .joinToString(",\n")
 
-        source  = if (enumElement.typedef) {
+        source = if (enumElement.typedef) {
             "typedef enum {\n${members}\n} ${enumElement.name}"
         } else {
             var name = enumElement.name ?: ""
@@ -79,7 +79,7 @@ class RepresentationRenderer: BaseVisitor() {
 
         val members = memberRenderer.render(struct.members, 2)
 
-        source  = if (struct.typedef) {
+        source = if (struct.typedef) {
             "typedef struct {\n${members}\n} ${struct.name}"
         } else {
             var name = struct.name ?: ""
@@ -101,7 +101,7 @@ class RepresentationRenderer: BaseVisitor() {
 
         val members = memberRenderer.render(union.members, 2)
 
-        source  = if (union.typedef) {
+        source = if (union.typedef) {
             "typedef union {\n${members}\n} ${union.name}"
         } else {
             var name = union.name ?: ""
@@ -131,7 +131,7 @@ class RepresentationRenderer: BaseVisitor() {
                 }
                 .joinToString(",\n")
 
-        source  = "$specifiers$returnType ${function.name}(\n$parameters\n)"
+        source = "$specifiers$returnType ${function.name}(\n$parameters\n)"
     }
 
     override fun accept(variable: Variable) {
