@@ -8,6 +8,8 @@
   },
   "scripts": {
     "generate:branch": "node ./scripts/generate-branch-name.js",
+    "lint:javascript": "standard **/*.js",
+    "lint:javascript:fix": "standard --fix **/*.js",
     "preinstall": "npx only-allow pnpm"
   },
   "husky": {
