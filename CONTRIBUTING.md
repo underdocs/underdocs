@@ -18,6 +18,7 @@ In this short document, you'll find some practical information regarding contrib
   * [Code Style](#code-style)
     * [Kotlin](#kotlin)
     * [JavaScript](#javascript)
+    * [Commit Messages](#commit-messages)
   * [Scripts](#scripts)
     * [Generate Branch Name](#generate-branch-name)
     * [Lint JavaScript](#lint-javascript)
@@ -93,6 +94,10 @@ For Kotlin files, we use the [Official Kotlin Code Conventions](https://kotlinla
 ### JavaScript
 
 JavaScript files follow the [StandardJS](https://standardjs.com/) code style.
+
+### Commit Messages
+
+Commit messages follow the [Convetional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
 
 ## Scripts
 
