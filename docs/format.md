@@ -133,6 +133,10 @@ The documentation attached to the include guard will be used as the module docum
 
 **Note**: You may also use `#if !defined` and `#pragma once` as include guards.
 
+**Configuration**: 
+
+  * [parse.input.codebaseDirectory](configuration-reference.md#codebasedirectory)
+
 ### Versions
 
 **Note**: If you're not interested in multiversion deployments, you can skip this section.
@@ -205,6 +209,12 @@ ast_t *init_ast();
 ~~~~
 
 Macros and other declarations in the header are called *top-level elements*. These elements may have their own documentation and will appear on the rendered documentation page of the header.
+
+**Configuration**: 
+
+  * [parse.input.codebaseDirectory](configuration-reference.md#codebasedirectory)
+  * [parse.input.includeGlobs](configuration-reference.md#includeglobs)
+  * [parse.input.excludeGlobs](configuration-reference.md#excludeglobs)
 
 ### Top-Level Elements
 
@@ -377,6 +387,10 @@ underdocs supports four doc comment styles (where style refers to the delimiters
     * `///`
 
 You can configure the set of recognized doc comment styles, so in the `parse` phase underdocs will extract exactly those comments that you desire.
+
+**Configuration**: 
+
+  * [parse.commentStyles](configuration-reference.md#commentstyles)
 
 ### Attributes
 
@@ -569,7 +583,7 @@ Groups can be documented using the [Groups](#groups) section.
 
 The `since` attribute can be used to indicate the first version in which the entity appeared. 
 
-If the `remoteRepositoryTagLinkTemplate` configuration property is set, then the value of the attribute will be substituted into the passed template.
+If the [`render.linkTemplates.remoteRepositoryTag`](configuration-reference.md#remoterepositorytag) configuration property is set, then the value of the attribute will be substituted into the passed template.
 
 If a multiversion deployment is performed with `staple`, then the value of the attribute will be used to create a link to the page of the appropriate version.
 
@@ -586,11 +600,15 @@ typedef struct {
 } vec3d_t;
 ~~~~
 
+**Configuration**: 
+
+  * [`render.linkTemplates.remoteRepositoryTag`](configuration-reference.md#remoterepositorytag)
+
 ### Stability
 
 The `stability` attribute can be used to indicate the stability/maturity of an entity.
 
-Stability values are arbitrary (for example: alpha, beta, stable, deprecated) and can be color-coded using the `stabilityColors` configuration property.
+Stability values are arbitrary (for example: alpha, beta, stable, deprecated) and can be color-coded using the [`render.stabilityColors`](configuration-reference.md#stabilitycolors) configuration property.
 
 Example:
 
@@ -605,13 +623,17 @@ typedef struct {
 } vec3d_t;
 ~~~~
 
+**Configuration**: 
+
+  * [`render.stabilityColors`](configuration-reference.md#stabilitycolors)
+
 ### Visibility
 
 The `visibility` attribute can be used to control whether an entity appears in the generated documentation.
 
-Visibility values are aribitrary but ordered and can be set using the `visibilityLevels` configuration property.
+Visibility values are aribitrary but ordered and can be set using the [`render.visibilityLevels`](configuration-reference.md#visibilitylevels) configuration property.
 
-The visibility level used during the `render` phase can be set using the `visibility` configuration property. If the visibility level of an entity is less than the render visibility, then the entity will not be rendered. 
+The visibility level used during the `render` phase can be set using the [`render.visibility`](configuration-reference.md#visibility) configuration property. If the visibility level of an entity is less than the render visibility, then the entity will not be rendered. 
 
 **Note**:
 
@@ -638,11 +660,20 @@ typedef struct {
 } vec3d_t;
 ~~~~
 
+**Configuration**: 
+
+  * [`render.visibility`](configuration-reference.md#visibility)
+  * [`render.visibilityLevels`](configuration-reference.md#visibilitylevels)
+
 ### Other Attributes
 
 Every attribute which is not recognized for a given entity (refer to [Recognized Attributes](#recognized-attributes)) is treated as an "other" attribute with no attached semantics.
 
-By default, other attributes will appear at the bottom of the page rendered for the entity. This behavior can be changed using the `hideOtherAttributes` configuration property.
+By default, other attributes will appear at the bottom of the page rendered for the entity. This behavior can be changed using the [`render.otherAttributes`](configuration-reference.md#otherattributes) configuration property.
+
+**Configuration**: 
+
+  * [`render.otherAttributes`](configuration-reference.md#otherattributes)
 
 ## Section
 
@@ -995,7 +1026,11 @@ int muli(const int a, const int b);
 
 Every section which is not recognized for a given entity (refer to [Recognized Sections](#recognized-section)) is treated as an "other" section with no attached semantics.
 
-By default, other sections will appear before the See Also section on the rendered documentation page of the entity. This behavior can be changed using the `hideOtherSections` configuration property.
+By default, other sections will appear before the See Also section on the rendered documentation page of the entity. This behavior can be changed using the [`render.otherSections`](configuration-reference.md#othersections) configuration property.
+
+**Configuration**: 
+
+  * [`render.otherSections`](configuration-reference.md#othersections)
 
 ## Links
 
@@ -1016,9 +1051,13 @@ Codebase namespaced links can be used to create links to:
   * **parameters of macro functions and ordinary functions**
     * `codebase://path/to/the/module/header.h#element.parameter`
 
-The path must start from the root of your include directory (set using the `codebaseDirectory` configuration parameter).
+The path must start from the root of your include directory (set using the [`parse.input.codebaseDirectory`](configuration-reference.md#codebasedirectory) configuration parameter).
 
 If an element has an alias set using the `alias` attribute, then the alias can be used.
+
+**Configuration**: 
+
+  * [`parse.input.codebaseDirectory`](configuration-reference.md#codebasedirectory)
 
 ### Pages
 
@@ -1026,7 +1065,11 @@ Pages namespaced links can be used to create links to Markdown documentation pag
 
   * `pages://path/to/the/page.md`
 
-The path must start from the root of your pages directory (set using the `pagesDirectory` configuration parameter).
+The path must start from the root of your pages directory (set using the [`render.input.pagesDirectory`](configuration-reference.md#pagesdirectory) configuration parameter).
+
+**Configuration**: 
+
+  * [`render.input.pagesDirectory`](configuration-reference.md#pagesdirectory)
 
 ### Resources
 
@@ -1034,7 +1077,11 @@ Resources namespaced links can be used to create links to static resources in th
 
   * `resources://path/to/some/image.png`
 
-The path must start from the root of your resources directory (set using the `resourcesDirectory` configuration parameter).
+The path must start from the root of your resources directory (set using the * [`render.input.resourcesDirectory`](configuration-reference.md#resourcesdirectory) configuration parameter).
+
+**Configuration**: 
+
+  * [`render.input.resourcesDirectory`](configuration-reference.md#resourcesdirectory)
 
 ### Versions
 
