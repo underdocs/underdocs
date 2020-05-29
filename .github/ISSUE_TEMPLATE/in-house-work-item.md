@@ -3,7 +3,7 @@ name: In-House Work Item
 about: Issue template for items created by organization members. Much like a feature
   request.
 title: ''
-labels: ''
+labels: 'type: feature-enhancement :heavy_plus_sign:'
 assignees: ''
 
 ---
