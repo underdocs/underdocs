@@ -12,6 +12,6 @@ const CURRENT_BRANCH_COMMAND = 'git rev-parse --abbrev-ref HEAD';
   await branch.checkBranchName(
     config.get('repository.owner'),
     config.get('repository.name'),
-    config.get('branches.persistent'), 
+    config.get('branches.persistent'),
     currentBranch)
 })()
