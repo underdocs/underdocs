@@ -7,15 +7,15 @@ This document details how the pipeline of transformations applied to the input h
 **Overview**
 
   1. [Parse](#1.-parse)
-     1. [Collector](#1.1.-collector)
-     1. [C Parser](#1.2.-c-parser)
-     1. [Representation Transformer](#1.3.-representation-transformer)
-     1. [Output Writer](#1.4.-output-writer)
-  1. [Render](#2.-render)
-     1. [Module Grouper](#2.1-module-grouper)
-     1. [Module Parser](#2.2-header-parser)
-     1. [Header Parser](#2.3-header-parser)
-     1. [HTML Renderer](#2.4-html-renderer)
+     1. [Collector](#11-collector)
+     1. [C Parser](#12-c-parser)
+     1. [Representation Transformer](#13-representation-transformer)
+     1. [Output Writer](#14-output-writer)
+  1. [Render](#2-render)
+     1. [Module Grouper](#21-module-grouper)
+     1. [Module Parser](#22-header-parser)
+     1. [Header Parser](#23-header-parser)
+     1. [HTML Renderer](#24-html-renderer)
   1. [Staple](#3-staple)
 
 ## 1. Parse
