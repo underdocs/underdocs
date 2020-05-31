@@ -57,11 +57,16 @@ Just as bug reports, feature requests are also welcome in this project! However,
 
 We cannot overstate how much you help by creating a pull request! Thank you!
 
-Before creating a pull request though, make sure, that at least there is some corresponding feature request, bug or some issue or open one. Also, if you want to refactor something, open a new issue first with the `refactor` label. You best bet is to pick up something with the `help wanted` or `good first issue` label.
+Before creating a pull request though, make sure, that at least there is some corresponding feature request, bug or some issue or open one. You best bet is to pick up something with the `help wanted` or `good first issue` label.
+
+When in doubt, drop a message to the `#contributing` channel of our Discord server: https://discord.gg/b24S72
 
 ## Support Questions
 
-As underdocs does not have a chat currently, the issue tracker can be used for personal support requests. Just stick a `question` label on them.
+When it comes to personal support requests, you have two options:
+
+  * Open a new issue in the issue tracker. Just make sure to stick a `question` label on it.
+  * Ask in the `#need-help` channel of our Discord server: https://discord.gg/b24S72
 
 ## Creating a PR
 
