@@ -15,6 +15,9 @@
   <a href="https://github.com/underdocs/underdocs/actions?query=workflow%3A%22Build+Master%22">
     <img src="https://github.com/underdocs/underdocs/workflows/Build%20Master/badge.svg" alt="Build Master status.">
   </a>
+  <a href="https://discord.gg/b24S72">
+    <img src="https://img.shields.io/badge/discord-join-7289DA.svg?logo=discord&longCache=true&style=flat" alt="Join our Discord Server!">
+  </a>
 </div>
 
 
