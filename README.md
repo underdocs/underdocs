@@ -31,6 +31,8 @@
 
 ---
 
+> **IMPORTANT**: This README and the documentation reflect what we *want* and not what is *available*. Please check the [2020 Summer Intership](https://github.com/underdocs/underdocs/projects/1) project board for the current progress.  
+
 underdocs is a modern, performant documentation generator for C. Notable features include the following:
 
   * **Only C, No C++.** Is this even a feature? In our opinion, absolutely. underdocs is not another C++ documentation generator with accidental support for C. We only support C18 and do not plan to ever add support for C++.
