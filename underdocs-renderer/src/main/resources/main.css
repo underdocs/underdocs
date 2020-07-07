@@ -152,8 +152,11 @@ h2 {
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     font-size: 0.8rem;
+    
     display: flex;
     flex-wrap: wrap;
+    justify-self: start;
+    justify-content: center;
 }
 
 .breadcrumb > .breadcrumb-segment > a {
