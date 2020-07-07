@@ -44,6 +44,9 @@ class PageRenderer(private val linker: Linker,
 
     private fun page(visitable: Visitable, contents: Tag<*>) = document(html(
             head(
+                    meta()
+                        .withName("viewport")
+                        .withContent("width=device-width, initial-scale=1"),
                     katexCss(),
                     link()
                             .withRel("stylesheet")
