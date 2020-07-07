@@ -31,19 +31,19 @@ pre[class*="language-"].line-numbers > code {
 
 }
 
-	.line-numbers-rows > span {
-		pointer-events: none;
-		display: block;
-		counter-increment: linenumber;
-	}
+.line-numbers-rows > span {
+    pointer-events: none;
+    display: block;
+    counter-increment: linenumber;
+}
 
-		.line-numbers-rows > span:before {
-			content: counter(linenumber);
-			color: #999;
-			display: block;
-			padding-right: 0.8em;
-			text-align: right;
-		}
+.line-numbers-rows > span:before {
+    content: counter(linenumber);
+    color: #999;
+    display: block;
+    padding-right: 0.8em;
+    text-align: right;
+}
 
  code[class*="language-"],
  pre[class*="language-"] {
