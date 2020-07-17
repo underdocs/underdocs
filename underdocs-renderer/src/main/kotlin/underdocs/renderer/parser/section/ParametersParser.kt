@@ -36,7 +36,7 @@ class ParametersParser : underdocs.renderer.parser.section.AttemptingSectionPars
 
             val parameterDescriptionItem = parameterDescriptionList.firstChild as BulletListItem
 
-            val parameterDescription = underdocs.renderer.parser.section.extractTextBetweenNodes(parameterDescriptionItem.firstChild, parameterDescriptionItem.lastChild)
+            val parameterDescription = extractTextBetweenNodes(parameterDescriptionItem.firstChild, parameterDescriptionItem.lastChild)
 
             result[parameterName] = parameterDescription
         }

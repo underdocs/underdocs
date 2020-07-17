@@ -46,6 +46,7 @@ import underdocs.renderer.representation.UnionType
 import underdocs.renderer.representation.VariableMember
 import underdocs.renderer.representation.Visitable
 import underdocs.renderer.representation.documentation.Example
+import underdocs.renderer.representation.documentation.ReturnValue
 import java.io.File
 import java.util.*
 import kotlin.collections.ArrayList
@@ -310,31 +311,38 @@ class SectionRenderer(private val linker: Linker) {
             h2("See Also")
     ).withClass("see-also")
 
-    fun renderReturnValue(visitable: Visitable, returnValue: String): Tag<*> {
-        val elements = ArrayList<DomContent>()
+    fun renderReturnValue(returnValue: ReturnValue) = section(
+        h2("Return Value"), div(
+            h3("Success")
+        )
+    )
 
-        elements.add(h2("Return Value"))
-
-        if (visitable is Function) {
-            elements.add(p(
-                    code(referredTypeToString(visitable.returnType))
-            ).withClass("return-type"))
-        }
-
-        elements.add(renderMarkdown(returnValue))
-
-        return section().with(elements).withClass("return-value")
-    }
-
-    private fun referredTypeToString(type: ReferredType): String {
-        var representation = type.specifiers.joinToString(" ")
-
-        if (!representation.endsWith("*")) {
-            representation += " "
-        }
-
-        return representation + type.name
-    }
+//    fun renderReturnValue2(returnValue: ReturnValue): Tag<*> {
+//
+//        val elements = ArrayList<DomContent>()
+//
+//        elements.add(h2("Return Value"))
+//
+//        if (visitable is Function) {
+//            elements.add(p(
+//                    code(referredTypeToString(visitable.returnType))
+//            ).withClass("return-type"))
+//        }
+//
+//        elements.add(renderMarkdown(returnValue))
+//
+//        return section().with(elements).withClass("return-value")
+//    }
+//
+//    private fun referredTypeToString(type: ReferredType): String {
+//        var representation = type.specifiers.joinToString(" ")
+//
+//        if (!representation.endsWith("*")) {
+//            representation += " "
+//        }
+//
+//        return representation + type.name
+//    }
 
     fun renderErrorHandling(errorHandling: String) = section(
             h2("Error Handling"),
