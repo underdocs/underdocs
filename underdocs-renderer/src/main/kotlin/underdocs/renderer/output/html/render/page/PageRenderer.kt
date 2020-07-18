@@ -57,6 +57,14 @@ class PageRenderer(private val linker: Linker,
                             .withHref(linker.siteLinkBetween(visitable, "_static/code.css"))
             ),
             body(
+                    script()
+                            .with(UnsecapedText("""
+                                (function () {
+                                  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                                    document.body.classList.add('dark');
+                                  }
+                                })();
+                            """.trimIndent())),
                     main(
                             crumbRenderer.render(visitable),
                             contents
@@ -90,7 +98,21 @@ class PageRenderer(private val linker: Linker,
                                                 });
                                                })
                                         })();
-                                    """.trimIndent()))
+                                    """.trimIndent())),
+                            script()
+                                    .with(UnsecapedText("""
+                                          (function () {
+                                            let checkbox = document.querySelector("#switch");
+                                    
+                                            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                                              checkbox.checked = true;
+                                            }
+                                            
+                                            checkbox.addEventListener('change', function () {
+                                              document.body.classList.toggle('dark');
+                                            })
+                                          })();
+                            """.trimIndent())),
                     )
             )
     ))
