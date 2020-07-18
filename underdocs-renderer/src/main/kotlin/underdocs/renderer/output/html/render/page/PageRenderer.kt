@@ -8,6 +8,7 @@ import j2html.TagCreator.html
 import j2html.TagCreator.link
 import j2html.TagCreator.main
 import j2html.TagCreator.script
+import j2html.TagCreator.meta
 import j2html.tags.Tag
 import j2html.tags.UnescapedText
 import underdocs.renderer.output.html.link.Linker
