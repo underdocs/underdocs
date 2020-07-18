@@ -48,7 +48,7 @@ html, body {
 
 main {
     display: grid;
-    grid-template-columns: minmax(1.2rem, 1fr) minmax(0, var(--main-width)) minmax(1.2rem, 1fr);
+    grid-template-columns: minmax(2.4rem, 1fr) minmax(0, var(--main-width)) minmax(1.2rem, 1fr);
     padding-bottom: 1rem;
 }
 
@@ -76,7 +76,7 @@ h1 {
     position: relative;
 }
 
-.content-heading-tile > h1 {
+.content-heading-title > h1 {
     display: inline-block;
     width: 100%;
 }
@@ -152,6 +152,11 @@ h2 {
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     font-size: 0.8rem;
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-self: start;
+    justify-content: center;
 }
 
 .breadcrumb > .breadcrumb-segment > a {

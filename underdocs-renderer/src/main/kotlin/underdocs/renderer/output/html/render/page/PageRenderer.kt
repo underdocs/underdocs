@@ -8,6 +8,7 @@ import j2html.TagCreator.html
 import j2html.TagCreator.link
 import j2html.TagCreator.main
 import j2html.TagCreator.script
+import j2html.TagCreator.meta
 import j2html.tags.Tag
 import j2html.tags.UnescapedText
 import underdocs.renderer.output.html.link.Linker
@@ -44,6 +45,9 @@ class PageRenderer(private val linker: Linker,
 
     private fun page(visitable: Visitable, contents: Tag<*>) = document(html(
             head(
+                    meta()
+                        .withName("viewport")
+                        .withContent("width=device-width, initial-scale=1"),
                     katexCss(),
                     link()
                             .withRel("stylesheet")
