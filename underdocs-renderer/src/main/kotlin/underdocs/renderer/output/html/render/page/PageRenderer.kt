@@ -9,6 +9,9 @@ import j2html.TagCreator.link
 import j2html.TagCreator.main
 import j2html.TagCreator.script
 import j2html.TagCreator.meta
+import j2html.TagCreator.span
+import j2html.TagCreator.input
+import j2html.TagCreator.label
 import j2html.tags.Tag
 import j2html.tags.UnescapedText
 import underdocs.renderer.output.html.link.Linker
@@ -66,7 +69,17 @@ class PageRenderer(private val linker: Linker,
                                 })();
                             """.trimIndent())),
                     main(
-                            crumbRenderer.render(visitable),
+                            div(
+                                    crumbRenderer.render(visitable),
+                                    div(
+                                            span("Dark Mode"),
+                                            input()
+                                                    .withType("checkbox")
+                                                    .withId("switch"),
+                                            label("Toggle")
+                                                    .attr("for", "switch")
+                                    ).withClass("dark-mode-container")
+                            ).withClass("header-container"),
                             contents
                     ),
                     div(
