@@ -61,7 +61,7 @@ class PageRenderer(private val linker: Linker,
             ),
             body(
                     script()
-                            .with(UnsecapedText("""
+                            .with(UnescapedText("""
                                 (function () {
                                   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
                                     document.body.classList.add('dark');
@@ -113,7 +113,7 @@ class PageRenderer(private val linker: Linker,
                                         })();
                                     """.trimIndent())),
                             script()
-                                    .with(UnsecapedText("""
+                                    .with(UnescapedText("""
                                           (function () {
                                             let checkbox = document.querySelector("#switch");
                                     
@@ -125,7 +125,7 @@ class PageRenderer(private val linker: Linker,
                                               document.body.classList.toggle('dark');
                                             })
                                           })();
-                            """.trimIndent())),
+                            """.trimIndent()))
                     )
             )
     ))
