@@ -62,8 +62,10 @@ class PageRenderer(private val linker: Linker,
             body(
                     script()
                             .with(UnescapedText("""
-                                (function () {
-                                  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                                const isNightModePreferred = () => window.matchMedia?.('(prefers-color-scheme: dark)').matches;
+
+                                (function setPreferredTheme() {
+                                  if (isNightModePreferred()) {
                                     document.body.classList.add('night');
                                   }
                                 })();
@@ -75,9 +77,9 @@ class PageRenderer(private val linker: Linker,
                                             span("Night Mode"),
                                             input()
                                                     .withType("checkbox")
-                                                    .withId("switch"),
+                                                    .withId("night-mode-button"),
                                             label("Toggle")
-                                                    .attr("for", "switch")
+                                                    .attr("for", "night-mode-button")
                                     ).withClass("night-mode-container")
                             ).withClass("header-container"),
                             contents
@@ -96,7 +98,7 @@ class PageRenderer(private val linker: Linker,
                                     .attr("crossorigin", "anonymous"),
                             script()
                                     .with(UnescapedText("""
-                                        (function () {
+                                        (function renderMathElements() {
                                               document.addEventListener('DOMContentLoaded', function () {
                                                 const mathElements = Array.from(document.getElementsByClassName('katex-inline'))
                                                     .concat(Array.from(document.getElementsByClassName('katex-block')));
@@ -114,14 +116,14 @@ class PageRenderer(private val linker: Linker,
                                     """.trimIndent())),
                             script()
                                     .with(UnescapedText("""
-                                          (function () {
-                                            let checkbox = document.querySelector("#switch");
+                                          (function setNightModeButton() {
+                                            const nightModeButton = document.querySelector("#night-mode-button");
                                     
-                                            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                                              checkbox.checked = true;
+                                            if (isNightModePreferred()) {
+                                              nightModeButton.checked = true;
                                             }
                                             
-                                            checkbox.addEventListener('change', function () {
+                                            nightModeButton.addEventListener('change', function () {
                                               document.body.classList.toggle('night');
                                             })
                                           })();
