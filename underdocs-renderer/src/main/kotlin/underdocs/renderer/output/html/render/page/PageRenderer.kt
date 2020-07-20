@@ -9,6 +9,9 @@ import j2html.TagCreator.link
 import j2html.TagCreator.main
 import j2html.TagCreator.script
 import j2html.TagCreator.meta
+import j2html.TagCreator.span
+import j2html.TagCreator.input
+import j2html.TagCreator.label
 import j2html.tags.Tag
 import j2html.tags.UnescapedText
 import underdocs.renderer.output.html.link.Linker
@@ -57,8 +60,28 @@ class PageRenderer(private val linker: Linker,
                             .withHref(linker.siteLinkBetween(visitable, "_static/code.css"))
             ),
             body(
+                    script()
+                            .with(UnescapedText("""
+                                const isNightModePreferred = () => window.matchMedia?.('(prefers-color-scheme: dark)').matches;
+
+                                (function setPreferredTheme() {
+                                  if (isNightModePreferred()) {
+                                    document.body.classList.add('night');
+                                  }
+                                })();
+                            """.trimIndent())),
                     main(
-                            crumbRenderer.render(visitable),
+                            div(
+                                    crumbRenderer.render(visitable),
+                                    div(
+                                            span("Night Mode"),
+                                            input()
+                                                    .withType("checkbox")
+                                                    .withId("night-mode-button"),
+                                            label("Toggle")
+                                                    .attr("for", "night-mode-button")
+                                    ).withClass("night-mode-container")
+                            ).withClass("header-container"),
                             contents
                     ),
                     div(
@@ -75,7 +98,7 @@ class PageRenderer(private val linker: Linker,
                                     .attr("crossorigin", "anonymous"),
                             script()
                                     .with(UnescapedText("""
-                                        (function () {
+                                        (function renderMathElements() {
                                               document.addEventListener('DOMContentLoaded', function () {
                                                 const mathElements = Array.from(document.getElementsByClassName('katex-inline'))
                                                     .concat(Array.from(document.getElementsByClassName('katex-block')));
@@ -90,7 +113,21 @@ class PageRenderer(private val linker: Linker,
                                                 });
                                                })
                                         })();
-                                    """.trimIndent()))
+                                    """.trimIndent())),
+                            script()
+                                    .with(UnescapedText("""
+                                          (function setNightModeButton() {
+                                            const nightModeButton = document.querySelector("#night-mode-button");
+                                    
+                                            if (isNightModePreferred()) {
+                                              nightModeButton.checked = true;
+                                            }
+                                            
+                                            nightModeButton.addEventListener('change', function () {
+                                              document.body.classList.toggle('night');
+                                            })
+                                          })();
+                            """.trimIndent()))
                     )
             )
     ))
