@@ -64,7 +64,7 @@ class PageRenderer(private val linker: Linker,
                             .with(UnescapedText("""
                                 (function () {
                                   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                                    document.body.classList.add('dark');
+                                    document.body.classList.add('night');
                                   }
                                 })();
                             """.trimIndent())),
@@ -72,13 +72,13 @@ class PageRenderer(private val linker: Linker,
                             div(
                                     crumbRenderer.render(visitable),
                                     div(
-                                            span("Dark Mode"),
+                                            span("Night Mode"),
                                             input()
                                                     .withType("checkbox")
                                                     .withId("switch"),
                                             label("Toggle")
                                                     .attr("for", "switch")
-                                    ).withClass("dark-mode-container")
+                                    ).withClass("night-mode-container")
                             ).withClass("header-container"),
                             contents
                     ),
@@ -122,7 +122,7 @@ class PageRenderer(private val linker: Linker,
                                             }
                                             
                                             checkbox.addEventListener('change', function () {
-                                              document.body.classList.toggle('dark');
+                                              document.body.classList.toggle('night');
                                             })
                                           })();
                             """.trimIndent()))
