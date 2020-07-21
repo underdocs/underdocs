@@ -62,6 +62,7 @@
         <module>underdocs</module>
         <module>underdocs-collector</module>
         <module>underdocs-configuration</module>
+        <module>underdocs-error</module>
         <module>underdocs-parser</module>
         <module>underdocs-renderer</module>
         <module>underdocs-representation</module>
