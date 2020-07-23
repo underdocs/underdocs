@@ -16,10 +16,8 @@ class ReturnValueParser : AttemptingSectionParser<ReturnValue>() {
 
         val successItemList = mutableListOf<ReturnValueItem>()
 
-        val result = ReturnValue(successItemList, mutableListOf())
-
         val startNode = document.children.first { isSectionHeadingWithTitle(it, "Return Value") }
-        val successHeading = nextNodeInSectionWhere(startNode) { isSuccessHeading(it) } as Heading
+        val successHeading = nextNodeInSectionWhere(startNode) { isCustomHeading(it, "Success") } as Heading
 
         val successList = successHeading.next
 
@@ -28,33 +26,51 @@ class ReturnValueParser : AttemptingSectionParser<ReturnValue>() {
         }
 
         for (success in successList.children) {
-            if (success !is BulletListItem) {
-                continue
-            }
-
-            val value = success.firstChild.chars.toString().trim()
-
-            val valueDescriptionList = success.firstChild.next
-
-            if (valueDescriptionList !is BulletList) {
-                continue
-            }
-
-            val valueDescriptionItem = valueDescriptionList.firstChild as BulletListItem
-
-            val valueDescription = extractTextBetweenNodes(valueDescriptionItem.firstChild,
-                valueDescriptionItem.lastChild)
-
-            successItemList.add(ReturnValueItem(value, valueDescription))
-
+            createReturnValueItemList(success, successItemList)
         }
 
-        return result
+        val errorItemList = mutableListOf<ReturnValueItem>()
+
+        val errorHeading = nextNodeInSectionWhere(startNode) { isCustomHeading(it, "Error") } as Heading
+        val errorList = errorHeading.next
+
+        if (errorList == null || errorList !is BulletList) {
+            return ReturnValue(successItemList, mutableListOf())
+        }
+
+        for (error in errorList.children) {
+            createReturnValueItemList(error, errorItemList)
+        }
+
+        return ReturnValue(successItemList, errorItemList)
+
     }
 
-    private fun isSuccessHeading(node: Node) =
-        node is Heading && node.level == 3 && node.text.toString() == "Success"
+    private fun createReturnValueItemList(element: Node?, itemList: MutableList<ReturnValueItem>) {
 
-    private fun isErrorHeading(node: Node) =
-        node is Heading && node.level == 3 && node.text.toString() == "Error"
+        if (element !is BulletListItem) {
+            return
+        }
+
+        val value = element.firstChild.chars.toString().trim()
+
+        val valueDescriptionList = element.firstChild.next
+
+        if (valueDescriptionList !is BulletList) {
+            return
+        }
+
+        val valueDescriptionItem = valueDescriptionList.firstChild as BulletListItem
+
+        val valueDescription = extractTextBetweenNodes(
+            valueDescriptionItem.firstChild,
+            valueDescriptionItem.lastChild
+        )
+
+        itemList.add(ReturnValueItem(value, valueDescription))
+    }
+
+    private fun isCustomHeading(node: Node, title: String) =
+        node is Heading && node.level == 3 && node.text.toString() == title
+
 }

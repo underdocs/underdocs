@@ -313,36 +313,47 @@ class SectionRenderer(private val linker: Linker) {
 
     fun renderReturnValue(returnValue: ReturnValue) = section(
         h2("Return Value"), div(
-            h3("Success")
+            h3("Success"), table(
+                tbody(
+                    each(returnValue.success) { child ->
+                        tr(
+                            td(
+                                h4(child.value)
+                            ).withClass("element-name-cell"),
+                            td(
+                                div(
+                                    renderMarkdown(child.description)
+                                ).withClass("element-excerpt-text"),
+                                div(
+                                    "type info comes here"
+                                ).withClass("element-excerpt-type")
+                            ).withClass("element-excerpt-cell")
+                        )
+                    }
+                )
+            ).withClass("elements-table")
+        ), div(
+            h3("Error"), table(
+                tbody(
+                    each(returnValue.error) { child ->
+                        tr(
+                            td(
+                                h4(child.value)
+                            ).withClass("element-name-cell"),
+                            td(
+                                div(
+                                    renderMarkdown(child.description)
+                                ).withClass("element-excerpt-text"),
+                                div(
+                                    "type info comes here"
+                                ).withClass("element-excerpt-type")
+                            ).withClass("element-excerpt-cell")
+                        )
+                    }
+                )
+            ).withClass("elements-table")
         )
-    )
-
-//    fun renderReturnValue2(returnValue: ReturnValue): Tag<*> {
-//
-//        val elements = ArrayList<DomContent>()
-//
-//        elements.add(h2("Return Value"))
-//
-//        if (visitable is Function) {
-//            elements.add(p(
-//                    code(referredTypeToString(visitable.returnType))
-//            ).withClass("return-type"))
-//        }
-//
-//        elements.add(renderMarkdown(returnValue))
-//
-//        return section().with(elements).withClass("return-value")
-//    }
-//
-//    private fun referredTypeToString(type: ReferredType): String {
-//        var representation = type.specifiers.joinToString(" ")
-//
-//        if (!representation.endsWith("*")) {
-//            representation += " "
-//        }
-//
-//        return representation + type.name
-//    }
+    ).withClass("return-value")
 
     fun renderErrorHandling(errorHandling: String) = section(
             h2("Error Handling"),

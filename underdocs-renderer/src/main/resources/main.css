@@ -299,6 +299,10 @@ h2 {
     color: var(--member-type-color)
 }
 
+.parameters {
+    border-bottom: var(--header-border);
+}
+
 .parameters > .parameter .parameter-title {
     display: inline-block;
 
@@ -407,4 +411,20 @@ h2 {
 .elements-table .element-excerpt-cell .element-excerpt-type {
     color: var(--attribute-value-color);
     font-size: 0.8rem;
+}
+
+.return-value {
+    border-bottom: var(--header-border);
+}
+
+.return-value h3 {
+    margin-left: 0.5rem;
+}
+
+.return-value .elements-table {
+    margin-left: 0.5rem;
+}
+
+.return-value .elements-table tbody tr td {
+    min-width: 0.5rem;
 }
