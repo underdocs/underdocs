@@ -68,7 +68,3 @@ fun isHeading(node: Node, level: Int, title: String) =
 
 fun isSectionHeadingWithTitle(node: Node, title: String) =
         isSectionHeading(node) && (node as Heading).text.toString() == title
-
-fun <T> iffPrimitive(condition: Boolean, ifFunction: () -> T?): T? {
-    return if (condition) ifFunction.invoke() else null
-}

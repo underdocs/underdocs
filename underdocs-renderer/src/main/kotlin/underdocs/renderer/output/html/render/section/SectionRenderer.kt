@@ -29,7 +29,7 @@ import j2html.tags.Tag
 import j2html.tags.Text
 import j2html.tags.UnescapedText
 import underdocs.renderer.output.html.link.Linker
-import underdocs.renderer.parser.section.iffPrimitive
+import underdocs.renderer.output.html.render.misc.iffPrimitive
 import underdocs.renderer.representation.EnumElement
 import underdocs.renderer.representation.EnumMember
 import underdocs.renderer.representation.EnumType
@@ -314,18 +314,22 @@ class SectionRenderer(private val linker: Linker) {
     ).withClass("see-also")
 
     fun renderReturnValue(function: Function, returnValue: ReturnValue) = section(
-        h2("Return Value"), div(
-            h3("Success"), renderReturnValueItemsTable(returnValue.success, function)
+        div(
+            h2("Return Value"),
+            span(
+                singleLineTypeRenderer.render(function.returnType)
+            ).withClass("return-value-type")
+        ).withClass("return-value-heading"), div(
+            h3("Success"), renderReturnValueItemsTable(returnValue.success)
         ),
         iffPrimitive(returnValue.error.isNotEmpty()) {
             div(
-                h3("Error"), renderReturnValueItemsTable(returnValue.error, function)
+                h3("Error"), renderReturnValueItemsTable(returnValue.error)
             )
         }
     ).withClass("return-value")
 
-    private fun renderReturnValueItemsTable(returnValueItemList: List<ReturnValueItem>,
-                                            function: Function): ContainerTag? {
+    private fun renderReturnValueItemsTable(returnValueItemList: List<ReturnValueItem>): ContainerTag? {
         return table(
             tbody(
                 each(returnValueItemList) { child ->
@@ -333,22 +337,19 @@ class SectionRenderer(private val linker: Linker) {
                         td(
                             h4(
                                 child.value
-                            ).withClass("return-value-title"),
-                            span(
-                                singleLineTypeRenderer.render(function.returnType)
-                            ).withClass("return-value-type")
-                        ).withClass("element-name-cell"),
+                            ).withClass("return-value-title")
+                        ).withClass("return-value-name-cell"),
                         td(
                             div(
                                 span(
                                     renderMarkdown(child.description)
                                 )
                             )
-                        ).withClass("element-excerpt-cell")
+                        ).withClass("return-value-excerpt-cell")
                     )
                 }
             )
-        ).withClass("elements-table")
+        ).withClass("return-value-table")
     }
 
 
