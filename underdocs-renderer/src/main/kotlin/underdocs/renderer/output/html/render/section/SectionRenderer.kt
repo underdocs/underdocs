@@ -16,7 +16,6 @@ import j2html.TagCreator.h3
 import j2html.TagCreator.h4
 import j2html.TagCreator.iff
 import j2html.TagCreator.img
-import j2html.TagCreator.p
 import j2html.TagCreator.pre
 import j2html.TagCreator.section
 import j2html.TagCreator.span
@@ -24,11 +23,13 @@ import j2html.TagCreator.table
 import j2html.TagCreator.tbody
 import j2html.TagCreator.td
 import j2html.TagCreator.tr
+import j2html.tags.ContainerTag
 import j2html.tags.DomContent
 import j2html.tags.Tag
 import j2html.tags.Text
 import j2html.tags.UnescapedText
 import underdocs.renderer.output.html.link.Linker
+import underdocs.renderer.parser.section.iffPrimitive
 import underdocs.renderer.representation.EnumElement
 import underdocs.renderer.representation.EnumMember
 import underdocs.renderer.representation.EnumType
@@ -47,6 +48,7 @@ import underdocs.renderer.representation.VariableMember
 import underdocs.renderer.representation.Visitable
 import underdocs.renderer.representation.documentation.Example
 import underdocs.renderer.representation.documentation.ReturnValue
+import underdocs.renderer.representation.documentation.ReturnValueItem
 import java.io.File
 import java.util.*
 import kotlin.collections.ArrayList
@@ -311,49 +313,44 @@ class SectionRenderer(private val linker: Linker) {
             h2("See Also")
     ).withClass("see-also")
 
-    fun renderReturnValue(returnValue: ReturnValue) = section(
+    fun renderReturnValue(function: Function, returnValue: ReturnValue) = section(
         h2("Return Value"), div(
-            h3("Success"), table(
-                tbody(
-                    each(returnValue.success) { child ->
-                        tr(
-                            td(
-                                h4(child.value)
-                            ).withClass("element-name-cell"),
-                            td(
-                                div(
-                                    renderMarkdown(child.description)
-                                ).withClass("element-excerpt-text"),
-                                div(
-                                    "type info comes here"
-                                ).withClass("element-excerpt-type")
-                            ).withClass("element-excerpt-cell")
-                        )
-                    }
-                )
-            ).withClass("elements-table")
-        ), div(
-            h3("Error"), table(
-                tbody(
-                    each(returnValue.error) { child ->
-                        tr(
-                            td(
-                                h4(child.value)
-                            ).withClass("element-name-cell"),
-                            td(
-                                div(
-                                    renderMarkdown(child.description)
-                                ).withClass("element-excerpt-text"),
-                                div(
-                                    "type info comes here"
-                                ).withClass("element-excerpt-type")
-                            ).withClass("element-excerpt-cell")
-                        )
-                    }
-                )
-            ).withClass("elements-table")
-        )
+            h3("Success"), renderReturnValueItemsTable(returnValue.success, function)
+        ),
+        iffPrimitive(returnValue.error.isNotEmpty()) {
+            div(
+                h3("Error"), renderReturnValueItemsTable(returnValue.error, function)
+            )
+        }
     ).withClass("return-value")
+
+    private fun renderReturnValueItemsTable(returnValueItemList: List<ReturnValueItem>,
+                                            function: Function): ContainerTag? {
+        return table(
+            tbody(
+                each(returnValueItemList) { child ->
+                    tr(
+                        td(
+                            h4(
+                                child.value
+                            ).withClass("return-value-title"),
+                            span(
+                                singleLineTypeRenderer.render(function.returnType)
+                            ).withClass("return-value-type")
+                        ).withClass("element-name-cell"),
+                        td(
+                            div(
+                                span(
+                                    renderMarkdown(child.description)
+                                )
+                            )
+                        ).withClass("element-excerpt-cell")
+                    )
+                }
+            )
+        ).withClass("elements-table")
+    }
+
 
     fun renderErrorHandling(errorHandling: String) = section(
             h2("Error Handling"),

@@ -417,14 +417,22 @@ h2 {
     border-bottom: var(--header-border);
 }
 
-.return-value h3 {
-    margin-left: 0.5rem;
+.return-value .return-value-title {
+    display: inline-block;
+
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
-.return-value .elements-table {
-    margin-left: 0.5rem;
+.return-value .return-value-type {
+    padding-left: 0.5rem;
+
+    font-size: 0.85rem;
+    color: var(--parameter-type-color)
 }
 
 .return-value .elements-table tbody tr td {
-    min-width: 0.5rem;
+    max-width: 0.6rem;
 }

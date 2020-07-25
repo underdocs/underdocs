@@ -224,8 +224,8 @@ class TopLevelElementRenderer(private val linker: Linker, private val sectionRen
 
         sections.add(sectionRenderer.renderParameters(function))
 
-        if (function.documentation?.returnValue?.isNotEmpty()!!) {
-            sections.add(sectionRenderer.renderReturnValue(function.documentation.returnValue))
+        if (function.documentation?.returnValue?.isNotEmpty() == true) {
+            sections.add(sectionRenderer.renderReturnValue(function, function.documentation.returnValue))
         }
 
         if (function.documentation?.errorHandling?.isNotEmpty() == true) {
