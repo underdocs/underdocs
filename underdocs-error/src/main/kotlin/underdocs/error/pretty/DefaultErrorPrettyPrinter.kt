@@ -18,13 +18,7 @@ class DefaultErrorPrettyPrinter : ErrorPrettyPrinter {
 
             if (exception.cause != null) prettyPrintedError += "\nError cause:\n${exception.cause?.message}"
         } else {
-            var errorStackTrace = ""
-
-            for(stackTraceElement in exception.stackTrace) {
-                errorStackTrace += "\t$stackTraceElement\n"
-            }
-
-            errorStackTrace = errorStackTrace.trimEnd()
+            val errorStackTrace = exception.stackTrace.joinToString("\n\t", prefix = "\t")
 
             prettyPrintedError = """
                 |Unexpected exception: ${exception.javaClass.name}
