@@ -16,7 +16,6 @@ class DefaultErrorPrettyPrinter : ErrorPrettyPrinter {
         |
         |Possible solution
         |${exception.getSolution()}
-        |${exception.cause.let { if (it?.message != null) "Error cause: ${it.message}" else "" }}
     """.trimMargin()
 
 
