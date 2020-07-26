@@ -20,10 +20,10 @@ class DefaultErrorPrettyPrinter : ErrorPrettyPrinter {
 
 
     private fun printUnexpectedException(exception: Exception) = """
-        |Unexpected exception: ${exception.javaClass.name}
+        |Unexpected exception ${exception.javaClass.name}
         |${exception.message}
         |
-        |Stacktrace:
+        |Stacktrace
         |${exception.stackTrace.joinToString("\n\t", prefix = "\t")}
     """.trimMargin()
 }
