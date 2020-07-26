@@ -335,15 +335,11 @@ class SectionRenderer(private val linker: Linker) {
                 each(returnValueItemList) { child ->
                     tr(
                         td(
-                            h4(
-                                child.value
-                            ).withClass("return-value-title")
+                            child.value
                         ).withClass("return-value-name-cell"),
                         td(
                             div(
-                                span(
-                                    renderMarkdown(child.description)
-                                )
+                                renderMarkdown(child.description)
                             )
                         ).withClass("return-value-excerpt-cell")
                     )
@@ -351,7 +347,6 @@ class SectionRenderer(private val linker: Linker) {
             )
         ).withClass("return-value-table")
     }
-
 
     fun renderErrorHandling(errorHandling: String) = section(
             h2("Error Handling"),

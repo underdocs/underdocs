@@ -371,14 +371,10 @@ h2 {
 .elements-table .element-name-cell, 
 .elements-table .element-excerpt-cell,
 .return-value-table .return-value-name-cell,
-.return-value-title .return-value-excerpt-cell {
+.return-value-table .return-value-excerpt-cell {
     border-top: var(--table-border);
     padding-top: 0.3rem;
     padding-bottom: 0.3rem;
-}
-
-.return-value-table tr:nth-child(even) {
-    background-color: var(--table-row-background);
 }
 
 .submodules-table .submodule-name-cell,
@@ -443,4 +439,8 @@ h2 {
 
     font-size: 0.85rem;
     color: var(--parameter-type-color)
+}
+
+.return-value-table .return-value-name-cell {
+    font-weight: bold;
 }
