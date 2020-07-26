@@ -1,9 +1,11 @@
 package underdocs.renderer.parser.documentation
 
 import com.vladsch.flexmark.util.ast.Document
+import underdocs.renderer.parser.section.ReturnValueParser
 import underdocs.renderer.parser.section.SeeAlsoParser
 import underdocs.renderer.parser.section.TextSectionParser
 import underdocs.renderer.representation.documentation.FunctionDocumentation
+import underdocs.renderer.representation.documentation.ReturnValue
 
 class FunctionDocumentationParser : underdocs.renderer.parser.documentation.DocumentationParser<FunctionDocumentation> {
     private val excerptParser = underdocs.renderer.parser.section.ExcerptParser()
@@ -11,7 +13,7 @@ class FunctionDocumentationParser : underdocs.renderer.parser.documentation.Docu
     private val attributesParser = underdocs.renderer.parser.section.AttributesParser()
     private val examplesParser = underdocs.renderer.parser.section.ExamplesParser()
     private val seeAlsoParser = SeeAlsoParser()
-    private val returnValueParser = TextSectionParser("Return Value")
+    private val returnValueParser = ReturnValueParser()
     private val errorHandlingParser = TextSectionParser("Error Handling")
     private val notesParser = TextSectionParser("Notes")
     private val parametersParser = underdocs.renderer.parser.section.ParametersParser()
