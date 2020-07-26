@@ -3,32 +3,28 @@ package underdocs.error.pretty
 import underdocs.error.BaseUnderdocsError
 
 class DefaultErrorPrettyPrinter : ErrorPrettyPrinter {
-    override fun print(exception: Exception): String {
-        var prettyPrintedError = """"""
-
-        if (exception is BaseUnderdocsError) {
-            prettyPrintedError = """
-                |${exception.title.toUpperCase()} - Error Code ${exception.code}
-                |Details
-                |${exception.getDescription()}
-                |
-                |Possible solution
-                |${exception.getSolution()}
-            """.trimMargin()
-
-            if (exception.cause != null) prettyPrintedError += "\nError cause:\n${exception.cause?.message}"
-        } else {
-            val errorStackTrace = exception.stackTrace.joinToString("\n\t", prefix = "\t")
-
-            prettyPrintedError = """
-                |Unexpected exception: ${exception.javaClass.name}
-                |${exception.message}
-                |
-                |Stacktrace:
-                |$errorStackTrace
-            """.trimMargin()
-        }
-
-        return prettyPrintedError
+    override fun print(exception: Exception) = if (exception is BaseUnderdocsError) {
+        printBaseUnderdocsException(exception)
+    } else {
+        printUnexpectedException(exception)
     }
+
+    private fun printBaseUnderdocsException(exception: BaseUnderdocsError) = """
+        |${exception.title.toUpperCase()} - Error Code ${exception.code}
+        |Details
+        |${exception.getDescription()}
+        |
+        |Possible solution
+        |${exception.getSolution()}
+        |${exception.cause.let { if (it?.message != null) "Error cause: ${it.message}" else "" }}
+    """.trimMargin()
+
+
+    private fun printUnexpectedException(exception: Exception) = """
+        |Unexpected exception: ${exception.javaClass.name}
+        |${exception.message}
+        |
+        |Stacktrace:
+        |${exception.stackTrace.joinToString("\n\t", prefix = "\t")}
+    """.trimMargin()
 }
