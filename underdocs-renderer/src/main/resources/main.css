@@ -301,7 +301,8 @@ h2 {
     color: var(--member-type-color)
 }
 
-.parameters {
+.parameters,
+.error-handling {
     border-bottom: var(--header-border);
 }
 
@@ -403,7 +404,8 @@ h2 {
 .submodules-table .submodule-excerpt-cell,
 .subheaders-table .subheader-excerpt-cell,
 .elements-table .element-excerpt-cell,
-.return-value-table .return-value-excerpt-cell {
+.return-value-table .return-value-excerpt-cell,
+.error-handling-excerpt {
     padding-left: 1rem;
 }
 
@@ -441,6 +443,18 @@ h2 {
     color: var(--parameter-type-color)
 }
 
-.return-value-table .return-value-name-cell {
+.return-value-table .return-value-name-cell,
+.error-handling-action-state {
+    font-weight: bold;
+}
+
+.error-handling a {
+    color: var(--breadcrumb-link-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+.error-handling a:visited {
+    color: var(--breadcrumb-link-visited-color);
+    text-decoration: none;
     font-weight: bold;
 }
