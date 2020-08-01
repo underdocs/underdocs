@@ -12,7 +12,6 @@ class ErrorHandlingParser : AttemptingSectionParser<ErrorHandling>() {
         document.children.any { isSectionHeadingWithTitle(it, "Error Handling") }
 
     override fun parse(document: Document): ErrorHandling {
-
         val startNode = document.children.first { isSectionHeadingWithTitle(it, "Error Handling") }
 
         val errorHandlingItemList = createErrorHandlingItemList(startNode)
@@ -21,7 +20,6 @@ class ErrorHandlingParser : AttemptingSectionParser<ErrorHandling>() {
     }
 
     private fun createErrorHandlingItemList(startNode: Node): List<ErrorHandlingItem> {
-
         val errorHandlingElementList = startNode.next
 
         if (errorHandlingElementList == null || errorHandlingElementList !is BulletList) {
@@ -35,7 +33,7 @@ class ErrorHandlingParser : AttemptingSectionParser<ErrorHandling>() {
                 continue
             }
 
-            val actionState = errorHandlingElement.firstChild.chars.toString().trim()
+            val state = errorHandlingElement.firstChild.chars.toString().trim()
 
             val conditionElementList = errorHandlingElement.firstChild.next
 
@@ -47,7 +45,7 @@ class ErrorHandlingParser : AttemptingSectionParser<ErrorHandling>() {
 
             val condition = extractTextBetweenNodes(conditionElement.firstChild, conditionElement.lastChild)
 
-            errorHandlingItemList.add(ErrorHandlingItem(actionState, condition))
+            errorHandlingItemList.add(ErrorHandlingItem(state, condition))
         }
 
         return errorHandlingItemList

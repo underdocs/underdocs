@@ -354,8 +354,8 @@ class SectionRenderer(private val linker: Linker) {
             each(errorHandling.errorHandlingItems) { child ->
                 div(
                     div(
-                        renderMarkdown(child.actionState)
-                    ).withClass("error-handling-action-state"),
+                        renderMarkdown(child.state)
+                    ).withClass("error-handling-state"),
                     div(
                         renderMarkdown(child.condition)
                     ).withClass("error-handling-excerpt")

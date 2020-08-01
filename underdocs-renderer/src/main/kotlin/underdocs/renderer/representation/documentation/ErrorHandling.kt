@@ -1,7 +1,7 @@
 package underdocs.renderer.representation.documentation
 
 data class ErrorHandlingItem(
-    val actionState: String,
+    val state: String,
     val condition: String
 )
 
