@@ -46,6 +46,7 @@ import underdocs.renderer.representation.UnionMember
 import underdocs.renderer.representation.UnionType
 import underdocs.renderer.representation.VariableMember
 import underdocs.renderer.representation.Visitable
+import underdocs.renderer.representation.documentation.ErrorHandling
 import underdocs.renderer.representation.documentation.Example
 import underdocs.renderer.representation.documentation.ReturnValue
 import underdocs.renderer.representation.documentation.ReturnValueItem
@@ -348,9 +349,18 @@ class SectionRenderer(private val linker: Linker) {
         ).withClass("return-value-table")
     }
 
-    fun renderErrorHandling(errorHandling: String) = section(
-            h2("Error Handling"),
-            renderMarkdown(errorHandling)
+    fun renderErrorHandling(errorHandling: ErrorHandling): ContainerTag = section(
+        h2("Error Handling"),
+            each(errorHandling.errorHandlingItems) { child ->
+                div(
+                    div(
+                        renderMarkdown(child.state)
+                    ).withClass("error-handling-state"),
+                    div(
+                        renderMarkdown(child.condition)
+                    ).withClass("error-handling-excerpt")
+                )
+            }
     ).withClass("error-handling")
 
     fun renderNotes(notes: String) = section(
