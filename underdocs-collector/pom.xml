@@ -11,7 +11,7 @@
     <artifactId>underdocs-collector</artifactId>
 
     <name>Underdocs Collector</name>
-    <description>File collector for the Underdocs documentation gerator tool.</description>
+    <description>File collector for the Underdocs documentation generator tool.</description>
 
     <dependencies>
         <dependency>

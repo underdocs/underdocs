@@ -11,7 +11,7 @@
     <artifactId>underdocs-version</artifactId>
 
     <name>Underdocs Version</name>
-    <description>Version information collecting component of the Underdocs documentation gerator tool.</description>
+    <description>Version information collecting component of the Underdocs documentation generator tool.</description>
 
     <dependencies>
         <dependency>
