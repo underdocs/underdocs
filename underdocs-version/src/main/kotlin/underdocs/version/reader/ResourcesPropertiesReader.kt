@@ -16,7 +16,9 @@ class ResourcesPropertiesReader: PropertiesReader {
             val isr = InputStreamReader(inputStream)
             isr.use {
                 val br = BufferedReader(isr)
-                resourceFileContents = br.lines().collect(Collectors.joining("\n"))
+                br.use {
+                    resourceFileContents = br.lines().collect(Collectors.joining("\n"))
+                }
             }
         }
 
