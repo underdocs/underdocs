@@ -11,7 +11,7 @@
     <artifactId>underdocs-error</artifactId>
 
     <name>Underdocs Error</name>
-    <description>Error handling component of the Underdocs documentation gerator tool.</description>
+    <description>Error handling component of the Underdocs documentation generator tool.</description>
 
     <dependencies>
         <dependency>
