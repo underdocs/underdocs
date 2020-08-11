@@ -57,6 +57,8 @@
         <maven-assembly-plugin.version>3.1.1</maven-assembly-plugin.version>
         <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
         <git-commit-id-plugin.version>4.0.0</git-commit-id-plugin.version>
+        <maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
+        <ktlint.version>0.37.2</ktlint.version>
     </properties>
 
     <modules>
@@ -217,7 +219,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-antrun-plugin</artifactId>
-                    <version>1.8</version>
+                    <version>${maven-antrun-plugin.version}</version>
                     <executions>
                         <execution>
                             <id>ktlint</id>
@@ -250,7 +252,7 @@
                         <dependency>
                             <groupId>com.pinterest</groupId>
                             <artifactId>ktlint</artifactId>
-                            <version>0.37.2</version>
+                            <version>${ktlint.version}</version>
                         </dependency>
                     </dependencies>
                 </plugin>
