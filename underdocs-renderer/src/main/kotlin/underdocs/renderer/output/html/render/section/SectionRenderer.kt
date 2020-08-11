@@ -51,7 +51,7 @@ import underdocs.renderer.representation.documentation.Example
 import underdocs.renderer.representation.documentation.ReturnValue
 import underdocs.renderer.representation.documentation.ReturnValueItem
 import java.io.File
-import java.util.*
+import java.util.Optional
 import kotlin.collections.ArrayList
 
 class SectionRenderer(private val linker: Linker) {
