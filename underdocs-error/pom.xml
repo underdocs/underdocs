@@ -18,6 +18,12 @@
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib-jdk8</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>underdocs</groupId>
+            <artifactId>underdocs-version</artifactId>
+            <version>1.0.1</version>
+        </dependency>
     </dependencies>
 
     <build>
