@@ -1,16 +1,21 @@
 package underdocs.error.environment
 
+import underdocs.version.Version
+import underdocs.version.retriever.VersionRetriever
+
 class DefaultEnvironmentDetailCollector : EnvironmentDetailCollector {
     override fun collect() : String {
         val osDetails = collectOSDetails()
-        val underdocsVersion = "1.0.1" // for now it's just built in
+        val versionInformation = getVersion()
         val issueLink = createIssueLink()
-        val discordInviteLink = "https://discord.gg/" // link to be completed
+        val discordInviteLink = "https://discord.gg/hKGRPs"
 
         return """
             |$osDetails
             |
-            |Underdocs Version: $underdocsVersion
+            |Underdocs Version: ${versionInformation.projectVersion}
+            |Git Commit Hash: ${versionInformation.gitCommitHash}
+            |Git Branch: ${versionInformation.gitBranch}
             |
             |Create a new issue on GitHub: $issueLink
             |Join us on Discord: $discordInviteLink
@@ -36,4 +41,9 @@ class DefaultEnvironmentDetailCollector : EnvironmentDetailCollector {
 
     private fun createIssueLink() =
             "https://github.com/underdocs/underdocs/issues/new?assignees=&labels=type%3A+bug+%3Abeetle%3A&title=Bug+Report"
+
+    private fun getVersion(): Version {
+        val versionRetriever = VersionRetriever.create()
+        return versionRetriever.get()
+    }
 }
