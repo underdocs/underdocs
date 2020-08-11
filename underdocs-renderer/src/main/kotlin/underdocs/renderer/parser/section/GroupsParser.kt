@@ -6,7 +6,7 @@ import com.vladsch.flexmark.util.ast.Node
 
 class GroupsParser : underdocs.renderer.parser.section.AttemptingSectionParser<Map<String, String>>() {
     override fun canParse(document: Document) =
-            document.children.any { underdocs.renderer.parser.section.isSectionHeadingWithTitle(it, "Groups") }
+        document.children.any { underdocs.renderer.parser.section.isSectionHeadingWithTitle(it, "Groups") }
 
     override fun parse(document: Document): Map<String, String> {
         val result = mutableMapOf<String, String>()
@@ -23,9 +23,12 @@ class GroupsParser : underdocs.renderer.parser.section.AttemptingSectionParser<M
             }
 
             val groupTitle = (currentGroupHeading as Heading).text.toString()
-            val groupText = extractTextBetweenNodes(currentGroupHeading.next
-                    ?: currentGroupHeading.firstChild, nextGroupHeading
-                    ?: sectionEndNode)
+            val groupText = extractTextBetweenNodes(
+                currentGroupHeading.next
+                    ?: currentGroupHeading.firstChild,
+                nextGroupHeading
+                    ?: sectionEndNode
+            )
 
             result[groupTitle] = groupText
 
@@ -36,5 +39,5 @@ class GroupsParser : underdocs.renderer.parser.section.AttemptingSectionParser<M
     }
 
     private fun isGroupHeading(node: Node) =
-            node is Heading && node.level == 3
+        node is Heading && node.level == 3
 }

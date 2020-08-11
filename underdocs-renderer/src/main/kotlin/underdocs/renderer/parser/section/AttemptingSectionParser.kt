@@ -8,9 +8,9 @@ abstract class AttemptingSectionParser<T> : SectionParser<T> {
     abstract fun parse(document: Document): T
 
     override fun tryParse(document: Document) =
-            if (!canParse(document)) {
-                null
-            } else {
-                parse(document)
-            }
+        if (!canParse(document)) {
+            null
+        } else {
+            parse(document)
+        }
 }

@@ -21,8 +21,11 @@ class OtherParser(private val knownSectionNames: Set<String>) : underdocs.render
             }
 
             val groupTitle = (currentSectionHeading as Heading).text.toString()
-            val groupText = underdocs.renderer.parser.section.extractTextBetweenNodes(currentSectionHeading.next, nextSectionHeading
-                    ?: document.lastChild)
+            val groupText = underdocs.renderer.parser.section.extractTextBetweenNodes(
+                currentSectionHeading.next,
+                nextSectionHeading
+                    ?: document.lastChild
+            )
 
             result[groupTitle] = groupText
 
@@ -33,5 +36,5 @@ class OtherParser(private val knownSectionNames: Set<String>) : underdocs.render
     }
 
     private fun isOtherSectionHeading(node: Node) =
-            underdocs.renderer.parser.section.isSectionHeading(node) && (node as Heading).text.toString() !in knownSectionNames
+        underdocs.renderer.parser.section.isSectionHeading(node) && (node as Heading).text.toString() !in knownSectionNames
 }

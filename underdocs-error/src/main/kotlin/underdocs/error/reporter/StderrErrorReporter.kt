@@ -19,11 +19,12 @@ class StderrErrorReporter : ErrorReporter {
         val prettyError = errorPrinter.print(exception)
         val environmentDetails = environmentDetailCollector.collect()
 
-        val output = """
+        val output =
+            """
             $prettyError
             
             $environmentDetails
-        """.trimIndent()
+            """.trimIndent()
 
         System.err.println(output)
     }

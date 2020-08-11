@@ -7,7 +7,7 @@ import com.vladsch.flexmark.util.ast.Document
 
 class AttributesParser : AttemptingSectionParser<Map<String, String>>() {
     override fun canParse(document: Document) =
-            document.firstChild is YamlFrontMatterBlock
+        document.firstChild is YamlFrontMatterBlock
 
     override fun parse(document: Document): Map<String, String> {
         val result = mutableMapOf<String, String>()
@@ -18,7 +18,7 @@ class AttributesParser : AttemptingSectionParser<Map<String, String>>() {
             }
 
             val value = child.children.firstOrNull { it is YamlFrontMatterValue } as YamlFrontMatterValue?
-                    ?: continue
+                ?: continue
 
             result[child.key] = value.chars.toString()
         }

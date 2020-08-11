@@ -81,10 +81,12 @@ class EclipseHeaderParser(private val configuration: ParserConfiguration) : Head
         return GCCLanguage.getDefault().getASTTranslationUnit(fileContent, info, emptyIncludes, null, options, logService)
     }
 
-    private class HeaderBuilder(private val path: String,
-                                private val parseTree: IASTTranslationUnit,
-                                private val commentMap: NodeCommentMap,
-                                private val commentProcessor: EclipseCommentProcessor) {
+    private class HeaderBuilder(
+        private val path: String,
+        private val parseTree: IASTTranslationUnit,
+        private val commentMap: NodeCommentMap,
+        private val commentProcessor: EclipseCommentProcessor
+    ) {
         companion object {
             private const val STRUCT_KEY = 1
             private const val UNION_KEY = 2
@@ -102,26 +104,26 @@ class EclipseHeaderParser(private val configuration: ParserConfiguration) : Head
             this.includeGuard = includeGuard
 
             parseTree.macroDefinitions
-                    .mapNotNull { processMacroDefinition(it) }
-                    .forEach { elements.add(it) }
+                .mapNotNull { processMacroDefinition(it) }
+                .forEach { elements.add(it) }
 
             parseTree.declarations
-                    .filterIsInstance<IASTSimpleDeclaration>()
-                    .mapNotNull { processTopLevelDeclaration(it) }
-                    .forEach { elements.add(it) }
+                .filterIsInstance<IASTSimpleDeclaration>()
+                .mapNotNull { processTopLevelDeclaration(it) }
+                .forEach { elements.add(it) }
 
             return Header(
-                    path,
-                    Paths.get(path).fileName.toString(),
-                    elements,
-                    headerComment
+                path,
+                Paths.get(path).fileName.toString(),
+                elements,
+                headerComment
             )
         }
 
         private fun extractPreamble(): Pair<String?, String?> {
             val possiblePreamble = parseTree.allPreprocessorStatements
-                    .firstOrNull { isIfndefOrNotDefined(it) }
-                    ?: return Pair(null, null)
+                .firstOrNull { isIfndefOrNotDefined(it) }
+                ?: return Pair(null, null)
 
             val isFirstElement = parseTree.children.all {
                 it == possiblePreamble || it.fileLocation.startingLineNumber > possiblePreamble.fileLocation.startingLineNumber
@@ -135,11 +137,11 @@ class EclipseHeaderParser(private val configuration: ParserConfiguration) : Head
         }
 
         private fun isIfndefOrNotDefined(statement: IASTPreprocessorStatement) =
-                when (statement) {
-                    is IASTPreprocessorIfStatement -> statement.condition.toString().toLowerCase().startsWith("!defined")
-                    is IASTPreprocessorIfndefStatement -> true
-                    else -> false
-                }
+            when (statement) {
+                is IASTPreprocessorIfStatement -> statement.condition.toString().toLowerCase().startsWith("!defined")
+                is IASTPreprocessorIfndefStatement -> true
+                else -> false
+            }
 
         private fun isIncludeGuardDefine(macro: IASTPreprocessorObjectStyleMacroDefinition): Boolean {
             if (includeGuard == null) {
@@ -150,17 +152,17 @@ class EclipseHeaderParser(private val configuration: ParserConfiguration) : Head
         }
 
         private fun processMacroDefinition(macro: IASTPreprocessorMacroDefinition) =
-                // Note, that the order of clauses DOES matter here!
-                when (macro) {
-                    is IASTPreprocessorFunctionStyleMacroDefinition -> makeMacroFunction(macro)
-                    is IASTPreprocessorObjectStyleMacroDefinition ->
-                        if (isIncludeGuardDefine(macro)) {
-                            null
-                        } else {
-                            makeMacroConstant(macro)
-                        }
-                    else -> null
-                }
+            // Note, that the order of clauses DOES matter here!
+            when (macro) {
+                is IASTPreprocessorFunctionStyleMacroDefinition -> makeMacroFunction(macro)
+                is IASTPreprocessorObjectStyleMacroDefinition ->
+                    if (isIncludeGuardDefine(macro)) {
+                        null
+                    } else {
+                        makeMacroConstant(macro)
+                    }
+                else -> null
+            }
 
         private fun processTopLevelDeclaration(declaration: IASTSimpleDeclaration): Element? {
             if (declaration in visitedNodes) {
@@ -181,67 +183,67 @@ class EclipseHeaderParser(private val configuration: ParserConfiguration) : Head
         }
 
         private fun isTypeSynonym(decl: IASTDeclaration) =
-                decl is IASTSimpleDeclaration
-                        && isTypedef(decl)
-                        && decl.declSpecifier !is ICASTCompositeTypeSpecifier
-                        && decl.declSpecifier !is ICASTEnumerationSpecifier
+            decl is IASTSimpleDeclaration &&
+                isTypedef(decl) &&
+                decl.declSpecifier !is ICASTCompositeTypeSpecifier &&
+                decl.declSpecifier !is ICASTEnumerationSpecifier
 
         private fun isFunction(decl: IASTDeclaration) =
-                decl is IASTSimpleDeclaration
-                        && decl.declarators.isNotEmpty()
-                        && decl.declarators[0] is IASTFunctionDeclarator
+            decl is IASTSimpleDeclaration &&
+                decl.declarators.isNotEmpty() &&
+                decl.declarators[0] is IASTFunctionDeclarator
 
         private fun isEnum(decl: IASTDeclaration) =
-                decl is IASTSimpleDeclaration
-                        && (decl.children.size == 1 || isTypedef(decl))
-                        && decl.declSpecifier is ICASTEnumerationSpecifier
+            decl is IASTSimpleDeclaration &&
+                (decl.children.size == 1 || isTypedef(decl)) &&
+                decl.declSpecifier is ICASTEnumerationSpecifier
 
         private fun isStruct(decl: IASTDeclaration) =
-                decl is IASTSimpleDeclaration
-                        && (decl.children.size == 1 || isTypedef(decl))
-                        && decl.declSpecifier is ICASTCompositeTypeSpecifier
-                        && (decl.declSpecifier as ICASTCompositeTypeSpecifier).key == STRUCT_KEY
+            decl is IASTSimpleDeclaration &&
+                (decl.children.size == 1 || isTypedef(decl)) &&
+                decl.declSpecifier is ICASTCompositeTypeSpecifier &&
+                (decl.declSpecifier as ICASTCompositeTypeSpecifier).key == STRUCT_KEY
 
         private fun isUnion(decl: IASTDeclaration) =
-                decl is IASTSimpleDeclaration
-                        && (decl.children.size == 1 || isTypedef(decl))
-                        && decl.declSpecifier is ICASTCompositeTypeSpecifier
-                        && (decl.declSpecifier as ICASTCompositeTypeSpecifier).key == UNION_KEY
+            decl is IASTSimpleDeclaration &&
+                (decl.children.size == 1 || isTypedef(decl)) &&
+                decl.declSpecifier is ICASTCompositeTypeSpecifier &&
+                (decl.declSpecifier as ICASTCompositeTypeSpecifier).key == UNION_KEY
 
         private fun isVariable(decl: IASTDeclaration) =
-                decl is IASTSimpleDeclaration
-                        && decl.children.size == 2
-                        && decl.declarators.isNotEmpty()
-                        && decl.declarators[0] !is IASTFunctionDeclarator
-                        && !isTypedef(decl)
+            decl is IASTSimpleDeclaration &&
+                decl.children.size == 2 &&
+                decl.declarators.isNotEmpty() &&
+                decl.declarators[0] !is IASTFunctionDeclarator &&
+                !isTypedef(decl)
 
         private fun makeMacroConstant(macro: IASTPreprocessorObjectStyleMacroDefinition) =
-                MacroConstant(
-                        startingLineFromNode(macro),
-                        rawFromNode(macro),
-                        rawFromNode(macro.name),
-                        macro.expansion,
-                        commentFromNode(macro)
-                )
+            MacroConstant(
+                startingLineFromNode(macro),
+                rawFromNode(macro),
+                rawFromNode(macro.name),
+                macro.expansion,
+                commentFromNode(macro)
+            )
 
         private fun makeMacroFunction(macro: IASTPreprocessorFunctionStyleMacroDefinition) =
-                MacroFunction(
-                        startingLineFromNode(macro),
-                        rawFromNode(macro),
-                        rawFromNode(macro.name),
-                        macro.expansion,
-                        macroFunctionParameters(macro),
-                        commentFromNode(macro)
-                )
+            MacroFunction(
+                startingLineFromNode(macro),
+                rawFromNode(macro),
+                rawFromNode(macro.name),
+                macro.expansion,
+                macroFunctionParameters(macro),
+                commentFromNode(macro)
+            )
 
         private fun makeTypeSynonym(declaration: IASTSimpleDeclaration) =
-                TypeSynonym(
-                        startingLineFromNode(declaration),
-                        rawFromNode(declaration),
-                        rawFromNode(declaration.children[0]).removePrefix("typedef").trimStart(),
-                        rawFromNode(declaration.children[1]),
-                        commentFromNode(declaration)
-                )
+            TypeSynonym(
+                startingLineFromNode(declaration),
+                rawFromNode(declaration),
+                rawFromNode(declaration.children[0]).removePrefix("typedef").trimStart(),
+                rawFromNode(declaration.children[1]),
+                commentFromNode(declaration)
+            )
 
         private fun makeTopLevelEnumElement(decl: IASTSimpleDeclaration): EnumElement {
             val enumerationSpecifier = decl.declSpecifier as ICASTEnumerationSpecifier
@@ -255,13 +257,13 @@ class EclipseHeaderParser(private val configuration: ParserConfiguration) : Head
             }
 
             return EnumElement(
-                    startingLineFromNode(enumerationSpecifier),
-                    rawFromNode(enumerationSpecifier),
-                    name,
-                    declIsTypedef,
-                    emptyList(),
-                    enumConstants(enumerationSpecifier),
-                    commentFromNode(decl)
+                startingLineFromNode(enumerationSpecifier),
+                rawFromNode(enumerationSpecifier),
+                name,
+                declIsTypedef,
+                emptyList(),
+                enumConstants(enumerationSpecifier),
+                commentFromNode(decl)
             )
         }
 
@@ -269,11 +271,11 @@ class EclipseHeaderParser(private val configuration: ParserConfiguration) : Head
             val enumerationSpecifier = decl.declSpecifier as ICASTEnumerationSpecifier
 
             return EnumMember(
-                    startingLineFromNode(enumerationSpecifier),
-                    rawFromNode(enumerationSpecifier),
-                    rawFromNode(enumerationSpecifier.name),
-                    enumConstants(enumerationSpecifier),
-                    commentFromNode(decl)
+                startingLineFromNode(enumerationSpecifier),
+                rawFromNode(enumerationSpecifier),
+                rawFromNode(enumerationSpecifier.name),
+                enumConstants(enumerationSpecifier),
+                commentFromNode(decl)
             )
         }
 
@@ -289,18 +291,18 @@ class EclipseHeaderParser(private val configuration: ParserConfiguration) : Head
             }
 
             val members = typeSpecifier.members
-                    .filterIsInstance<IASTSimpleDeclaration>()
-                    .mapNotNull { processStructOrUnionMember(it) }
-                    .toList()
+                .filterIsInstance<IASTSimpleDeclaration>()
+                .mapNotNull { processStructOrUnionMember(it) }
+                .toList()
 
             return Struct(
-                    startingLineFromNode(typeSpecifier),
-                    rawFromNode(typeSpecifier),
-                    name,
-                    declIsTypedef,
-                    emptyList(),
-                    members,
-                    commentFromNode(decl)
+                startingLineFromNode(typeSpecifier),
+                rawFromNode(typeSpecifier),
+                name,
+                declIsTypedef,
+                emptyList(),
+                members,
+                commentFromNode(decl)
             )
         }
 
@@ -308,16 +310,16 @@ class EclipseHeaderParser(private val configuration: ParserConfiguration) : Head
             val typeSpecifier = decl.declSpecifier as ICASTCompositeTypeSpecifier
 
             val members = typeSpecifier.members
-                    .filterIsInstance<IASTSimpleDeclaration>()
-                    .mapNotNull { processStructOrUnionMember(it) }
-                    .toList()
+                .filterIsInstance<IASTSimpleDeclaration>()
+                .mapNotNull { processStructOrUnionMember(it) }
+                .toList()
 
             return StructMember(
-                    startingLineFromNode(typeSpecifier),
-                    rawFromNode(typeSpecifier),
-                    rawFromNode(typeSpecifier.name),
-                    members,
-                    commentFromNode(typeSpecifier)
+                startingLineFromNode(typeSpecifier),
+                rawFromNode(typeSpecifier),
+                rawFromNode(typeSpecifier.name),
+                members,
+                commentFromNode(typeSpecifier)
             )
         }
 
@@ -334,7 +336,7 @@ class EclipseHeaderParser(private val configuration: ParserConfiguration) : Head
         }
 
         private fun isTypedef(decl: IASTSimpleDeclaration) =
-                decl.declSpecifier.storageClass == IASTDeclSpecifier.sc_typedef
+            decl.declSpecifier.storageClass == IASTDeclSpecifier.sc_typedef
 
         private fun makeTopLevelUnion(decl: IASTSimpleDeclaration): Union {
             val typeSpecifier = decl.declSpecifier as ICASTCompositeTypeSpecifier
@@ -348,18 +350,18 @@ class EclipseHeaderParser(private val configuration: ParserConfiguration) : Head
             }
 
             val members = typeSpecifier.members
-                    .filterIsInstance<IASTSimpleDeclaration>()
-                    .mapNotNull { processStructOrUnionMember(it) }
-                    .toList()
+                .filterIsInstance<IASTSimpleDeclaration>()
+                .mapNotNull { processStructOrUnionMember(it) }
+                .toList()
 
             return Union(
-                    startingLineFromNode(typeSpecifier),
-                    rawFromNode(typeSpecifier),
-                    name,
-                    declIsTypedef,
-                    emptyList(),
-                    members,
-                    commentFromNode(decl)
+                startingLineFromNode(typeSpecifier),
+                rawFromNode(typeSpecifier),
+                name,
+                declIsTypedef,
+                emptyList(),
+                members,
+                commentFromNode(decl)
             )
         }
 
@@ -367,16 +369,16 @@ class EclipseHeaderParser(private val configuration: ParserConfiguration) : Head
             val typeSpecifier = decl.declSpecifier as ICASTCompositeTypeSpecifier
 
             val members = typeSpecifier.members
-                    .filterIsInstance<IASTSimpleDeclaration>()
-                    .mapNotNull { processStructOrUnionMember(it) }
-                    .toList()
+                .filterIsInstance<IASTSimpleDeclaration>()
+                .mapNotNull { processStructOrUnionMember(it) }
+                .toList()
 
             return UnionMember(
-                    startingLineFromNode(typeSpecifier),
-                    rawFromNode(typeSpecifier),
-                    rawFromNode(typeSpecifier.name),
-                    members,
-                    commentFromNode(decl)
+                startingLineFromNode(typeSpecifier),
+                rawFromNode(typeSpecifier),
+                rawFromNode(typeSpecifier.name),
+                members,
+                commentFromNode(decl)
             )
         }
 
@@ -386,12 +388,12 @@ class EclipseHeaderParser(private val configuration: ParserConfiguration) : Head
             val declarator = decl.declarators[0]
 
             return VariableMember(
-                    startingLineFromNode(decl),
-                    rawFromNode(decl),
-                    rawFromNode(declarator.name),
-                    emptyList(),
-                    type,
-                    commentFromNode(decl)
+                startingLineFromNode(decl),
+                rawFromNode(decl),
+                rawFromNode(declarator.name),
+                emptyList(),
+                type,
+                commentFromNode(decl)
             )
         }
 
@@ -401,121 +403,125 @@ class EclipseHeaderParser(private val configuration: ParserConfiguration) : Head
             val declarator = decl.declarators[0]
 
             return Variable(
-                    startingLineFromNode(decl),
-                    rawFromNode(decl),
-                    rawFromNode(declarator.name),
-                    emptyList(),
-                    type,
-                    commentFromNode(decl)
+                startingLineFromNode(decl),
+                rawFromNode(decl),
+                rawFromNode(declarator.name),
+                emptyList(),
+                type,
+                commentFromNode(decl)
             )
         }
 
         private fun makeTypeFromDeclSpecifier(specifier: IASTDeclSpecifier): Type =
-                when (specifier) {
-                    is ICASTCompositeTypeSpecifier -> if (specifier.key == STRUCT_KEY) {
+            when (specifier) {
+                is ICASTCompositeTypeSpecifier ->
+                    if (specifier.key == STRUCT_KEY) {
                         makeStructType(specifier)
                     } else {
                         makeUnionType(specifier)
                     }
-                    is ICASTEnumerationSpecifier -> makeEnumType(specifier)
-                    is ICASTElaboratedTypeSpecifier -> ReferredType(
-                            startingLineFromNode(specifier),
-                            rawFromNode(specifier),
-                            rawFromNode(specifier.name),
-                            emptyList())
-                    is ICASTSimpleDeclSpecifier -> ReferredType(
-                            startingLineFromNode(specifier),
-                            rawFromNode(specifier),
-                            rawFromNode(specifier),
-                            emptyList())
-                    is ICASTTypedefNameSpecifier -> ReferredType(
-                            startingLineFromNode(specifier),
-                            rawFromNode(specifier),
-                            rawFromNode(specifier.name),
-                            emptyList())
-                    else -> throw IllegalStateException()
-                }
-
-        private fun makeStructType(specifier: ICASTCompositeTypeSpecifier): StructType {
-            val members = specifier.members
-                    .filterIsInstance<IASTSimpleDeclaration>()
-                    .mapNotNull { processStructOrUnionMember(it) }
-                    .toList()
-
-            return StructType(
+                is ICASTEnumerationSpecifier -> makeEnumType(specifier)
+                is ICASTElaboratedTypeSpecifier -> ReferredType(
                     startingLineFromNode(specifier),
                     rawFromNode(specifier),
                     rawFromNode(specifier.name),
-                    members
+                    emptyList()
+                )
+                is ICASTSimpleDeclSpecifier -> ReferredType(
+                    startingLineFromNode(specifier),
+                    rawFromNode(specifier),
+                    rawFromNode(specifier),
+                    emptyList()
+                )
+                is ICASTTypedefNameSpecifier -> ReferredType(
+                    startingLineFromNode(specifier),
+                    rawFromNode(specifier),
+                    rawFromNode(specifier.name),
+                    emptyList()
+                )
+                else -> throw IllegalStateException()
+            }
+
+        private fun makeStructType(specifier: ICASTCompositeTypeSpecifier): StructType {
+            val members = specifier.members
+                .filterIsInstance<IASTSimpleDeclaration>()
+                .mapNotNull { processStructOrUnionMember(it) }
+                .toList()
+
+            return StructType(
+                startingLineFromNode(specifier),
+                rawFromNode(specifier),
+                rawFromNode(specifier.name),
+                members
             )
         }
 
         private fun makeUnionType(specifier: ICASTCompositeTypeSpecifier): UnionType {
             val members = specifier.members
-                    .filterIsInstance<IASTSimpleDeclaration>()
-                    .mapNotNull { processStructOrUnionMember(it) }
-                    .toList()
+                .filterIsInstance<IASTSimpleDeclaration>()
+                .mapNotNull { processStructOrUnionMember(it) }
+                .toList()
 
             return UnionType(
-                    startingLineFromNode(specifier),
-                    rawFromNode(specifier),
-                    rawFromNode(specifier.name),
-                    members
+                startingLineFromNode(specifier),
+                rawFromNode(specifier),
+                rawFromNode(specifier.name),
+                members
             )
         }
 
         private fun makeEnumType(specifier: ICASTEnumerationSpecifier) =
-                EnumType(
-                        startingLineFromNode(specifier),
-                        rawFromNode(specifier),
-                        rawFromNode(specifier.name),
-                        enumConstants(specifier)
-                )
+            EnumType(
+                startingLineFromNode(specifier),
+                rawFromNode(specifier),
+                rawFromNode(specifier.name),
+                enumConstants(specifier)
+            )
 
         private fun makeFunction(decl: IASTSimpleDeclaration) =
-                if (decl.declarators[0] is IASTStandardFunctionDeclarator) {
-                    makeFunctionFromSimpleDeclarator(decl, decl.declarators[0] as IASTStandardFunctionDeclarator)
-                } else {
-                    makeFunctionFromKnRDeclarator(decl, decl.declarators[0] as ICASTKnRFunctionDeclarator)
-                }
+            if (decl.declarators[0] is IASTStandardFunctionDeclarator) {
+                makeFunctionFromSimpleDeclarator(decl, decl.declarators[0] as IASTStandardFunctionDeclarator)
+            } else {
+                makeFunctionFromKnRDeclarator(decl, decl.declarators[0] as ICASTKnRFunctionDeclarator)
+            }
 
         private fun makeFunctionFromSimpleDeclarator(decl: IASTSimpleDeclaration, func: IASTStandardFunctionDeclarator) =
-                Function(
-                        startingLineFromNode(decl),
-                        rawFromNode(decl),
-                        rawFromNode(func.name),
-                        emptyList(),
-                        ReferredType(
-                                startingLineFromNode(decl.declSpecifier),
-                                rawFromNode(decl.declSpecifier),
-                                rawFromNode(decl.declSpecifier),
-                                emptyList()
-                        ),
-                        simpleFunctionParameters(func),
-                        commentFromNode(decl)
-                )
+            Function(
+                startingLineFromNode(decl),
+                rawFromNode(decl),
+                rawFromNode(func.name),
+                emptyList(),
+                ReferredType(
+                    startingLineFromNode(decl.declSpecifier),
+                    rawFromNode(decl.declSpecifier),
+                    rawFromNode(decl.declSpecifier),
+                    emptyList()
+                ),
+                simpleFunctionParameters(func),
+                commentFromNode(decl)
+            )
 
         private fun makeFunctionFromKnRDeclarator(decl: IASTSimpleDeclaration, func: ICASTKnRFunctionDeclarator) =
-                Function(
-                        startingLineFromNode(decl),
-                        rawFromNode(decl),
-                        rawFromNode(func.name),
-                        emptyList(),
-                        ReferredType(
-                                startingLineFromNode(decl.declSpecifier),
-                                rawFromNode(decl.declSpecifier),
-                                rawFromNode(decl.declSpecifier),
-                                emptyList()
-                        ),
-                        knrFunctionParameters(func),
-                        commentFromNode(decl)
-                )
+            Function(
+                startingLineFromNode(decl),
+                rawFromNode(decl),
+                rawFromNode(func.name),
+                emptyList(),
+                ReferredType(
+                    startingLineFromNode(decl.declSpecifier),
+                    rawFromNode(decl.declSpecifier),
+                    rawFromNode(decl.declSpecifier),
+                    emptyList()
+                ),
+                knrFunctionParameters(func),
+                commentFromNode(decl)
+            )
 
         private fun startingLineFromNode(node: IASTNode) =
-                node.fileLocation.startingLineNumber
+            node.fileLocation.startingLineNumber
 
         private fun rawFromNode(node: IASTNode) =
-                node.rawSignature
+            node.rawSignature
 
         private fun commentFromNode(node: IASTNode): String? {
             val leadingComments = commentMap.getLeadingCommentsForNode(node)
@@ -525,49 +531,49 @@ class EclipseHeaderParser(private val configuration: ParserConfiguration) : Head
         }
 
         private fun macroFunctionParameters(macro: IASTPreprocessorFunctionStyleMacroDefinition) =
-                macro.parameters.map { it.parameter }.toList()
+            macro.parameters.map { it.parameter }.toList()
 
         private fun enumConstants(specifier: ICASTEnumerationSpecifier) =
-                specifier.enumerators.map {
-                    EnumConstant(
-                            startingLineFromNode(it),
-                            rawFromNode(it),
-                            rawFromNode(it.name),
-                            if (it.value == null) null else rawFromNode(it.value),
-                            commentFromNode(it)
-                    )
-                }
+            specifier.enumerators.map {
+                EnumConstant(
+                    startingLineFromNode(it),
+                    rawFromNode(it),
+                    rawFromNode(it.name),
+                    if (it.value == null) null else rawFromNode(it.value),
+                    commentFromNode(it)
+                )
+            }
 
         private fun simpleFunctionParameters(func: IASTStandardFunctionDeclarator) =
-                func.parameters.map {
-                    FunctionParameter(
-                            startingLineFromNode(it),
-                            rawFromNode(it),
-                            rawFromNode(it.declarator),
-                            ReferredType(
-                                    startingLineFromNode(it.declSpecifier),
-                                    rawFromNode(it.declSpecifier),
-                                    rawFromNode(it.declSpecifier),
-                                    emptyList()
-                            )
+            func.parameters.map {
+                FunctionParameter(
+                    startingLineFromNode(it),
+                    rawFromNode(it),
+                    rawFromNode(it.declarator),
+                    ReferredType(
+                        startingLineFromNode(it.declSpecifier),
+                        rawFromNode(it.declSpecifier),
+                        rawFromNode(it.declSpecifier),
+                        emptyList()
                     )
-                }
+                )
+            }
 
         private fun knrFunctionParameters(func: ICASTKnRFunctionDeclarator) =
-                func.parameterNames.map {
-                    val decl = func.getDeclaratorForParameterName(it)
+            func.parameterNames.map {
+                val decl = func.getDeclaratorForParameterName(it)
 
-                    FunctionParameter(
-                            startingLineFromNode(decl),
-                            rawFromNode(decl) + rawFromNode(it),
-                            rawFromNode(it),
-                            ReferredType(
-                                    startingLineFromNode(decl),
-                                    rawFromNode(decl),
-                                    rawFromNode(decl),
-                                    emptyList()
-                            )
+                FunctionParameter(
+                    startingLineFromNode(decl),
+                    rawFromNode(decl) + rawFromNode(it),
+                    rawFromNode(it),
+                    ReferredType(
+                        startingLineFromNode(decl),
+                        rawFromNode(decl),
+                        rawFromNode(decl),
+                        emptyList()
                     )
-                }
+                )
+            }
     }
 }

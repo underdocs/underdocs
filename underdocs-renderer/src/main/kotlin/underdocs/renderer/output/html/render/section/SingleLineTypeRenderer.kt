@@ -22,7 +22,6 @@ class SingleLineTypeRenderer {
         return representationBuilder.toString()
     }
 
-
     fun render(members: List<Member>): String {
         representationBuilder.clear()
 
@@ -59,14 +58,14 @@ class SingleLineTypeRenderer {
         representationBuilder.append("enum $name{ ")
 
         val enumMembers = member.members
-                .map { enumMember ->
-                    if (enumMember.value == null) {
-                        enumMember.name
-                    } else {
-                        "${enumMember.name} = ${enumMember.value}"
-                    }
+            .map { enumMember ->
+                if (enumMember.value == null) {
+                    enumMember.name
+                } else {
+                    "${enumMember.name} = ${enumMember.value}"
                 }
-                .joinToString(", ")
+            }
+            .joinToString(", ")
 
         representationBuilder.append(enumMembers)
 
@@ -161,14 +160,14 @@ class SingleLineTypeRenderer {
         representationBuilder.append("enum $name{ ")
 
         val enumMembers = type.members
-                .map { enumMember ->
-                    if (enumMember.value == null) {
-                        enumMember.name
-                    } else {
-                        "${enumMember.name} = ${enumMember.value}"
-                    }
+            .map { enumMember ->
+                if (enumMember.value == null) {
+                    enumMember.name
+                } else {
+                    "${enumMember.name} = ${enumMember.value}"
                 }
-                .joinToString(", ")
+            }
+            .joinToString(", ")
 
         representationBuilder.append(enumMembers)
 

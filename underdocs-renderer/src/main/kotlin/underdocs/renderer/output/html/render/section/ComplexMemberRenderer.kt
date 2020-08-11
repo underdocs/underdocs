@@ -67,18 +67,18 @@ class ComplexMemberRenderer {
         representationBuilder.append("enum $name{\n")
 
         val enumMembers = member.members
-                .map { enumMember ->
-                    if (enumMember.value == null) {
-                        "${leadingMemberSpaces}${enumMember.name}"
-                    } else {
-                        "${leadingMemberSpaces}${enumMember.name} = ${enumMember.value}"
-                    }
+            .map { enumMember ->
+                if (enumMember.value == null) {
+                    "${leadingMemberSpaces}${enumMember.name}"
+                } else {
+                    "${leadingMemberSpaces}${enumMember.name} = ${enumMember.value}"
                 }
-                .joinToString(",\n")
+            }
+            .joinToString(",\n")
 
         representationBuilder.append(enumMembers)
 
-        representationBuilder.append("\n${leadingSpaces}}")
+        representationBuilder.append("\n$leadingSpaces}")
     }
 
     private fun renderStructMember(member: StructMember, depth: Int) {
@@ -94,7 +94,7 @@ class ComplexMemberRenderer {
 
         renderMembers(member.members, depth)
 
-        representationBuilder.append("\n${leadingSpaces}}")
+        representationBuilder.append("\n$leadingSpaces}")
     }
 
     private fun renderUnionMember(member: UnionMember, depth: Int) {
@@ -110,7 +110,7 @@ class ComplexMemberRenderer {
 
         renderMembers(member.members, depth)
 
-        representationBuilder.append("\n${leadingSpaces}}")
+        representationBuilder.append("\n$leadingSpaces}")
     }
 
     private fun renderVariableMember(member: VariableMember, depth: Int) {
@@ -150,7 +150,7 @@ class ComplexMemberRenderer {
 
         renderMembers(type.members, depth)
 
-        representationBuilder.append("\n${leadingSpaces}}")
+        representationBuilder.append("\n$leadingSpaces}")
     }
 
     private fun renderStructType(type: StructType, depth: Int) {
@@ -166,7 +166,7 @@ class ComplexMemberRenderer {
 
         renderMembers(type.members, depth)
 
-        representationBuilder.append("\n${leadingSpaces}}")
+        representationBuilder.append("\n$leadingSpaces}")
     }
 
     private fun renderEnumType(type: EnumType, depth: Int) {
@@ -182,18 +182,18 @@ class ComplexMemberRenderer {
         representationBuilder.append("enum $name{\n")
 
         val enumMembers = type.members
-                .map { enumMember ->
-                    if (enumMember.value == null) {
-                        "${leadingMemberSpaces}${enumMember.name}"
-                    } else {
-                        "${leadingMemberSpaces}${enumMember.name} = ${enumMember.value}"
-                    }
+            .map { enumMember ->
+                if (enumMember.value == null) {
+                    "${leadingMemberSpaces}${enumMember.name}"
+                } else {
+                    "${leadingMemberSpaces}${enumMember.name} = ${enumMember.value}"
                 }
-                .joinToString(",\n")
+            }
+            .joinToString(",\n")
 
         representationBuilder.append(enumMembers)
 
-        representationBuilder.append("\n${leadingSpaces}}")
+        representationBuilder.append("\n$leadingSpaces}")
     }
 
     private fun renderReferredType(type: ReferredType, depth: Int) {

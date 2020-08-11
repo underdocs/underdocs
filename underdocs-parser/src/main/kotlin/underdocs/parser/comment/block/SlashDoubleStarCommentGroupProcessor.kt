@@ -37,14 +37,14 @@ class SlashDoubleStarCommentGroupProcessor : CommentGroupProcessor {
     }
 
     override fun processNextGroup(nodes: MutableIterator<IASTComment>): String {
-        val node = nodes.next();
+        val node = nodes.next()
         nodes.remove()
 
         val comment = String(node.comment)
 
         val textLines = comment.split('\n')
-                .drop(1)
-                .dropLast(1)
+            .drop(1)
+            .dropLast(1)
 
         val firstLine = textLines.first()
 

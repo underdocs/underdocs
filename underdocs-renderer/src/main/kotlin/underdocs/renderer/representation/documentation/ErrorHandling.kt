@@ -5,7 +5,7 @@ data class ErrorHandlingItem(
     val condition: String
 )
 
-data class ErrorHandling (
+data class ErrorHandling(
     val errorHandlingItems: List<ErrorHandlingItem>
 ) {
     fun isNotEmpty(): Boolean {

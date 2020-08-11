@@ -15,13 +15,13 @@ class HeaderDocumentationParser : underdocs.renderer.parser.documentation.Docume
     private val groupsParser = underdocs.renderer.parser.section.GroupsParser()
 
     override fun parse(document: Document) =
-            HeaderDocumentation(
-                    excerptParser.tryParse(document),
-                    descriptionParser.tryParse(document),
-                    otherParser.tryParse(document) ?: emptyMap(),
-                    examplesParser.tryParse(document) ?: emptyList(),
-                    seeAlsoParser.tryParse(document) ?: emptyList(),
-                    attributesParser.tryParse(document) ?: emptyMap(),
-                    groupsParser.tryParse(document) ?: emptyMap()
-            )
+        HeaderDocumentation(
+            excerptParser.tryParse(document),
+            descriptionParser.tryParse(document),
+            otherParser.tryParse(document) ?: emptyMap(),
+            examplesParser.tryParse(document) ?: emptyList(),
+            seeAlsoParser.tryParse(document) ?: emptyList(),
+            attributesParser.tryParse(document) ?: emptyMap(),
+            groupsParser.tryParse(document) ?: emptyMap()
+        )
 }

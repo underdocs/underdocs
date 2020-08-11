@@ -6,7 +6,7 @@ import java.io.StringReader
 import java.util.Properties
 import java.util.stream.Collectors
 
-class ResourcesPropertiesReader: PropertiesReader {
+class ResourcesPropertiesReader : PropertiesReader {
     override fun readProperties(from: String): Properties {
         val properties = Properties()
         var resourceFileContents = ""

@@ -1,4 +1,3 @@
 package underdocs.representation
 
-interface Type {
-}
+interface Type

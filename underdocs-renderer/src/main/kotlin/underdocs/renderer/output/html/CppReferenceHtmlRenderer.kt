@@ -14,20 +14,20 @@ import java.io.File
 import java.nio.file.Paths
 
 class CppReferenceHtmlRenderer(
-        private val configuration: RendererConfiguration,
-        private val topLevelModule: Module
+    private val configuration: RendererConfiguration,
+    private val topLevelModule: Module
 ) {
     private val INTERNAL_RESOURCES = listOf<String>(
-            "code.css",
-            "file-link-icon.svg",
-            "main.css"
+        "code.css",
+        "file-link-icon.svg",
+        "main.css"
     )
 
     private val STATIC_RESOURCE_DIRECTORY_NAME = "_static"
 
     private val linker = DefaultLinker(
-            configuration,
-            Paths.get(topLevelModule.path).toString()
+        configuration,
+        Paths.get(topLevelModule.path).toString()
     )
     private val sectionRenderer = SectionRenderer(linker)
     private val pageRenderer = PageRenderer(linker, sectionRenderer)
@@ -77,12 +77,12 @@ class CppReferenceHtmlRenderer(
         output(header, document)
 
         header.elements
-                .values
-                .stream()
-                .flatMap { it.stream() }
-                .forEach {
-                    emit(it)
-                }
+            .values
+            .stream()
+            .flatMap { it.stream() }
+            .forEach {
+                emit(it)
+            }
     }
 
     private fun emit(element: TopLevelElement) {
@@ -94,6 +94,6 @@ class CppReferenceHtmlRenderer(
     private fun output(element: Visitable, document: String) {
         val outputPath = linker.localFileOutputPathToVisitable(element)
 
-        outputWriter.write(document, outputPath);
+        outputWriter.write(document, outputPath)
     }
 }

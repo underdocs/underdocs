@@ -6,7 +6,7 @@ import com.vladsch.flexmark.util.ast.Document
 
 class ParametersParser : AttemptingSectionParser<Map<String, String>>() {
     override fun canParse(document: Document) =
-            document.children.any { isSectionHeadingWithTitle(it, "Parameters") }
+        document.children.any { isSectionHeadingWithTitle(it, "Parameters") }
 
     override fun parse(document: Document): Map<String, String> {
         val result = mutableMapOf<String, String>()

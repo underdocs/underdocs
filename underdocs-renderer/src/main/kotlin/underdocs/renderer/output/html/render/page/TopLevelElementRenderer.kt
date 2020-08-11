@@ -29,8 +29,13 @@ class TopLevelElementRenderer(private val linker: Linker, private val sectionRen
 
         val title = macroConstant.name
 
-        sections.add(sectionRenderer.renderHeading(macroConstant, title, macroConstant.documentation?.getAttributes()
-                ?: emptyMap()))
+        sections.add(
+            sectionRenderer.renderHeading(
+                macroConstant, title,
+                macroConstant.documentation?.getAttributes()
+                    ?: emptyMap()
+            )
+        )
 
         sections.add(sectionRenderer.renderRepresentation(macroConstant))
 
@@ -58,8 +63,13 @@ class TopLevelElementRenderer(private val linker: Linker, private val sectionRen
 
         val title = typeSynonym.newName
 
-        sections.add(sectionRenderer.renderHeading(typeSynonym, title, typeSynonym.documentation?.getAttributes()
-                ?: emptyMap()))
+        sections.add(
+            sectionRenderer.renderHeading(
+                typeSynonym, title,
+                typeSynonym.documentation?.getAttributes()
+                    ?: emptyMap()
+            )
+        )
 
         sections.add(sectionRenderer.renderRepresentation(typeSynonym))
 
@@ -87,8 +97,13 @@ class TopLevelElementRenderer(private val linker: Linker, private val sectionRen
 
         val title = enumElement.name ?: "unnamed enum"
 
-        sections.add(sectionRenderer.renderHeading(enumElement, title, enumElement.documentation?.getAttributes()
-                ?: emptyMap()))
+        sections.add(
+            sectionRenderer.renderHeading(
+                enumElement, title,
+                enumElement.documentation?.getAttributes()
+                    ?: emptyMap()
+            )
+        )
 
         sections.add(sectionRenderer.renderRepresentation(enumElement))
 
@@ -118,8 +133,13 @@ class TopLevelElementRenderer(private val linker: Linker, private val sectionRen
 
         val title = macroFunction.name
 
-        sections.add(sectionRenderer.renderHeading(macroFunction, title, macroFunction.documentation?.getAttributes()
-                ?: emptyMap()))
+        sections.add(
+            sectionRenderer.renderHeading(
+                macroFunction, title,
+                macroFunction.documentation?.getAttributes()
+                    ?: emptyMap()
+            )
+        )
 
         sections.add(sectionRenderer.renderRepresentation(macroFunction))
 
@@ -213,8 +233,13 @@ class TopLevelElementRenderer(private val linker: Linker, private val sectionRen
 
         val title = function.name
 
-        sections.add(sectionRenderer.renderHeading(function, title, function.documentation?.getAttributes()
-                ?: emptyMap()))
+        sections.add(
+            sectionRenderer.renderHeading(
+                function, title,
+                function.documentation?.getAttributes()
+                    ?: emptyMap()
+            )
+        )
 
         sections.add(sectionRenderer.renderRepresentation(function))
 
@@ -256,8 +281,13 @@ class TopLevelElementRenderer(private val linker: Linker, private val sectionRen
 
         val title = variable.name
 
-        sections.add(sectionRenderer.renderHeading(variable, title, variable.documentation?.getAttributes()
-                ?: emptyMap()))
+        sections.add(
+            sectionRenderer.renderHeading(
+                variable, title,
+                variable.documentation?.getAttributes()
+                    ?: emptyMap()
+            )
+        )
 
         sections.add(sectionRenderer.renderRepresentation(variable))
 

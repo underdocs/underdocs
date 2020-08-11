@@ -3,12 +3,12 @@ package underdocs.representation
 import underdocs.representation.visitor.ElementVisitor
 
 data class EnumMember(
-        private val startingLine: Int,
-        private val raw: String,
-        val name: String,
-        val members: List<EnumConstant>,
+    private val startingLine: Int,
+    private val raw: String,
+    val name: String,
+    val members: List<EnumConstant>,
 
-        val comment: String?
+    val comment: String?
 ) : Element, Member {
     override fun getStartingLine() = startingLine
 

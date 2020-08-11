@@ -14,12 +14,12 @@ class VariableDocumentationParser : underdocs.renderer.parser.documentation.Docu
     private val otherParser = underdocs.renderer.parser.section.OtherParser(setOf("Excerpt", "Description", "Attributes", "Examples", "See Also"))
 
     override fun parse(document: Document) =
-            VariableDocumentation(
-                    excerptParser.tryParse(document),
-                    descriptionParser.tryParse(document),
-                    otherParser.tryParse(document) ?: emptyMap(),
-                    examplesParser.tryParse(document) ?: emptyList(),
-                    seeAlsoParser.tryParse(document) ?: emptyList(),
-                    attributesParser.tryParse(document) ?: emptyMap()
-            )
+        VariableDocumentation(
+            excerptParser.tryParse(document),
+            descriptionParser.tryParse(document),
+            otherParser.tryParse(document) ?: emptyMap(),
+            examplesParser.tryParse(document) ?: emptyList(),
+            seeAlsoParser.tryParse(document) ?: emptyList(),
+            attributesParser.tryParse(document) ?: emptyMap()
+        )
 }
