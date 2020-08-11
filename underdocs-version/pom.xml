@@ -8,25 +8,25 @@
         <version>1.0.1</version>
     </parent>
 
-    <artifactId>underdocs-collector</artifactId>
+    <artifactId>underdocs-version</artifactId>
 
-    <name>Underdocs Collector</name>
-    <description>File collector for the Underdocs documentation generator tool.</description>
+    <name>Underdocs Version</name>
+    <description>Version information collecting component of the Underdocs documentation generator tool.</description>
 
     <dependencies>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib-jdk8</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>underdocs</groupId>
-            <artifactId>underdocs-configuration</artifactId>
-            <version>1.0.1</version>
-        </dependency>
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
         <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
 
@@ -48,6 +48,20 @@
                         <goals>
                             <goal>test-compile</goal>
                         </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>get-the-git-infos</id>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                        <phase>initialize</phase>
                     </execution>
                 </executions>
             </plugin>

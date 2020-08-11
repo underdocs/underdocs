@@ -79,6 +79,12 @@
             <artifactId>underdocs-representation</artifactId>
             <version>1.0.1</version>
         </dependency>
+
+        <dependency>
+            <groupId>underdocs</groupId>
+            <artifactId>underdocs-version</artifactId>
+            <version>1.0.1</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -17,6 +17,7 @@
     --table-border: 1px solid var(--table-border-color);
     --table-link-color: #0645ad;
     --table-link-visited-color: #0b0080;
+    --table-row-background: #ededed;
 
     --breadcrumb-link-color: #0645ad;
     --breadcrumb-link-visited-color: #0b0080;
@@ -60,6 +61,7 @@ body.night {
 
     --table-link-color: #EEAD22;
     --table-link-visited-color: #D3991B;
+    --table-row-background: #4d3d10;
 
     --breadcrumb-link-color: #6f9EDD;
     --breadcrumb-link-visited-color: #6583C4;
@@ -299,6 +301,11 @@ h2 {
     color: var(--member-type-color)
 }
 
+.parameters,
+.error-handling {
+    border-bottom: var(--header-border);
+}
+
 .parameters > .parameter .parameter-title {
     display: inline-block;
 
@@ -351,10 +358,11 @@ h2 {
 
 .submodules-table,
 .subheaders-table,
-.elements-table {
+.elements-table,
+.return-value-table {
     border-spacing: 0;
-    width: 75%;
-    max-width: 75%;
+    width: 100%;
+    max-width: 100%;
 }
 
 .submodules-table .submodule-name-cell, 
@@ -362,7 +370,9 @@ h2 {
 .subheaders-table .subheader-name-cell, 
 .subheaders-table .subheader-excerpt-cell,
 .elements-table .element-name-cell, 
-.elements-table .element-excerpt-cell {
+.elements-table .element-excerpt-cell,
+.return-value-table .return-value-name-cell,
+.return-value-table .return-value-excerpt-cell {
     border-top: var(--table-border);
     padding-top: 0.3rem;
     padding-bottom: 0.3rem;
@@ -370,9 +380,10 @@ h2 {
 
 .submodules-table .submodule-name-cell,
 .subheaders-table .subheader-name-cell,
-.elements-table .element-name-cell {
+.elements-table .element-name-cell,
+.return-value-table .return-value-name-cell {
     padding-left: 0.33rem;
-    width: 0;
+    width: 25%;
     white-space: nowrap;
 }
 
@@ -392,13 +403,16 @@ h2 {
 
 .submodules-table .submodule-excerpt-cell,
 .subheaders-table .subheader-excerpt-cell,
-.elements-table .element-excerpt-cell {
+.elements-table .element-excerpt-cell,
+.return-value-table .return-value-excerpt-cell,
+.error-handling-excerpt {
     padding-left: 1rem;
 }
 
 .submodules-table .submodule-excerpt-cell p,
 .subheaders-table .subheader-excerpt-cell p,
-.elements-table .element-excerpt-cell p {
+.elements-table .element-excerpt-cell p,
+.return-value-table .return-value-excerpt-cell p {
     display: inline;
     padding: 0;
     margin: 0;
@@ -407,4 +421,40 @@ h2 {
 .elements-table .element-excerpt-cell .element-excerpt-type {
     color: var(--attribute-value-color);
     font-size: 0.8rem;
+}
+
+.return-value {
+    border-bottom: var(--header-border);
+}
+
+.return-value h2 {
+    display: inline-block;
+
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.return-value .return-value-type {
+    padding-left: 0.5rem;
+
+    font-size: 0.85rem;
+    color: var(--parameter-type-color)
+}
+
+.return-value-table .return-value-name-cell,
+.error-handling-state {
+    font-weight: bold;
+}
+
+.error-handling a {
+    color: var(--breadcrumb-link-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+.error-handling a:visited {
+    color: var(--breadcrumb-link-visited-color);
+    text-decoration: none;
+    font-weight: bold;
 }

@@ -11,7 +11,7 @@
     <artifactId>underdocs-representation</artifactId>
 
     <name>Underdocs Representation</name>
-    <description>Codebase representation of the Underdocs documentation gerator tool.</description>
+    <description>Codebase representation of the Underdocs documentation generator tool.</description>
 
     <dependencies>
         <dependency>

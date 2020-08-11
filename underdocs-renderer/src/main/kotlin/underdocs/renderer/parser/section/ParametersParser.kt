@@ -4,16 +4,14 @@ import com.vladsch.flexmark.ast.BulletList
 import com.vladsch.flexmark.ast.BulletListItem
 import com.vladsch.flexmark.util.ast.Document
 
-class ParametersParser : underdocs.renderer.parser.section.AttemptingSectionParser<Map<String, String>>() {
+class ParametersParser : AttemptingSectionParser<Map<String, String>>() {
     override fun canParse(document: Document) =
-            document.children.any { underdocs.renderer.parser.section.isSectionHeadingWithTitle(it, "Parameters") }
+            document.children.any { isSectionHeadingWithTitle(it, "Parameters") }
 
     override fun parse(document: Document): Map<String, String> {
         val result = mutableMapOf<String, String>()
 
-        val startNode = document.children.first { underdocs.renderer.parser.section.isSectionHeadingWithTitle(it, "Parameters") }
-
-        val sectionEndNode = underdocs.renderer.parser.section.sectionEndNodeFrom(startNode)
+        val startNode = document.children.first { isSectionHeadingWithTitle(it, "Parameters") }
 
         val parameterList = startNode.next
 
@@ -36,7 +34,7 @@ class ParametersParser : underdocs.renderer.parser.section.AttemptingSectionPars
 
             val parameterDescriptionItem = parameterDescriptionList.firstChild as BulletListItem
 
-            val parameterDescription = underdocs.renderer.parser.section.extractTextBetweenNodes(parameterDescriptionItem.firstChild, parameterDescriptionItem.lastChild)
+            val parameterDescription = extractTextBetweenNodes(parameterDescriptionItem.firstChild, parameterDescriptionItem.lastChild)
 
             result[parameterName] = parameterDescription
         }

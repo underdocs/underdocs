@@ -16,7 +16,6 @@ import j2html.TagCreator.h3
 import j2html.TagCreator.h4
 import j2html.TagCreator.iff
 import j2html.TagCreator.img
-import j2html.TagCreator.p
 import j2html.TagCreator.pre
 import j2html.TagCreator.section
 import j2html.TagCreator.span
@@ -24,11 +23,13 @@ import j2html.TagCreator.table
 import j2html.TagCreator.tbody
 import j2html.TagCreator.td
 import j2html.TagCreator.tr
+import j2html.tags.ContainerTag
 import j2html.tags.DomContent
 import j2html.tags.Tag
 import j2html.tags.Text
 import j2html.tags.UnescapedText
 import underdocs.renderer.output.html.link.Linker
+import underdocs.renderer.output.html.render.misc.iffPrimitive
 import underdocs.renderer.representation.EnumElement
 import underdocs.renderer.representation.EnumMember
 import underdocs.renderer.representation.EnumType
@@ -45,7 +46,10 @@ import underdocs.renderer.representation.UnionMember
 import underdocs.renderer.representation.UnionType
 import underdocs.renderer.representation.VariableMember
 import underdocs.renderer.representation.Visitable
+import underdocs.renderer.representation.documentation.ErrorHandling
 import underdocs.renderer.representation.documentation.Example
+import underdocs.renderer.representation.documentation.ReturnValue
+import underdocs.renderer.representation.documentation.ReturnValueItem
 import java.io.File
 import java.util.*
 import kotlin.collections.ArrayList
@@ -310,35 +314,53 @@ class SectionRenderer(private val linker: Linker) {
             h2("See Also")
     ).withClass("see-also")
 
-    fun renderReturnValue(visitable: Visitable, returnValue: String): Tag<*> {
-        val elements = ArrayList<DomContent>()
-
-        elements.add(h2("Return Value"))
-
-        if (visitable is Function) {
-            elements.add(p(
-                    code(referredTypeToString(visitable.returnType))
-            ).withClass("return-type"))
+    fun renderReturnValue(function: Function, returnValue: ReturnValue) = section(
+        div(
+            h2("Return Value"),
+            span(
+                singleLineTypeRenderer.render(function.returnType)
+            ).withClass("return-value-type")
+        ).withClass("return-value-heading"), div(
+            h3("Success"), renderReturnValueItemsTable(returnValue.success)
+        ),
+        iffPrimitive(returnValue.error.isNotEmpty()) {
+            div(
+                h3("Error"), renderReturnValueItemsTable(returnValue.error)
+            )
         }
+    ).withClass("return-value")
 
-        elements.add(renderMarkdown(returnValue))
-
-        return section().with(elements).withClass("return-value")
+    private fun renderReturnValueItemsTable(returnValueItemList: List<ReturnValueItem>): ContainerTag? {
+        return table(
+            tbody(
+                each(returnValueItemList) { child ->
+                    tr(
+                        td(
+                            child.value
+                        ).withClass("return-value-name-cell"),
+                        td(
+                            div(
+                                renderMarkdown(child.description)
+                            )
+                        ).withClass("return-value-excerpt-cell")
+                    )
+                }
+            )
+        ).withClass("return-value-table")
     }
 
-    private fun referredTypeToString(type: ReferredType): String {
-        var representation = type.specifiers.joinToString(" ")
-
-        if (!representation.endsWith("*")) {
-            representation += " "
-        }
-
-        return representation + type.name
-    }
-
-    fun renderErrorHandling(errorHandling: String) = section(
-            h2("Error Handling"),
-            renderMarkdown(errorHandling)
+    fun renderErrorHandling(errorHandling: ErrorHandling): ContainerTag = section(
+        h2("Error Handling"),
+            each(errorHandling.errorHandlingItems) { child ->
+                div(
+                    div(
+                        renderMarkdown(child.state)
+                    ).withClass("error-handling-state"),
+                    div(
+                        renderMarkdown(child.condition)
+                    ).withClass("error-handling-excerpt")
+                )
+            }
     ).withClass("error-handling")
 
     fun renderNotes(notes: String) = section(

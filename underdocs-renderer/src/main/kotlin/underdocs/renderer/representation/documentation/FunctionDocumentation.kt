@@ -7,9 +7,9 @@ data class FunctionDocumentation(
         val examples: List<Example>,
         val seeAlso: List<String>,
         private val attributes: Map<String, String>,
-        val returnValue: String?,
+        val returnValue: ReturnValue?,
         val parameters: Map<String, String>,
-        val errorHandling: String?,
+        val errorHandling: ErrorHandling?,
         val notes: String?
 ) : Documentation {
     override fun getAttributes() = attributes
