@@ -1,4 +1,3 @@
 package underdocs.renderer.representation
 
-interface Member {
-}
+interface Member

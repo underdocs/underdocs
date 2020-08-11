@@ -21,66 +21,68 @@ import java.nio.file.Paths
 import kotlin.streams.toList
 
 class ParseCommand : CliktCommand(
-        name = "parse",
-        help = "Parse"
+    name = "parse",
+    help = "Parse"
 ) {
     private val log = LoggerFactory.getLogger(ParseCommand::class.java)
 
     val includePath by option("-I", "--includePath")
-            .path(
-                    exists = true,
-                    folderOkay = true,
-                    readable = true
-            )
-            .required()
+        .path(
+            exists = true,
+            folderOkay = true,
+            readable = true
+        )
+        .required()
 
     val outputPath by option("-o", "--output")
-            .path()
-            .required()
+        .path()
+        .required()
 
     val includePatterns by option("--includePattern")
-            .multiple(listOf("**/*.h"))
+        .multiple(listOf("**/*.h"))
 
     val excludePatterns by option("--excludePatterns")
-            .multiple(emptyList())
+        .multiple(emptyList())
 
     val documentationCommentStyles by option("--documentationCommentStyle")
-            .choice(mapOf(
-                    "BLOCK_SLASH_STAR" to BLOCK_SLASH_STAR,
-                    "BLOCK_SLASH_DOUBLE_STAR" to BLOCK_SLASH_DOUBLE_STAR,
-                    "SINGLE_LINE_DOUBLE_SLASH" to SINGLE_LINE_DOUBLE_SLASH,
-                    "SINGLE_LINE_TRIPLE_SLASH" to SINGLE_LINE_TRIPLE_SLASH
-            ))
-            .multiple(listOf(BLOCK_SLASH_DOUBLE_STAR, SINGLE_LINE_DOUBLE_SLASH))
+        .choice(
+            mapOf(
+                "BLOCK_SLASH_STAR" to BLOCK_SLASH_STAR,
+                "BLOCK_SLASH_DOUBLE_STAR" to BLOCK_SLASH_DOUBLE_STAR,
+                "SINGLE_LINE_DOUBLE_SLASH" to SINGLE_LINE_DOUBLE_SLASH,
+                "SINGLE_LINE_TRIPLE_SLASH" to SINGLE_LINE_TRIPLE_SLASH
+            )
+        )
+        .multiple(listOf(BLOCK_SLASH_DOUBLE_STAR, SINGLE_LINE_DOUBLE_SLASH))
 
     override fun run() {
         log.info(includePath.toAbsolutePath().toString())
         log.info(outputPath.toAbsolutePath().toString())
 
         val collectorConfiguration = CollectorConfiguration(
-                includePath = includePath.toAbsolutePath().toString(),
-                includingPatterns = includePatterns,
-                excludingPatterns = excludePatterns
+            includePath = includePath.toAbsolutePath().toString(),
+            includingPatterns = includePatterns,
+            excludingPatterns = excludePatterns
         )
 
         val headerStream = FileCollector.create()
-                .collectFilesFromDirectory(collectorConfiguration)
+            .collectFilesFromDirectory(collectorConfiguration)
 
         val parserConfiguration = ParserConfiguration(
-                documentationCommentStyles = HashSet(documentationCommentStyles)
+            documentationCommentStyles = HashSet(documentationCommentStyles)
         )
 
         val headerParser = HeaderParser.create(parserConfiguration)
 
         val headers = headerStream
-                .map { headerParser.parse(it) }
-                .toList()
+            .map { headerParser.parse(it) }
+            .toList()
 
         log.info("Headers: {}", headers.size)
 
         val codebase = Codebase(
-                collectorConfiguration.includePath,
-                headers
+            collectorConfiguration.includePath,
+            headers
         )
 
         val codebaseSerializer = RepresentationSerializer.create()

@@ -3,11 +3,11 @@ package underdocs.renderer.representation
 import underdocs.renderer.representation.visitor.Visitor
 
 data class StructType(
-        private val startingLine: Int,
-        private val raw: String,
+    private val startingLine: Int,
+    private val raw: String,
 
-        val name: String,
-        val members: List<Member>
+    val name: String,
+    val members: List<Member>
 ) : Element, Type {
     override fun getStartingLine() = startingLine
 

@@ -5,6 +5,6 @@ import j2html.tags.Tag
 
 class TitleRenderer {
     fun render(name: String, attributes: Map<String, String>): Tag<*> {
-        return h1(name);
+        return h1(name)
     }
 }

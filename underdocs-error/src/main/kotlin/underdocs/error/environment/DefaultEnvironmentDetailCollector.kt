@@ -1,10 +1,9 @@
 package underdocs.error.environment
 
-import underdocs.version.Version
 import underdocs.version.retriever.VersionRetriever
 
 class DefaultEnvironmentDetailCollector(private val versionRetriever: VersionRetriever) : EnvironmentDetailCollector {
-    override fun collect() : String {
+    override fun collect(): String {
         val osDetails = collectOSDetails()
         val versionInformation = getVersion()
         val issueLink = createIssueLink()
@@ -22,7 +21,8 @@ class DefaultEnvironmentDetailCollector(private val versionRetriever: VersionRet
         """.trimMargin()
     }
 
-    private fun collectOSDetails() = """
+    private fun collectOSDetails() =
+        """
             |Operating System: ${System.getProperty("os.name")} ${System.getProperty("os.arch")}
             |
             |Java Version: ${System.getProperty("java.version")}
@@ -40,7 +40,7 @@ class DefaultEnvironmentDetailCollector(private val versionRetriever: VersionRet
         """.trimMargin()
 
     private fun createIssueLink() =
-            "https://github.com/underdocs/underdocs/issues/new?assignees=&labels=type%3A+bug+%3Abeetle%3A&title=Bug+Report"
+        "https://github.com/underdocs/underdocs/issues/new?assignees=&labels=type%3A+bug+%3Abeetle%3A&title=Bug+Report"
 
     private fun getVersion() = versionRetriever.get()
 }

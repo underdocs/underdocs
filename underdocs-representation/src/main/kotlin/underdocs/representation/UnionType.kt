@@ -3,11 +3,11 @@ package underdocs.representation
 import underdocs.representation.visitor.ElementVisitor
 
 data class UnionType(
-        private val startingLine: Int,
-        private val raw: String,
+    private val startingLine: Int,
+    private val raw: String,
 
-        val name: String,
-        val members: List<Member>
+    val name: String,
+    val members: List<Member>
 ) : Element, Type {
     override fun getStartingLine() = startingLine
 

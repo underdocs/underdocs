@@ -3,10 +3,10 @@ package underdocs.representation
 import underdocs.representation.visitor.ElementVisitor
 
 data class MacroParameter(
-        private val startingLine: Int,
-        private val raw: String,
+    private val startingLine: Int,
+    private val raw: String,
 
-        val name: String
+    val name: String
 ) : Element {
     override fun getStartingLine() = startingLine
 

@@ -4,7 +4,7 @@ import com.vladsch.flexmark.ast.Heading
 import com.vladsch.flexmark.util.ast.Node
 
 fun extractTextBetweenNodes(firstNode: Node, lastNode: Node) =
-    firstNode.document.chars.substring(firstNode.startOffset, lastNode.endOffset);
+    firstNode.document.chars.substring(firstNode.startOffset, lastNode.endOffset)
 
 fun nextNodeWhere(startNode: Node, predicate: (Node) -> Boolean): Node? {
     var currentNode: Node? = startNode.next
@@ -39,9 +39,9 @@ fun nextNodeInSectionWhere(startNode: Node, predicate: (Node) -> Boolean): Node?
 }
 
 fun sectionEndNodeFrom(nodeInSection: Node) =
-        nextNodeWhere(nodeInSection) { isSectionHeading(it) }
-                ?.previous
-                ?: nodeInSection.document.lastChild
+    nextNodeWhere(nodeInSection) { isSectionHeading(it) }
+        ?.previous
+        ?: nodeInSection.document.lastChild
 
 fun lastNodeBefore(startNode: Node, predicate: (Node) -> Boolean): Node? {
     var currentNode: Node? = startNode.next?.next
@@ -67,4 +67,4 @@ fun isHeading(node: Node, level: Int, title: String) =
     node is Heading && node.level == level && node.text.toString() == title
 
 fun isSectionHeadingWithTitle(node: Node, title: String) =
-        isSectionHeading(node) && (node as Heading).text.toString() == title
+    isSectionHeading(node) && (node as Heading).text.toString() == title

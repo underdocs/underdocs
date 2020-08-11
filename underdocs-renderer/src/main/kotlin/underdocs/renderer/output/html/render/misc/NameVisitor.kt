@@ -22,8 +22,8 @@ class NameVisitor : BaseVisitor() {
 
     override fun accept(module: Module) {
         name = module.documentation?.title
-                ?: module.path.split(File.separator).lastOrNull()
-                        ?: "root"
+            ?: module.path.split(File.separator).lastOrNull()
+            ?: "root"
     }
 
     override fun accept(macroConstant: MacroConstant) {

@@ -1,11 +1,11 @@
 package underdocs.renderer.representation.documentation
 
-data class ReturnValueItem (
+data class ReturnValueItem(
     val value: String,
     val description: String
 )
 
-data class ReturnValue (
+data class ReturnValue(
     val success: List<ReturnValueItem>,
     val error: List<ReturnValueItem>
 ) {

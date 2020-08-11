@@ -4,8 +4,8 @@ import underdocs.version.Version
 import underdocs.version.reader.PropertiesReader
 import java.util.Properties
 
-class DefaultVersionRetriever(private val propertiesReader: PropertiesReader): VersionRetriever {
-    private val versionProperties : Properties by lazy {
+class DefaultVersionRetriever(private val propertiesReader: PropertiesReader) : VersionRetriever {
+    private val versionProperties: Properties by lazy {
         propertiesReader.readProperties("underdocs-version.properties")
     }
 

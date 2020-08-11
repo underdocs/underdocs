@@ -8,13 +8,15 @@ import underdocs.parser.comment.singleline.DoubleSlashCommentGroupProcessor
 import underdocs.parser.comment.singleline.TripleSlashCommentGroupProcessor
 import java.util.*
 
-class EclipseCommentProcessor(private val documentationCommentStyles: Set<CommentStyle>,
-                              private val mergeTrailingComments: Boolean) {
+class EclipseCommentProcessor(
+    private val documentationCommentStyles: Set<CommentStyle>,
+    private val mergeTrailingComments: Boolean
+) {
     private val processors = listOf(
-            TripleSlashCommentGroupProcessor(),
-            DoubleSlashCommentGroupProcessor(),
-            SlashDoubleStarCommentGroupProcessor(),
-            SlashStarCommentGroupProcessor()
+        TripleSlashCommentGroupProcessor(),
+        DoubleSlashCommentGroupProcessor(),
+        SlashDoubleStarCommentGroupProcessor(),
+        SlashStarCommentGroupProcessor()
     )
 
     fun extractCommentFromNodes(leadingCommentNodes: List<IASTComment>, trailingCommentNodes: List<IASTComment>): String? {
@@ -41,7 +43,7 @@ class EclipseCommentProcessor(private val documentationCommentStyles: Set<Commen
             }
         }
 
-        val documentation = accumulator.toString().trimEnd();
+        val documentation = accumulator.toString().trimEnd()
 
         return if (documentation.isBlank()) {
             null

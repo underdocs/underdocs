@@ -18,7 +18,7 @@ abstract class BaseUnderdocsError : RuntimeException {
         this.title = title
     }
 
-    constructor(code: String, title: String, cause: Throwable): super(cause) {
+    constructor(code: String, title: String, cause: Throwable) : super(cause) {
         this.code = code
         this.title = title
     }

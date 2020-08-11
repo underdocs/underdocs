@@ -17,16 +17,16 @@ class FunctionDocumentationParser : DocumentationParser<FunctionDocumentation> {
     private val otherParser = OtherParser(setOf("Excerpt", "Description", "Attributes", "Examples", "See Also", "Return Value", "Error Handling", "Notes", "Parameters"))
 
     override fun parse(document: Document) =
-            FunctionDocumentation(
-                    excerptParser.tryParse(document),
-                    descriptionParser.tryParse(document),
-                    otherParser.tryParse(document) ?: emptyMap(),
-                    examplesParser.tryParse(document) ?: emptyList(),
-                    seeAlsoParser.tryParse(document) ?: emptyList(),
-                    attributesParser.tryParse(document) ?: emptyMap(),
-                    returnValueParser.tryParse(document),
-                    parametersParser.tryParse(document) ?: emptyMap(),
-                    errorHandlingParser.tryParse(document),
-                    notesParser.tryParse(document)
-            )
+        FunctionDocumentation(
+            excerptParser.tryParse(document),
+            descriptionParser.tryParse(document),
+            otherParser.tryParse(document) ?: emptyMap(),
+            examplesParser.tryParse(document) ?: emptyList(),
+            seeAlsoParser.tryParse(document) ?: emptyList(),
+            attributesParser.tryParse(document) ?: emptyMap(),
+            returnValueParser.tryParse(document),
+            parametersParser.tryParse(document) ?: emptyMap(),
+            errorHandlingParser.tryParse(document),
+            notesParser.tryParse(document)
+        )
 }
