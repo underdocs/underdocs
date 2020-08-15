@@ -35,6 +35,10 @@
     --token-deleted-color: #9A050F;
     --token-class-name-color: #2B91AF;
 
+    --theme-snackbar-color: #312f2f;
+    --theme-snackbar-text-color: #f1e8e8;
+    --theme-snackbar-button-color: #11bedd;
+
     --remote-link-svg-filter: none;
 
     --transition-time: 1s;
@@ -78,6 +82,10 @@ body.night {
     --token-symbol-color: #93CE9B;
     --token-deleted-color: #E9565F;
     --token-class-name-color: #41BDE2;
+
+    --theme-snackbar-color: #fffdfd;
+    --theme-snackbar-text-color: #0f0f0f;
+    --theme-snackbar-button-color: #1190e6;
 
     --remote-link-svg-filter: invert(100%);
 }
@@ -457,4 +465,38 @@ h2 {
     color: var(--breadcrumb-link-visited-color);
     text-decoration: none;
     font-weight: bold;
+}
+
+#theme-snackbar {
+    display: none;
+    max-width: 750px;
+    margin: auto;
+    background-color: var(--theme-snackbar-color);
+    text-align: center;
+    border-radius: 5px;
+    padding: 8px;
+
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    right:0;
+    bottom: 5px;
+    transition: var(--transition-time);
+}
+
+#theme-snackbar > p {
+    font-size: 1.2rem;
+    color: var(--theme-snackbar-text-color);
+    transition: var(--transition-time);
+}
+
+#theme-snackbar-button {
+    background-color: var(--theme-snackbar-button-color);
+    color: var(--theme-snackbar-color);
+    cursor: pointer;
+    border: 0;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    transition: var(--transition-time);
 }
