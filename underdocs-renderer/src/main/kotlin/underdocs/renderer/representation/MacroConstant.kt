@@ -4,14 +4,14 @@ import underdocs.renderer.representation.documentation.MacroConstantDocumentatio
 import underdocs.renderer.representation.visitor.Visitor
 
 data class MacroConstant(
-        private val startingLine: Int,
-        private val raw: String,
+    private val startingLine: Int,
+    private val raw: String,
 
-        private var parent: Header?,
+    private var parent: Header?,
 
-        val name: String,
-        val expansion: String,
-        val documentation: MacroConstantDocumentation?
+    val name: String,
+    val expansion: String,
+    val documentation: MacroConstantDocumentation?
 ) : TopLevelElement {
     override fun getStartingLine() = startingLine
 

@@ -10,7 +10,7 @@ import underdocs.renderer.representation.documentation.Example
 
 class ExamplesParser : underdocs.renderer.parser.section.AttemptingSectionParser<List<Example>>() {
     override fun canParse(document: Document) =
-            document.children.any { isSectionHeadingWithTitle(it, "Examples") }
+        document.children.any { isSectionHeadingWithTitle(it, "Examples") }
 
     override fun parse(document: Document): List<Example> {
         val result = mutableListOf<Example>()
@@ -55,7 +55,7 @@ class ExamplesParser : underdocs.renderer.parser.section.AttemptingSectionParser
     }
 
     private fun isNotCode(node: Node) =
-            node !is CodeBlock && node !is FencedCodeBlock && node !is IndentedCodeBlock
+        node !is CodeBlock && node !is FencedCodeBlock && node !is IndentedCodeBlock
 
     private fun parseWithExampleOnly(heading: Heading, exampleBlock: Node): Example {
         val explanation = extractTextBetweenNodes(heading.next, exampleBlock)
@@ -68,11 +68,11 @@ class ExamplesParser : underdocs.renderer.parser.section.AttemptingSectionParser
         }
 
         return Example(
-                heading.text.toString(),
-                explanation,
-                code,
-                language,
-                null
+            heading.text.toString(),
+            explanation,
+            code,
+            language,
+            null
         )
     }
 
@@ -89,14 +89,14 @@ class ExamplesParser : underdocs.renderer.parser.section.AttemptingSectionParser
         val output = outputBlock.firstChild.chars.toString()
 
         return Example(
-                heading.text.toString(),
-                explanation,
-                code,
-                language,
-                output
+            heading.text.toString(),
+            explanation,
+            code,
+            language,
+            output
         )
     }
 
     private fun isExampleHeading(node: Node) =
-            node is Heading && node.level == 3
+        node is Heading && node.level == 3
 }

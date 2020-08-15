@@ -8,8 +8,8 @@ import kotlin.streams.toList
 
 class DefaultModuleParser(private val mdParser: Parser) : underdocs.renderer.parser.module.ModuleParser {
     private val moduleInfoPrefixes = setOf(
-            "module-info.",
-            "module_info"
+        "module-info.",
+        "module_info"
     )
 
     private val headerParser = underdocs.renderer.parser.header.HeaderParser.create()
@@ -24,18 +24,18 @@ class DefaultModuleParser(private val mdParser: Parser) : underdocs.renderer.par
         }
 
         val headers = moduleNode.headers.stream()
-                .filter { !isModuleInfoHeader(it) }
-                .map { headerParser.parse(it) }
-                .toList()
+            .filter { !isModuleInfoHeader(it) }
+            .map { headerParser.parse(it) }
+            .toList()
 
         val children = moduleNode.children.mapValues { this.parse(it.value) }
 
         val module = Module(
-                moduleNode.path,
-                null,
-                moduleDocumentation,
-                headers,
-                children
+            moduleNode.path,
+            null,
+            moduleDocumentation,
+            headers,
+            children
         )
 
         headers.forEach {
@@ -50,12 +50,12 @@ class DefaultModuleParser(private val mdParser: Parser) : underdocs.renderer.par
     }
 
     private fun isModuleInfoHeader(header: Header) =
-            moduleInfoPrefixes.any {
-                header.filename.startsWith(it)
-            }
+        moduleInfoPrefixes.any {
+            header.filename.startsWith(it)
+        }
 
     private fun parseModuleInfo(header: Header) =
-            header.comment
-                    ?.let { mdParser.parse(it) }
-                    ?.let { moduleDocumentationParser.parse(it) }
+        header.comment
+            ?.let { mdParser.parse(it) }
+            ?.let { moduleDocumentationParser.parse(it) }
 }

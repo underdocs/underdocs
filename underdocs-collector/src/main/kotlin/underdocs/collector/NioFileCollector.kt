@@ -16,21 +16,23 @@ class NioFileCollector : FileCollector {
         val exclusionExpressions = compileExpressionStrings(configuration.excludingPatterns)
 
         return filesInDirectory(configuration.includePath)
-                .filter { matchesExpressions(it, inclusionExpressions, exclusionExpressions) }
-                .map { it.toString() }
+            .filter { matchesExpressions(it, inclusionExpressions, exclusionExpressions) }
+            .map { it.toString() }
     }
 
     private fun filesInDirectory(directory: String): Stream<Path> =
-            Files
-                    .find(Paths.get(directory),
-                            Integer.MAX_VALUE,
-                            BiPredicate { _, attrs -> attrs.isRegularFile })
+        Files
+            .find(
+                Paths.get(directory),
+                Integer.MAX_VALUE,
+                BiPredicate { _, attrs -> attrs.isRegularFile }
+            )
 
     private fun compileExpressionStrings(expressions: List<String>): List<PathMatcher> =
-            expressions.stream()
-                    .map { FileSystems.getDefault().getPathMatcher("glob:" + it) }
-                    .toList()
+        expressions.stream()
+            .map { FileSystems.getDefault().getPathMatcher("glob:" + it) }
+            .toList()
 
     private fun matchesExpressions(path: Path, inclusions: List<PathMatcher>, exclusions: List<PathMatcher>) =
-            inclusions.any { it.matches(path) } && exclusions.all { !it.matches(path) }
+        inclusions.any { it.matches(path) } && exclusions.all { !it.matches(path) }
 }

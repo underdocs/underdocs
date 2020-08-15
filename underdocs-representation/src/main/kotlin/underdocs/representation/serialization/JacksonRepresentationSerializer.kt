@@ -15,34 +15,34 @@ class JacksonRepresentationSerializer : RepresentationSerializer {
 
     init {
         mapper = ObjectMapper()
-                .registerModule(KotlinModule())
-                .enable(SerializationFeature.INDENT_OUTPUT)
-                .addMixIn(Element::class.java, ElementMixin::class.java)
-                .addMixIn(Member::class.java, MemberMixin::class.java)
-                .addMixIn(Type::class.java, TypeMixin::class.java)
+            .registerModule(KotlinModule())
+            .enable(SerializationFeature.INDENT_OUTPUT)
+            .addMixIn(Element::class.java, ElementMixin::class.java)
+            .addMixIn(Member::class.java, MemberMixin::class.java)
+            .addMixIn(Type::class.java, TypeMixin::class.java)
     }
 
     override fun readFrom(path: Path): Codebase =
-            mapper.readValue(path.toFile(), Codebase::class.java)
+        mapper.readValue(path.toFile(), Codebase::class.java)
 
     override fun writeInto(path: Path, codebase: Codebase) =
-            mapper.writeValue(path.toFile(), codebase)
+        mapper.writeValue(path.toFile(), codebase)
 
     @JsonTypeInfo(
-            use = JsonTypeInfo.Id.CLASS,
-            include = JsonTypeInfo.As.PROPERTY
+        use = JsonTypeInfo.Id.CLASS,
+        include = JsonTypeInfo.As.PROPERTY
     )
     private abstract class ElementMixin
 
     @JsonTypeInfo(
-            use = JsonTypeInfo.Id.CLASS,
-            include = JsonTypeInfo.As.PROPERTY
+        use = JsonTypeInfo.Id.CLASS,
+        include = JsonTypeInfo.As.PROPERTY
     )
     private abstract class MemberMixin
 
     @JsonTypeInfo(
-            use = JsonTypeInfo.Id.CLASS,
-            include = JsonTypeInfo.As.PROPERTY
+        use = JsonTypeInfo.Id.CLASS,
+        include = JsonTypeInfo.As.PROPERTY
     )
     private abstract class TypeMixin
 }

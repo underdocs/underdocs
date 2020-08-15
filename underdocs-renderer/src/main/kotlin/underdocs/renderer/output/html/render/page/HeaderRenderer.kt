@@ -61,8 +61,8 @@ class HeaderRenderer(private val linker: Linker, private val sectionRenderer: Se
         val groupMap = HashMap<String, String?>(header.documentation?.groups ?: emptyMap())
 
         header.elements
-                .filter { (key, _) -> key !in groupMap }
-                .forEach { (key, _) -> groupMap[key] = null }
+            .filter { (key, _) -> key !in groupMap }
+            .forEach { (key, _) -> groupMap[key] = null }
 
         if (groupMap.isEmpty()) {
             return section().withClass("elements")
@@ -70,49 +70,49 @@ class HeaderRenderer(private val linker: Linker, private val sectionRenderer: Se
 
         if (groupMap.size == 1 && groupMap.containsKey("UNKNOWN")) {
             return section(
-                    div()
-                            .with(elementsInGroup(header.elements.get("UNKNOWN") ?: emptyList()))
-                            .withClass("element-group")
+                div()
+                    .with(elementsInGroup(header.elements.get("UNKNOWN") ?: emptyList()))
+                    .withClass("element-group")
             ).withClass("elements")
         }
 
         val orderedGroups = groupMap.entries
-                .filter { (key, _) -> key != "UNKNOWN" }
-                .map { (name, desc) -> HeaderGroup(name, desc) }
-                .sortedBy { (name, _) -> name }
-                .toMutableList()
+            .filter { (key, _) -> key != "UNKNOWN" }
+            .map { (name, desc) -> HeaderGroup(name, desc) }
+            .sortedBy { (name, _) -> name }
+            .toMutableList()
 
         if ("UNKNOWN" in groupMap) {
             orderedGroups.add(0, HeaderGroup("UNKNOWN", null))
         }
 
         return section(
-                each(orderedGroups) { (name, description) ->
-                    val contents = ArrayList<DomContent>()
+            each(orderedGroups) { (name, description) ->
+                val contents = ArrayList<DomContent>()
 
-                    if (name != "UNKNOWN") {
-                        contents.add(h2(name))
-                    }
-
-                    description?.let {
-                        contents.add(sectionRenderer.renderDescription(it))
-                    }
-
-                    header.elements.get(name)
-                            ?.let { elementsInGroup(it) }
-                            ?.let { contents.add(it) }
-
-                    div().with(contents).withClass("element-group")
+                if (name != "UNKNOWN") {
+                    contents.add(h2(name))
                 }
+
+                description?.let {
+                    contents.add(sectionRenderer.renderDescription(it))
+                }
+
+                header.elements.get(name)
+                    ?.let { elementsInGroup(it) }
+                    ?.let { contents.add(it) }
+
+                div().with(contents).withClass("element-group")
+            }
         ).withClass("elements")
     }
 
     private fun elementsInGroup(elements: List<TopLevelElement>): Tag<*>? {
         val typeGroups = listOf(
-                tryRenderElementsOfTypes("Constants", elements, listOf(MacroConstant::class.java)),
-                tryRenderElementsOfTypes("Types", elements, listOf(Struct::class.java, Union::class.java, TypeSynonym::class.java, EnumElement::class.java)),
-                tryRenderElementsOfTypes("Functions", elements, listOf(Function::class.java, MacroFunction::class.java)),
-                tryRenderElementsOfTypes("Variables", elements, listOf(Variable::class.java))
+            tryRenderElementsOfTypes("Constants", elements, listOf(MacroConstant::class.java)),
+            tryRenderElementsOfTypes("Types", elements, listOf(Struct::class.java, Union::class.java, TypeSynonym::class.java, EnumElement::class.java)),
+            tryRenderElementsOfTypes("Functions", elements, listOf(Function::class.java, MacroFunction::class.java)),
+            tryRenderElementsOfTypes("Variables", elements, listOf(Variable::class.java))
         ).filterNotNull()
 
         if (typeGroups.isEmpty()) {
@@ -134,34 +134,38 @@ class HeaderRenderer(private val linker: Linker, private val sectionRenderer: Se
         val orderedElements = matchingElements.sortedBy { nameForElement(it) }
 
         return div(
-                h3(title),
-                table(
-                        tbody(
-                                each(orderedElements) { element ->
-                                    val name = nameForElement(element)
-                                    val excerpt = excerptForElement(element)
+            h3(title),
+            table(
+                tbody(
+                    each(orderedElements) { element ->
+                        val name = nameForElement(element)
+                        val excerpt = excerptForElement(element)
 
-                                    val excerptContents = ArrayList<DomContent>()
+                        val excerptContents = ArrayList<DomContent>()
 
-                                    excerptContents.add(div(
-                                            excerpt?.let { sectionRenderer.renderMarkdown(it) } ?: Text("")
-                                    ).withClass("element-excerpt-text"))
-
-                                    if (types.size > 1) {
-                                        excerptContents.add(div(
-                                                "(${getHumanReadableTypeName(element)})"
-                                        ).withClass("element-excerpt-type"))
-                                    }
-
-                                    tr(
-                                            td(
-                                                    a(name).withHref(linker.siteLinkBetween(element.getParent()!!, element))
-                                            ).withClass("element-name-cell"),
-                                            td().with(excerptContents).withClass("element-excerpt-cell")
-                                    )
-                                }
+                        excerptContents.add(
+                            div(
+                                excerpt?.let { sectionRenderer.renderMarkdown(it) } ?: Text("")
+                            ).withClass("element-excerpt-text")
                         )
-                ).withClass("elements-table")
+
+                        if (types.size > 1) {
+                            excerptContents.add(
+                                div(
+                                    "(${getHumanReadableTypeName(element)})"
+                                ).withClass("element-excerpt-type")
+                            )
+                        }
+
+                        tr(
+                            td(
+                                a(name).withHref(linker.siteLinkBetween(element.getParent()!!, element))
+                            ).withClass("element-name-cell"),
+                            td().with(excerptContents).withClass("element-excerpt-cell")
+                        )
+                    }
+                )
+            ).withClass("elements-table")
         ).withClass("element-type-group")
     }
 

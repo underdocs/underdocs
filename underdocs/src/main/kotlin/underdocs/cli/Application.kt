@@ -6,11 +6,11 @@ import underdocs.cli.commands.parse.ParseCommand
 import underdocs.cli.commands.render.RenderCommand
 
 class Underdocs : CliktCommand(
-        help = "Underdocs"
+    help = "Underdocs"
 ) {
     override fun run() = Unit
 }
 
 fun main(args: Array<String>) = Underdocs()
-        .subcommands(ParseCommand(), RenderCommand())
-        .main(args)
+    .subcommands(ParseCommand(), RenderCommand())
+    .main(args)

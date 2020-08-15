@@ -4,16 +4,16 @@ import underdocs.renderer.representation.documentation.StructDocumentation
 import underdocs.renderer.representation.visitor.Visitor
 
 data class Struct(
-        private val startingLine: Int,
-        private val raw: String,
+    private val startingLine: Int,
+    private val raw: String,
 
-        private var parent: Header?,
+    private var parent: Header?,
 
-        val name: String,
-        val typedef: Boolean,
-        val specifiers: List<String>,
-        val members: List<Member>,
-        val documentation: StructDocumentation?
+    val name: String,
+    val typedef: Boolean,
+    val specifiers: List<String>,
+    val members: List<Member>,
+    val documentation: StructDocumentation?
 ) : TopLevelElement {
     override fun getStartingLine() = startingLine
 

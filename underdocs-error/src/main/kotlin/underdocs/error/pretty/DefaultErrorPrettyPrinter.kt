@@ -9,7 +9,8 @@ class DefaultErrorPrettyPrinter : ErrorPrettyPrinter {
         printUnexpectedException(exception)
     }
 
-    private fun printBaseUnderdocsException(exception: BaseUnderdocsError) = """
+    private fun printBaseUnderdocsException(exception: BaseUnderdocsError) =
+        """
         |${exception.title.toUpperCase()} - Error Code ${exception.code}
         |Details
         |${exception.getDescription()}
@@ -18,8 +19,8 @@ class DefaultErrorPrettyPrinter : ErrorPrettyPrinter {
         |${exception.getSolution()}
     """.trimMargin()
 
-
-    private fun printUnexpectedException(exception: Exception) = """
+    private fun printUnexpectedException(exception: Exception) =
+        """
         |Unexpected exception ${exception.javaClass.name}
         |${exception.message}
         |

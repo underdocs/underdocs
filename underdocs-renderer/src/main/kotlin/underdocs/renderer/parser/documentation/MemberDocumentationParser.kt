@@ -10,17 +10,19 @@ class MemberDocumentationParser : underdocs.renderer.parser.documentation.Docume
 
     override fun parse(document: Document): MemberDocumentation {
         return MemberDocumentation(
-                attributesParser.tryParse(document) ?: emptyMap(),
-                extractDescription(document)
+            attributesParser.tryParse(document) ?: emptyMap(),
+            extractDescription(document)
         )
     }
 
     private fun extractDescription(document: Document): String? {
-        val startNode = (if (document.firstChild is YamlFrontMatterBlock) {
-            document.firstChild.next
-        } else {
-            document.firstChild
-        }) ?: return null
+        val startNode = (
+            if (document.firstChild is YamlFrontMatterBlock) {
+                document.firstChild.next
+            } else {
+                document.firstChild
+            }
+            ) ?: return null
 
         val endNode = document.lastChild
 

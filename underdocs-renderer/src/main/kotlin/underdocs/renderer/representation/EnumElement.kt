@@ -4,17 +4,17 @@ import underdocs.renderer.representation.documentation.EnumElementDocumentation
 import underdocs.renderer.representation.visitor.Visitor
 
 data class EnumElement(
-        private val startingLine: Int,
-        private val raw: String,
+    private val startingLine: Int,
+    private val raw: String,
 
-        private var parent: Header?,
+    private var parent: Header?,
 
-        val name: String?,
-        val typedef: Boolean,
-        val specifiers: List<String>,
-        val members: List<EnumConstant>,
+    val name: String?,
+    val typedef: Boolean,
+    val specifiers: List<String>,
+    val members: List<EnumConstant>,
 
-        val documentation: EnumElementDocumentation?
+    val documentation: EnumElementDocumentation?
 ) : TopLevelElement {
     override fun getStartingLine() = startingLine
 
