@@ -67,11 +67,27 @@ class PageRenderer(
                     .with(
                         UnescapedText(
                             """
+                                const UnderdocsTheme = Object.freeze({
+                                  DAY: 'day',
+                                  NIGHT: 'night',
+                                  KEY: 'underdocs_theme'
+                                });
+                                
                                 const isNightModePreferred = () => window.matchMedia?.('(prefers-color-scheme: dark)').matches;
-
+                                
+                                const getPreferredTheme = () => {
+                                  const savedTheme = localStorage.getItem(UnderdocsTheme.KEY);
+                                  
+                                  if (savedTheme === null) {
+                                    return isNightModePreferred() ? UnderdocsTheme.NIGHT : UnderdocsTheme.DAY;
+                                  }
+                            
+                                  return savedTheme;
+                                }
+                                
                                 (function setPreferredTheme() {
-                                  if (isNightModePreferred()) {
-                                    document.body.classList.add('night');
+                                  if (getPreferredTheme() === UnderdocsTheme.NIGHT) {
+                                    document.body.classList.add(UnderdocsTheme.NIGHT);
                                   }
                                 })();
                             """.trimIndent()
@@ -107,21 +123,21 @@ class PageRenderer(
                         .with(
                             UnescapedText(
                                 """
-                                        (function renderMathElements() {
-                                              document.addEventListener('DOMContentLoaded', function () {
-                                                const mathElements = Array.from(document.getElementsByClassName('katex-inline'))
-                                                    .concat(Array.from(document.getElementsByClassName('katex-block')));
-                                                
-                                                console.log(mathElements.length)
-
-                                                mathElements.forEach(element => {
-                                                    katex.render(element.textContent, element, { 
-                                                        throwOnError: false,
-                                                        displayMode: element.classList.contains('katex-block'), 
-                                                    });
+                                    (function renderMathElements() {
+                                          document.addEventListener('DOMContentLoaded', function () {
+                                            const mathElements = Array.from(document.getElementsByClassName('katex-inline'))
+                                                .concat(Array.from(document.getElementsByClassName('katex-block')));
+                                            
+                                            console.log(mathElements.length)
+    
+                                            mathElements.forEach(element => {
+                                                katex.render(element.textContent, element, { 
+                                                    throwOnError: false,
+                                                    displayMode: element.classList.contains('katex-block'), 
                                                 });
-                                               })
-                                        })();
+                                            });
+                                           })
+                                    })();
                                 """.trimIndent()
                             )
                         ),
@@ -129,17 +145,20 @@ class PageRenderer(
                         .with(
                             UnescapedText(
                                 """
-                                          (function setNightModeButton() {
-                                            const nightModeButton = document.querySelector("#night-mode-button");
-                                    
-                                            if (isNightModePreferred()) {
-                                              nightModeButton.checked = true;
-                                            }
-                                            
-                                            nightModeButton.addEventListener('change', function () {
-                                              document.body.classList.toggle('night');
-                                            })
-                                          })();
+                                    (function setNightModeButton() {
+                                        const nightModeButton = document.querySelector("#night-mode-button");
+                                        
+                                        if (getPreferredTheme() === UnderdocsTheme.NIGHT) {
+                                          nightModeButton.checked = true;
+                                        }
+                                        
+                                        nightModeButton.addEventListener('change', function () {
+                                          document.body.classList.toggle(UnderdocsTheme.NIGHT);
+                                          
+                                          const themeChoice = nightModeButton.checked ? UnderdocsTheme.NIGHT : UnderdocsTheme.DAY;
+                                          localStorage.setItem(UnderdocsTheme.KEY, themeChoice);
+                                        })
+                                    })();
                                 """.trimIndent()
                             )
                         )
