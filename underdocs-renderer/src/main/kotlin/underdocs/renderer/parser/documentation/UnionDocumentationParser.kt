@@ -14,12 +14,12 @@ class UnionDocumentationParser : underdocs.renderer.parser.documentation.Documen
     private val otherParser = underdocs.renderer.parser.section.OtherParser(setOf("Excerpt", "Description", "Attributes", "Examples", "See Also"))
 
     override fun parse(document: Document) =
-            UnionDocumentation(
-                    excerptParser.tryParse(document),
-                    descriptionParser.tryParse(document),
-                    otherParser.tryParse(document) ?: emptyMap(),
-                    examplesParser.tryParse(document) ?: emptyList(),
-                    seeAlsoParser.tryParse(document) ?: emptyList(),
-                    attributesParser.tryParse(document) ?: emptyMap()
-            )
+        UnionDocumentation(
+            excerptParser.tryParse(document),
+            descriptionParser.tryParse(document),
+            otherParser.tryParse(document) ?: emptyMap(),
+            examplesParser.tryParse(document) ?: emptyList(),
+            seeAlsoParser.tryParse(document) ?: emptyList(),
+            attributesParser.tryParse(document) ?: emptyMap()
+        )
 }

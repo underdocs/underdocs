@@ -14,12 +14,12 @@ class TypeSynonymDocumentationParser : underdocs.renderer.parser.documentation.D
     private val otherParser = underdocs.renderer.parser.section.OtherParser(setOf("Excerpt", "Description", "Attributes", "Examples", "See Also"))
 
     override fun parse(document: Document) =
-            TypeSynonymDocumentation(
-                    excerptParser.tryParse(document),
-                    descriptionParser.tryParse(document),
-                    otherParser.tryParse(document) ?: emptyMap(),
-                    examplesParser.tryParse(document) ?: emptyList(),
-                    seeAlsoParser.tryParse(document) ?: emptyList(),
-                    attributesParser.tryParse(document) ?: emptyMap()
-            )
+        TypeSynonymDocumentation(
+            excerptParser.tryParse(document),
+            descriptionParser.tryParse(document),
+            otherParser.tryParse(document) ?: emptyMap(),
+            examplesParser.tryParse(document) ?: emptyList(),
+            seeAlsoParser.tryParse(document) ?: emptyList(),
+            attributesParser.tryParse(document) ?: emptyMap()
+        )
 }

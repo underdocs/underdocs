@@ -23,14 +23,14 @@ class DefaultLinker(private val configuration: RendererConfiguration, codebaseBa
     private val outputPathVisitor = OutputPathVisitor()
 
     override fun remoteLinkToTag(tag: String) =
-            configuration.remoteRepositoryTagLinkTemplate?.replace("\${tag}", tag)
+        configuration.remoteRepositoryTagLinkTemplate?.replace("\${tag}", tag)
 
     override fun remoteLinkToVisitable(visitable: Visitable) =
-            configuration.remoteRepositoryLineLinkTemplate?.let { template ->
-                val remoteLinkVisitor = RemoteLinkVisitor(template)
+        configuration.remoteRepositoryLineLinkTemplate?.let { template ->
+            val remoteLinkVisitor = RemoteLinkVisitor(template)
 
-                return@let remoteLinkVisitor.linkTo(visitable)
-            }
+            return@let remoteLinkVisitor.linkTo(visitable)
+        }
 
     override fun localFileOutputPathToVisitable(obj: Visitable): String {
         obj.accept(outputPathVisitor)
@@ -42,7 +42,7 @@ class DefaultLinker(private val configuration: RendererConfiguration, codebaseBa
         val visitableFileSystemPath = Paths.get(this.localFileOutputPathToVisitable(obj))
 
         val relativeFileSystemPathString = outputPath.relativize(visitableFileSystemPath)
-                .toString()
+            .toString()
 
         return relativeFileSystemPathString.replace('\\', '/')
     }
@@ -65,9 +65,9 @@ class DefaultLinker(private val configuration: RendererConfiguration, codebaseBa
         val toLinkSegments = toLink.split("/")
 
         val matchingSegmentCount = fromLinkSegments
-                .zip(toLinkSegments)
-                .takeWhile { (from, to) -> from == to }
-                .count()
+            .zip(toLinkSegments)
+            .takeWhile { (from, to) -> from == to }
+            .count()
 
         // Minus one, because the filename segment is not considered.
         val upSegmentCount = fromLinkSegments.size - 1 - matchingSegmentCount
@@ -76,12 +76,12 @@ class DefaultLinker(private val configuration: RendererConfiguration, codebaseBa
     }
 
     private fun localRepositoryRelativePathAsPath(path: String) =
-            codebaseBasePath.relativize(Paths.get(path))
+        codebaseBasePath.relativize(Paths.get(path))
 
     private fun localRepositoryRelativePathAsString(path: String) =
-            localRepositoryRelativePathAsPath(path)
-                    .toString()
-                    .replace('\\', '/')
+        localRepositoryRelativePathAsPath(path)
+            .toString()
+            .replace('\\', '/')
 
     private inner class RemoteLinkVisitor(private val template: String) : BaseVisitor() {
         private var link: String? = null
@@ -94,62 +94,62 @@ class DefaultLinker(private val configuration: RendererConfiguration, codebaseBa
 
         override fun accept(header: Header) {
             link = template
-                    .replace("\${path}", localRepositoryRelativePathAsString(header.path))
-                    .replace("\${line}", "")
+                .replace("\${path}", localRepositoryRelativePathAsString(header.path))
+                .replace("\${line}", "")
         }
 
         override fun accept(module: Module) {
             link = template
-                    .replace("\${path}", localRepositoryRelativePathAsString(module.path))
-                    .replace("\${line}", "")
+                .replace("\${path}", localRepositoryRelativePathAsString(module.path))
+                .replace("\${line}", "")
         }
 
         override fun accept(macroConstant: MacroConstant) {
             link = template
-                    .replace("\${path}", localRepositoryRelativePathAsString(macroConstant.getParent()!!.path))
-                    .replace("\${line}", macroConstant.getStartingLine().toString())
+                .replace("\${path}", localRepositoryRelativePathAsString(macroConstant.getParent()!!.path))
+                .replace("\${line}", macroConstant.getStartingLine().toString())
         }
 
         override fun accept(typeSynonym: TypeSynonym) {
             link = template
-                    .replace("\${path}", localRepositoryRelativePathAsString(typeSynonym.getParent()!!.path))
-                    .replace("\${line}", typeSynonym.getStartingLine().toString())
+                .replace("\${path}", localRepositoryRelativePathAsString(typeSynonym.getParent()!!.path))
+                .replace("\${line}", typeSynonym.getStartingLine().toString())
         }
 
         override fun accept(enumElement: EnumElement) {
             link = template
-                    .replace("\${path}", localRepositoryRelativePathAsString(enumElement.getParent()!!.path))
-                    .replace("\${line}", enumElement.getStartingLine().toString())
+                .replace("\${path}", localRepositoryRelativePathAsString(enumElement.getParent()!!.path))
+                .replace("\${line}", enumElement.getStartingLine().toString())
         }
 
         override fun accept(macroFunction: MacroFunction) {
             link = template
-                    .replace("\${path}", localRepositoryRelativePathAsString(macroFunction.getParent()!!.path))
-                    .replace("\${line}", macroFunction.getStartingLine().toString())
+                .replace("\${path}", localRepositoryRelativePathAsString(macroFunction.getParent()!!.path))
+                .replace("\${line}", macroFunction.getStartingLine().toString())
         }
 
         override fun accept(struct: Struct) {
             link = template
-                    .replace("\${path}", localRepositoryRelativePathAsString(struct.getParent()!!.path))
-                    .replace("\${line}", struct.getStartingLine().toString())
+                .replace("\${path}", localRepositoryRelativePathAsString(struct.getParent()!!.path))
+                .replace("\${line}", struct.getStartingLine().toString())
         }
 
         override fun accept(union: Union) {
             link = template
-                    .replace("\${path}", localRepositoryRelativePathAsString(union.getParent()!!.path))
-                    .replace("\${line}", union.getStartingLine().toString())
+                .replace("\${path}", localRepositoryRelativePathAsString(union.getParent()!!.path))
+                .replace("\${line}", union.getStartingLine().toString())
         }
 
         override fun accept(function: Function) {
             link = template
-                    .replace("\${path}", localRepositoryRelativePathAsString(function.getParent()!!.path))
-                    .replace("\${line}", function.getStartingLine().toString())
+                .replace("\${path}", localRepositoryRelativePathAsString(function.getParent()!!.path))
+                .replace("\${line}", function.getStartingLine().toString())
         }
 
         override fun accept(variable: Variable) {
             link = template
-                    .replace("\${path}", localRepositoryRelativePathAsString(variable.getParent()!!.path))
-                    .replace("\${line}", variable.getStartingLine().toString())
+                .replace("\${path}", localRepositoryRelativePathAsString(variable.getParent()!!.path))
+                .replace("\${line}", variable.getStartingLine().toString())
         }
     }
 
@@ -166,14 +166,14 @@ class DefaultLinker(private val configuration: RendererConfiguration, codebaseBa
             val parentPath = localRepositoryRelativePathAsPath(enumElement.getParent()?.path!!)
 
             path = parentPath
-                    .resolve(enumElement.name ?: "unnamed-enum")
+                .resolve(enumElement.name ?: "unnamed-enum")
         }
 
         override fun accept(function: Function) {
             val parentPath = localRepositoryRelativePathAsPath(function.getParent()?.path!!)
 
             path = parentPath
-                    .resolve(function.name)
+                .resolve(function.name)
         }
 
         override fun accept(header: Header) {
@@ -184,14 +184,14 @@ class DefaultLinker(private val configuration: RendererConfiguration, codebaseBa
             val parentPath = localRepositoryRelativePathAsPath(macroConstant.getParent()?.path!!)
 
             path = parentPath
-                    .resolve(macroConstant.name)
+                .resolve(macroConstant.name)
         }
 
         override fun accept(macroFunction: MacroFunction) {
             val parentPath = localRepositoryRelativePathAsPath(macroFunction.getParent()?.path!!)
 
             path = parentPath
-                    .resolve(macroFunction.name)
+                .resolve(macroFunction.name)
         }
 
         override fun accept(module: Module) {
@@ -210,14 +210,14 @@ class DefaultLinker(private val configuration: RendererConfiguration, codebaseBa
             }
 
             path = parentPath
-                    .resolve(name)
+                .resolve(name)
         }
 
         override fun accept(typeSynonym: TypeSynonym) {
             val parentPath = localRepositoryRelativePathAsPath(typeSynonym.getParent()?.path!!)
 
             path = parentPath
-                    .resolve(typeSynonym.newName)
+                .resolve(typeSynonym.newName)
         }
 
         override fun accept(union: Union) {
@@ -230,14 +230,14 @@ class DefaultLinker(private val configuration: RendererConfiguration, codebaseBa
             }
 
             path = parentPath
-                    .resolve(name)
+                .resolve(name)
         }
 
         override fun accept(variable: Variable) {
             val parentPath = localRepositoryRelativePathAsPath(variable.getParent()?.path!!)
 
             path = parentPath
-                    .resolve(variable.name)
+                .resolve(variable.name)
         }
     }
 }

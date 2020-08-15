@@ -8,5 +8,5 @@ interface CodebaseRenderer {
         fun create(configuration: RendererConfiguration): CodebaseRenderer = CppReferenceRenderer(configuration)
     }
 
-    fun render(codebase: Codebase);
+    fun render(codebase: Codebase)
 }

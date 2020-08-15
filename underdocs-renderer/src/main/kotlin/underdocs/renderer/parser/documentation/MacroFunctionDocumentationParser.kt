@@ -15,13 +15,13 @@ class MacroFunctionDocumentationParser : underdocs.renderer.parser.documentation
     private val otherParser = underdocs.renderer.parser.section.OtherParser(setOf("Excerpt", "Description", "Attributes", "Examples", "See Also", "Parameters"))
 
     override fun parse(document: Document) =
-            MacroFunctionDocumentation(
-                    excerptParser.tryParse(document),
-                    descriptionParser.tryParse(document),
-                    otherParser.tryParse(document) ?: emptyMap(),
-                    examplesParser.tryParse(document) ?: emptyList(),
-                    seeAlsoParser.tryParse(document) ?: emptyList(),
-                    attributesParser.tryParse(document) ?: emptyMap(),
-                    parametersParser.tryParse(document) ?: emptyMap()
-            )
+        MacroFunctionDocumentation(
+            excerptParser.tryParse(document),
+            descriptionParser.tryParse(document),
+            otherParser.tryParse(document) ?: emptyMap(),
+            examplesParser.tryParse(document) ?: emptyList(),
+            seeAlsoParser.tryParse(document) ?: emptyList(),
+            attributesParser.tryParse(document) ?: emptyMap(),
+            parametersParser.tryParse(document) ?: emptyMap()
+        )
 }

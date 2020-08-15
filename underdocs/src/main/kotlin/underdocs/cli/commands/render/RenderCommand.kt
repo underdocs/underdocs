@@ -9,30 +9,30 @@ import underdocs.renderer.CodebaseRenderer
 import underdocs.representation.serialization.RepresentationSerializer
 
 class RenderCommand : CliktCommand(
-        name = "render",
-        help = "Render"
+    name = "render",
+    help = "Render"
 ) {
     val inputCodebase by option("-i", "--inputCodebase")
-            .path(
-                    exists = true,
-                    fileOkay = true,
-                    folderOkay = false,
-                    readable = true
-            )
-            .required()
+        .path(
+            exists = true,
+            fileOkay = true,
+            folderOkay = false,
+            readable = true
+        )
+        .required()
 
     val outputDirectory by option("-o", "--outputDirectory")
-            .path(
-                    exists = false
-            )
-            .required()
+        .path(
+            exists = false
+        )
+        .required()
 
     override fun run() {
         val rendererConfiguration = RendererConfiguration(
-                outputDirectory = outputDirectory.toString(),
-                remoteRepositoryLineLinkTemplate = "https://github.com/cryptid-org/cryptid-native/tree/master/include/\${path}#L\${line}",
-                remoteRepositoryTagLinkTemplate = "https://github.com/cryptid-org/cryptid-native/releases/tag/\${tag}",
-                staticResourceDirectory = null
+            outputDirectory = outputDirectory.toString(),
+            remoteRepositoryLineLinkTemplate = "https://github.com/cryptid-org/cryptid-native/tree/master/include/\${path}#L\${line}",
+            remoteRepositoryTagLinkTemplate = "https://github.com/cryptid-org/cryptid-native/releases/tag/\${tag}",
+            staticResourceDirectory = null
         )
 
         val codebaseSerializer = RepresentationSerializer.create()

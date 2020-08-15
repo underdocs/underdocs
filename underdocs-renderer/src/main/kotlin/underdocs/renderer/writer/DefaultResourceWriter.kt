@@ -9,7 +9,6 @@ import java.nio.file.SimpleFileVisitor
 import java.nio.file.StandardCopyOption
 import java.nio.file.attribute.BasicFileAttributes
 
-
 class DefaultResourceWriter : ResourceWriter {
     override fun writeInternalResource(internalPath: String, outputPath: String) {
         val resourceStream = DefaultResourceWriter::class.java.getResourceAsStream(internalPath)
@@ -23,19 +22,22 @@ class DefaultResourceWriter : ResourceWriter {
         val inputDirectoryPath = Paths.get(inputDirectory)
         val outputDirectoryPath = Paths.get(outputDirectory)
 
-        Files.walkFileTree(inputDirectoryPath, object : SimpleFileVisitor<Path>() {
-            override fun visitFile(file: Path?, attrs: BasicFileAttributes?): FileVisitResult {
-                if (file != null) {
-                    val destinationPath = outputDirectoryPath.resolve(inputDirectoryPath.relativize(file))
+        Files.walkFileTree(
+            inputDirectoryPath,
+            object : SimpleFileVisitor<Path>() {
+                override fun visitFile(file: Path?, attrs: BasicFileAttributes?): FileVisitResult {
+                    if (file != null) {
+                        val destinationPath = outputDirectoryPath.resolve(inputDirectoryPath.relativize(file))
 
-                    createDirectoryStructure(destinationPath.toString())
+                        createDirectoryStructure(destinationPath.toString())
 
-                    Files.copy(file, destinationPath, StandardCopyOption.REPLACE_EXISTING)
+                        Files.copy(file, destinationPath, StandardCopyOption.REPLACE_EXISTING)
+                    }
+
+                    return FileVisitResult.CONTINUE
                 }
-
-                return FileVisitResult.CONTINUE
             }
-        })
+        )
     }
 
     private fun createDirectoryStructure(path: String) {

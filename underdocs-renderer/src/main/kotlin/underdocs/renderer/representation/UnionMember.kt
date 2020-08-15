@@ -4,14 +4,14 @@ import underdocs.renderer.representation.documentation.MemberDocumentation
 import underdocs.renderer.representation.visitor.Visitor
 
 data class UnionMember(
-        private val startingLine: Int,
-        private val raw: String,
+    private val startingLine: Int,
+    private val raw: String,
 
-        val name: String,
+    val name: String,
 
-        val members: List<Member>,
+    val members: List<Member>,
 
-        val documentation: MemberDocumentation?
+    val documentation: MemberDocumentation?
 ) : Element, Member {
     override fun getStartingLine() = startingLine
 

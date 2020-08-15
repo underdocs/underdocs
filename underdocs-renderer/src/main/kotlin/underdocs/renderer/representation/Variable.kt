@@ -4,16 +4,16 @@ import underdocs.renderer.representation.documentation.VariableDocumentation
 import underdocs.renderer.representation.visitor.Visitor
 
 data class Variable(
-        private val startingLine: Int,
-        private val raw: String,
+    private val startingLine: Int,
+    private val raw: String,
 
-        private var parent: Header?,
+    private var parent: Header?,
 
-        val name: String,
-        val specifiers: List<String>,
-        val type: Type,
+    val name: String,
+    val specifiers: List<String>,
+    val type: Type,
 
-        val documentation: VariableDocumentation?
+    val documentation: VariableDocumentation?
 ) : TopLevelElement, Visitable {
     override fun getStartingLine() = startingLine
 

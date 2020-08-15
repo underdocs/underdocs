@@ -4,15 +4,15 @@ import underdocs.renderer.representation.documentation.MacroFunctionDocumentatio
 import underdocs.renderer.representation.visitor.Visitor
 
 data class MacroFunction(
-        private val startingLine: Int,
-        private val raw: String,
+    private val startingLine: Int,
+    private val raw: String,
 
-        private var parent: Header?,
+    private var parent: Header?,
 
-        val name: String,
-        val expansion: String,
-        val parameters: List<String>,
-        val documentation: MacroFunctionDocumentation?
+    val name: String,
+    val expansion: String,
+    val parameters: List<String>,
+    val documentation: MacroFunctionDocumentation?
 ) : TopLevelElement {
     override fun getStartingLine() = startingLine
 

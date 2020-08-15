@@ -4,13 +4,14 @@ import underdocs.error.environment.DefaultEnvironmentDetailCollector
 import underdocs.error.environment.EnvironmentDetailCollector
 import underdocs.error.pretty.DefaultErrorPrettyPrinter
 import underdocs.error.pretty.ErrorPrettyPrinter
+import underdocs.version.retriever.VersionRetriever
 
 class StderrErrorReporter : ErrorReporter {
     private val environmentDetailCollector: EnvironmentDetailCollector
     private val errorPrinter: ErrorPrettyPrinter
 
     init {
-        environmentDetailCollector = DefaultEnvironmentDetailCollector()
+        environmentDetailCollector = DefaultEnvironmentDetailCollector(VersionRetriever.create())
         errorPrinter = DefaultErrorPrettyPrinter()
     }
 
@@ -18,11 +19,12 @@ class StderrErrorReporter : ErrorReporter {
         val prettyError = errorPrinter.print(exception)
         val environmentDetails = environmentDetailCollector.collect()
 
-        val output = """
+        val output =
+            """
             $prettyError
             
             $environmentDetails
-        """.trimIndent()
+            """.trimIndent()
 
         System.err.println(output)
     }

@@ -18,12 +18,12 @@ class EnumElementDocumentationParser : DocumentationParser<EnumElementDocumentat
     private val otherParser = OtherParser(setOf("Excerpt", "Description", "Attributes", "Examples", "See Also"))
 
     override fun parse(document: Document) =
-            EnumElementDocumentation(
-                    excerptParser.tryParse(document),
-                    descriptionParser.tryParse(document),
-                    otherParser.tryParse(document) ?: emptyMap(),
-                    examplesParser.tryParse(document) ?: emptyList(),
-                    seeAlsoParser.tryParse(document) ?: emptyList(),
-                    attributesParser.tryParse(document) ?: emptyMap()
-            )
+        EnumElementDocumentation(
+            excerptParser.tryParse(document),
+            descriptionParser.tryParse(document),
+            otherParser.tryParse(document) ?: emptyMap(),
+            examplesParser.tryParse(document) ?: emptyList(),
+            seeAlsoParser.tryParse(document) ?: emptyList(),
+            attributesParser.tryParse(document) ?: emptyMap()
+        )
 }

@@ -4,16 +4,16 @@ import underdocs.renderer.representation.documentation.UnionDocumentation
 import underdocs.renderer.representation.visitor.Visitor
 
 data class Union(
-        private val startingLine: Int,
-        private val raw: String,
-        private var parent: Header?,
+    private val startingLine: Int,
+    private val raw: String,
+    private var parent: Header?,
 
-        val name: String,
-        val typedef: Boolean,
-        val specifiers: List<String>,
-        val members: List<Member>,
+    val name: String,
+    val typedef: Boolean,
+    val specifiers: List<String>,
+    val members: List<Member>,
 
-        val documentation: UnionDocumentation?
+    val documentation: UnionDocumentation?
 ) : TopLevelElement, Visitable {
     override fun getStartingLine() = startingLine
 

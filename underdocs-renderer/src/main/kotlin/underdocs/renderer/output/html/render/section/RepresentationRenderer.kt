@@ -42,14 +42,14 @@ class RepresentationRenderer : BaseVisitor() {
         }
 
         val members = enumElement.members
-                .map { member ->
-                    if (member.value != null) {
-                        "  ${member.name} = ${member.value}"
-                    } else {
-                        "  ${member.name}"
-                    }
+            .map { member ->
+                if (member.value != null) {
+                    "  ${member.name} = ${member.value}"
+                } else {
+                    "  ${member.name}"
                 }
-                .joinToString(",\n")
+            }
+            .joinToString(",\n")
 
         source = if (enumElement.typedef) {
             "typedef enum {\n${members}\n} ${enumElement.name}"
@@ -124,12 +124,12 @@ class RepresentationRenderer : BaseVisitor() {
         val returnType = singleLineTypeRenderer.render(function.returnType)
 
         val parameters = function.parameters
-                .map { parameter ->
-                    val type = singleLineTypeRenderer.render(parameter.type)
+            .map { parameter ->
+                val type = singleLineTypeRenderer.render(parameter.type)
 
-                    "  $type ${parameter.name}"
-                }
-                .joinToString(",\n")
+                "  $type ${parameter.name}"
+            }
+            .joinToString(",\n")
 
         source = "$specifiers$returnType ${function.name}(\n$parameters\n)"
     }
@@ -147,8 +147,8 @@ class RepresentationRenderer : BaseVisitor() {
     }
 
     private fun wrapIntoPreAndCode(source: String) = pre(
-            code(
-                    source
-            ).withClass("language-c")
+        code(
+            source
+        ).withClass("language-c")
     )
 }
