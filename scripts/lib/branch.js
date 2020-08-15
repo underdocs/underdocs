@@ -18,7 +18,7 @@ async function branchNameForIssue (owner, repository, issueNumber, index) {
 
   const namePart = i.title
     .toLowerCase()
-    .replace(/ /g, '-')
+    .replace(/[ :,/]/g, '-')
 
   const unindexed = `#${i.number}-${namePart}`
 
