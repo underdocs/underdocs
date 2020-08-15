@@ -9,7 +9,7 @@ const issue = require('./issue')
  */
 const EPHEMERAL_BRANCH_REGEX = /^#([1-9][0-9]*)-((?:[a-z0-9_]+-)*?[a-z0-9_]+?)(?:-([1-9][0-9]*))?$/g
 
-async function branchNameForIssue(owner, repository, issueNumber, index) {
+async function branchNameForIssue (owner, repository, issueNumber, index) {
   const i = await issue.retrieveOpenIssueByNumber(owner, repository, issueNumber)
 
   if (!i) {
@@ -18,7 +18,7 @@ async function branchNameForIssue(owner, repository, issueNumber, index) {
 
   const namePart = i.title
     .toLowerCase()
-    .replace(/[ :,\/]/g, '-')
+    .replace(/[ :,/]/g, '-')
 
   const unindexed = `#${i.number}-${namePart}`
 
@@ -29,7 +29,7 @@ async function branchNameForIssue(owner, repository, issueNumber, index) {
   }
 }
 
-async function hasIssueForBranch(owner, repository, actualBranchName) {
+async function hasIssueForBranch (owner, repository, actualBranchName) {
   const split = splitBranchName(actualBranchName)
 
   if (!split) {
@@ -39,7 +39,7 @@ async function hasIssueForBranch(owner, repository, actualBranchName) {
   return issue.retrieveOpenIssueByNumber(owner, repository, split.number)
 }
 
-function splitBranchName(branchName) {
+function splitBranchName (branchName) {
   EPHEMERAL_BRANCH_REGEX.lastIndex = 0
   const result = EPHEMERAL_BRANCH_REGEX.exec(branchName)
 
@@ -54,7 +54,7 @@ function splitBranchName(branchName) {
   }
 }
 
-function guardInvalidBranchName(persistentBranches, currentBranch) {
+function guardInvalidBranchName (persistentBranches, currentBranch) {
   console.log(`
 The name of the current branch "${currentBranch}" does not match the branch naming policy.
 
@@ -71,7 +71,7 @@ The branch name must
   process.exit(1)
 }
 
-async function guardNoIssueForBranch(owner, repository, actualBranchName) {
+async function guardNoIssueForBranch (owner, repository, actualBranchName) {
   const openIssues = (await issue.retrieveAllOpenIssues(owner, repository))
     .map(i => `#${i.number} - ${i.title}`)
 
@@ -85,7 +85,7 @@ Open issues:
   process.exit(1)
 }
 
-function guardBranchTitleDoesNotMatchExpected(expectedBranchTitle, actualBranchTitle) {
+function guardBranchTitleDoesNotMatchExpected (expectedBranchTitle, actualBranchTitle) {
   console.log(`
 The title part of the current branch does not match the one generated using the title of the issue.
 
@@ -96,7 +96,7 @@ The title part of the current branch does not match the one generated using the 
   process.exit(1)
 }
 
-async function checkBranchName(owner, repository, persistentBranches, actualBranchName) {
+async function checkBranchName (owner, repository, persistentBranches, actualBranchName) {
   if (persistentBranches.includes(actualBranchName)) {
     return
   }
