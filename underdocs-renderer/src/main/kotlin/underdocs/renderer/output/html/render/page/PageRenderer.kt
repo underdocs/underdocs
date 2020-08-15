@@ -67,10 +67,16 @@ class PageRenderer(
                     .with(
                         UnescapedText(
                             """
-                                const isNightModePreferred = () => window.matchMedia?.('(prefers-color-scheme: dark)').matches;
-
+                                const getPreferredTheme = () => {
+                                  if (localStorage.getItem('underdocs_theme') === null) {
+                                    return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'night' : 'day';
+                                  }
+                                
+                                  return localStorage.getItem('underdocs_theme');
+                                }
+                                
                                 (function setPreferredTheme() {
-                                  if (isNightModePreferred()) {
+                                  if (getPreferredTheme() === 'night') {
                                     document.body.classList.add('night');
                                   }
                                 })();
@@ -107,21 +113,21 @@ class PageRenderer(
                         .with(
                             UnescapedText(
                                 """
-                                        (function renderMathElements() {
-                                              document.addEventListener('DOMContentLoaded', function () {
-                                                const mathElements = Array.from(document.getElementsByClassName('katex-inline'))
-                                                    .concat(Array.from(document.getElementsByClassName('katex-block')));
-                                                
-                                                console.log(mathElements.length)
-
-                                                mathElements.forEach(element => {
-                                                    katex.render(element.textContent, element, { 
-                                                        throwOnError: false,
-                                                        displayMode: element.classList.contains('katex-block'), 
-                                                    });
+                                    (function renderMathElements() {
+                                          document.addEventListener('DOMContentLoaded', function () {
+                                            const mathElements = Array.from(document.getElementsByClassName('katex-inline'))
+                                                .concat(Array.from(document.getElementsByClassName('katex-block')));
+                                            
+                                            console.log(mathElements.length)
+    
+                                            mathElements.forEach(element => {
+                                                katex.render(element.textContent, element, { 
+                                                    throwOnError: false,
+                                                    displayMode: element.classList.contains('katex-block'), 
                                                 });
-                                               })
-                                        })();
+                                            });
+                                           })
+                                    })();
                                 """.trimIndent()
                             )
                         ),
@@ -129,17 +135,23 @@ class PageRenderer(
                         .with(
                             UnescapedText(
                                 """
-                                          (function setNightModeButton() {
-                                            const nightModeButton = document.querySelector("#night-mode-button");
-                                    
-                                            if (isNightModePreferred()) {
-                                              nightModeButton.checked = true;
-                                            }
-                                            
-                                            nightModeButton.addEventListener('change', function () {
-                                              document.body.classList.toggle('night');
-                                            })
-                                          })();
+                                    (function setNightModeButton() {
+                                        const nightModeButton = document.querySelector("#night-mode-button");
+                                        
+                                        if (getPreferredTheme() === 'night') {
+                                          nightModeButton.checked = true;
+                                        }
+                                        
+                                        nightModeButton.addEventListener('change', function () {
+                                          document.body.classList.toggle('night');
+                                          
+                                          if (nightModeButton.checked === false) {
+                                            localStorage.setItem('underdocs_theme', 'day');
+                                          } else {
+                                            localStorage.setItem('underdocs_theme', 'night');
+                                          }
+                                        })
+                                    })();
                                 """.trimIndent()
                             )
                         )
