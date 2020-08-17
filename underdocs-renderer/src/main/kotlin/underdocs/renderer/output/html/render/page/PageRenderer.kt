@@ -72,7 +72,8 @@ class PageRenderer(
                                 const UnderdocsTheme = Object.freeze({
                                   DAY: 'day',
                                   NIGHT: 'night',
-                                  KEY: 'underdocs_theme'
+                                  KEY: 'underdocs_theme',
+                                  POLICY: 'underdocs_policy_accepted'
                                 });
                                 
                                 const isNightModePreferred = () => window.matchMedia?.('(prefers-color-scheme: dark)').matches;
@@ -170,14 +171,16 @@ class PageRenderer(
                                     })();
                                     
                                     (function setSnackbar() {
-                                      const snackBar = document.querySelector('#theme-snackbar');
+                                      const snackbar = document.querySelector('#theme-snackbar');
+                                      const isPolicyAccepted = localStorage.getItem(UnderdocsTheme.POLICY) === null ? false : true;
                             
-                                      if (savedTheme === null) {
-                                        snackBar.style.display = 'block';
+                                      if (!isPolicyAccepted) {
+                                        snackbar.style.display = 'block';
                                         const snackbarClose = document.querySelector('#theme-snackbar-button');
                                 
                                         snackbarClose.addEventListener('click', function () {
-                                            snackBar.style.display = 'none';
+                                            snackbar.style.display = 'none';
+                                            localStorage.setItem(UnderdocsTheme.POLICY, '1');
                                         })
                                       }
                                     })();
