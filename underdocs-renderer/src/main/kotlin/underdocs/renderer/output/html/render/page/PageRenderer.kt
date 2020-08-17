@@ -173,9 +173,9 @@ class PageRenderer(
                                     
                                     (function setSnackbar() {
                                       const snackbar = document.querySelector('#theme-snackbar');
-                                      const isPolicyAccepted = localStorage.getItem(UnderdocsTheme.POLICY) === null ? false : true;
+                                      const shouldShowPolicySnackbar = localStorage.getItem(UnderdocsTheme.POLICY) === null;
                             
-                                      if (!isPolicyAccepted) {
+                                      if (shouldShowPolicySnackbar) {
                                         snackbar.style.display = 'block';
                                         const snackbarClose = document.querySelector('#theme-snackbar-button');
                                 
