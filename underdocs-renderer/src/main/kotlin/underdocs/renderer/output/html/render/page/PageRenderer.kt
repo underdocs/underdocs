@@ -77,9 +77,10 @@ class PageRenderer(
                                 });
                                 
                                 const isNightModePreferred = () => window.matchMedia?.('(prefers-color-scheme: dark)').matches;
-                                const savedTheme = localStorage.getItem(UnderdocsTheme.KEY);
                                 
                                 const getPreferredTheme = () => {
+                                  const savedTheme = localStorage.getItem(UnderdocsTheme.KEY);
+                                
                                   if (savedTheme === null) {
                                     return isNightModePreferred() ? UnderdocsTheme.NIGHT : UnderdocsTheme.DAY;
                                   }
