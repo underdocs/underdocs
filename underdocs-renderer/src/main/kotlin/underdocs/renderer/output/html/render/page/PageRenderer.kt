@@ -12,6 +12,8 @@ import j2html.TagCreator.main
 import j2html.TagCreator.meta
 import j2html.TagCreator.script
 import j2html.TagCreator.span
+import j2html.TagCreator.p
+import j2html.TagCreator.button
 import j2html.tags.Tag
 import j2html.tags.UnescapedText
 import underdocs.renderer.output.html.link.Linker
@@ -70,14 +72,15 @@ class PageRenderer(
                                 const UnderdocsTheme = Object.freeze({
                                   DAY: 'day',
                                   NIGHT: 'night',
-                                  KEY: 'underdocs_theme'
+                                  KEY: 'underdocs_theme',
+                                  POLICY: 'underdocs_policy_accepted'
                                 });
                                 
                                 const isNightModePreferred = () => window.matchMedia?.('(prefers-color-scheme: dark)').matches;
                                 
                                 const getPreferredTheme = () => {
                                   const savedTheme = localStorage.getItem(UnderdocsTheme.KEY);
-                                  
+                                
                                   if (savedTheme === null) {
                                     return isNightModePreferred() ? UnderdocsTheme.NIGHT : UnderdocsTheme.DAY;
                                   }
@@ -86,9 +89,12 @@ class PageRenderer(
                                 }
                                 
                                 (function setPreferredTheme() {
-                                  if (getPreferredTheme() === UnderdocsTheme.NIGHT) {
+                                  const preferredTheme = getPreferredTheme();
+                                  if (preferredTheme === UnderdocsTheme.NIGHT) {
                                     document.body.classList.add(UnderdocsTheme.NIGHT);
                                   }
+                                  
+                                  localStorage.setItem(UnderdocsTheme.KEY, preferredTheme);
                                 })();
                             """.trimIndent()
                         )
@@ -107,6 +113,11 @@ class PageRenderer(
                     ).withClass("header-container"),
                     contents
                 ),
+                div(
+                        p("In order to provide you with a good user experience we store your preferred theme."),
+                        button("I understand")
+                                .withId("theme-snackbar-button")
+                ).withId("theme-snackbar"),
                 div(
                     script()
                         .withSrc("https://cdnjs.cloudflare.com/ajax/libs/prism/$PRISM_VERSION/components/prism-core.min.js"),
@@ -158,6 +169,21 @@ class PageRenderer(
                                           const themeChoice = nightModeButton.checked ? UnderdocsTheme.NIGHT : UnderdocsTheme.DAY;
                                           localStorage.setItem(UnderdocsTheme.KEY, themeChoice);
                                         })
+                                    })();
+                                    
+                                    (function setSnackbar() {
+                                      const snackbar = document.querySelector('#theme-snackbar');
+                                      const shouldShowPolicySnackbar = localStorage.getItem(UnderdocsTheme.POLICY) === null;
+                            
+                                      if (shouldShowPolicySnackbar) {
+                                        snackbar.style.display = 'block';
+                                        const snackbarClose = document.querySelector('#theme-snackbar-button');
+                                
+                                        snackbarClose.addEventListener('click', function () {
+                                            snackbar.style.display = 'none';
+                                            localStorage.setItem(UnderdocsTheme.POLICY, '1');
+                                        })
+                                      }
                                     })();
                                 """.trimIndent()
                             )
