@@ -24,6 +24,11 @@
             <artifactId>underdocs-version</artifactId>
             <version>1.0.1</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-test-junit5</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
