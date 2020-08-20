@@ -2,9 +2,12 @@ package underdocs.error.pretty
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import underdocs.error.BaseUnderdocsError
 
+@DisplayName("In DefaultErrorPrettyPrinter")
 class DefaultErrorPrettyPrinterTest {
 
     companion object {
@@ -18,45 +21,50 @@ class DefaultErrorPrettyPrinterTest {
 
     private val defaultErrorPrettyPrinter = DefaultErrorPrettyPrinter()
 
-    @Test
-    fun print_WhenBaseUnderDocsErrorTypeExceptionIsThrown_ShouldReturnMessageContainingTheDetailsOfTheException() {
-        // Given
-        val expectedBaseUnderDocsErrorTypeMessage =
-                """
-                |${TITLE.toUpperCase()} - Error Code $ERROR_CODE
-                |Details
-                |${DESCRIPTION}
-                |
-                |Possible solution
-                |${SOLUTION}
-            """.trimMargin()
+    @Nested
+    @DisplayName("the function print")
+    inner class Print {
 
-        // When
-        val message = defaultErrorPrettyPrinter.print(TestException(ERROR_CODE, TITLE))
+        @Test
+        fun `should return message containing the details of the exception when BaseUnderdocsError type exception is thrown`() {
+            // Given
+            val expectedBaseUnderDocsErrorTypeMessage =
+                    """
+                    |${TITLE.toUpperCase()} - Error Code $ERROR_CODE
+                    |Details
+                    |${DESCRIPTION}
+                    |
+                    |Possible solution
+                    |${SOLUTION}
+                """.trimMargin()
 
-        // Then
-        assertEquals(expectedBaseUnderDocsErrorTypeMessage, message)
+            // When
+            val message = defaultErrorPrettyPrinter.print(TestException(ERROR_CODE, TITLE))
+
+            // Then
+            assertEquals(expectedBaseUnderDocsErrorTypeMessage, message)
+        }
+
+        @Test
+        fun `should return message containing the details of the exception when UnexpectedException is thrown`() {
+            // Given
+            val expectedUnexpectedExceptionMessage =
+                    """
+                    |Unexpected exception $RUNTIME_EXCEPTION_CLASSPATH
+                    |$RUNTIME_EXCEPTION_DESCRIPTION
+                    |
+                    |Stacktrace
+                """.trimMargin()
+
+            // When
+            val message = defaultErrorPrettyPrinter.print(RuntimeException(RUNTIME_EXCEPTION_DESCRIPTION))
+
+            // Then
+            assertTrue(message.startsWith(expectedUnexpectedExceptionMessage))
+        }
     }
 
-    @Test
-    fun print_WhenUnexpectedExceptionIsThrown_ShouldReturnMessageContainingTheDetailsOfTheException() {
-        // Given
-        val expectedUnexpectedExceptionMessage =
-                """
-                |Unexpected exception $RUNTIME_EXCEPTION_CLASSPATH
-                |$RUNTIME_EXCEPTION_DESCRIPTION
-                |
-                |Stacktrace
-            """.trimMargin()
-
-        // When
-        val message = defaultErrorPrettyPrinter.print(RuntimeException(RUNTIME_EXCEPTION_DESCRIPTION))
-
-        // Then
-        assertTrue(message.startsWith(expectedUnexpectedExceptionMessage))
-    }
-
-    class TestException(code: String, title: String) : BaseUnderdocsError(code, title) {
+    inner class TestException(code: String, title: String) : BaseUnderdocsError(code, title) {
         override fun getDescription(): String = DESCRIPTION
         override fun getSolution(): String = SOLUTION
     }
