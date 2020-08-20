@@ -59,6 +59,8 @@
         <git-commit-id-plugin.version>4.0.0</git-commit-id-plugin.version>
         <maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
         <ktlint.version>0.37.2</ktlint.version>
+        <junit5.version>1.4.0</junit5.version>
+        <mockito.version>3.5.2</mockito.version>
     </properties>
 
     <modules>
@@ -171,6 +173,20 @@
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-stdlib-jdk8</artifactId>
                 <version>${kotlin.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-test-junit5</artifactId>
+                <version>${junit5.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito.version}</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
